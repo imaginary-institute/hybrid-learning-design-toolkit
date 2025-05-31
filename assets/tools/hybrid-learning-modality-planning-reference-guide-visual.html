@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Hybrid Learning Modality Planning Reference Guide - Visual</title>
+
+<!-- Add html2canvas and jsPDF libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style type="text/css">
+:root {
+    --receiving-color: #5B9BD5;
+    --responding-color: #4CAF50;
+    --creating-color: #F9A03F;
+    --assessment-primary: #8B5A96;
+    --modality-color: #9C27B0;
+    
+    --receiving-bg: rgba(91, 155, 213, 0.1);
+    --responding-bg: rgba(76, 175, 80, 0.1);
+    --creating-bg: rgba(249, 160, 63, 0.1);
+    --modality-bg: rgba(156, 39, 176, 0.1);
+    
+    --border-color: #ddd;
+    --separator-color: #999;
+    --light-gray: #f5f5f5;
+    --medium-gray: #666;
+    --dark-gray: #333;
+    
+    --essential-color: #2D72A5;
+    --enhanced-color: #6464B4;
+    --transformative-color: #37946E;
+    --light-essential: rgba(45, 114, 165, 0.1);
+    --light-enhanced: rgba(100, 100, 180, 0.1);
+    --light-transformative: rgba(55, 148, 110, 0.1);
+    --heading-color: #333333;
+    --text-color: #444444;
+    --background-color: #FFFFFF;
+    --card-background: #F9F9F9;
+    --hint-color: #777777;
+    --primary-button: #5B9BD5;
+    --secondary-button: #f2f2f2;
+    --success-color: #4CAF50;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--text-color);
+    background-color: #f9f9f9;
+    padding: 30px;
+    margin: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2.2em;
+    color: var(--heading-color);
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 1.8em;
+    border-bottom: 2px solid var(--primary-button);
+    color: var(--heading-color);
+    padding-bottom: 10px;
+    margin-top: 40px;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.4em;
+    color: var(--essential-color);
+    margin-top: 30px;
+    font-weight: 600;
+}
+
+h4 {
+    font-size: 1.2em;
+    color: var(--heading-color);
+    font-weight: 600;
+}
+
+.subtitle {
+    text-align: center;
+    font-style: italic;
+    color: var(--medium-gray);
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.section-card {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+.modality-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.remote-section {
+    background: linear-gradient(135deg, var(--receiving-bg), white);
+    border: 2px solid var(--receiving-color);
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.onsite-section {
+    background: linear-gradient(135deg, var(--responding-bg), white);
+    border: 2px solid var(--responding-color);
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.consideration-item {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    border-left: 4px solid var(--essential-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.consideration-title {
+    font-weight: 600;
+    color: var(--heading-color);
+    margin-bottom: 5px;
+}
+
+.consideration-desc {
+    color: var(--medium-gray);
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+.consideration-examples {
+    color: var(--text-color);
+    font-size: 0.9em;
+}
+
+.implementation-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.implementation-table th {
+    background: linear-gradient(135deg, var(--essential-color), var(--enhanced-color), var(--transformative-color));
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.implementation-table td {
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    vertical-align: top;
+}
+
+.implementation-table tr:nth-child(even) {
+    background-color: var(--light-gray);
+}
+
+.level-essential {
+    background: var(--light-essential);
+    border-left: 4px solid var(--essential-color);
+}
+
+.level-enhanced {
+    background: var(--light-enhanced);
+    border-left: 4px solid var(--enhanced-color);
+}
+
+.level-transformative {
+    background: var(--light-transformative);
+    border-left: 4px solid var(--transformative-color);
+}
+
+.quick-ref-box {
+    background: var(--creating-bg);
+    border: 2px solid var(--creating-color);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.quick-ref-title {
+    color: var(--creating-color);
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.export-controls {
+    position: sticky;
+    top: 0;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    border: 1px solid var(--border-color);
+}
+
+.btn-export {
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn-export:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.btn-export:nth-child(2) {
+    background-color: var(--creating-color);
+}
+
+.btn-print {
+    background-color: var(--assessment-primary) !important;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-content {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--light-gray);
+    border-top: 4px solid var(--primary-button);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+hr {
+    background: linear-gradient(to right, var(--primary-button), var(--essential-color));
+    border: 0 none;
+    color: transparent;
+    height: 2px;
+    margin: 30px 0;
+    border-radius: 1px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    color: var(--hint-color);
+    font-style: italic;
+}
+
+@media print {
+    .export-controls {
+        display: none !important;
+    }
+    body {
+        background: white;
+        margin: 0;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .modality-sections {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .implementation-table {
+        font-size: 12px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Export Controls -->
+<div class="export-controls">
+    <button class="btn-export" onclick="exportPNG()">Export as PNG</button>
+    <button class="btn-export" onclick="exportPDF()">Export as PDF</button>
+    <button class="btn-export btn-print" onclick="window.print()">Print Guide</button>
+</div>
+
+<!-- Main content wrapper for export -->
+<div id="contentToExport">
+
+<h1>HYBRID LEARNING MODALITY PLANNING REFERENCE GUIDE</h1>
+<div class="subtitle">A quick guide for completing modality columns in hybrid learning planning tools</div>
+
+<div class="quick-ref-box">
+    <div class="quick-ref-title">🎯 Quick Reference for Activity Sequence Canvas</div>
+    <p><strong>Use this guide when completing the "Modality Adjustments" column in your Activity Sequence Canvas or other hybrid learning planning tools.</strong></p>
+</div>
+
+<h2>📋 For Activity Sequence Canvas: "Modality Adjustments" Column</h2>
+
+<div class="modality-sections">
+    <div class="remote-section">
+        <h3 style="color: var(--receiving-color); text-align: center;">🏠 Remote Students</h3>
+        
+        <div class="consideration-item">
+            <div class="consideration-title">💻 Access</div>
+            <div class="consideration-desc">How will they access materials and see/hear instruction clearly?</div>
+            <div class="consideration-examples"><em>e.g., downloadable resources, multiple camera angles, transcripts</em></div>
+        </div>
+        
+        <div class="consideration-item">
+            <div class="consideration-title">🗣️ Participation</div>
+            <div class="consideration-desc">What channels/methods will they use to engage and contribute?</div>
+            <div class="consideration-examples"><em>e.g., chat responses, digital hand-raising, collaborative documents</em></div>
+        </div>
+        
+        <div class="consideration-item">
+            <div class="consideration-title">👁️ Visibility</div>
+            <div class="consideration-desc">How will their presence be acknowledged in the physical space?</div>
+            <div class="consideration-examples"><em>e.g., display on large screen, calling on remote students first, audio alerts</em></div>
+        </div>
+        
+        <div class="consideration-item">
+            <div class="consideration-title">⚙️ Technology</div>
+            <div class="consideration-desc">What specific tools or platforms do they need?</div>
+            <div class="consideration-examples"><em>e.g., stable video connection, digital annotation tools, breakout rooms</em></div>
+        </div>
+        
+        <div class="consideration-item">
+            <div class="consideration-title">🆘 Support</div>
+            <div class="consideration-desc">What additional guidance or resources will they need?</div>
+            <div class="consideration-examples"><em>e.g., pre-session tech check, simplified navigation paths, designated help channel</em></div>
+        </div>
+    </div>
+    
+    <div class="onsite-section">
+        <h3 style="color: var(--responding-color); text-align: center;">🏢 On-site Students</h3>
+        
+        <div class="consideration-item">
+            <div class="consideration-title">🤝 Connection</div>
+            <div class="consideration-desc">How will they interact with remote peers effectively?</div>
+            <div class="consideration-examples"><em>e.g., facing camera when speaking, shared digital workspace, cross-modal partners</em></div>
+        </div>
+        
+        <div class="consideration-item">
+            <div class="consideration-title">💻 Technology</div>
+            <div class="consideration-desc">How might technology used for remote students affect their experience?</div>
+            <div class="consideration-examples"><em>e.g., wearing headsets, viewing shared screens, managing audio feedback</em></div>
+        </div>
+        
+        <div class="consideration-item">
+            <div class="consideration-title">🏗️ Space</div>
+            <div class="consideration-desc">What physical arrangement supports hybrid interaction?</div>
+            <div class="consideration-examples"><em>e.g., U-shaped seating, visible monitors, designated collaboration zones</em></div>
+        </div>
+        
+        <div class="consideration-item">
+            <div class="consideration-title">👀 Attention</div>
+            <div class="consideration-desc">How will they maintain awareness of remote participants?</div>
+            <div class="consideration-examples"><em>e.g., camera indicators, audio cues, facilitator reminders</em></div>
+        </div>
+        
+        <div class="consideration-item">
+            <div class="consideration-title">📤 Sharing</div>
+            <div class="consideration-desc">How will they share physical resources/artifacts with remote peers?</div>
+            <div class="consideration-examples"><em>e.g., document camera, photos uploaded to shared space, verbal descriptions</em></div>
+        </div>
+    </div>
+</div>
+
+<h2>🔍 Extended Modality Considerations</h2>
+
+<div class="section-card">
+    <h3>🏠 For Remote Students</h3>
+    
+    <div class="consideration-item">
+        <div class="consideration-title">🎯 Outcome Achievement</div>
+        <div class="consideration-desc">Can they achieve the learning outcomes equally well remotely?</div>
+        <div class="consideration-examples"><em>e.g., alternative ways to demonstrate field-based skills, different formats for similar outcomes</em></div>
+    </div>
+    
+    <div class="consideration-item">
+        <div class="consideration-title">📋 Evidence Generation</div>
+        <div class="consideration-desc">How will they demonstrate their learning?</div>
+        <div class="consideration-examples"><em>e.g., digital portfolios, recorded presentations, online exam formats</em></div>
+    </div>
+    
+    <div class="consideration-item">
+        <div class="consideration-title">⏰ Long-term Engagement</div>
+        <div class="consideration-desc">What might affect their engagement throughout the course?</div>
+        <div class="consideration-examples"><em>e.g., sense of community, access to group work, visibility in discussions</em></div>
+    </div>
+    
+    <div class="consideration-item">
+        <div class="consideration-title">📚 Resource Access</div>
+        <div class="consideration-desc">Do they have equitable access to all needed resources?</div>
+        <div class="consideration-examples"><em>e.g., digital library materials, software licenses, alternative lab experiences</em></div>
+    </div>
+    
+    <div class="consideration-item">
+        <div class="consideration-title">📊 Assessment Equity</div>
+        <div class="consideration-desc">Are assessment approaches fair across modalities?</div>
+        <div class="consideration-examples"><em>e.g., equivalent time constraints, access to support, alternative formats</em></div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h3>🏢 For On-site Students</h3>
+    
+    <div class="consideration-item">
+        <div class="consideration-title">🔄 Modality Effects</div>
+        <div class="consideration-desc">How does the hybrid format affect their learning experience?</div>
+        <div class="consideration-examples"><em>e.g., pace changes for technology use, different discussion dynamics</em></div>
+    </div>
+    
+    <div class="consideration-item">
+        <div class="consideration-title">💪 Physical Advantages</div>
+        <div class="consideration-desc">What benefits from physical presence should be leveraged?</div>
+        <div class="consideration-examples"><em>e.g., hands-on activities, immediate feedback, spontaneous discussions</em></div>
+    </div>
+    
+    <div class="consideration-item">
+        <div class="consideration-title">⚠️ Potential Distractions</div>
+        <div class="consideration-desc">What might distract from effective learning?</div>
+        <div class="consideration-examples"><em>e.g., technical setup time, divided attention from screens, audio interference</em></div>
+    </div>
+    
+    <div class="consideration-item">
+        <div class="consideration-title">🔧 Technology Integration</div>
+        <div class="consideration-desc">How will technology integration affect their experience?</div>
+        <div class="consideration-examples"><em>e.g., new skills needed, workflow changes, classroom arrangement</em></div>
+    </div>
+    
+    <div class="consideration-item">
+        <div class="consideration-title">🌐 Cross-modal Interaction</div>
+        <div class="consideration-desc">What skills do they need for effective collaboration?</div>
+        <div class="consideration-examples"><em>e.g., clear articulation for microphones, digital collaboration etiquette, patience with delays</em></div>
+    </div>
+</div>
+
+<h2>📊 Implementation Level Indicators</h2>
+
+<table class="implementation-table">
+    <thead>
+        <tr>
+            <th width="20%"><strong>Element</strong></th>
+            <th width="26%" style="background-color: var(--essential-color);"><strong>Essential</strong></th>
+            <th width="27%" style="background-color: var(--enhanced-color);"><strong>Enhanced</strong></th>
+            <th width="27%" style="background-color: var(--transformative-color);"><strong>Transformative</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Content Access</strong></td>
+            <td class="level-essential">Same content in different formats<br><em>(PDFs for all)</em></td>
+            <td class="level-enhanced">Parallel resources optimized by modality<br><em>(interactive online vs. hands-on)</em></td>
+            <td class="level-transformative">Adaptive content responding to context<br><em>(AI-recommended resources)</em></td>
+        </tr>
+        <tr>
+            <td><strong>Participation</strong></td>
+            <td class="level-essential">Basic participation channels<br><em>(raise hand feature)</em></td>
+            <td class="level-enhanced">Balanced protocols across modalities<br><em>(structured turn-taking)</em></td>
+            <td class="level-transformative">Seamless cross-modal participation<br><em>(immersive shared spaces)</em></td>
+        </tr>
+        <tr>
+            <td><strong>Interaction</strong></td>
+            <td class="level-essential">Basic cross-modal communication<br><em>(video + chat)</em></td>
+            <td class="level-enhanced">Structured cross-modal activities<br><em>(facilitated groups)</em></td>
+            <td class="level-transformative">Persistent collaborative spaces<br><em>(24/7 hybrid workspaces)</em></td>
+        </tr>
+        <tr>
+            <td><strong>Technology</strong></td>
+            <td class="level-essential">Basic connection platforms<br><em>(Zoom, Teams)</em></td>
+            <td class="level-enhanced">Strategic tool integration<br><em>(specialized apps for tasks)</em></td>
+            <td class="level-transformative">Immersive physical-digital ecosystem<br><em>(VR/AR integration)</em></td>
+        </tr>
+        <tr>
+            <td><strong>Assessment</strong></td>
+            <td class="level-essential">Equivalent submission options<br><em>(paper or digital)</em></td>
+            <td class="level-enhanced">Parallel assessment approaches<br><em>(modality-specific methods)</em></td>
+            <td class="level-transformative">Integrated assessment ecosystem<br><em>(continuous multi-modal evidence)</em></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="footer">
+    <em>Hybrid Learning Design Toolkit | 2025 imaginary institute | Modified CC BY-SA 4.0</em>
+</div>
+
+</div>
+
+<!-- Loading overlay -->
+<div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <p>Generating export... This may take a moment.</p>
+    </div>
+</div>
+
+<script>
+const { jsPDF } = window.jspdf;
+const loadingOverlay = document.getElementById('loadingOverlay');
+
+// Export as PNG
+function exportPNG() {
+    loadingOverlay.style.display = 'flex';
+    
+    const exportControls = document.querySelector('.export-controls');
+    exportControls.style.display = 'none';
+    
+    const contentToExport = document.getElementById('contentToExport');
+    
+    html2canvas(contentToExport, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        scrollX: 0,
+        scrollY: 0
+    }).then(function(canvas) {
+        const imgData = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.download = 'hybrid-learning-modality-planning-reference-guide.png';
+        link.href = imgData;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        exportControls.style.display = 'flex';
+        loadingOverlay.style.display = 'none';
+    }).catch(function(error) {
+        console.error('Error generating PNG:', error);
+        alert('Error generating PNG. Please try again.');
+        exportControls.style.display = 'flex';
+        loadingOverlay.style.display = 'none';
+    });
+}
+
+// Export as PDF
+function exportPDF() {
+    loadingOverlay.style.display = 'flex';
+    
+    const exportControls = document.querySelector('.export-controls');
+    exportControls.style.display = 'none';
+    
+    const contentToExport = document.getElementById('contentToExport');
+    
+    html2canvas(contentToExport, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        scrollX: 0,
+        scrollY: 0
+    }).then(function(canvas) {
+        const canvasWidth = canvas.width;
+        const canvasHeight = canvas.height;
+        
+        // Convert pixels to points (1 point = 1.33 pixels approximately)
+        const pdfWidth = canvasWidth * 0.75;
+        const pdfHeight = canvasHeight * 0.75;
+        
+        // Create PDF with custom dimensions to fit content
+        const pdf = new jsPDF({
+            orientation: 'portrait',
+            unit: 'pt',
+            format: [pdfWidth, pdfHeight]
+        });
+        
+        const imgData = canvas.toDataURL('image/png');
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('hybrid-learning-modality-planning-reference-guide.pdf');
+        
+        exportControls.style.display = 'flex';
+        loadingOverlay.style.display = 'none';
+    }).catch(function(error) {
+        console.error('Error generating PDF:', error);
+        alert('Error generating PDF. Please try again.');
+        exportControls.style.display = 'flex';
+        loadingOverlay.style.display = 'none';
+    });
+}
+
+// Add keyboard shortcuts
+document.addEventListener('keydown', function(event) {
+    if ((event.ctrlKey || event.metaKey) && event.key === 'p') {
+        event.preventDefault();
+        window.print();
+    }
+    if ((event.ctrlKey || event.metaKey) && event.key === 's') {
+        event.preventDefault();
+        exportPNG();
+    }
+    if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.key === 'S') {
+        event.preventDefault();
+        exportPDF();
+    }
+});
+</script>
+
+</body>
+
+</html> 

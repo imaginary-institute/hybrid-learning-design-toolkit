@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Learning Framework Compass</title>
+    
+    <!-- Add html2canvas and jsPDF libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <style>
+        :root {
+            --essential-color: #2D72A5;
+            --enhanced-color: #6464B4;
+            --transformative-color: #37946E;
+            --light-essential: rgba(45, 114, 165, 0.1);
+            --light-enhanced: rgba(100, 100, 180, 0.1);
+            --light-transformative: rgba(55, 148, 110, 0.1);
+            --border-color: #E0E0E0;
+            --heading-color: #333333;
+            --text-color: #444444;
+            --background-color: #FFFFFF;
+            --card-background: #F9F9F9;
+            --primary-button: #4A90E2;
+            --export-button: #2ecc71;
+            --export-button-hover: #27ae60;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h1 {
+            color: var(--heading-color);
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #777;
+            font-size: 1.1em;
+            font-style: italic;
+        }
+
+        .compass-container {
+            text-align: center;
+            margin: 30px 0;
+            padding: 30px;
+            background-color: var(--card-background);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .compass-svg {
+            max-width: 100%;
+            height: auto;
+            background-color: white;
+            border-radius: 8px;
+        }
+
+        .compass-description {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 6px;
+            text-align: left;
+        }
+
+        .compass-description h3 {
+            color: var(--heading-color);
+            margin-bottom: 15px;
+        }
+
+        .dimensions-legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .dimension-card {
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid;
+        }
+
+        .dimension-card.dim1 {
+            border-left-color: var(--essential-color);
+            background-color: rgba(45, 114, 165, 0.05);
+        }
+
+        .dimension-card.dim2 {
+            border-left-color: var(--enhanced-color);
+            background-color: rgba(100, 100, 180, 0.05);
+        }
+
+        .dimension-card.dim3 {
+            border-left-color: var(--transformative-color);
+            background-color: rgba(55, 148, 110, 0.05);
+        }
+
+        .dimension-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .implementation-zones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .zone-card {
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .zone-card.essential {
+            background-color: #4DB6AC;
+            color: white;
+        }
+
+        .zone-card.enhanced {
+            background-color: #26A69A;
+            color: white;
+        }
+
+        .zone-card.transformative {
+            background-color: #00695C;
+            color: white;
+        }
+
+        .zone-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .export-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-export {
+            background-color: var(--export-button);
+            color: white;
+        }
+
+        .btn-export:hover {
+            background-color: var(--export-button-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-print {
+            background-color: var(--primary-button);
+            color: white;
+        }
+
+        .btn-print:hover {
+            background-color: #357abd;
+            transform: translateY(-2px);
+        }
+
+        /* Loading overlay for export operations */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .loading-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--export-button);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: #777;
+            font-style: italic;
+        }
+
+        @media print {
+            .export-controls,
+            header .subtitle,
+            footer {
+                display: none !important;
+            }
+            
+            body {
+                padding: 0;
+                font-size: 12pt;
+            }
+            
+            .compass-container {
+                box-shadow: none;
+                margin: 0;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .compass-svg {
+                width: 100%;
+                height: auto;
+            }
+            
+            .dimensions-legend {
+                grid-template-columns: 1fr;
+            }
+            
+            .export-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Hybrid Learning Framework Compass</h1>
+            <p class="subtitle">Three-Dimensional Implementation Guide</p>
+        </header>
+
+        <main>
+            <div id="compassToExport" class="compass-container">
+                <svg id="compass-svg" class="compass-svg" width="600" height="600" viewBox="0 0 600 600">
+                    <!-- Background circles -->
+                    <circle cx="300" cy="300" r="240" fill="none" stroke="#e0e0e0" stroke-width="1" />
+                    <circle cx="300" cy="300" r="190" fill="none" stroke="#e0e0e0" stroke-width="1" />
+                    <circle cx="300" cy="300" r="140" fill="none" stroke="#e0e0e0" stroke-width="1" />
+                    <circle cx="300" cy="300" r="90" fill="none" stroke="#e0e0e0" stroke-width="1" />
+                    <circle cx="300" cy="300" r="40" fill="none" stroke="#e0e0e0" stroke-width="1" />
+                    
+                    <!-- Implementation zones shading -->
+                    <path d="M300,300 L300,60 A240,240 0 0,1 508,180 Z" fill="rgba(55, 148, 110, 0.05)" stroke="none" />
+                    <path d="M300,300 L508,180 A240,240 0 0,1 508,420 Z" fill="rgba(55, 148, 110, 0.05)" stroke="none" />
+                    <path d="M300,300 L508,420 A240,240 0 0,1 300,540 Z" fill="rgba(55, 148, 110, 0.05)" stroke="none" />
+                    <path d="M300,300 L300,540 A240,240 0 0,1 92,420 Z" fill="rgba(55, 148, 110, 0.05)" stroke="none" />
+                    <path d="M300,300 L92,420 A240,240 0 0,1 92,180 Z" fill="rgba(55, 148, 110, 0.05)" stroke="none" />
+                    <path d="M300,300 L92,180 A240,240 0 0,1 300,60 Z" fill="rgba(55, 148, 110, 0.05)" stroke="none" />
+                    
+                    <path d="M300,300 L300,110 A190,190 0 0,1 464,205 Z" fill="rgba(100, 100, 180, 0.1)" stroke="none" />
+                    <path d="M300,300 L464,205 A190,190 0 0,1 464,395 Z" fill="rgba(100, 100, 180, 0.1)" stroke="none" />
+                    <path d="M300,300 L464,395 A190,190 0 0,1 300,490 Z" fill="rgba(100, 100, 180, 0.1)" stroke="none" />
+                    <path d="M300,300 L300,490 A190,190 0 0,1 136,395 Z" fill="rgba(100, 100, 180, 0.1)" stroke="none" />
+                    <path d="M300,300 L136,395 A190,190 0 0,1 136,205 Z" fill="rgba(100, 100, 180, 0.1)" stroke="none" />
+                    <path d="M300,300 L136,205 A190,190 0 0,1 300,110 Z" fill="rgba(100, 100, 180, 0.1)" stroke="none" />
+                    
+                    <path d="M300,300 L300,160 A140,140 0 0,1 421,230 Z" fill="rgba(45, 114, 165, 0.15)" stroke="none" />
+                    <path d="M300,300 L421,230 A140,140 0 0,1 421,370 Z" fill="rgba(45, 114, 165, 0.15)" stroke="none" />
+                    <path d="M300,300 L421,370 A140,140 0 0,1 300,440 Z" fill="rgba(45, 114, 165, 0.15)" stroke="none" />
+                    <path d="M300,300 L300,440 A140,140 0 0,1 179,370 Z" fill="rgba(45, 114, 165, 0.15)" stroke="none" />
+                    <path d="M300,300 L179,370 A140,140 0 0,1 179,230 Z" fill="rgba(45, 114, 165, 0.15)" stroke="none" />
+                    <path d="M300,300 L179,230 A140,140 0 0,1 300,160 Z" fill="rgba(45, 114, 165, 0.15)" stroke="none" />
+                    
+                    <!-- Zone labels -->
+                    <text x="300" y="150" text-anchor="end" fill="#37946E" font-size="14" font-weight="bold">TRANSFORMATIVE</text>
+                    <text x="300" y="200" text-anchor="end" fill="#6464B4" font-size="14" font-weight="bold">ENHANCED</text>
+                    <text x="300" y="250" text-anchor="end" fill="#2D72A5" font-size="14" font-weight="bold">ESSENTIAL</text>
+                    
+                    <!-- Axes -->
+                    <line x1="300" y1="300" x2="300" y2="40" stroke="#333" stroke-width="2" />
+                    <line x1="300" y1="300" x2="526" y2="430" stroke="#333" stroke-width="2" />
+                    <line x1="300" y1="300" x2="74" y2="430" stroke="#333" stroke-width="2" />
+                    
+                    <!-- Axis Labels -->
+                    <text x="300" y="30" text-anchor="middle" font-size="16" font-weight="bold">Learning Environment</text>
+                    <text x="300" y="50" text-anchor="middle" font-size="16" font-weight="bold">& Technology</text>
+                    
+                    <text x="540" y="450" text-anchor="end" font-size="16" font-weight="bold">Learning Experience</text>
+                    <text x="540" y="470" text-anchor="end" font-size="16" font-weight="bold">Design & Assessment</text>
+                    
+                    <text x="60" y="450" text-anchor="start" font-size="16" font-weight="bold">Facilitation, Equity</text>
+                    <text x="60" y="470" text-anchor="start" font-size="16" font-weight="bold">& Community</text>
+                    
+                    <!-- Scale markers -->
+                    <text x="314" y="65" text-anchor="start" font-size="14">5</text>
+                    <text x="314" y="115" text-anchor="start" font-size="14">4</text>
+                    <text x="314" y="165" text-anchor="start" font-size="14">3</text>
+                    <text x="314" y="215" text-anchor="start" font-size="14">2</text>
+                    <text x="314" y="265" text-anchor="start" font-size="14">1</text>
+                </svg>
+                
+                <div class="compass-description">
+                    <h3>Framework Overview</h3>
+                    <p>The Hybrid Learning Framework Compass visualizes three essential dimensions for effective hybrid teaching and learning, mapped across three implementation levels.</p>
+                    
+                    <div class="dimensions-legend">
+                        <div class="dimension-card dim1">
+                            <div class="dimension-title">Learning Environment & Technology</div>
+                            <div>Creating unified spaces that seamlessly integrate physical and virtual elements to support effective hybrid learning.</div>
+                        </div>
+                        <div class="dimension-card dim2">
+                            <div class="dimension-title">Learning Experience Design & Assessment</div>
+                            <div>Developing pedagogical approaches, instructional activities, and assessment methods optimized for hybrid contexts.</div>
+                        </div>
+                        <div class="dimension-card dim3">
+                            <div class="dimension-title">Facilitation, Equity & Community</div>
+                            <div>Implementing facilitation strategies, ensuring equitable participation, and building community across physical-virtual boundaries.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="implementation-zones">
+                        <div class="zone-card essential">
+                            <div class="zone-title">ESSENTIAL</div>
+                            <div>Fundamental implementation supporting basic hybrid teaching capabilities</div>
+                        </div>
+                        <div class="zone-card enhanced">
+                            <div class="zone-title">ENHANCED</div>
+                            <div>Intermediate implementation with increased sophistication and integration</div>
+                        </div>
+                        <div class="zone-card transformative">
+                            <div class="zone-title">TRANSFORMATIVE</div>
+                            <div>Advanced implementation enabling innovative hybrid learning experiences</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="export-controls">
+                <button class="btn btn-export" onclick="exportPNG()">Export as PNG</button>
+                <button class="btn btn-export" onclick="exportPDF()">Export as PDF</button>
+                <button class="btn btn-print" onclick="window.print()">Print Compass</button>
+            </div>
+        </main>
+
+        <footer>
+        </footer>
+    </div>
+
+    <!-- Loading overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>Generating export... This may take a moment.</p>
+        </div>
+    </div>
+
+    <script>
+        const { jsPDF } = window.jspdf;
+        const loadingOverlay = document.getElementById('loadingOverlay');
+
+        // Export as PNG
+        function exportPNG() {
+            // Show loading overlay
+            loadingOverlay.style.display = 'flex';
+            
+            // Hide export controls for clean export
+            const exportControls = document.querySelector('.export-controls');
+            exportControls.style.display = 'none';
+            
+            // Get compass container and temporarily optimize it for export
+            const compassContainer = document.getElementById('compassToExport');
+            
+            // Store original styles
+            const originalStyles = {
+                margin: compassContainer.style.margin,
+                padding: compassContainer.style.padding,
+                backgroundColor: compassContainer.style.backgroundColor,
+                borderRadius: compassContainer.style.borderRadius,
+                boxShadow: compassContainer.style.boxShadow
+            };
+            
+            // Apply export-optimized styles
+            compassContainer.style.margin = '0';
+            compassContainer.style.padding = '20px';
+            compassContainer.style.backgroundColor = '#ffffff';
+            compassContainer.style.borderRadius = '0';
+            compassContainer.style.boxShadow = 'none';
+            
+            // Use html2canvas to capture the optimized compass container
+            html2canvas(compassContainer, {
+                scale: 2, // Higher scale for better quality
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#ffffff',
+                scrollX: 0,
+                scrollY: 0,
+                windowWidth: document.documentElement.offsetWidth,
+                windowHeight: document.documentElement.offsetHeight
+            }).then(function(canvas) {
+                // Convert canvas to PNG data URL
+                const imgData = canvas.toDataURL('image/png');
+                
+                // Create a download link
+                const link = document.createElement('a');
+                link.download = 'hybrid-learning-compass.png';
+                link.href = imgData;
+                
+                // Trigger download
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Restore original styles
+                compassContainer.style.margin = originalStyles.margin;
+                compassContainer.style.padding = originalStyles.padding;
+                compassContainer.style.backgroundColor = originalStyles.backgroundColor;
+                compassContainer.style.borderRadius = originalStyles.borderRadius;
+                compassContainer.style.boxShadow = originalStyles.boxShadow;
+                
+                // Restore export controls
+                exportControls.style.display = 'flex';
+                
+                // Hide loading overlay
+                loadingOverlay.style.display = 'none';
+            }).catch(function(error) {
+                console.error('Error generating PNG:', error);
+                alert('Error generating PNG. Please try again.');
+                
+                // Restore original styles
+                compassContainer.style.margin = originalStyles.margin;
+                compassContainer.style.padding = originalStyles.padding;
+                compassContainer.style.backgroundColor = originalStyles.backgroundColor;
+                compassContainer.style.borderRadius = originalStyles.borderRadius;
+                compassContainer.style.boxShadow = originalStyles.boxShadow;
+                
+                // Restore controls and hide loading
+                exportControls.style.display = 'flex';
+                loadingOverlay.style.display = 'none';
+            });
+        }
+
+        // Export as PDF
+        function exportPDF() {
+            // Show loading overlay
+            loadingOverlay.style.display = 'flex';
+            
+            // Hide export controls for clean export
+            const exportControls = document.querySelector('.export-controls');
+            exportControls.style.display = 'none';
+            
+            // Get compass container and temporarily optimize it for export
+            const compassContainer = document.getElementById('compassToExport');
+            
+            // Store original styles
+            const originalStyles = {
+                margin: compassContainer.style.margin,
+                padding: compassContainer.style.padding,
+                backgroundColor: compassContainer.style.backgroundColor,
+                borderRadius: compassContainer.style.borderRadius,
+                boxShadow: compassContainer.style.boxShadow
+            };
+            
+            // Apply export-optimized styles
+            compassContainer.style.margin = '0';
+            compassContainer.style.padding = '20px';
+            compassContainer.style.backgroundColor = '#ffffff';
+            compassContainer.style.borderRadius = '0';
+            compassContainer.style.boxShadow = 'none';
+            
+            // Use html2canvas to capture the optimized compass container
+            html2canvas(compassContainer, {
+                scale: 2, // Higher scale for better quality
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#ffffff',
+                scrollX: 0,
+                scrollY: 0,
+                windowWidth: document.documentElement.offsetWidth,
+                windowHeight: document.documentElement.offsetHeight
+            }).then(function(canvas) {
+                // Get canvas dimensions
+                const canvasWidth = canvas.width;
+                const canvasHeight = canvas.height;
+                
+                // Calculate PDF dimensions to fit the content
+                // Use A4 landscape for optimal compass display
+                const pdfWidth = 841.89; // A4 landscape width in points
+                const pdfHeight = 595.28; // A4 landscape height in points
+                
+                // Use minimal margins
+                const margin = 10; // Minimal 10 points margin
+                const availableWidth = pdfWidth - (margin * 2);
+                const availableHeight = pdfHeight - (margin * 2);
+                
+                // Calculate scaling to fit the content optimally
+                const scaleX = availableWidth / canvasWidth;
+                const scaleY = availableHeight / canvasHeight;
+                const scale = Math.min(scaleX, scaleY);
+                
+                const finalWidth = canvasWidth * scale;
+                const finalHeight = canvasHeight * scale;
+                
+                // Position content to fill the page optimally
+                const x = margin;
+                const y = margin;
+                
+                // Create PDF
+                const pdf = new jsPDF({
+                    orientation: 'landscape',
+                    unit: 'pt',
+                    format: 'a4'
+                });
+                
+                // Add canvas image to PDF
+                const imgData = canvas.toDataURL('image/png');
+                pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight);
+                
+                // Save PDF
+                pdf.save('hybrid-learning-compass.pdf');
+                
+                // Restore original styles
+                compassContainer.style.margin = originalStyles.margin;
+                compassContainer.style.padding = originalStyles.padding;
+                compassContainer.style.backgroundColor = originalStyles.backgroundColor;
+                compassContainer.style.borderRadius = originalStyles.borderRadius;
+                compassContainer.style.boxShadow = originalStyles.boxShadow;
+                
+                // Restore export controls
+                exportControls.style.display = 'flex';
+                
+                // Hide loading overlay
+                loadingOverlay.style.display = 'none';
+            }).catch(function(error) {
+                console.error('Error generating PDF:', error);
+                alert('Error generating PDF. Please try again.');
+                
+                // Restore original styles
+                compassContainer.style.margin = originalStyles.margin;
+                compassContainer.style.padding = originalStyles.padding;
+                compassContainer.style.backgroundColor = originalStyles.backgroundColor;
+                compassContainer.style.borderRadius = originalStyles.borderRadius;
+                compassContainer.style.boxShadow = originalStyles.boxShadow;
+                
+                // Restore controls and hide loading
+                exportControls.style.display = 'flex';
+                loadingOverlay.style.display = 'none';
+            });
+        }
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(event) {
+            // Ctrl/Cmd + P for print
+            if ((event.ctrlKey || event.metaKey) && event.key === 'p') {
+                event.preventDefault();
+                window.print();
+            }
+            
+            // Ctrl/Cmd + S for PNG export
+            if ((event.ctrlKey || event.metaKey) && event.key === 's') {
+                event.preventDefault();
+                exportPNG();
+            }
+            
+            // Ctrl/Cmd + Shift + S for PDF export
+            if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.key === 'S') {
+                event.preventDefault();
+                exportPDF();
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Hybrid Learning Compass loaded successfully');
+        });
+    </script>
+</body>
+</html> 

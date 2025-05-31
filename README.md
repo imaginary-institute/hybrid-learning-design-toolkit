@@ -1,174 +1,142 @@
-# just-the-docs-template
+# Hybrid Learning Design Toolkit
 
-This is a *bare-minimum* template to create a [Jekyll] site that:
+A comprehensive, research-based toolkit for designing effective hybrid learning experiences that work equitably across physical and virtual spaces.
 
-- uses the [Just the Docs] theme;
-- can be built and published on [GitHub Pages];
-- can be built and previewed locally, and published on other platforms.
+## 🎯 Overview
 
-More specifically, the created site:
+The Hybrid Learning Design Toolkit provides educators with practical, evidence-based tools to create engaging hybrid learning environments. Drawing from learning design research, instructional design frameworks, and post-pandemic hybrid teaching insights, this toolkit addresses three essential dimensions of hybrid education:
 
-- uses a gem-based approach, i.e. uses a `Gemfile` and loads the `just-the-docs` gem;
-- uses the [GitHub Pages / Actions workflow] to build and publish the site on GitHub Pages.
+- **🔧 Dimension 1**: Environment & Technology - Creating integrated learning spaces
+- **🎯 Dimension 2**: Learning Experience & Assessment - Designing engaging activities and assessments  
+- **🤝 Dimension 3**: Facilitation, Equity & Community - Building human connection across modalities
 
-To get started with creating a site, simply:
+## 🚀 Quick Start
 
-1. click "[use this template]" to create a GitHub repository
-2. go to Settings > Pages > Build and deployment > Source, and select GitHub Actions
+### Live Demo
+Visit the toolkit: **[https://imaginary-institute.github.io/hybrid-learning-design-toolkit](https://imaginary-institute.github.io/hybrid-learning-design-toolkit)**
 
-If you want to maintain your docs in the `docs` directory of an existing project repo, see [Hosting your docs from an existing project repo](#hosting-your-docs-from-an-existing-project-repo).
+### Getting Started
+1. **Take the Self-Assessment** to identify your current readiness level
+2. **Use the Decision Tree** to find your best entry point
+3. **Explore the dimension** that matches your immediate needs
+4. **Try the interactive tools** to start designing better hybrid experiences
 
-After completing the creation of your new site on GitHub, update it as needed:
+## 📚 What's Included
 
-## Replace the content of the template pages
+### 🧭 Orientation & Support Tools
+- **Self-Assessment** - Comprehensive readiness mapping across all dimensions
+- **Decision Tree** - Strategic navigation for finding your best starting point  
+- **Implementation Level Cards** - Clear guidance for Essential, Enhanced, and Transformative levels
+- **Quick Wins Guides** - Immediate strategies that work in any context
 
-Update the following files to your own content:
+### 🔧 Dimension 1: Environment & Technology (5 Tools)
+- **Space Mapping Canvas** - Visual design tool for integrating physical, digital, and remote contexts
+- **Technology Selection Guide** - Choose tools based on pedagogical needs, not hype
+- **Resilience Guide** - Comprehensive strategies for handling technical challenges gracefully
+- **Quick Response Guide** - In-the-moment troubleshooting and 60-second readiness checks
+- **Participant Guide** - Resources to empower students with choice and agency
 
-- `index.md` (your new home page)
-- `README.md` (information for those who access your site repo on GitHub)
+### 🎯 Dimension 2: Learning Experience & Assessment (5 Tools)
+- **Activity Sequence Canvas** - Large-format planning template with engagement progression
+- **Activity Strategy Cards** - 26 research-based activity patterns color-coded by engagement level
+- **Assessment Method Cards** - 14 assessment strategies for hybrid contexts
+- **Learning Activity Adapter** - Systematic analysis for redesigning activities equitably
+- **Modality Companion for Canvas** - Quick decision helper for modality choices
 
-## Changing the version of the theme and/or Jekyll
+### 🤝 Dimension 3: Facilitation, Equity & Community (4 Tools + 3 Coming Soon)
+- **Interaction Strategy Cards** - 25 research-based facilitation techniques
+- **Community Building Cards** - Structured activities organized by course timeline phases
+- **Presence Lens Introduction** - Research-based frameworks for understanding presence
+- **Facilitation Resilience Guide** - Diagnostic tools and research-based interventions
 
-Simply edit the relevant line(s) in the `Gemfile`.
+## 🛠️ For Developers
 
-## Adding a plugin
+### Local Development
+```bash
+# Clone the repository
+git clone https://github.com/imaginary-institute/hybrid-learning-design-toolkit.git
+cd hybrid-learning-design-toolkit
 
-The Just the Docs theme automatically includes the [`jekyll-seo-tag`] plugin.
+# Install dependencies
+bundle install
 
-To add an extra plugin, you need to add it in the `Gemfile` *and* in `_config.yml`. For example, to add [`jekyll-default-layout`]:
+# Serve locally
+bundle exec jekyll serve
 
-- Add the following to your site's `Gemfile`:
+# View at http://localhost:4000
+```
 
-  ```ruby
-  gem "jekyll-default-layout"
-  ```
+### Built With
+- **Jekyll** - Static site generator
+- **Just the Docs** - Documentation theme
+- **HTML/CSS/JavaScript** - Interactive tools
+- **GitHub Pages** - Hosting and deployment
 
-- And add the following to your site's `_config.yml`:
+### Project Structure
+```
+├── 00-orientation-support-tools/        # Navigation and assessment tools
+├── 01-dimension-01-environment/         # Technology and environment design
+├── 02-dimension-02-learning-experience/ # Activity and assessment design  
+├── 03-dimension-03-facilitation/        # Community and facilitation tools
+├── assets/tools/                        # Interactive HTML tools
+├── _config.yml                          # Jekyll configuration
+└── index.md                            # Site homepage
+```
 
-  ```yaml
-  plugins:
-    - jekyll-default-layout
-  ```
+## 📖 Research Foundation
 
-Note: If you are using a Jekyll version less than 3.5.0, use the `gems` key instead of `plugins`.
+This toolkit is grounded in empirical research and proven frameworks:
 
-## Publishing your site on GitHub Pages
+### Key Research Insights
+- **Audio quality is the #1 factor** for remote student engagement (Wagner et al., 2023)
+- **"Triple presence"** across physical, digital, and remote contexts must be intentionally integrated (Bülow, 2022)
+- **Activity-centered design** creates more effective learning environments than technology-first approaches (Goodyear et al., 2021)
 
-1.  If your created site is `YOUR-USERNAME/YOUR-SITE-NAME`, update `_config.yml` to:
+### Theoretical Frameworks
+- **Activity-Centered Analysis and Design (ACAD)** - Physical-digital integration analysis
+- **ICAP Framework** - Engagement progression from Receiving → Responding → Creating
+- **Community of Inquiry** - Teaching, social, and cognitive presence in hybrid contexts
+- **Universal Design for Learning** - Ensuring environments work for diverse learners
 
-    ```yaml
-    title: YOUR TITLE
-    description: YOUR DESCRIPTION
-    theme: just-the-docs
+## 🤝 Contributing
 
-    url: https://YOUR-USERNAME.github.io/YOUR-SITE-NAME
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-    aux_links: # remove if you don't want this link to appear on your pages
-      Template Repository: https://github.com/YOUR-USERNAME/YOUR-SITE-NAME
-    ```
+### Ways to Contribute
+- 🐛 Report bugs or issues with tools
+- 💡 Suggest new features or improvements  
+- 📝 Improve documentation
+- 🔧 Add new tools or enhance existing ones
+- 🧪 Share research or case studies
 
-2.  Push your updated `_config.yml` to your site on GitHub.
+## 📄 License
 
-3.  In your newly created repo on GitHub:
-    - go to the `Settings` tab -> `Pages` -> `Build and deployment`, then select `Source`: `GitHub Actions`.
-    - if there were any failed Actions, go to the `Actions` tab and click on `Re-run jobs`.
+This project is licensed under a **Modified Creative Commons Attribution-ShareAlike 4.0 International License** - see the [LICENSE](LICENSE) file for details.
 
-## Building and previewing your site locally
+**What this means:**
+- ✅ **Use freely** for training, consulting, and educational services
+- ✅ **Adapt and modify** to fit your needs  
+- ✅ **Share and redistribute** with proper attribution
+- ❌ **Cannot resell** the toolkit itself as a standalone product
 
-Assuming [Jekyll] and [Bundler] are installed on your computer:
+Commercial use for training and consulting is welcome with attribution. However, redistribution or resale of this Toolkit or derivative versions as a standalone product is prohibited.
 
-1.  Change your working directory to the root directory of your site.
+## 📚 Citation
 
-2.  Run `bundle install`.
+If you use this toolkit in your research or practice, please cite:
 
-3.  Run `bundle exec jekyll serve` to build your site and preview it at `localhost:4000`.
+```
+[Your Name] (2024). Hybrid Learning Design Toolkit: A comprehensive, research-based toolkit 
+for designing effective hybrid learning experiences. GitHub. 
+https://github.com/imaginary-institute/hybrid-learning-design-toolkit
+```
 
-    The built site is stored in the directory `_site`.
+## 🙏 Acknowledgments
 
-## Publishing your built site on a different platform
+This toolkit builds upon the research and insights of many educators and researchers in hybrid learning, instructional design, and educational technology. Special thanks to the post-pandemic education community for sharing experiences that informed these tools.
 
-Just upload all the files in the directory `_site`.
+---
 
-## Customization
+**📧 Questions?** Open an issue or reach out via [your contact method].
 
-You're free to customize sites that you create with this template, however you like!
-
-[Browse our documentation][Just the Docs] to learn more about how to use this theme.
-
-## Hosting your docs from an existing project repo
-
-You might want to maintain your docs in an existing project repo. Instead of creating a new repo using the [just-the-docs template](https://github.com/just-the-docs/just-the-docs-template), you can copy the template files into your existing repo and configure the template's Github Actions workflow to build from a `docs` directory. You can clone the template to your local machine or download the `.zip` file to access the files.
-
-### Copy the template files
-
-1.  Create a `.github/workflows` directory at your project root if your repo doesn't already have one. Copy the `pages.yml` file into this directory. GitHub Actions searches this directory for workflow files.
-
-2.  Create a `docs` directory at your project root and copy all remaining template files into this directory.
-
-### Modify the GitHub Actions workflow
-
-The GitHub Actions workflow that builds and deploys your site to Github Pages is defined by the `pages.yml` file. You'll need to edit this file to that so that your build and deploy steps look to your `docs` directory, rather than the project root.
-
-1.  Set the default `working-directory` param for the build job.
-
-    ```yaml
-    build:
-      runs-on: ubuntu-latest
-      defaults:
-        run:
-          working-directory: docs
-    ```
-
-2.  Set the `working-directory` param for the Setup Ruby step.
-
-    ```yaml
-    - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.3'
-          bundler-cache: true
-          cache-version: 0
-          working-directory: '${{ github.workspace }}/docs'
-    ```
-
-3.  Set the path param for the Upload artifact step:
-
-    ```yaml
-    - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: docs/_site/
-    ```
-
-4.  Modify the trigger so that only changes within the `docs` directory start the workflow. Otherwise, every change to your project (even those that don't affect the docs) would trigger a new site build and deploy.
-
-    ```yaml
-    on:
-      push:
-        branches:
-          - "main"
-        paths:
-          - "docs/**"
-    ```
-
-## Licensing and Attribution
-
-This repository is licensed under the [MIT License]. You are generally free to reuse or extend upon this code as you see fit; just include the original copy of the license (which is preserved when you "make a template"). While it's not necessary, we'd love to hear from you if you do use this template, and how we can improve it for future use!
-
-The deployment GitHub Actions workflow is heavily based on GitHub's mixed-party [starter workflows]. A copy of their MIT License is available in [actions/starter-workflows].
-
-----
-
-[^1]: [It can take up to 10 minutes for changes to your site to publish after you push the changes to GitHub](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll#creating-your-site).
-
-[Jekyll]: https://jekyllrb.com
-[Just the Docs]: https://just-the-docs.github.io/just-the-docs/
-[GitHub Pages]: https://docs.github.com/en/pages
-[GitHub Pages / Actions workflow]: https://github.blog/changelog/2022-07-27-github-pages-custom-github-actions-workflows-beta/
-[Bundler]: https://bundler.io
-[use this template]: https://github.com/just-the-docs/just-the-docs-template/generate
-[`jekyll-default-layout`]: https://github.com/benbalter/jekyll-default-layout
-[`jekyll-seo-tag`]: https://jekyll.github.io/jekyll-seo-tag
-[MIT License]: https://en.wikipedia.org/wiki/MIT_License
-[starter workflows]: https://github.com/actions/starter-workflows/blob/main/pages/jekyll.yml
-[actions/starter-workflows]: https://github.com/actions/starter-workflows/blob/main/LICENSE
+**🌟 Found this helpful?** Star the repository and share with colleagues!

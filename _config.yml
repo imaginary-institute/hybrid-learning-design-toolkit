@@ -1,8 +1,39 @@
-title: Just the Docs Template
-description: A starter template for a Jeykll site using the Just the Docs theme!
+title: Hybrid Learning Design Toolkit
+description: A comprehensive toolkit for designing effective hybrid learning experiences that seamlessly blend online and in-person instruction
 theme: just-the-docs
 
-url: https://just-the-docs.github.io
+url: https://collideorscape.github.io/hybrid-learning-design-toolkit
 
+# Navigation
+nav_external_links:
+  - title: GitHub Repository
+    url: https://github.com/collideorscape/hybrid-learning-design-toolkit
+
+# Search
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 2
+  preview_words_before: 3
+  preview_words_after: 3
+  tokenizer_separator: /[\s/]+/
+  rel_url: true
+  button: false
+
+# Enable collections for organized content
+collections:
+  tools:
+    output: true
+    permalink: /:collection/:name/
+
+
+# Footer content - simple with one link
+footer_content: 'Hybrid Learning Design Toolkit | 2025 <a href="https://imaginary.institute">imaginary institute</a> | Modified CC BY-SA 4.0'
+
+# Google Analytics (optional - can be configured later)
+# ga_tracking: 
+
+# Aux links for additional resources
 aux_links:
-  Template Repository: https://github.com/just-the-docs/just-the-docs-template
+  "View on GitHub":
+    - "https://github.com/collideorscape/hybrid-learning-design-toolkit"

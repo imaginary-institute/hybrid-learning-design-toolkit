@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Hybrid Learning Participant Guide - Visual Reference</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root {
+    --primary-blue: #5B9BD5; --primary-green: #4CAF50; --primary-orange: #F9A03F; --primary-purple: #8B5A96;
+    --light-blue: #E3F2FD; --light-green: #E8F5E8; --light-orange: #FFF3E0; --light-purple: #F3E5F5;
+    --border-color: #ddd; --light-gray: #f8f9fa; --medium-gray: #6c757d; --text-color: #333333; --background-color: #FFFFFF;
+}
+* { box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 14px; line-height: 1.5; color: var(--text-color); background-color: var(--light-gray); padding: 30px; margin: 0 auto; max-width: 1200px; }
+h1 { font-size: 2.2em; text-align: center; font-weight: 600; margin-bottom: 10px; }
+h2 { font-size: 1.8em; border-bottom: 2px solid var(--primary-blue); padding-bottom: 10px; margin-top: 40px; font-weight: 600; }
+h3 { font-size: 1.4em; margin-top: 30px; font-weight: 600; }
+.subtitle { text-align: center; font-style: italic; color: var(--medium-gray); margin-bottom: 30px; font-size: 1.1em; }
+.section { background: var(--background-color); border-radius: 8px; padding: 25px; margin: 30px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--border-color); }
+.blue-accent { border-left: 4px solid var(--primary-blue); }
+.green-accent { border-left: 4px solid var(--primary-green); }
+.orange-accent { border-left: 4px solid var(--primary-orange); }
+.purple-accent { border-left: 4px solid var(--primary-purple); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0; }
+.card { background: var(--background-color); border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--border-color); }
+.highlight { background: var(--light-green); border: 1px solid var(--primary-green); border-radius: 6px; padding: 15px; margin: 15px 0; }
+.warning { background: #fff5f5; border: 1px solid #dc3545; border-radius: 6px; padding: 15px; margin: 15px 0; }
+.table { width: 100%; border-collapse: collapse; margin: 20px 0; background: var(--background-color); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.table th { background: var(--light-gray); padding: 12px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border-color); }
+.table td { padding: 10px 12px; border: 1px solid var(--border-color); vertical-align: top; }
+.export-controls { position: sticky; top: 0; background: var(--background-color); padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; z-index: 100; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; border: 1px solid var(--border-color); }
+.btn-export { background-color: var(--primary-blue); color: white; border: none; padding: 8px 16px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: 500; }
+.btn-export:hover { background-color: #4a90e2; }
+.btn-export:nth-child(2) { background-color: var(--primary-orange); }
+.btn-export:nth-child(2):hover { background-color: #e8940a; }
+.btn-print { background-color: var(--primary-purple) !important; }
+.loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 1000; }
+.loading-content { background: var(--background-color); padding: 40px; border-radius: 8px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+.loading-spinner { width: 40px; height: 40px; border: 4px solid var(--light-gray); border-top: 4px solid var(--primary-blue); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--medium-gray); font-style: italic; }
+@media print { .export-controls { display: none !important; } body { background: white; margin: 0; padding: 20px; } }
+@media (max-width: 768px) { .grid { grid-template-columns: 1fr; } .table { font-size: 12px; } }
+</style>
+</head>
+<body>
+
+<div class="export-controls">
+    <button class="btn-export" onclick="exportPNG()">Export as PNG</button>
+    <button class="btn-export" onclick="exportPDF()">Export as PDF</button>
+    <button class="btn-export btn-print" onclick="window.print()">Print Guide</button>
+</div>
+
+<div id="contentToExport">
+
+<h1>HYBRID LEARNING PARTICIPANT GUIDE</h1>
+
+<div class="section blue-accent">
+    <h3>👋 Welcome!</h3>
+    <p>This guide helps you participate effectively in hybrid learning where some join in-person and others remotely. It balances <strong>your individual needs</strong> with <strong>our collective learning community</strong>, recognizing that we all benefit when everyone can participate meaningfully.</p>
+    
+    <div class="highlight">
+        💫 <strong>Key Message:</strong> Effective hybrid learning requires both individual flexibility AND community presence. Together, we'll find creative ways for everyone to "show up."
+    </div>
+</div>
+
+<h2>🌟 Your Rights & Responsibilities as a Hybrid Learner</h2>
+
+<div class="grid">
+    <div class="card green-accent">
+        <h4>Your Rights</h4>
+        <table class="table">
+            <thead><tr><th>Right</th><th>What It Means</th></tr></thead>
+            <tbody>
+                <tr><td>✨ <strong>Right to Choose</strong></td><td>Select participation modes that work for your circumstances</td></tr>
+                <tr><td>🔐 <strong>Right to Privacy</strong></td><td>Protect your personal space and information</td></tr>
+                <tr><td>🚪 <strong>Right to Access</strong></td><td>Receive content in formats you can use</td></tr>
+                <tr><td>⏰ <strong>Right to Flexibility</strong></td><td>Adapt your participation based on needs</td></tr>
+                <tr><td>🤝 <strong>Right to Support</strong></td><td>Ask for help without judgment</td></tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="card orange-accent">
+        <h4>Your Community Role</h4>
+        <table class="table">
+            <thead><tr><th>Responsibility</th><th>Why It Matters</th></tr></thead>
+            <tbody>
+                <tr><td>🌐 <strong>Show Presence</strong></td><td>Help create a connected learning community</td></tr>
+                <tr><td>💬 <strong>Stay Engaged</strong></td><td>Contribute to collective learning</td></tr>
+                <tr><td>🤲 <strong>Support Others</strong></td><td>Help peers participate fully</td></tr>
+                <tr><td>🔄 <strong>Communicate</strong></td><td>Share your needs and constraints</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<h2>📋 Before Your First Session</h2>
+
+<div class="section purple-accent">
+    <h3>🪞 Balancing Your Needs with Community Connection</h3>
+    <p>Consider both personal needs AND how you can contribute to community presence:</p>
+    
+    <table class="table">
+        <thead><tr><th>Area</th><th>Personal Needs</th><th>Community Contribution</th></tr></thead>
+        <tbody>
+            <tr><td>👁️ <strong>Visual</strong></td><td>• Privacy concerns?<br>• Bandwidth limits?</td><td>• When can I share video?<br>• Can I use a photo?</td></tr>
+            <tr><td>🔊 <strong>Audio</strong></td><td>• Noisy environment?<br>• Need captions?</td><td>• When can I unmute?<br>• Can I participate verbally sometimes?</td></tr>
+            <tr><td>💬 <strong>Participation</strong></td><td>• Processing time?<br>• Anxiety factors?</td><td>• How can I signal engagement?<br>• What's my best contribution mode?</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="section">
+    <h3>💻 Technical Setup for Flexible Presence</h3>
+    <h4>Core Requirements with Presence Options</h4>
+    
+    <table class="table">
+        <thead><tr><th>Component</th><th>Minimum</th><th>Presence Enhancement</th></tr></thead>
+        <tbody>
+            <tr><td>📱 <strong>Device</strong></td><td>Any internet device</td><td>Camera-capable when possible</td></tr>
+            <tr><td>🌐 <strong>Internet</strong></td><td>Basic connection</td><td>Stable for key moments</td></tr>
+            <tr><td>🎧 <strong>Audio</strong></td><td>Listen capability</td><td>Two-way when feasible</td></tr>
+            <tr><td>📹 <strong>Camera</strong></td><td>Not mandatory</td><td>Available for strategic use</td></tr>
+            <tr><td>🖼️ <strong>Profile</strong></td><td>Name display</td><td>Photo/avatar for presence</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<h2>🎯 During Hybrid Sessions</h2>
+
+<div class="section green-accent">
+    <h3>🎨 Strategic Presence: Balancing Individual Needs & Community Connection</h3>
+    
+    <h4>📹 Camera Strategies for Community Building</h4>
+    
+    <div class="warning">
+        <strong>The Challenge:</strong> When most cameras are off, it can:
+        <ul>
+            <li>Make instructors struggle to gauge understanding</li>
+            <li>Create disconnection between remote and on-site students</li>
+            <li>Reduce everyone's sense of shared learning</li>
+        </ul>
+    </div>
+    
+    <p><strong>Your Flexible Options:</strong></p>
+    
+    <table class="table">
+        <thead><tr><th>Strategy</th><th>When to Use</th><th>Community Impact</th></tr></thead>
+        <tbody>
+            <tr><td>🟢 <strong>Full Video</strong></td><td>When comfortable & possible</td><td>Strongest presence signal</td></tr>
+            <tr><td>📸 <strong>Key Moments</strong></td><td>Intros, presentations, small groups</td><td>Builds connection at crucial times</td></tr>
+            <tr><td>🖼️ <strong>Profile Photo</strong></td><td>Always</td><td>Shows you're "here"</td></tr>
+            <tr><td>🔄 <strong>Strategic On/Off</strong></td><td>Video for discussion, off for lectures</td><td>Balances needs</td></tr>
+            <tr><td>🎭 <strong>Virtual Background</strong></td><td>Privacy with presence</td><td>Protects space, shows face</td></tr>
+        </tbody>
+    </table>
+    
+    <div class="highlight">
+        💡 <strong>Community Agreement:</strong> We each find ways to "show up" that work for our circumstances while building our learning community together.
+    </div>
+</div>
+
+<div class="section">
+    <h3>🎤 Multi-Modal Engagement for Presence</h3>
+    <p><strong>Beyond Camera: Showing You're Present</strong></p>
+    
+    <table class="table">
+        <thead><tr><th>Mode</th><th>How to Use</th><th>Presence Signal</th></tr></thead>
+        <tbody>
+            <tr><td>💬 <strong>Active Chat</strong></td><td>Regular contributions</td><td>"I'm engaged!"</td></tr>
+            <tr><td>🎤 <strong>Audio Check-ins</strong></td><td>Brief unmuting</td><td>"I'm here!"</td></tr>
+            <tr><td>😊 <strong>Reactions</strong></td><td>Frequent use</td><td>"I'm following!"</td></tr>
+            <tr><td>✍️ <strong>Annotations</strong></td><td>Shared documents</td><td>"I'm thinking!"</td></tr>
+            <tr><td>🙋 <strong>Hand Raises</strong></td><td>Digital participation</td><td>"I want to contribute!"</td></tr>
+        </tbody>
+    </table>
+    
+    <h4>🤝 Building Presence Without Video</h4>
+    <p>When camera isn't possible, strengthen presence through:</p>
+    
+    <div style="background: var(--light-blue); padding: 15px; border-radius: 6px; margin: 15px 0; font-family: monospace;">
+        📝 Name + Context: "Sarah here - following in chat today"<br>
+        💭 Think Aloud: Share thoughts/questions regularly<br>
+        🎯 Respond Quickly: To polls, questions, activities<br>
+        🤗 Support Peers: Acknowledge others' contributions<br>
+        ⚡ Stay Active: Consistent participation signals
+    </div>
+</div>
+
+<h2>🌐 Creating Inclusive Community Presence</h2>
+
+<div class="section orange-accent">
+    <h3>🎭 The "Presence Pact" - Our Collective Agreement</h3>
+    <p>As a learning community, we agree to:</p>
+    
+    <ol>
+        <li><strong>Find Our Way</strong> - Each person discovers their best presence mode</li>
+        <li><strong>Show Up Somehow</strong> - Everyone signals participation regularly</li>
+        <li><strong>Respect Constraints</strong> - Honor individual circumstances</li>
+        <li><strong>Build Bridges</strong> - Help connect across modalities</li>
+        <li><strong>Communicate Openly</strong> - Share what works/doesn't work</li>
+    </ol>
+    
+    <h4>📊 Presence Equity Strategies</h4>
+    
+    <table class="table">
+        <thead><tr><th>If You're...</th><th>Consider...</th><th>Because...</th></tr></thead>
+        <tbody>
+            <tr><td>Always camera-off</td><td>Scheduled camera moments</td><td>Periodic visual builds relationships</td></tr>
+            <tr><td>Always muted</td><td>Text-rich participation</td><td>Active chat shows engagement</td></tr>
+            <tr><td>Bandwidth limited</td><td>Async follow-up</td><td>Continued presence matters</td></tr>
+            <tr><td>Privacy concerned</td><td>Creative alternatives</td><td>Avatars/backgrounds help</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<h2>🛠️ Managing Presence Challenges</h2>
+
+<div class="section">
+    <h3>💬 Communicating Your Presence Choices</h3>
+    
+    <table class="table">
+        <thead><tr><th>Situation</th><th>What to Say</th><th>Follow-up</th></tr></thead>
+        <tbody>
+            <tr><td>Camera off today</td><td><em>"Audio and chat today - actively here!"</em></td><td>Extra chat participation</td></tr>
+            <tr><td>Technical limits</td><td><em>"Bandwidth issues - very engaged in chat"</em></td><td>Visible text contributions</td></tr>
+            <tr><td>Privacy needs</td><td><em>"Using avatar - fully participating"</em></td><td>Active responses</td></tr>
+            <tr><td>Energy management</td><td><em>"Listening mode - will contribute in writing"</em></td><td>Written follow-up</td></tr>
+        </tbody>
+    </table>
+    
+    <h3>🔄 Presence Flexibility Across Contexts</h3>
+    <p><strong>Your presence can shift based on:</strong></p>
+    
+    <table class="table">
+        <thead><tr><th>Context</th><th>Presence Approach</th><th>Community Signal</th></tr></thead>
+        <tbody>
+            <tr><td>Large lectures</td><td>Camera optional, chat active</td><td>"I'm learning"</td></tr>
+            <tr><td>Small groups</td><td>Camera when possible</td><td>"I'm connecting"</td></tr>
+            <tr><td>Presentations</td><td>Camera on for your turn</td><td>"I'm sharing"</td></tr>
+            <tr><td>Discussions</td><td>Audio or video preferred</td><td>"I'm dialoguing"</td></tr>
+            <tr><td>Work time</td><td>Minimal presence OK</td><td>"I'm focusing"</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<h2>💪 Advocacy for Inclusive Presence</h2>
+
+<div class="section purple-accent">
+    <h3>🗣️ When Presence Expectations Feel Exclusionary</h3>
+    
+    <p><strong>Your voice matters when:</strong></p>
+    <ul>
+        <li>Camera mandates ignore real constraints</li>
+        <li>Single-mode participation is required</li>
+        <li>Presence is measured narrowly</li>
+        <li>Community needs aren't balanced with individual needs</li>
+    </ul>
+    
+    <p><strong>How to advocate:</strong></p>
+    <div style="background: var(--light-purple); padding: 15px; border-radius: 6px; margin: 15px 0;">
+        1. 📢 Share your perspective privately first<br>
+        2. 💡 Suggest creative alternatives<br>
+        3. 🤝 Propose community solutions<br>
+        4. 📚 Reference inclusive practices
+    </div>
+    
+    <h3>🌈 Expanding Presence Definitions</h3>
+    <p>Help your learning community recognize presence as:</p>
+    <ul>
+        <li>💬 Consistent chat participation</li>
+        <li>🎯 Quality of contributions over video visibility</li>
+        <li>📊 Engagement across multiple channels</li>
+        <li>🔄 Flexibility in how we "show up"</li>
+        <li>⏰ Sustained participation over time</li>
+    </ul>
+</div>
+
+<h2>🎯 Building Community Together</h2>
+
+<div class="section green-accent">
+    <h3>🤲 Your Role in Community Presence</h3>
+    
+    <div class="grid">
+        <div class="card">
+            <h4>When you CAN use camera:</h4>
+            <ul>
+                <li>Turn it on during introductions</li>
+                <li>Use it for small group work</li>
+                <li>Share during presentations</li>
+                <li>Model comfort with flexibility</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h4>When you CAN'T use camera:</h4>
+            <ul>
+                <li>Maximize other presence signals</li>
+                <li>Communicate actively</li>
+                <li>Support others' participation</li>
+                <li>Find creative alternatives</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="highlight">
+        🌟 <strong>Presence Champions:</strong> Everyone can help create an inclusive learning community where diverse participation modes are valued and supported.
+    </div>
+</div>
+
+<div class="footer">
+    <em>Part of the Hybrid Learning Design Toolkit | Supporting Inclusive Participation</em>
+</div>
+
+</div>
+
+<div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <p>Generating export... This may take a moment.</p>
+    </div>
+</div>
+
+<script>
+const { jsPDF } = window.jspdf;
+const loadingOverlay = document.getElementById('loadingOverlay');
+
+function exportPNG() {
+    loadingOverlay.style.display = 'flex';
+    const exportControls = document.querySelector('.export-controls');
+    exportControls.style.display = 'none';
+    const contentToExport = document.getElementById('contentToExport');
+    
+    html2canvas(contentToExport, { scale: 2, useCORS: true, allowTaint: true, backgroundColor: '#ffffff', scrollX: 0, scrollY: 0 }).then(function(canvas) {
+        const imgData = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.download = 'hybrid-participants-quick-guide.png';
+        link.href = imgData;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        exportControls.style.display = 'flex';
+        loadingOverlay.style.display = 'none';
+    });
+}
+
+function exportPDF() {
+    loadingOverlay.style.display = 'flex';
+    const exportControls = document.querySelector('.export-controls');
+    exportControls.style.display = 'none';
+    const contentToExport = document.getElementById('contentToExport');
+    
+    html2canvas(contentToExport, { scale: 2, useCORS: true, allowTaint: true, backgroundColor: '#ffffff', scrollX: 0, scrollY: 0 }).then(function(canvas) {
+        const canvasWidth = canvas.width;
+        const canvasHeight = canvas.height;
+        const pdfWidth = canvasWidth * 0.75;
+        const pdfHeight = canvasHeight * 0.75;
+        
+        const pdf = new jsPDF({ orientation: 'portrait', unit: 'pt', format: [pdfWidth, pdfHeight] });
+        const imgData = canvas.toDataURL('image/png');
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('hybrid-participants-quick-guide.pdf');
+        
+        exportControls.style.display = 'flex';
+        loadingOverlay.style.display = 'none';
+    });
+}
+
+document.addEventListener('keydown', function(event) {
+    if ((event.ctrlKey || event.metaKey) && event.key === 'p') { event.preventDefault(); window.print(); }
+    if ((event.ctrlKey || event.metaKey) && event.key === 's') { event.preventDefault(); exportPNG(); }
+    if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.key === 'S') { event.preventDefault(); exportPDF(); }
+});
+</script>
+
+</body>
+</html> 

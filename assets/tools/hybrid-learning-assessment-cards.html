@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Learning Assessment Cards</title>
+    <!-- Add html2canvas and jsPDF libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        :root {
+            --assessment-primary: #8B5A96;
+            --engagement-receiving: #5B9BD5;
+            --engagement-responding: #4CAF50;
+            --engagement-creating: #F9A03F;
+            --border-color: #ddd;
+            --separator-color: #999;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --medium-gray: #666;
+            --light-medium-gray: #999;
+        
+            --card-width: 900px;
+            --side-width: calc(var(--card-width) / 2);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+
+        .card-selector {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background: white;
+        }
+
+        .nav-button {
+            padding: 10px 20px;
+            background-color: var(--assessment-primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .nav-button:hover:not(:disabled) {
+            background-color: #7A4F85;
+        }
+
+        .nav-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .batch-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            border-left: 2px solid #ddd;
+            padding-left: 20px;
+            margin-left: 20px;
+        }
+
+        .batch-label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .btn-batch {
+            background-color: #9C27B0;
+        }
+
+        .btn-batch:hover:not(:disabled) {
+            background-color: #7B1FA2;
+        }
+
+        .progress-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f0f4f8;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--assessment-primary);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .card-display {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .card-container {
+            width: var(--card-width);
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+        
+        .card-side {
+            width: var(--side-width);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-side-right {
+            border-left: 1px dotted var(--separator-color);
+        }
+
+        .card-side-left {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-header {
+            background-color: var(--assessment-primary);
+            height: 50px;
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+        }
+        
+        .purpose-label {
+            background-color: white;
+            color: var(--assessment-primary);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .activity-content {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .activity-name {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--dark-gray);
+            margin-bottom: 5px;
+        }
+        
+        .purpose-level {
+            font-size: 14px;
+            color: var(--assessment-primary);
+            font-weight: 500;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+        }
+        
+        .benefits {
+            margin-bottom: 20px;
+        }
+        
+        .benefits-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .benefits-list {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .benefits-list li {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .time-estimate {
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .time-icon {
+            margin-right: 8px;
+            color: var(--assessment-primary);
+        }
+
+        .structure-requirements {
+            border-top: 1px solid var(--light-gray);
+            padding-top: 15px;
+        }
+        
+        .structure-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--assessment-primary);
+        }
+        
+        .structure-list {
+            list-style-type: none;
+        }
+        
+        .structure-list li {
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: flex;
+        }
+
+        .structure-label {
+            font-weight: 600;
+            width: 80px;
+            margin-right: 5px;
+        }
+        
+        .card-side-right {
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--assessment-primary);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .implementation-steps {
+            list-style-type: decimal;
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .implementation-steps li {
+            font-size: 14px;
+            margin-bottom: 5px;
+            padding-left: 5px;
+        }
+        
+        .implementation-steps .example-text {
+            font-style: italic;
+            font-size: 13px;
+            color: var(--medium-gray);
+            margin-top: 3px;
+            display: block;
+            padding-left: 0;
+        }
+        
+        .priority-star {
+            color: var(--assessment-primary);
+            margin-right: 5px;
+            font-weight: bold;
+        }
+        
+        .hybrid-adaptations {
+            margin-bottom: 15px;
+        }
+        
+        .consideration-item {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .consideration-label {
+            font-weight: 600;
+            font-size: 14px;
+            margin-right: 5px;
+            min-width: 85px;
+            flex-shrink: 0;
+        }
+        
+        .consideration-text {
+            font-size: 14px;
+            flex: 1;
+        }
+
+        .activity-connections {
+            margin-bottom: 15px;
+        }
+
+        .connections-text {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .theory-resources {
+            margin-top: auto;
+            border-top: 1px solid var(--light-gray);
+            padding-top: 15px;
+        }
+        
+        .theory-text {
+            font-size: 14px;
+            font-style: italic;
+            color: var(--medium-gray);
+            margin-bottom: 10px;
+        }
+        
+        .resources-box {
+            background-color: var(--light-gray);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .resource-text {
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        /* Loading overlay for export operations */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+        }
+
+        .spinner {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--assessment-primary);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Print styles for clean PDF export */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            
+            .controls, .progress-container {
+                display: none;
+            }
+            
+            .card-display {
+                margin: 0;
+            }
+            
+            .card-container {
+                box-shadow: none;
+                border: 2px solid var(--border-color);
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button class="nav-button" onclick="previousCard()">← Previous</button>
+        
+        <select class="card-selector" id="cardSelector" onchange="selectCard()">
+            <option value="0">Card 1: Digital Check-ins</option>
+            <option value="1">Card 2: Muddiest Point</option>
+            <option value="2">Card 3: One-Minute Papers</option>
+            <option value="3">Card 4: Peer Teaching Mini-Sessions</option>
+            <option value="4">Card 5: Progressive Problem Sets</option>
+            <option value="5">Card 6: Annotated Portfolio</option>
+            <option value="6">Card 7: Authentic Performance Tasks</option>
+            <option value="7">Card 8: Comprehensive Case Analysis</option>
+            <option value="8">Card 9: Digital Exhibition</option>
+            <option value="9">Card 10: Collaborative Wiki Development</option>
+            <option value="10">Card 11: Concept Application Videos</option>
+            <option value="11">Card 12: Design Challenges</option>
+            <option value="12">Card 13: Interactive Presentations</option>
+            <option value="13">Card 14: Reflective Synthesis Essays</option>
+        </select>
+        
+        <button class="nav-button" onclick="nextCard()">Next →</button>
+        
+        <button class="nav-button" onclick="exportPNG()" style="background-color: #2196F3;">Export PNG</button>
+        <button class="nav-button" onclick="exportPDF()" style="background-color: #FF9800;">Export PDF</button>
+        
+        <div class="batch-controls">
+            <span class="batch-label">Batch Export:</span>
+            <button class="nav-button btn-batch" onclick="batchExportPNG()">All PNG</button>
+            <button class="nav-button btn-batch" onclick="batchExportPDF()">All PDF</button>
+            <button class="nav-button btn-batch" onclick="batchExportBoth()">All PNG + PDF</button>
+        </div>
+    </div>
+
+    <div class="progress-container" id="progressContainer">
+        <div class="progress-text" id="progressText">Preparing export...</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div style="font-size: 12px; color: #666;" id="progressDetails">This may take a few moments...</div>
+    </div>
+
+    <div class="card-display">
+        <div class="card-container" id="cardContainer">
+            <!-- Card content will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Generating export... This may take a moment.</p>
+    </div>
+
+    <script>
+        // Assessment card data - All 14 cards (revised content)
+        const cardData = [
+            // Card 1: Digital Check-ins
+            {
+                id: "digital-check-ins",
+                name: "Digital Check-ins",
+                purpose: {
+                    type: "FORMATIVE",
+                    icon: "F"
+                },
+                engagement: {
+                    dots: [false, false, false] // not specified in revised version
+                },
+                description: "Quick, technology-enabled comprehension checks during instruction that allow real-time assessment of student understanding across both physical and virtual spaces through polls, quizzes, or response systems.",
+                benefits: [
+                    "Provides immediate insight into student comprehension",
+                    "Enables quick instructional adjustments based on responses",
+                    "Creates engagement touchpoints throughout lesson"
+                ],
+                timeEstimate: "5-10 min (setup: 2 min, activity: 3-5 min, review: 2-3 min)",
+                structure: {
+                    format: "Platform: Polling tool with real-time display (Mentimeter, Poll Everywhere)",
+                    technology: "Question Types: Multiple choice, word clouds, scales, short answer",
+                    evidence: "Frequency: Every 10-15 minutes during instruction"
+                },
+                implementation: [
+                    "Pre-load 3-5 questions aligned with lesson segments into polling tool",
+                    {
+                        step: "Pause after each major concept for a check-in question",
+                        example: 'Example: "Rate your confidence with this concept: 1-5 scale"',
+                        priority: true
+                    },
+                    "Display results immediately and address misconceptions",
+                    "Use results to decide whether to proceed or review",
+                    "Save response data for identifying students needing support"
+                ],
+                adaptations: {
+                    remote: "Ensure platform works on all devices; provide joining instructions with backup options; monitor chat for technical issues",
+                    onsite: "Display QR codes prominently; have backup paper option; ensure WiFi capacity for simultaneous connections",
+                    crossmodal: "Show results that highlight response patterns without identifying individuals; celebrate participation from both modes"
+                },
+                connections: "Example 1 (Small class, 20 students): Use word cloud for \"What's still unclear?\" to identify review needs\nExample 2 (Large class, 100 students): Use MCQ to check conceptual understanding with immediate histogram display",
+                theory: "",
+                resources: ""
+            },
+            
+            // Card 2: Muddiest Point
+            {
+                id: "muddiest-point",
+                name: "Muddiest Point",
+                purpose: {
+                    type: "FORMATIVE",
+                    icon: "F"
+                },
+                engagement: {
+                    dots: [false, false, false]
+                },
+                description: "Students identify the most confusing or unclear aspect of a lesson, providing targeted feedback about learning challenges that helps instructors address specific areas of difficulty for both on-site and remote learners.",
+                benefits: [
+                    "Reveals specific conceptual difficulties across all students",
+                    "Requires minimal time while yielding valuable insights",
+                    "Promotes metacognitive reflection on learning challenges"
+                ],
+                timeEstimate: "5-10 min (collection: 3 min, review: 5-7 min)",
+                structure: {
+                    format: "Platform: Digital form, LMS discussion, or shared document",
+                    technology: "Format: 1-2 sentence responses or anonymous submissions",
+                    evidence: "Timing: Last 5 minutes of class or segment"
+                },
+                implementation: [
+                    'Prompt: "What was the muddiest (most confusing) point in today\'s class?"',
+                    "Provide 2-3 minutes for written responses via chosen platform",
+                    {
+                        step: "Scan responses quickly for patterns while students submit",
+                        example: "Example: Group similar confusions while reading",
+                        priority: true
+                    },
+                    "Address 1-2 common muddy points immediately if time permits",
+                    "Create follow-up plan for remaining issues"
+                ],
+                adaptations: {
+                    remote: "Use anonymous option to encourage honesty; allow private messages for sensitive confusions; compile into FAQ document",
+                    onsite: "Provide index cards as backup to digital submission; use exit ticket format; project emerging themes",
+                    crossmodal: "Compare muddy points across modes to identify if certain formats create specific challenges; address both sets"
+                },
+                connections: "Example 1 (Discussion-based, 15 students): Use Padlet for visual clustering of muddy points during submission\nExample 2 (Technical course, 50 students): Use LMS quiz tool with text entry for systematic review later",
+                theory: "",
+                resources: ""
+            },
+            
+            // Card 3: One-Minute Papers
+            {
+                id: "one-minute-papers",
+                name: "One-Minute Papers",
+                purpose: {
+                    type: "FORMATIVE",
+                    icon: "F"
+                },
+                engagement: {
+                    dots: [false, false, false]
+                },
+                description: "Brief written responses to focused prompts that assess student learning and engagement, collected digitally to enable quick review and response for all participants regardless of location.",
+                benefits: [
+                    "Encourages summary and synthesis of key learning",
+                    "Provides written record of student thinking",
+                    "Scales easily from small to large classes"
+                ],
+                timeEstimate: "5-10 min (writing: 3-5 min, collection: 1 min, review: 5+ min)",
+                structure: {
+                    format: "Platform: LMS assignment, Google Form, or similar",
+                    technology: "Prompts: 2-3 focused questions maximum",
+                    evidence: "Length: 1-2 paragraphs or 3-5 bullet points"
+                },
+                implementation: [
+                    'Prepare standard prompts: "Main takeaway?" "Remaining question?"',
+                    "Display timer and prompts visibly for all participants",
+                    {
+                        step: "Emphasize ideas over polish - this is thinking, not writing",
+                        example: 'Example: "Bullet points welcome - focus on concepts not sentences"',
+                        priority: true
+                    },
+                    "Collect via single platform accessible to all",
+                    "Review for patterns and address common themes next session"
+                ],
+                adaptations: {
+                    remote: "Ensure prompts visible during writing time; allow slightly longer for potential tech delays; use auto-save features",
+                    onsite: "Provide device access or BYOD option; consider projection of prompt; manage simultaneous submission traffic",
+                    crossmodal: "Use word frequency analysis to show common themes from both groups; highlight unique insights from each mode"
+                },
+                connections: 'Example 1 (Lab course, 24 students): "What procedure step was most challenging and why?" collected via LMS\nExample 2 (Theory course, 80 students): "Connect today\'s concept to last week\'s topic in 2-3 sentences" via Google Form',
+                theory: "",
+                resources: ""
+            },
+            
+            // Card 4: Peer Teaching Mini-Sessions
+            {
+                id: "peer-teaching-mini-sessions",
+                name: "Peer Teaching Mini-Sessions",
+                purpose: {
+                    type: "FORMATIVE",
+                    icon: "F"
+                },
+                engagement: {
+                    dots: [false, false, false]
+                },
+                description: "Students explain concepts to peers in brief teaching exchanges, revealing understanding levels while reinforcing learning through teaching, with structured protocols ensuring participation across modalities.",
+                benefits: [
+                    "Reveals conceptual understanding through explanation ability",
+                    "Reinforces learning through teaching others",
+                    "Identifies knowledge gaps in supportive peer setting"
+                ],
+                timeEstimate: "15-30 min (prep: 5 min, teaching: 10-15 min, debrief: 5 min)",
+                structure: {
+                    format: "Platform: Breakout rooms with recording capability",
+                    technology: "Format: Pairs or triads with role rotation",
+                    evidence: "Content: Focused concept or problem type"
+                },
+                implementation: [
+                    "Assign specific concept/problem for peer teaching focus",
+                    'Provide 5 minutes for "teachers" to prepare explanation',
+                    {
+                        step: "Create mixed-mode pairs when possible for diverse perspectives",
+                        example: "Example: Remote student teaches on-site peer and vice versa",
+                        priority: true
+                    },
+                    "Set timer for 3-minute teaching rounds with role switches",
+                    "Debrief with whole class on challenging explanation points"
+                ],
+                adaptations: {
+                    remote: "Pre-assign breakout rooms; enable recording for review; provide digital whiteboard access; monitor room visits",
+                    onsite: "Create peer teaching stations; manage noise levels; use mobile devices for cross-modal pairs",
+                    crossmodal: 'Deliberately pair across modes; use "teach-back" where each mode explains to the other; share discoveries'
+                },
+                connections: "Example 1 (Math course, 30 students): Students teach problem-solving approach for specific problem type\nExample 2 (Biology course, 20 students): Explain process diagram to partner who must recreate it",
+                theory: "",
+                resources: ""
+            },
+            
+            // Card 5: Progressive Problem Sets
+            {
+                id: "progressive-problem-sets",
+                name: "Progressive Problem Sets",
+                purpose: {
+                    type: "FORMATIVE",
+                    icon: "F"
+                },
+                engagement: {
+                    dots: [false, false, false]
+                },
+                description: "Scaffolded problem sequences that build in complexity, allowing instructors to identify where student understanding breaks down while providing practice opportunities accessible to all participation modes.",
+                benefits: [
+                    "Pinpoints specific skill levels through progression",
+                    "Provides immediate practice with increasing challenge",
+                    "Enables self-paced advancement with clear checkpoints"
+                ],
+                timeEstimate: "20-45 min (varies by problem complexity and number)",
+                structure: {
+                    format: "Platform: Digital worksheet or quiz tool with instant feedback",
+                    technology: "Structure: 3-5 problems increasing in difficulty",
+                    evidence: "Progression: Each builds on previous skills"
+                },
+                implementation: [
+                    "Design 3-5 problems from foundational to advanced application",
+                    "Build in checkpoint after each problem for self-assessment",
+                    {
+                        step: 'Provide "help tokens" - hints students can choose to use',
+                        example: "Example: Each student gets 2 hints to use strategically",
+                        priority: true
+                    },
+                    "Monitor progress dashboard to identify struggle points",
+                    "Offer breakout support rooms for specific problem levels"
+                ],
+                adaptations: {
+                    remote: "Ensure problems display clearly on various screens; provide downloadable version; enable easy answer submission",
+                    onsite: "Allow paper work with digital submission; create peer consultation zones; project progress indicators",
+                    crossmodal: "Share solution strategies from both groups; pair students at similar levels across modes; celebrate diverse approaches"
+                },
+                connections: "Example 1 (Statistics, 40 students): Progress from calculating mean → standard deviation → hypothesis testing\nExample 2 (Programming, 25 students): Build from syntax → logic → algorithm design → optimization",
+                theory: "",
+                resources: ""
+            },
+            
+            // Card 6: Annotated Portfolio
+            {
+                id: "annotated-portfolio",
+                name: "Annotated Portfolio",
+                purpose: {
+                    type: "SUMMATIVE",
+                    icon: "S"
+                },
+                engagement: {
+                    dots: [false, false, false]
+                },
+                description: "Students compile and reflect on their best work throughout the course, adding contextual annotations that demonstrate learning progression and self-assessment capabilities across hybrid learning experiences.",
+                benefits: [
+                    "Documents learning journey over time",
+                    "Develops metacognitive and self-assessment skills",
+                    "Values process alongside final products"
+                ],
+                timeEstimate: "Developed throughout course (final assembly: 2-3 hours)",
+                structure: {
+                    format: "Platform: Portfolio tool or LMS with file organization",
+                    technology: "Components: 5-8 artifacts with reflective annotations",
+                    evidence: "Annotations: Context, learning demonstrated, growth"
+                },
+                implementation: [
+                    "Introduce portfolio requirements in week 1 with examples",
+                    "Schedule 3-4 checkpoint reviews throughout term",
+                    {
+                        step: "Provide annotation template: Context, Skills Shown, What I'd Change",
+                        example: 'Example: "This lab report shows my growth in data analysis because..."',
+                        priority: true
+                    },
+                    "Require evidence from both individual and collaborative work",
+                    "Include final synthesis reflection connecting all pieces"
+                ],
+                adaptations: {
+                    remote: "Ensure platform handles various file types; provide cloud storage guidance; include screenshots of collaborative work",
+                    onsite: "Scan physical work for inclusion; photograph hands-on projects; document process not just products",
+                    crossmodal: "Require artifacts showing hybrid collaboration; highlight how different modes influenced learning; compare experiences"
+                },
+                connections: "Example 1 (Design course, 18 students): Portfolio includes sketches, prototypes, peer feedback, final project with process documentation\nExample 2 (Writing course, 35 students): Drafts showing revision, peer reviews given/received, reflections on growth",
+                theory: "",
+                resources: ""
+            },
+            
+            // Card 7: Authentic Performance Tasks
+            {
+                id: "authentic-performance-tasks",
+                name: "Authentic Performance Tasks",
+                purpose: {
+                    type: "SUMMATIVE",
+                    icon: "S"
+                },
+                engagement: {
+                    dots: [false, false, false]
+                },
+                description: "Students demonstrate competency through real-world applications of skills and knowledge, completing complex tasks that mirror professional practice with adaptations enabling equivalent demonstration across modalities.",
+                benefits: [
+                    "Assesses integrated application of multiple skills",
+                    "Provides relevant, meaningful assessment context",
+                    "Prepares students for professional situations"
+                ],
+                timeEstimate: "45-90 min (or extended project over days/weeks)",
+                structure: {
+                    format: "Platform: Appropriate to task (video, documents, presentations)",
+                    technology: "Task Design: Real-world scenario with constraints",
+                    evidence: "Components: Planning, execution, documentation"
+                },
+                implementation: [
+                    "Present authentic scenario with realistic constraints and resources",
+                    "Clarify deliverables and professional standards for evaluation",
+                    {
+                        step: "Provide modality-appropriate options achieving same objectives",
+                        example: "Example: Remote creates video consultation, on-site does live demo",
+                        priority: true
+                    },
+                    "Allow planning phase with instructor consultation option",
+                    "Evaluate product and process using industry-aligned rubric"
+                ],
+                adaptations: {
+                    remote: "Design tasks using available tools/spaces; focus on digital deliverables; provide video submission options",
+                    onsite: "Document physical performances; ensure camera angles for evaluation; create hybrid simulation environments",
+                    crossmodal: "Offer choice of formats while maintaining standards; create scenarios requiring cross-modal collaboration"
+                },
+                connections: "Example 1 (Nursing, 22 students): Patient consultation via telehealth (remote) or simulation lab (on-site)\nExample 2 (Business, 45 students): Create and pitch marketing campaign with digital and physical mockups",
+                theory: "",
+                resources: ""
+            },
+            
+            // Card 8: Comprehensive Case Analysis
+            {
+                id: "comprehensive-case-analysis",
+                name: "Comprehensive Case Analysis",
+                purpose: {
+                    type: "SUMMATIVE",
+                    icon: "S"
+                },
+                engagement: {
+                    dots: [false, false, false]
+                },
+                description: "In-depth analysis of complex, multifaceted cases requiring integration of course concepts, critical thinking, and professional judgment with equal access to resources across participation modes.",
+                benefits: [
+                    "Evaluates higher-order thinking and synthesis",
+                    "Assesses ability to apply multiple frameworks",
+                    "Develops professional analytical skills"
+                ],
+                timeEstimate: "60-120 min (take-home: 1 week)",
+                structure: {
+                    format: "Platform: Document platform with collaboration features",
+                    technology: "Materials: Detailed case, data sets, supporting documents",
+                    evidence: "Format: Structured analysis framework provided"
+                },
+                implementation: [
+                    "Provide comprehensive case with multiple exhibits and data",
+                    "Include structured analysis framework with required sections",
+                    {
+                        step: "Offer two complexity levels: standard and advanced track",
+                        example: "Example: Advanced includes conflicting data requiring reconciliation",
+                        priority: true
+                    },
+                    "Allow clarifying questions via discussion board first 24 hours",
+                    "Require executive summary demonstrating prioritization skills"
+                ],
+                adaptations: {
+                    remote: "Ensure all exhibits downloadable; provide data in analyzable formats; allow cloud-based analytical tools",
+                    onsite: "Print key exhibits for reference; provide analysis templates; ensure quiet spaces for concentration",
+                    crossmodal: "Standardize resources access; offer optional consultation hours in both modes; share exemplars from previous terms"
+                },
+                connections: "Example 1 (MBA course, 60 students): Company turnaround case with financials, market data, stakeholder perspectives\nExample 2 (Public Policy, 30 students): Policy recommendation with competing interests, budget constraints, impact analysis",
+                theory: "",
+                resources: ""
+            },
+            
+            // Card 9: Digital Exhibition
+            {
+                id: "digital-exhibition",
+                name: "Digital Exhibition",
+                purpose: {
+                    type: "SUMMATIVE",
+                    icon: "S"
+                },
+                engagement: {
+                    dots: [false, false, false]
+                },
+                description: "Students create substantial digital artifacts demonstrating course mastery, shared in a public exhibition format that showcases learning achievements from all participants regardless of location.",
+                benefits: [
+                    "Motivates high-quality work through public presentation",
+                    "Allows creative demonstration of learning",
+                    "Builds digital communication competencies"
+                ],
+                timeEstimate: "Development varies; Exhibition event 60-90 min",
+                structure: {
+                    format: "Platform: Virtual gallery space or exhibition website",
+                    technology: "Formats: Websites, videos, interactive presentations",
+                    evidence: "Components: Artifact, artist statement, documentation"
+                },
+                implementation: [
+                    "Establish exhibition theme and technical requirements early",
+                    "Provide exemplars and technical tutorials as needed",
+                    {
+                        step: "Create virtual gallery with consistent navigation/display",
+                        example: 'Example: Each student gets identically formatted gallery "booth"',
+                        priority: true
+                    },
+                    "Schedule live opening event with presentation slots",
+                    "Include peer evaluation component using gallery feedback forms"
+                ],
+                adaptations: {
+                    remote: "Focus on digital-native formats; ensure platform accessibility; test all links/media before event; practice screen sharing",
+                    onsite: "Digitize physical works professionally; create QR codes for extended content; stream exhibition space",
+                    crossmodal: "Celebrate diverse formats; ensure equal presentation time; create unified exhibition program; enable asynchronous viewing"
+                },
+                connections: "Example 1 (Digital Arts, 25 students): Interactive web portfolios with live artist talks during opening\nExample 2 (Science, 40 students): Research posters with embedded videos, data visualizations, live Q&A sessions",
+                theory: "",
+                resources: ""
+            },
+            
+            // Card 10: Collaborative Wiki Development
+            {
+                id: "collaborative-wiki-development",
+                name: "Collaborative Wiki Development",
+                purpose: {
+                    type: "DUAL-PURPOSE",
+                    icon: "D"
+                },
+                engagement: {
+                    dots: [false, false, false]
+                },
+                description: "Student teams build comprehensive knowledge repositories throughout the course, demonstrating both ongoing learning (formative) and final mastery (summative) while developing digital collaboration skills.",
+                benefits: [
+                    "Tracks knowledge construction over time",
+                    "Develops collaborative writing and editing skills",
+                    "Creates useful learning resource for current and future students"
+                ],
+                timeEstimate: "Ongoing throughout course (2-3 hours/week)",
+                structure: {
+                    format: "Platform: Wiki system with version tracking (MediaWiki, Confluence)",
+                    technology: "Structure: Main pages, subpages, cross-linking",
+                    evidence: "Contributions: Weekly additions/edits required"
+                },
+                implementation: [
+                    "Establish wiki structure with main topic areas week 1",
+                    "Assign rotating roles: contributor, editor, reviewer, formatter",
+                    {
+                        step: "Require weekly contributions with edit summaries",
+                        example: 'Example: "Added section on X with 3 sources and diagram"',
+                        priority: true
+                    },
+                    "Schedule peer review cycles every 2 weeks",
+                    "Evaluate via contribution analytics plus quality rubric"
+                ],
+                adaptations: {
+                    remote: "Leverage asynchronous editing advantages; use discussion pages for coordination; track individual contributions carefully",
+                    onsite: "Schedule co-editing sessions; project wiki for group review; photograph and upload in-class work",
+                    crossmodal: "Assign topic owners across modes; use comments for cross-modal dialogue; celebrate diverse contribution types"
+                },
+                connections: "Example 1 (History, 30 students): Build comprehensive timeline with events, analysis, primary sources, interpretations\nExample 2 (Biology, 20 students): Create field guide with species descriptions, photos, ecological relationships",
+                theory: "",
+                resources: ""
+            },
+            
+            // Card 11: Concept Application Videos
+            {
+                id: "concept-application-videos",
+                name: "Concept Application Videos",
+                purpose: {
+                    type: "DUAL-PURPOSE",
+                    icon: "D"
+                },
+                engagement: {
+                    dots: [false, false, false]
+                },
+                description: "Students create short videos explaining and applying course concepts, serving as both learning process documentation (formative) and final understanding demonstration (summative) across modalities.",
+                benefits: [
+                    "Reveals conceptual understanding through explanation",
+                    "Develops multimedia communication skills",
+                    "Creates reusable learning resources"
+                ],
+                timeEstimate: "Production varies (typical: 2-4 hours); Videos: 3-5 min",
+                structure: {
+                    format: "Platform: Video hosting with sharing capabilities",
+                    technology: "Format: Explanation + demonstration/application",
+                    evidence: "Technical: Clear audio, readable visuals, captions"
+                },
+                implementation: [
+                    "Provide video structure template and technical minimums",
+                    "Offer choice of concepts from course topic list",
+                    {
+                        step: "Require storyboard approval before full production",
+                        example: "Example: 6-panel storyboard showing key scenes and narration",
+                        priority: true
+                    },
+                    "Schedule mid-point peer feedback on rough cuts",
+                    "Create festival screening of final videos with awards"
+                ],
+                adaptations: {
+                    remote: "Focus on screen recording and animation tools; provide royalty-free asset libraries; emphasize audio quality",
+                    onsite: "Set up recording stations; allow collaborative filming; provide equipment checkout; use natural lighting",
+                    crossmodal: "Encourage format diversity; pair students for technical support across modes; compile unified class video library"
+                },
+                connections: "Example 1 (Chemistry, 35 students): Explain reaction type with household materials demonstration\nExample 2 (Literature, 28 students): Analyze theme using creative visual metaphors and text excerpts",
+                theory: "",
+                resources: ""
+            },
+            
+            // Card 12: Design Challenges
+            {
+                id: "design-challenges",
+                name: "Design Challenges",
+                purpose: {
+                    type: "DUAL-PURPOSE",
+                    icon: "D"
+                },
+                engagement: {
+                    dots: [false, false, false]
+                },
+                description: "Students solve open-ended problems through iterative design processes, with checkpoints providing formative feedback and final solutions serving as summative assessment of integrated learning.",
+                benefits: [
+                    "Assesses creative problem-solving and critical thinking",
+                    "Provides authentic application of course concepts",
+                    "Develops iteration and refinement skills"
+                ],
+                timeEstimate: "60-180 min for simple; multi-week for complex",
+                structure: {
+                    format: "Platform: Design tools appropriate to discipline",
+                    technology: "Process: Problem → ideation → prototype → test → refine",
+                    evidence: "Documentation: Design journal or process portfolio"
+                },
+                implementation: [
+                    "Present challenge with clear constraints and success criteria",
+                    "Require initial ideation documentation (sketches, mind maps)",
+                    {
+                        step: "Schedule checkpoint reviews: concept (20%), prototype (50%), final (100%)",
+                        example: "Example: Brief pitch → working model → polished solution",
+                        priority: true
+                    },
+                    "Facilitate peer feedback sessions at each checkpoint",
+                    "Culminate with presentation/demonstration to authentic audience"
+                ],
+                adaptations: {
+                    remote: "Use digital design tools; create virtual prototypes; leverage simulation software; document via screenshots",
+                    onsite: "Provide maker space access; photograph iterations; create physical prototypes; record testing sessions",
+                    crossmodal: "Form teams with complementary capabilities; remote handles digital design while on-site manages physical; integrate outputs"
+                },
+                connections: "Example 1 (Engineering, 24 students): Design water filtration system for specific context with constraints\nExample 2 (Education, 30 students): Create inclusive learning activity addressing specific challenge",
+                theory: "",
+                resources: ""
+            },
+            
+            // Card 13: Interactive Presentations
+            {
+                id: "interactive-presentations",
+                name: "Interactive Presentations",
+                purpose: {
+                    type: "DUAL-PURPOSE",
+                    icon: "D"
+                },
+                engagement: {
+                    dots: [false, false, false]
+                },
+                description: "Students deliver presentations incorporating active audience participation, assessed both on content mastery (summative) and facilitation effectiveness (formative) with techniques adapted for hybrid audiences.",
+                benefits: [
+                    "Evaluates both knowledge and communication skills",
+                    "Develops audience engagement techniques",
+                    "Provides peer learning opportunities"
+                ],
+                timeEstimate: "20-30 min per presentation (15 min present, 10 min activity, 5 min Q&A)",
+                structure: {
+                    format: "Platform: Video conferencing with interactive features",
+                    technology: "Components: Content delivery + audience activity + Q&A",
+                    evidence: "Interaction: Polls, breakouts, shared documents"
+                },
+                implementation: [
+                    "Require presentation plan with interaction points identified",
+                    "Provide training on hybrid audience engagement techniques",
+                    {
+                        step: "Mandate minimum 3 interaction types during presentation",
+                        example: "Example: Opening poll, mid-point activity, closing reflection",
+                        priority: true
+                    },
+                    "Assign audience members specific observation roles",
+                    "Include self-evaluation comparing plan to execution"
+                ],
+                adaptations: {
+                    remote: "Master screen sharing with polls; prepare backup activities; use chat strategically; enable co-annotation features",
+                    onsite: "Position for camera visibility; use wireless presenter tools; manage room dynamics; integrate remote audience visibly",
+                    crossmodal: "Design activities working in both modes; alternate attention between audiences; use teaching assistant for tech"
+                },
+                connections: "Example 1 (Marketing, 35 students): Campaign pitch with live audience voting on design choices\nExample 2 (Science, 25 students): Research findings with dataset exploration activity for peers",
+                theory: "",
+                resources: ""
+            },
+            
+            // Card 14: Reflective Synthesis Essays
+            {
+                id: "reflective-synthesis-essays",
+                name: "Reflective Synthesis Essays",
+                purpose: {
+                    type: "DUAL-PURPOSE",
+                    icon: "D"
+                },
+                engagement: {
+                    dots: [false, false, false]
+                },
+                description: "Extended writing that combines analytical synthesis of course content (summative) with metacognitive reflection on learning process (formative), adapted for hybrid learning experiences.",
+                benefits: [
+                    "Demonstrates deep conceptual understanding",
+                    "Develops metacognitive awareness",
+                    "Integrates personal experience with academic content"
+                ],
+                timeEstimate: "45-90 min in-class; 1 week take-home",
+                structure: {
+                    format: "Platform: Word processor with submission system",
+                    technology: "Components: Thesis, evidence, analysis, reflection",
+                    evidence: "Length: 1000-2000 words or 4-6 pages"
+                },
+                implementation: [
+                    "Provide essay structure template with section purposes",
+                    "Require evidence from multiple course components",
+                    {
+                        step: "Include mandatory reflection on hybrid learning impact",
+                        example: 'Example: "How did participating from [location] influence understanding?"',
+                        priority: true
+                    },
+                    "Offer optional draft review with peer or instructor",
+                    "Use rubric addressing both synthesis and reflection quality"
+                ],
+                adaptations: {
+                    remote: "Draw on unique perspectives from remote participation; include screenshots of digital interactions; reflect on tech challenges",
+                    onsite: "Incorporate in-person collaboration experiences; reflect on physical/digital balance; document hands-on learning",
+                    crossmodal: "Compare learning experiences across modes; analyze how mode switching affected understanding; synthesize both perspectives"
+                },
+                connections: "Example 1 (Philosophy, 20 students): Synthesize three ethical frameworks while reflecting on discussion participation modes\nExample 2 (Teacher Ed, 40 students): Connect theory to practice with reflection on hybrid teaching experiences",
+                theory: "",
+                resources: ""
+            }
+        ];
+
+        let currentCardIndex = 0;
+
+        function renderCard(cardIndex) {
+            const card = cardData[cardIndex];
+            const container = document.getElementById('cardContainer');
+            
+            // Format the structure fields properly
+            const structureList = `
+                <li>
+                    <span class="structure-label">• ${card.structure.format.split(': ')[0]}:</span>
+                    <span>${card.structure.format.split(': ')[1]}</span>
+                </li>
+                <li>
+                    <span class="structure-label">• ${card.structure.technology.split(': ')[0]}:</span>
+                    <span>${card.structure.technology.split(': ')[1]}</span>
+                </li>
+                <li>
+                    <span class="structure-label">• ${card.structure.evidence.split(': ')[0]}:</span>
+                    <span>${card.structure.evidence.split(': ')[1]}</span>
+                </li>
+            `;
+            
+            container.innerHTML = `
+                <!-- Front Side (Left) -->
+                <div class="card-side card-side-left">
+                    <div class="card-header">
+                        <div class="purpose-label">${card.purpose.type}</div>
+                    </div>
+                    
+                    <div class="activity-content">
+                        <h2 class="activity-name">${card.name}</h2>
+                        <div class="purpose-level">${card.purpose.type} ASSESSMENT</div>
+                        
+                        <p class="description">${card.description}</p>
+                        
+                        <div class="benefits">
+                            <h3 class="benefits-title">Key Benefits:</h3>
+                            <ul class="benefits-list">
+                                ${card.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div class="time-estimate">
+                            <span class="time-icon">⏱</span>
+                            <strong>Time:</strong> ${card.timeEstimate}
+                        </div>
+                        
+                        <div class="structure-requirements">
+                            <h3 class="structure-title">STRUCTURE & REQUIREMENTS</h3>
+                            <ul class="structure-list">
+                                ${structureList}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Back Side (Right) -->
+                <div class="card-side card-side-right">
+                    <div class="section">
+                        <h3 class="section-title">IMPLEMENTATION</h3>
+                        <ol class="implementation-steps">
+                            ${card.implementation.map(item => {
+                                if (typeof item === 'string') {
+                                    return `<li>${item}</li>`;
+                                } else {
+                                    const priorityStr = item.priority ? '<span class="priority-star">⭐</span>' : '';
+                                    const exampleStr = item.example ? `<div class="example-text">${item.example}</div>` : '';
+                                    return `<li>${priorityStr}${item.step}${exampleStr}</li>`;
+                                }
+                            }).join('')}
+                        </ol>
+                    </div>
+                    
+                    <div class="section">
+                        <h3 class="section-title">HYBRID CONSIDERATIONS</h3>
+                        <div class="hybrid-adaptations">
+                            <div class="consideration-item">
+                                <span class="consideration-label">• Remote:</span>
+                                <span class="consideration-text">${card.adaptations.remote}</span>
+                            </div>
+                            <div class="consideration-item">
+                                <span class="consideration-label">• On-site:</span>
+                                <span class="consideration-text">${card.adaptations.onsite}</span>
+                            </div>
+                            <div class="consideration-item">
+                                <span class="consideration-label">• Cross-modal:</span>
+                                <span class="consideration-text">${card.adaptations.crossmodal}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="connections-text">${card.connections}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectCard() {
+            const selector = document.getElementById('cardSelector');
+            currentCardIndex = parseInt(selector.value);
+            renderCard(currentCardIndex);
+            updateNavButtons();
+        }
+
+        function previousCard() {
+            if (currentCardIndex > 0) {
+                currentCardIndex--;
+                document.getElementById('cardSelector').value = currentCardIndex;
+                renderCard(currentCardIndex);
+                updateNavButtons();
+            }
+        }
+
+        function nextCard() {
+            if (currentCardIndex < cardData.length - 1) {
+                currentCardIndex++;
+                document.getElementById('cardSelector').value = currentCardIndex;
+                renderCard(currentCardIndex);
+                updateNavButtons();
+            }
+        }
+
+        function updateNavButtons() {
+            const prevBtn = document.querySelector('.nav-button');
+            const nextBtn = document.querySelector('.nav-button:nth-child(3)');
+            
+            prevBtn.disabled = currentCardIndex === 0;
+            nextBtn.disabled = currentCardIndex === cardData.length - 1;
+        }
+
+        // Export functions (same as activity cards but with assessment card naming)
+        const { jsPDF } = window.jspdf;
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        
+        // Helper function to render a specific card temporarily
+        function renderCardTemporary(cardIndex) {
+            const originalIndex = currentCardIndex;
+            currentCardIndex = cardIndex;
+            renderCard(cardIndex);
+            return originalIndex;
+        }
+        
+        // Helper function to restore original card
+        function restoreCard(originalIndex) {
+            currentCardIndex = originalIndex;
+            renderCard(originalIndex);
+            document.getElementById('cardSelector').value = originalIndex;
+            updateNavButtons();
+        }
+        
+        // Helper function to export a single card as PNG (returns Promise)
+        function exportSingleCardPNG(cardIndex) {
+            return new Promise((resolve, reject) => {
+                const card = cardData[cardIndex];
+                const filename = `${card.id}-assessment.png`;
+                const cardContainer = document.getElementById('cardContainer');
+                
+                html2canvas(cardContainer, {
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: '#ffffff'
+                }).then(function(canvas) {
+                    const imgData = canvas.toDataURL('image/png');
+                    const link = document.createElement('a');
+                    link.download = filename;
+                    link.href = imgData;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    resolve(filename);
+                }).catch(reject);
+            });
+        }
+        
+        // Helper function to export a single card as PDF (returns Promise)
+        function exportSingleCardPDF(cardIndex) {
+            return new Promise((resolve, reject) => {
+                const card = cardData[cardIndex];
+                const filename = `${card.id}-assessment.pdf`;
+                const cardContainer = document.getElementById('cardContainer');
+                
+                html2canvas(cardContainer, {
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: '#ffffff'
+                }).then(function(canvas) {
+                    const canvasWidth = canvas.width;
+                    const canvasHeight = canvas.height;
+                    const pdfWidth = canvasWidth * 0.75;
+                    const pdfHeight = canvasHeight * 0.75;
+                    const orientation = pdfWidth > pdfHeight ? 'landscape' : 'portrait';
+                    
+                    const pdf = new jsPDF({
+                        orientation: orientation,
+                        unit: 'pt',
+                        format: [pdfWidth, pdfHeight]
+                    });
+                    
+                    const imgData = canvas.toDataURL('image/png');
+                    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                    pdf.save(filename);
+                    resolve(filename);
+                }).catch(reject);
+            });
+        }
+        
+        // Update progress display
+        function updateProgress(current, total, currentCard, action) {
+            const progressContainer = document.getElementById('progressContainer');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            const progressDetails = document.getElementById('progressDetails');
+            
+            const percentage = (current / total) * 100;
+            progressFill.style.width = percentage + '%';
+            progressText.textContent = `Exporting ${current} of ${total} cards...`;
+            progressDetails.textContent = `Currently processing: ${currentCard} (${action})`;
+        }
+        
+        // Show/hide progress container
+        function showProgress() {
+            document.getElementById('progressContainer').style.display = 'flex';
+            const buttons = document.querySelectorAll('.nav-button');
+            buttons.forEach(btn => btn.disabled = true);
+        }
+        
+        function hideProgress() {
+            document.getElementById('progressContainer').style.display = 'none';
+            const buttons = document.querySelectorAll('.nav-button');
+            buttons.forEach(btn => btn.disabled = false);
+            updateNavButtons();
+        }
+        
+        // Export as PNG
+        function exportPNG() {
+            loadingOverlay.style.display = 'flex';
+            
+            const controls = document.querySelector('.controls');
+            controls.style.display = 'none';
+            
+            const currentCard = cardData[currentCardIndex];
+            const filename = `${currentCard.id}-assessment.png`;
+            
+            const cardContainer = document.getElementById('cardContainer');
+            
+            html2canvas(cardContainer, {
+                scale: 2,
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#ffffff'
+            }).then(function(canvas) {
+                const imgData = canvas.toDataURL('image/png');
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = imgData;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                controls.style.display = 'flex';
+                loadingOverlay.style.display = 'none';
+            }).catch(function(error) {
+                console.error('Error generating PNG:', error);
+                alert('Error generating PNG. Please try again.');
+                controls.style.display = 'flex';
+                loadingOverlay.style.display = 'none';
+            });
+        }
+        
+        // Export as PDF
+        function exportPDF() {
+            loadingOverlay.style.display = 'flex';
+            
+            const controls = document.querySelector('.controls');
+            controls.style.display = 'none';
+            
+            const currentCard = cardData[currentCardIndex];
+            const filename = `${currentCard.id}-assessment.pdf`;
+            
+            const cardContainer = document.getElementById('cardContainer');
+            
+            html2canvas(cardContainer, {
+                scale: 2,
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#ffffff'
+            }).then(function(canvas) {
+                const canvasWidth = canvas.width;
+                const canvasHeight = canvas.height;
+                const pdfWidth = canvasWidth * 0.75;
+                const pdfHeight = canvasHeight * 0.75;
+                const orientation = pdfWidth > pdfHeight ? 'landscape' : 'portrait';
+                
+                const pdf = new jsPDF({
+                    orientation: orientation,
+                    unit: 'pt',
+                    format: [pdfWidth, pdfHeight]
+                });
+                
+                const imgData = canvas.toDataURL('image/png');
+                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                pdf.save(filename);
+                
+                controls.style.display = 'flex';
+                loadingOverlay.style.display = 'none';
+            }).catch(function(error) {
+                console.error('Error generating PDF:', error);
+                alert('Error generating PDF. Please try again.');
+                controls.style.display = 'flex';
+                loadingOverlay.style.display = 'none';
+            });
+        }
+        
+        // Batch export functions
+        async function batchExportPNG() {
+            showProgress();
+            const originalIndex = currentCardIndex;
+            const totalCards = cardData.length;
+            let successCount = 0;
+            let failCount = 0;
+            
+            try {
+                for (let i = 0; i < totalCards; i++) {
+                    const card = cardData[i];
+                    updateProgress(i + 1, totalCards, card.name, 'PNG');
+                    
+                    renderCardTemporary(i);
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    
+                    try {
+                        await exportSingleCardPNG(i);
+                        successCount++;
+                    } catch (error) {
+                        console.error(`Failed to export ${card.name} as PNG:`, error);
+                        failCount++;
+                    }
+                }
+                
+                restoreCard(originalIndex);
+                alert(`Batch PNG export complete!\nSuccess: ${successCount}\nFailed: ${failCount}`);
+                
+            } catch (error) {
+                console.error('Batch PNG export error:', error);
+                alert('Batch export encountered an error. Check console for details.');
+                restoreCard(originalIndex);
+            } finally {
+                hideProgress();
+            }
+        }
+        
+        async function batchExportPDF() {
+            showProgress();
+            const originalIndex = currentCardIndex;
+            const totalCards = cardData.length;
+            let successCount = 0;
+            let failCount = 0;
+            
+            try {
+                for (let i = 0; i < totalCards; i++) {
+                    const card = cardData[i];
+                    updateProgress(i + 1, totalCards, card.name, 'PDF');
+                    
+                    renderCardTemporary(i);
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    
+                    try {
+                        await exportSingleCardPDF(i);
+                        successCount++;
+                    } catch (error) {
+                        console.error(`Failed to export ${card.name} as PDF:`, error);
+                        failCount++;
+                    }
+                }
+                
+                restoreCard(originalIndex);
+                alert(`Batch PDF export complete!\nSuccess: ${successCount}\nFailed: ${failCount}`);
+                
+            } catch (error) {
+                console.error('Batch PDF export error:', error);
+                alert('Batch export encountered an error. Check console for details.');
+                restoreCard(originalIndex);
+            } finally {
+                hideProgress();
+            }
+        }
+        
+        async function batchExportBoth() {
+            showProgress();
+            const originalIndex = currentCardIndex;
+            const totalCards = cardData.length;
+            const totalExports = totalCards * 2;
+            let successCount = 0;
+            let failCount = 0;
+            let currentExport = 0;
+            
+            try {
+                for (let i = 0; i < totalCards; i++) {
+                    const card = cardData[i];
+                    renderCardTemporary(i);
+                    
+                    // Export PNG
+                    currentExport++;
+                    updateProgress(currentExport, totalExports, card.name, 'PNG');
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    
+                    try {
+                        await exportSingleCardPNG(i);
+                        successCount++;
+                    } catch (error) {
+                        console.error(`Failed to export ${card.name} as PNG:`, error);
+                        failCount++;
+                    }
+                    
+                    // Export PDF
+                    currentExport++;
+                    updateProgress(currentExport, totalExports, card.name, 'PDF');
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    
+                    try {
+                        await exportSingleCardPDF(i);
+                        successCount++;
+                    } catch (error) {
+                        console.error(`Failed to export ${card.name} as PDF:`, error);
+                        failCount++;
+                    }
+                }
+                
+                restoreCard(originalIndex);
+                alert(`Batch PNG + PDF export complete!\nSuccess: ${successCount}\nFailed: ${failCount}`);
+                
+            } catch (error) {
+                console.error('Batch export error:', error);
+                alert('Batch export encountered an error. Check console for details.');
+                restoreCard(originalIndex);
+            } finally {
+                hideProgress();
+            }
+        }
+
+        // Initialize
+        renderCard(0);
+        updateNavButtons();
+    </script>
+</body>
+</html>

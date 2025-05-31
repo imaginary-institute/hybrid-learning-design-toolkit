@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Learning Self-Assessment</title>
+    
+    <!-- Add html2canvas and jsPDF libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <style>
+        :root {
+            --essential-color: #2D72A5;
+            --enhanced-color: #6464B4;
+            --transformative-color: #37946E;
+            --light-essential: rgba(45, 114, 165, 0.1);
+            --light-enhanced: rgba(100, 100, 180, 0.1);
+            --light-transformative: rgba(55, 148, 110, 0.1);
+            --border-color: #E0E0E0;
+            --heading-color: #333333;
+            --text-color: #444444;
+            --background-color: #FFFFFF;
+            --card-background: #F9F9F9;
+            --primary-button: #4A90E2;
+            --export-button: #2ecc71;
+            --export-button-hover: #27ae60;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h1 {
+            color: var(--heading-color);
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #777;
+            font-size: 1.1em;
+            font-style: italic;
+        }
+
+        .assessment-container {
+            margin: 30px 0;
+            padding: 30px;
+            background-color: var(--card-background);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .dimension-section {
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            background-color: white;
+        }
+
+        .dimension-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .dimension-number {
+            background-color: var(--essential-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .dimension-number.dim2 {
+            background-color: var(--enhanced-color);
+        }
+
+        .dimension-number.dim3 {
+            background-color: var(--transformative-color);
+        }
+
+        .dimension-title {
+            flex-grow: 1;
+            margin: 0;
+            font-size: 1.4em;
+            color: var(--heading-color);
+        }
+
+        .dimension-description {
+            margin-bottom: 25px;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        .capability-matrix {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .capability-matrix th, .capability-matrix td {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .capability-matrix th {
+            background-color: #f5f7fa;
+            font-weight: bold;
+            color: var(--heading-color);
+        }
+
+        .capability-matrix tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .capability-matrix tr:hover {
+            background-color: #f0f8ff;
+        }
+
+        .capability-matrix td:last-child {
+            width: 80px;
+            text-align: center;
+        }
+
+        .level-header {
+            font-weight: bold;
+            color: var(--heading-color);
+            margin-bottom: 5px;
+        }
+
+        .level-description {
+            line-height: 1.5;
+        }
+
+        input[type="checkbox"] {
+            transform: scale(1.5);
+            cursor: pointer;
+            accent-color: var(--essential-color);
+        }
+
+        .selected-row {
+            background-color: var(--light-essential) !important;
+            border-left: 4px solid var(--essential-color);
+        }
+
+        .export-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-export {
+            background-color: var(--export-button);
+            color: white;
+        }
+
+        .btn-export:hover {
+            background-color: var(--export-button-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-print {
+            background-color: var(--primary-button);
+            color: white;
+        }
+
+        .btn-print:hover {
+            background-color: #357abd;
+            transform: translateY(-2px);
+        }
+
+        /* Loading overlay for export operations */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .loading-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--export-button);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .instructions {
+            background-color: #f0f7ff;
+            border: 1px solid #b8d4f0;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .instructions h3 {
+            color: var(--essential-color);
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: #777;
+            font-style: italic;
+        }
+
+        @media print {
+            .export-controls,
+            header .subtitle,
+            footer,
+            .instructions {
+                display: none !important;
+            }
+            
+            body {
+                padding: 0;
+                font-size: 11pt;
+            }
+            
+            .assessment-container {
+                box-shadow: none;
+                margin: 0;
+                padding: 10px;
+            }
+
+            .dimension-section {
+                break-inside: avoid;
+                margin-bottom: 30px;
+            }
+
+            .capability-matrix {
+                font-size: 10pt;
+            }
+
+            .capability-matrix th, 
+            .capability-matrix td {
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .dimension-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .dimension-number {
+                margin-bottom: 10px;
+            }
+
+            .capability-matrix th, 
+            .capability-matrix td {
+                padding: 10px 8px;
+                font-size: 0.9em;
+            }
+            
+            .export-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Hybrid Learning Self-Assessment</h1>
+            <p class="subtitle">Capability Assessment Across Three Dimensions</p>
+        </header>
+
+        <main>
+            <div class="instructions">
+                <h3>Instructions</h3>
+                <p>This self-assessment tool helps you evaluate your capabilities across the three dimensions of the Hybrid Learning Framework. For each dimension, reflect on the descriptions and check the boxes that best represent your current level of capability. You can select multiple levels if you feel you're between stages.</p>
+            </div>
+
+            <div id="assessmentToExport" class="assessment-container">
+                <!-- Dimension 1: Learning Environment & Technology -->
+                <div class="dimension-section">
+                    <div class="dimension-header">
+                        <div class="dimension-number">1</div>
+                        <h3 class="dimension-title">Learning Environment & Technology</h3>
+                    </div>
+                    
+                    <div class="dimension-description">
+                        <p>This dimension focuses on creating unified spaces that seamlessly integrate physical and virtual elements to support effective hybrid learning. Reflect on your capabilities in developing technological infrastructure, configuring physical spaces, and ensuring equitable access across participation modes.</p>
+                    </div>
+                    
+                    <table class="capability-matrix">
+                        <thead>
+                            <tr>
+                                <th>Level</th>
+                                <th>Description</th>
+                                <th>Select</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="dim1-level1-row">
+                                <td>
+                                    <div class="level-header">1 - EMERGING</div>
+                                </td>
+                                <td class="level-description">
+                                    I'm still learning the basics of hybrid technologies and need substantial guidance. I have limited experience with physical-virtual space integration and require step-by-step guidance for technical setup. My technology choices are primarily based on availability rather than pedagogical fit, and I struggle to adapt my teaching when technical issues arise.
+                                </td>
+                                <td><input type="checkbox" id="dim1-level1" onchange="toggleRowHighlight('dim1-level1-row', this)"></td>
+                            </tr>
+                            <tr id="dim1-level2-row">
+                                <td>
+                                    <div class="level-header">2 - DEVELOPING</div>
+                                </td>
+                                <td class="level-description">
+                                    I can use standard video conferencing and basic digital tools. I have a basic understanding of room setup considerations but require support for more complex technological integration. I can make some connections between technology choices and learning objectives, but my approach primarily adapts traditional teaching methods rather than creating new possibilities.
+                                </td>
+                                <td><input type="checkbox" id="dim1-level2" onchange="toggleRowHighlight('dim1-level2-row', this)"></td>
+                            </tr>
+                            <tr id="dim1-level3-row">
+                                <td>
+                                    <div class="level-header">3 - FUNCTIONAL</div>
+                                </td>
+                                <td class="level-description">
+                                    I'm comfortable managing standard hybrid classroom technology and can create workable physical-virtual learning environments. I can resolve common technical challenges and implement basic accessibility considerations. I select technologies that support specific learning goals and can adapt my teaching methods to leverage available tools to create effective learning experiences across modalities.
+                                </td>
+                                <td><input type="checkbox" id="dim1-level3" onchange="toggleRowHighlight('dim1-level3-row', this)"></td>
+                            </tr>
+                            <tr id="dim1-level4-row">
+                                <td>
+                                    <div class="level-header">4 - PROFICIENT</div>
+                                </td>
+                                <td class="level-description">
+                                    I confidently integrate multiple technologies and design effective physical-virtual learning spaces. I anticipate and prevent most technical issues and implement comprehensive accessibility solutions. I deliberately select technologies that enable specific pedagogical approaches and can design learning activities that take advantage of the affordances of both physical and virtual participation.
+                                </td>
+                                <td><input type="checkbox" id="dim1-level4" onchange="toggleRowHighlight('dim1-level4-row', this)"></td>
+                            </tr>
+                            <tr id="dim1-level5-row">
+                                <td>
+                                    <div class="level-header">5 - ADVANCED</div>
+                                </td>
+                                <td class="level-description">
+                                    I innovatively combine technologies for seamless experiences and create highly integrated physical-virtual environments. I develop sophisticated technical contingency systems and pioneer new approaches to accessibility and equity. My technology decisions are driven by pedagogical vision, enabling learning experiences that would be impossible in traditional settings, with a seamless integration of pedagogical goals and technological affordances.
+                                </td>
+                                <td><input type="checkbox" id="dim1-level5" onchange="toggleRowHighlight('dim1-level5-row', this)"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Dimension 2: Learning Experience Design & Assessment -->
+                <div class="dimension-section">
+                    <div class="dimension-header">
+                        <div class="dimension-number dim2">2</div>
+                        <h3 class="dimension-title">Learning Experience Design & Assessment</h3>
+                    </div>
+                    
+                    <div class="dimension-description">
+                        <p>This dimension addresses the pedagogical aspects of hybrid learning, encompassing learning design, instructional activities, teaching strategies, and aligned assessment methods. It focuses on creating learning experiences that are equally effective for both on-site and remote students while leveraging the unique affordances of hybrid environments.</p>
+                    </div>
+                    
+                    <table class="capability-matrix">
+                        <thead>
+                            <tr>
+                                <th>Level</th>
+                                <th>Description</th>
+                                <th>Select</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="dim2-level1-row">
+                                <td>
+                                    <div class="level-header">1 - EMERGING</div>
+                                </td>
+                                <td class="level-description">
+                                    I'm still adapting my teaching approach for hybrid contexts with minimal modifications to existing course materials. My activities primarily replicate traditional formats regardless of student location. I tend to use the same assessment methods for all students without significant adaptation for hybrid contexts. I struggle to provide equivalent learning experiences across participation modes.
+                                </td>
+                                <td><input type="checkbox" id="dim2-level1" onchange="toggleRowHighlight('dim2-level1-row', this)"></td>
+                            </tr>
+                            <tr id="dim2-level2-row">
+                                <td>
+                                    <div class="level-header">2 - DEVELOPING</div>
+                                </td>
+                                <td class="level-description">
+                                    I can adapt simple learning activities for hybrid delivery but find more complex ones challenging. I provide clear instructions for both participation modes but haven't fully redesigned my course for the hybrid context. My assessment approaches are slightly modified for hybrid teaching, but I'm still working on ensuring full equity. I offer basic flexibility in how students engage with content.
+                                </td>
+                                <td><input type="checkbox" id="dim2-level2" onchange="toggleRowHighlight('dim2-level2-row', this)"></td>
+                            </tr>
+                            <tr id="dim2-level3-row">
+                                <td>
+                                    <div class="level-header">3 - FUNCTIONAL</div>
+                                </td>
+                                <td class="level-description">
+                                    I intentionally redesign activities to function effectively across participation modes. I implement specific strategies to manage cognitive load for both myself and students. My assessments are designed with hybrid equity in mind, providing equivalent experiences regardless of location. I incorporate regular formative feedback mechanisms and offer reasonable flexibility in learning pathways.
+                                </td>
+                                <td><input type="checkbox" id="dim2-level3" onchange="toggleRowHighlight('dim2-level3-row', this)"></td>
+                            </tr>
+                            <tr id="dim2-level4-row">
+                                <td>
+                                    <div class="level-header">4 - PROFICIENT</div>
+                                </td>
+                                <td class="level-description">
+                                    I design integrated learning experiences that leverage the affordances of hybrid formats. My course structure intentionally balances flexibility and guidance with well-designed supports for diverse participation patterns. I implement innovative assessment approaches specifically optimized for hybrid contexts. My learning design facilitates meaningful interaction between students regardless of location.
+                                </td>
+                                <td><input type="checkbox" id="dim2-level4" onchange="toggleRowHighlight('dim2-level4-row', this)"></td>
+                            </tr>
+                            <tr id="dim2-level5-row">
+                                <td>
+                                    <div class="level-header">5 - ADVANCED</div>
+                                </td>
+                                <td class="level-description">
+                                    I create transformative learning experiences unique to hybrid formats that wouldn't be possible in single-mode settings. I seamlessly transition between physical and digital spaces in ways that enhance the learning journey. My course design offers highly personalized paths with strong scaffolding that supports student agency while maintaining rigor. My assessment approaches leverage the unique capabilities of hybrid environments in authentic ways.
+                                </td>
+                                <td><input type="checkbox" id="dim2-level5" onchange="toggleRowHighlight('dim2-level5-row', this)"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Dimension 3: Facilitation, Equity & Community -->
+                <div class="dimension-section">
+                    <div class="dimension-header">
+                        <div class="dimension-number dim3">3</div>
+                        <h3 class="dimension-title">Facilitation, Equity & Community</h3>
+                    </div>
+                    
+                    <div class="dimension-description">
+                        <p>This dimension focuses on implementing effective facilitation strategies, ensuring equitable participation, and building community across physical-virtual boundaries. It addresses the social and emotional aspects of learning that are particularly challenging in hybrid contexts where students may experience different forms of presence and belonging based on their participation mode.</p>
+                    </div>
+                    
+                    <table class="capability-matrix">
+                        <thead>
+                            <tr>
+                                <th>Level</th>
+                                <th>Description</th>
+                                <th>Select</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="dim3-level1-row">
+                                <td>
+                                    <div class="level-header">1 - EMERGING</div>
+                                </td>
+                                <td class="level-description">
+                                    I struggle to keep remote students as engaged as those who are present in-person. My facilitation approach tends to prioritize one participation mode over the other. I implement few specific strategies for community building across modalities. I find it challenging to monitor and respond to the engagement of all students simultaneously. I have limited approaches for supporting student agency in hybrid contexts.
+                                </td>
+                                <td><input type="checkbox" id="dim3-level1" onchange="toggleRowHighlight('dim3-level1-row', this)"></td>
+                            </tr>
+                            <tr id="dim3-level2-row">
+                                <td>
+                                    <div class="level-header">2 - DEVELOPING</div>
+                                </td>
+                                <td class="level-description">
+                                    I implement basic inclusion strategies to acknowledge all participants. I use simple rotation of attention between student groups but sometimes overlook remote participants. I create structured participation opportunities but may not consistently balance engagement across modes. I implement introductory community-building activities but struggle to maintain connection throughout the course. I provide basic guidance for student participation choices.
+                                </td>
+                                <td><input type="checkbox" id="dim3-level2" onchange="toggleRowHighlight('dim3-level2-row', this)"></td>
+                            </tr>
+                            <tr id="dim3-level3-row">
+                                <td>
+                                    <div class="level-header">3 - FUNCTIONAL</div>
+                                </td>
+                                <td class="level-description">
+                                    I create engaging experiences for both participation modes with intentional facilitation strategies. I implement effective protocols for balancing attention and participation across student groups. I monitor and manage engagement patterns to ensure relative equity. I facilitate meaningful cross-modal interaction between students in different locations. I address belonging and inclusion challenges with specific approaches.
+                                </td>
+                                <td><input type="checkbox" id="dim3-level3" onchange="toggleRowHighlight('dim3-level3-row', this)"></td>
+                            </tr>
+                            <tr id="dim3-level4-row">
+                                <td>
+                                    <div class="level-header">4 - PROFICIENT</div>
+                                </td>
+                                <td class="level-description">
+                                    I design sophisticated approaches to engagement that foster strong connections across modalities. I implement strategic techniques to create parallel participation opportunities across locations. I facilitate multiple participation channels with effective monitoring systems. I develop ongoing community-building activities that transcend physical separation. I provide frameworks that support informed student choice and agency.
+                                </td>
+                                <td><input type="checkbox" id="dim3-level4" onchange="toggleRowHighlight('dim3-level4-row', this)"></td>
+                            </tr>
+                            <tr id="dim3-level5-row">
+                                <td>
+                                    <div class="level-header">5 - ADVANCED</div>
+                                </td>
+                                <td class="level-description">
+                                    I pioneer innovative engagement approaches that fully integrate physical and virtual spaces into a unified learning environment. My facilitation appears seamless across modes with dynamic techniques that respond to emerging needs. I develop deep community that transcends location limitations, creating genuine connection regardless of participation mode. I implement fluid boundary-crossing interaction patterns where modality becomes increasingly irrelevant to participation quality.
+                                </td>
+                                <td><input type="checkbox" id="dim3-level5" onchange="toggleRowHighlight('dim3-level5-row', this)"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="export-controls">
+                <button class="btn btn-export" onclick="exportPNG()">Export as PNG</button>
+                <button class="btn btn-export" onclick="exportPDF()">Export as PDF</button>
+                <button class="btn btn-print" onclick="window.print()">Print Assessment</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>Hybrid Learning Framework Self-Assessment Tool</p>
+        </footer>
+    </div>
+
+    <!-- Loading overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>Generating export... This may take a moment.</p>
+        </div>
+    </div>
+
+    <script>
+        const { jsPDF } = window.jspdf;
+        const loadingOverlay = document.getElementById('loadingOverlay');
+
+        // Toggle row highlighting when checkbox is checked
+        function toggleRowHighlight(rowId, checkbox) {
+            const row = document.getElementById(rowId);
+            if (checkbox.checked) {
+                row.classList.add('selected-row');
+            } else {
+                row.classList.remove('selected-row');
+            }
+        }
+
+        // Export as PNG
+        function exportPNG() {
+            // Show loading overlay
+            loadingOverlay.style.display = 'flex';
+            
+            // Hide export controls for clean export
+            const exportControls = document.querySelector('.export-controls');
+            const instructions = document.querySelector('.instructions');
+            exportControls.style.display = 'none';
+            instructions.style.display = 'none';
+            
+            // Get assessment container and temporarily optimize it for export
+            const assessmentContainer = document.getElementById('assessmentToExport');
+            
+            // Store original styles
+            const originalStyles = {
+                margin: assessmentContainer.style.margin,
+                padding: assessmentContainer.style.padding,
+                backgroundColor: assessmentContainer.style.backgroundColor,
+                borderRadius: assessmentContainer.style.borderRadius,
+                boxShadow: assessmentContainer.style.boxShadow
+            };
+            
+            // Apply export-optimized styles
+            assessmentContainer.style.margin = '0';
+            assessmentContainer.style.padding = '20px';
+            assessmentContainer.style.backgroundColor = '#ffffff';
+            assessmentContainer.style.borderRadius = '0';
+            assessmentContainer.style.boxShadow = 'none';
+            
+            // Use html2canvas to capture the optimized assessment container
+            html2canvas(assessmentContainer, {
+                scale: 2, // Higher scale for better quality
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#ffffff',
+                scrollX: 0,
+                scrollY: 0,
+                windowWidth: document.documentElement.offsetWidth,
+                windowHeight: document.documentElement.offsetHeight
+            }).then(function(canvas) {
+                // Convert canvas to PNG data URL
+                const imgData = canvas.toDataURL('image/png');
+                
+                // Create a download link
+                const link = document.createElement('a');
+                link.download = 'hybrid-learning-self-assessment.png';
+                link.href = imgData;
+                
+                // Trigger download
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Restore original styles
+                assessmentContainer.style.margin = originalStyles.margin;
+                assessmentContainer.style.padding = originalStyles.padding;
+                assessmentContainer.style.backgroundColor = originalStyles.backgroundColor;
+                assessmentContainer.style.borderRadius = originalStyles.borderRadius;
+                assessmentContainer.style.boxShadow = originalStyles.boxShadow;
+                
+                // Restore export controls
+                exportControls.style.display = 'flex';
+                instructions.style.display = 'block';
+                
+                // Hide loading overlay
+                loadingOverlay.style.display = 'none';
+            }).catch(function(error) {
+                console.error('Error generating PNG:', error);
+                alert('Error generating PNG. Please try again.');
+                
+                // Restore original styles
+                assessmentContainer.style.margin = originalStyles.margin;
+                assessmentContainer.style.padding = originalStyles.padding;
+                assessmentContainer.style.backgroundColor = originalStyles.backgroundColor;
+                assessmentContainer.style.borderRadius = originalStyles.borderRadius;
+                assessmentContainer.style.boxShadow = originalStyles.boxShadow;
+                
+                // Restore controls and hide loading
+                exportControls.style.display = 'flex';
+                instructions.style.display = 'block';
+                loadingOverlay.style.display = 'none';
+            });
+        }
+
+        // Export as PDF
+        function exportPDF() {
+            // Show loading overlay
+            loadingOverlay.style.display = 'flex';
+            
+            // Hide export controls for clean export
+            const exportControls = document.querySelector('.export-controls');
+            const instructions = document.querySelector('.instructions');
+            exportControls.style.display = 'none';
+            instructions.style.display = 'none';
+            
+            // Get assessment container and temporarily optimize it for export
+            const assessmentContainer = document.getElementById('assessmentToExport');
+            
+            // Store original styles
+            const originalStyles = {
+                margin: assessmentContainer.style.margin,
+                padding: assessmentContainer.style.padding,
+                backgroundColor: assessmentContainer.style.backgroundColor,
+                borderRadius: assessmentContainer.style.borderRadius,
+                boxShadow: assessmentContainer.style.boxShadow
+            };
+            
+            // Apply export-optimized styles
+            assessmentContainer.style.margin = '0';
+            assessmentContainer.style.padding = '20px';
+            assessmentContainer.style.backgroundColor = '#ffffff';
+            assessmentContainer.style.borderRadius = '0';
+            assessmentContainer.style.boxShadow = 'none';
+            
+            // Use html2canvas to capture the optimized assessment container
+            html2canvas(assessmentContainer, {
+                scale: 2, // Higher scale for better quality
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#ffffff',
+                scrollX: 0,
+                scrollY: 0,
+                windowWidth: document.documentElement.offsetWidth,
+                windowHeight: document.documentElement.offsetHeight
+            }).then(function(canvas) {
+                // Get canvas dimensions
+                const canvasWidth = canvas.width;
+                const canvasHeight = canvas.height;
+                
+                // Calculate PDF dimensions
+                // Use A4 portrait for better table display
+                const pdfWidth = 595.28; // A4 width in points
+                const pdfHeight = 841.89; // A4 height in points
+                
+                // Use minimal margins
+                const margin = 10; // Minimal 10 points margin
+                const availableWidth = pdfWidth - (margin * 2);
+                const availableHeight = pdfHeight - (margin * 2);
+                
+                // Calculate scaling to maximize content area
+                const scaleX = availableWidth / canvasWidth;
+                const scaleY = availableHeight / canvasHeight;
+                const scale = Math.min(scaleX, scaleY);
+                
+                const finalWidth = canvasWidth * scale;
+                const finalHeight = canvasHeight * scale;
+                
+                // Check if content fits on one page
+                if (finalHeight <= availableHeight) {
+                    // Single page PDF - position at top-left with minimal margins
+                    const x = margin;
+                    const y = margin;
+                    
+                    const pdf = new jsPDF({
+                        orientation: 'portrait',
+                        unit: 'pt',
+                        format: 'a4'
+                    });
+                    
+                    const imgData = canvas.toDataURL('image/png');
+                    pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight);
+                    
+                    pdf.save('hybrid-learning-self-assessment.pdf');
+                } else {
+                    // Multi-page PDF with full width utilization
+                    const pdf = new jsPDF({
+                        orientation: 'portrait',
+                        unit: 'pt',
+                        format: 'a4'
+                    });
+                    
+                    const imgData = canvas.toDataURL('image/png');
+                    const pageHeight = availableHeight;
+                    const totalPages = Math.ceil(finalHeight / pageHeight);
+                    
+                    // Use full width with minimal margins
+                    const contentScale = availableWidth / canvasWidth;
+                    const scaledWidth = canvasWidth * contentScale;
+                    const x = margin;
+                    
+                    for (let i = 0; i < totalPages; i++) {
+                        if (i > 0) {
+                            pdf.addPage();
+                        }
+                        
+                        const sourceY = (i * pageHeight) / contentScale;
+                        const sourceHeight = Math.min(pageHeight / contentScale, canvasHeight - sourceY);
+                        const destHeight = sourceHeight * contentScale;
+                        
+                        // Create a temporary canvas for this page slice
+                        const tempCanvas = document.createElement('canvas');
+                        tempCanvas.width = canvasWidth;
+                        tempCanvas.height = sourceHeight;
+                        const tempCtx = tempCanvas.getContext('2d');
+                        
+                        tempCtx.drawImage(canvas, 0, sourceY, canvasWidth, sourceHeight, 0, 0, canvasWidth, sourceHeight);
+                        
+                        const tempImgData = tempCanvas.toDataURL('image/png');
+                        
+                        pdf.addImage(tempImgData, 'PNG', x, margin, scaledWidth, destHeight);
+                    }
+                    
+                    pdf.save('hybrid-learning-self-assessment.pdf');
+                }
+                
+                // Restore original styles
+                assessmentContainer.style.margin = originalStyles.margin;
+                assessmentContainer.style.padding = originalStyles.padding;
+                assessmentContainer.style.backgroundColor = originalStyles.backgroundColor;
+                assessmentContainer.style.borderRadius = originalStyles.borderRadius;
+                assessmentContainer.style.boxShadow = originalStyles.boxShadow;
+                
+                // Restore export controls
+                exportControls.style.display = 'flex';
+                instructions.style.display = 'block';
+                
+                // Hide loading overlay
+                loadingOverlay.style.display = 'none';
+            }).catch(function(error) {
+                console.error('Error generating PDF:', error);
+                alert('Error generating PDF. Please try again.');
+                
+                // Restore original styles
+                assessmentContainer.style.margin = originalStyles.margin;
+                assessmentContainer.style.padding = originalStyles.padding;
+                assessmentContainer.style.backgroundColor = originalStyles.backgroundColor;
+                assessmentContainer.style.borderRadius = originalStyles.borderRadius;
+                assessmentContainer.style.boxShadow = originalStyles.boxShadow;
+                
+                // Restore controls and hide loading
+                exportControls.style.display = 'flex';
+                instructions.style.display = 'block';
+                loadingOverlay.style.display = 'none';
+            });
+        }
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(event) {
+            // Ctrl/Cmd + P for print
+            if ((event.ctrlKey || event.metaKey) && event.key === 'p') {
+                event.preventDefault();
+                window.print();
+            }
+            
+            // Ctrl/Cmd + S for PNG export
+            if ((event.ctrlKey || event.metaKey) && event.key === 's') {
+                event.preventDefault();
+                exportPNG();
+            }
+            
+            // Ctrl/Cmd + Shift + S for PDF export
+            if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.key === 'S') {
+                event.preventDefault();
+                exportPDF();
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Hybrid Learning Self-Assessment loaded successfully');
+        });
+    </script>
+</body>
+</html> 

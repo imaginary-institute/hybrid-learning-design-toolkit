@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Learning and Teaching - Self-Assessment Tool</title>
+    <style>
+        :root {
+            --receiving-color: #5B9BD5;
+            --responding-color: #4CAF50;
+            --creating-color: #F9A03F;
+            --assessment-primary: #8B5A96;
+            --modality-color: #9C27B0;
+            
+            --receiving-bg: rgba(91, 155, 213, 0.1);
+            --responding-bg: rgba(76, 175, 80, 0.1);
+            --creating-bg: rgba(249, 160, 63, 0.1);
+            --modality-bg: rgba(156, 39, 176, 0.1);
+            
+            --border-color: #ddd;
+            --separator-color: #999;
+            --light-gray: #f5f5f5;
+            --medium-gray: #666;
+            --dark-gray: #333;
+            
+            --essential-color: #2D72A5;
+            --enhanced-color: #6464B4;
+            --transformative-color: #37946E;
+            --light-essential: rgba(45, 114, 165, 0.1);
+            --light-enhanced: rgba(100, 100, 180, 0.1);
+            --light-transformative: rgba(55, 148, 110, 0.1);
+            --heading-color: #333333;
+            --text-color: #444444;
+            --background-color: #FFFFFF;
+            --card-background: #F9F9F9;
+            --hint-color: #777777;
+            --primary-button: #5B9BD5;
+            --secondary-button: #f2f2f2;
+            --success-color: #4CAF50;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .app-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h1 {
+            color: var(--heading-color);
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--heading-color);
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: var(--heading-color);
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .progress-indicator {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .progress-step {
+            width: 18%;
+            height: 8px;
+            background-color: #e0e0e0;
+            margin: 0 5px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .progress-step.active {
+            background-color: var(--primary-button);
+        }
+
+        .progress-step.completed {
+            background-color: var(--success-color);
+        }
+
+        .step {
+            display: none;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        .step-content {
+            margin-bottom: 30px;
+        }
+
+        .intro-text {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-button);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #4A8BC2;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-button);
+            color: var(--text-color);
+        }
+
+        .btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            opacity: 0.7;
+            transform: none;
+        }
+
+        .dimension-section {
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            background-color: var(--card-background);
+        }
+
+        .dimension-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .dimension-number {
+            background-color: var(--essential-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .dimension-title {
+            flex-grow: 1;
+            margin: 0;
+        }
+
+        .reflection-toggle {
+            border: none;
+            background: none;
+            color: var(--primary-button);
+            cursor: pointer;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .reflection-toggle:hover {
+            text-decoration: underline;
+        }
+
+        .reflection-container {
+            display: none;
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .reflection-container.visible {
+            display: block;
+        }
+
+        .reflection-prompts {
+            margin-bottom: 15px;
+        }
+
+        .reflection-prompt {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .reflection-prompt::before {
+            content: "•";
+            margin-right: 10px;
+            font-weight: bold;
+            color: var(--essential-color);
+        }
+
+        .capability-matrix {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .capability-matrix th, .capability-matrix td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .capability-matrix th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .capability-matrix tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .capability-matrix tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        .capability-matrix td:last-child {
+            width: 80px;
+            text-align: center;
+        }
+
+        .implementation-zone {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+
+        .essential-zone {
+            background-color: var(--light-essential);
+            color: var(--essential-color);
+        }
+
+        .enhanced-zone {
+            background-color: var(--light-enhanced);
+            color: var(--enhanced-color);
+        }
+
+        .transformative-zone {
+            background-color: var(--light-transformative);
+            color: var(--transformative-color);
+        }
+
+        input[type="radio"] {
+            transform: scale(1.5);
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .selected-row {
+            background-color: var(--light-essential) !important;
+            border-left: 4px solid var(--essential-color);
+        }
+
+        .slider-container {
+            margin: 40px 0;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .context-reflection {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0 5px;
+        }
+
+        .slider-label {
+            font-size: 0.9em;
+            font-weight: bold;
+            text-align: center;
+            width: 20%;
+        }
+
+        .slider {
+            width: 100%;
+            height: 30px;
+            position: relative;
+            background-color: #e9e9e9;
+            border-radius: 15px;
+            margin: 10px 0;
+        }
+
+        .slider-points {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0 10px;
+        }
+
+        .slider-point {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 2px solid #aaa;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .slider-point.active {
+            background-color: var(--essential-color);
+            border-color: var(--essential-color);
+        }
+
+        .slider-numbers {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0 20px;
+        }
+
+        .slider-number {
+            font-size: 0.9em;
+            text-align: center;
+            width: 20%;
+        }
+
+        .context-levels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .context-level {
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        .context-level-number {
+            font-weight: bold;
+            color: var(--essential-color);
+            margin-right: 5px;
+        }
+
+        .compass-container {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .compass-svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .profile-analysis {
+            margin: 30px 0;
+            padding: 30px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f2f2f2;
+            padding-bottom: 15px;
+        }
+
+        .profile-badge-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .profile-label {
+            color: #777;
+            font-size: 1em;
+            margin-right: 10px;
+            font-weight: normal;
+        }
+
+        .profile-title {
+            margin: 0;
+        }
+
+        .profile-title h3 {
+            margin: 0;
+        }
+
+        .profile-type {
+            display: inline-block;
+            font-size: 1.1em;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 30px;
+            background-color: #f0f7ff;
+            color: var(--essential-color);
+        }
+
+        .profile-description {
+            margin-bottom: 25px;
+            font-size: 1.05em;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .profile-section {
+            margin-bottom: 20px;
+        }
+
+        .profile-section h4 {
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+            border-left: 4px solid var(--essential-color);
+            padding-left: 12px;
+        }
+
+        .profile-section ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .profile-section li {
+            margin-bottom: 8px;
+        }
+
+        .implementation-matrix {
+            margin: 30px 0;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .implementation-matrix h3 {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f2f2f2;
+            padding-bottom: 15px;
+        }
+
+        .implementation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .implementation-table th, 
+        .implementation-table td {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            text-align: left;
+        }
+
+        .implementation-table th {
+            background-color: #f5f7fa;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            color: #444;
+        }
+        
+        .implementation-table tr:hover {
+            background-color: #f9fbff;
+        }
+
+        .implementation-level {
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .implementation-level.essential {
+            background-color: var(--light-essential);
+            color: var(--essential-color);
+        }
+
+        .implementation-level.enhanced {
+            background-color: var(--light-enhanced);
+            color: var(--enhanced-color);
+        }
+
+        .implementation-level.transformative {
+            background-color: var(--light-transformative);
+            color: var(--transformative-color);
+        }
+
+        .dimension-name {
+            font-weight: 500;
+        }
+
+        .level-name {
+            font-style: italic;
+            color: #555;
+            font-size: 0.9em;
+        }
+
+        .support-impact {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .export-options {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .btn-export {
+            background-color: #2196F3;
+        }
+
+        .btn-export:hover {
+            background-color: #1976D2;
+        }
+
+        .btn-export-pdf {
+            background-color: var(--creating-color);
+        }
+
+        .btn-export-pdf:hover {
+            background-color: #F57C00;
+        }
+
+        .btn-export-print {
+            background-color: var(--assessment-primary);
+        }
+
+        .btn-export-print:hover {
+            background-color: #7A4F85;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: #777;
+            font-style: italic;
+        }
+
+        @media print {
+            .btn-container, 
+            .export-options,
+            .progress-indicator,
+            .reflection-toggle {
+                display: none !important;
+            }
+
+            .step {
+                display: block !important;
+                box-shadow: none;
+                break-inside: avoid;
+            }
+
+            body {
+                padding: 0;
+                font-size: 12pt;
+            }
+
+            .app-container {
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .dimension-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .dimension-number {
+                margin-bottom: 10px;
+            }
+
+            .capability-matrix th, .capability-matrix td {
+                padding: 8px 5px;
+                font-size: 0.9em;
+            }
+
+            .slider-label {
+                font-size: 0.8em;
+            }
+            
+            .context-levels {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Hybrid Learning and Teaching</h1>
+            <p class="subtitle">Interactive Self-Assessment Tool</p>
+            
+            <div class="progress-indicator">
+                <div class="progress-step active" data-step="1"></div>
+                <div class="progress-step" data-step="2"></div>
+                <div class="progress-step" data-step="3"></div>
+                <div class="progress-step" data-step="4"></div>
+                <div class="progress-step" data-step="5"></div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Step 1: Introduction -->
+            <section id="step-1" class="step active">
+                <div class="step-content">
+                    <h2>Welcome to the Hybrid Hybrid Learning and Teaching Self-Assessment Tool</h2>
+                    
+                    <div class="intro-text">
+                        <p>This interactive tool helps you assess your capabilities across the three dimensions of the Hybrid Learning Framework and determine appropriate implementation levels based on your institutional context.</p>
+                        
+                        <p>The assessment process involves four main steps:</p>
+                        <ol>
+                            <li>Evaluate your capability in <strong>Learning Environment & Technology</strong></li>
+                            <li>Evaluate your capability in <strong>Learning Experience Design & Assessment</strong></li>
+                            <li>Evaluate your capability in <strong>Facilitation, Equity & Community</strong></li>
+                            <li>Assess your <strong>Institutional Support</strong> level</li>
+                        </ol>
+                        
+                        <p>Upon completion, you'll receive a personalized readiness profile with implementation recommendations tailored to your specific context.</p>
+                    </div>
+                </div>
+                
+                <div class="btn-container">
+                    <button class="btn btn-secondary" disabled>Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Begin Assessment</button>
+                </div>
+            </section>
+
+            <!-- Step 2: Dimension 1 Assessment -->
+            <section id="step-2" class="step">
+                <div class="step-content">
+                    <div class="dimension-section">
+                        <div class="dimension-header">
+                            <div class="dimension-number">1</div>
+                            <h3 class="dimension-title">Learning Environment & Technology</h3>
+                        </div>
+                        
+                        <p>This dimension focuses on creating unified spaces that seamlessly integrate physical and virtual elements to support effective hybrid learning. Reflect on your capabilities in developing technological infrastructure, configuring physical spaces, and ensuring equitable access across participation modes.</p>
+                        
+                        <button class="reflection-toggle" onclick="toggleReflection('reflection-1')">
+                            <span>Show Reflection Prompts</span> <span id="reflection-1-icon">▼</span>
+                        </button>
+                        
+                        <div id="reflection-1" class="reflection-container">
+                            <div class="reflection-prompts">
+                                <div class="reflection-prompt">How familiar are you with the range of technologies needed for effective hybrid teaching?</div>
+                                <div class="reflection-prompt">How confidently can you select technologies that best support your specific learning goals?</div>
+                                <div class="reflection-prompt">How would you describe your approach to physical classroom setup for hybrid teaching?</div>
+                                <div class="reflection-prompt">What strategies do you use to ensure remote and in-person students can equally see and hear each other?</div>
+                                <div class="reflection-prompt">How do you handle technical problems that arise during hybrid sessions?</div>
+                                <div class="reflection-prompt">What backup plans do you have in place when technology fails?</div>
+                                <div class="reflection-prompt">Do you primarily use technology to replicate traditional teaching activities, or to create new types of learning experiences?</div>
+                                <div class="reflection-prompt">How do you select technologies based on specific learning objectives rather than just availability?</div>
+                                <div class="reflection-prompt">In what ways does your technology setup enable teaching methods that wouldn't be possible otherwise?</div>
+                                <div class="reflection-prompt">How do your technology choices affect the types of learning activities students can engage in?</div>
+                            </div>
+                        </div>
+                        
+                        <p>Based on your reflections, select the level that best describes your current capability:</p>
+                        
+                        <table class="capability-matrix">
+                            <tr>
+                                <th>Level</th>
+                                <th>Description</th>
+                                <th>Select</th>
+                            </tr>
+                            <tr id="dim1-level1-row">
+                                <td><strong>1 - EMERGING</strong></td>
+                                <td>I'm still learning the basics of hybrid technologies and need substantial guidance. I have limited experience with physical-virtual space integration and require step-by-step guidance for technical setup. My technology choices are primarily based on availability rather than pedagogical fit, and I struggle to adapt my teaching when technical issues arise.</td>
+                                <td><input type="radio" name="dimension1" value="1" onchange="selectLevel('dimension1', 1)"></td>
+                            </tr>
+                            <tr id="dim1-level2-row">
+                                <td><strong>2 - DEVELOPING</strong></td>
+                                <td>I can use standard video conferencing and basic digital tools. I have a basic understanding of room setup considerations but require support for more complex technological integration. I can make some connections between technology choices and learning objectives, but my approach primarily adapts traditional teaching methods rather than creating new possibilities.</td>
+                                <td><input type="radio" name="dimension1" value="2" onchange="selectLevel('dimension1', 2)"></td>
+                            </tr>
+                            <tr id="dim1-level3-row">
+                                <td><strong>3 - FUNCTIONAL</strong></td>
+                                <td>I'm comfortable managing standard hybrid classroom technology and can create workable physical-virtual learning environments. I can resolve common technical challenges and implement basic accessibility considerations. I select technologies that support specific learning goals and can adapt my teaching methods to leverage available tools to create effective learning experiences across modalities.</td>
+                                <td><input type="radio" name="dimension1" value="3" onchange="selectLevel('dimension1', 3)"></td>
+                            </tr>
+                            <tr id="dim1-level4-row">
+                                <td><strong>4 - PROFICIENT</strong></td>
+                                <td>I confidently integrate multiple technologies and design effective physical-virtual learning spaces. I anticipate and prevent most technical issues and implement comprehensive accessibility solutions. I deliberately select technologies that enable specific pedagogical approaches and can design learning activities that take advantage of the affordances of both physical and virtual participation.</td>
+                                <td><input type="radio" name="dimension1" value="4" onchange="selectLevel('dimension1', 4)"></td>
+                            </tr>
+                            <tr id="dim1-level5-row">
+                                <td><strong>5 - ADVANCED</strong></td>
+                                <td>I innovatively combine technologies for seamless experiences and create highly integrated physical-virtual environments. I develop sophisticated technical contingency systems and pioneer new approaches to accessibility and equity. My technology decisions are driven by pedagogical vision, enabling learning experiences that would be impossible in traditional settings, with a seamless integration of pedagogical goals and technological affordances.</td>
+                                <td><input type="radio" name="dimension1" value="5" onchange="selectLevel('dimension1', 5)"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="btn-container">
+                    <button class="btn btn-secondary" onclick="previousStep()">Previous</button>
+                    <button id="next-btn-2" class="btn btn-primary" onclick="nextStep()" disabled>Next</button>
+                </div>
+            </section>
+
+            <!-- Step 3: Dimension 2 Assessment -->
+            <section id="step-3" class="step">
+                <div class="step-content">
+                    <div class="dimension-section">
+                        <div class="dimension-header">
+                            <div class="dimension-number">2</div>
+                            <h3 class="dimension-title">Learning Experience Design & Assessment</h3>
+                        </div>
+                        
+                        <p>This dimension addresses the pedagogical aspects of hybrid learning, encompassing learning design, instructional activities, teaching strategies, and aligned assessment methods. It focuses on creating learning experiences that are equally effective for both on-site and remote students while leveraging the unique affordances of hybrid environments.</p>
+                        
+                        <button class="reflection-toggle" onclick="toggleReflection('reflection-2')">
+                            <span>Show Reflection Prompts</span> <span id="reflection-2-icon">▼</span>
+                        </button>
+                        
+                        <div id="reflection-2" class="reflection-container">
+                            <div class="reflection-prompts">
+                                <div class="reflection-prompt">How do you adapt your learning objectives and outcomes for hybrid contexts?</div>
+                                <div class="reflection-prompt">What approaches do you use to design learning activities that work across participation modes?</div>
+                                <div class="reflection-prompt">How do you balance structure and flexibility in your hybrid course design?</div>
+                                <div class="reflection-prompt">What strategies do you use to manage cognitive load for students in hybrid environments?</div>
+                                <div class="reflection-prompt">How do you ensure assessments are equitable for students regardless of participation mode?</div>
+                                <div class="reflection-prompt">In what ways do you incorporate formative feedback mechanisms across modalities?</div>
+                                <div class="reflection-prompt">How do you leverage the unique affordances of hybrid environments in your learning design?</div>
+                                <div class="reflection-prompt">To what extent do your learning activities encourage interaction between on-site and remote students?</div>
+                                <div class="reflection-prompt">How do you design alternative pathways that accommodate student choices in participation mode?</div>
+                                <div class="reflection-prompt">How does your assessment approach align with the hybrid nature of the learning experience?</div>
+                            </div>
+                        </div>
+                        
+                        <p>Based on your reflections, select the level that best describes your current capability:</p>
+                        
+                        <table class="capability-matrix">
+                            <tr>
+                                <th>Level</th>
+                                <th>Description</th>
+                                <th>Select</th>
+                            </tr>
+                            <tr id="dim2-level1-row">
+                                <td><strong>1 - EMERGING</strong></td>
+                                <td>I'm still adapting my teaching approach for hybrid contexts with minimal modifications to existing course materials. My activities primarily replicate traditional formats regardless of student location. I tend to use the same assessment methods for all students without significant adaptation for hybrid contexts. I struggle to provide equivalent learning experiences across participation modes.</td>
+                                <td><input type="radio" name="dimension2" value="1" onchange="selectLevel('dimension2', 1)"></td>
+                            </tr>
+                            <tr id="dim2-level2-row">
+                                <td><strong>2 - DEVELOPING</strong></td>
+                                <td>I can adapt simple learning activities for hybrid delivery but find more complex ones challenging. I provide clear instructions for both participation modes but haven't fully redesigned my course for the hybrid context. My assessment approaches are slightly modified for hybrid teaching, but I'm still working on ensuring full equity. I offer basic flexibility in how students engage with content.</td>
+                                <td><input type="radio" name="dimension2" value="2" onchange="selectLevel('dimension2', 2)"></td>
+                            </tr>
+                            <tr id="dim2-level3-row">
+                                <td><strong>3 - FUNCTIONAL</strong></td>
+                                <td>I intentionally redesign activities to function effectively across participation modes. I implement specific strategies to manage cognitive load for both myself and students. My assessments are designed with hybrid equity in mind, providing equivalent experiences regardless of location. I incorporate regular formative feedback mechanisms and offer reasonable flexibility in learning pathways.</td>
+                                <td><input type="radio" name="dimension2" value="3" onchange="selectLevel('dimension2', 3)"></td>
+                            </tr>
+                            <tr id="dim2-level4-row">
+                                <td><strong>4 - PROFICIENT</strong></td>
+                                <td>I design integrated learning experiences that leverage the affordances of hybrid formats. My course structure intentionally balances flexibility and guidance with well-designed supports for diverse participation patterns. I implement innovative assessment approaches specifically optimized for hybrid contexts. My learning design facilitates meaningful interaction between students regardless of location.</td>
+                                <td><input type="radio" name="dimension2" value="4" onchange="selectLevel('dimension2', 4)"></td>
+                            </tr>
+                            <tr id="dim2-level5-row">
+                                <td><strong>5 - ADVANCED</strong></td>
+                                <td>I create transformative learning experiences unique to hybrid formats that wouldn't be possible in single-mode settings. I seamlessly transition between physical and digital spaces in ways that enhance the learning journey. My course design offers highly personalized paths with strong scaffolding that supports student agency while maintaining rigor. My assessment approaches leverage the unique capabilities of hybrid environments in authentic ways.</td>
+                                <td><input type="radio" name="dimension2" value="5" onchange="selectLevel('dimension2', 5)"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="btn-container">
+                    <button class="btn btn-secondary" onclick="previousStep()">Previous</button>
+                    <button id="next-btn-3" class="btn btn-primary" onclick="nextStep()" disabled>Next</button>
+                </div>
+            </section>
+
+            <!-- Step 4: Dimension 3 Assessment -->
+            <section id="step-4" class="step">
+                <div class="step-content">
+                    <div class="dimension-section">
+                        <div class="dimension-header">
+                            <div class="dimension-number">3</div>
+                            <h3 class="dimension-title">Facilitation, Equity & Community</h3>
+                        </div>
+                        
+                        <p>This dimension focuses on implementing effective facilitation strategies, ensuring equitable participation, and building community across physical-virtual boundaries. It addresses the social and emotional aspects of learning that are particularly challenging in hybrid contexts where students may experience different forms of presence and belonging based on their participation mode.</p>
+                        
+                        <button class="reflection-toggle" onclick="toggleReflection('reflection-3')">
+                            <span>Show Reflection Prompts</span> <span id="reflection-3-icon">▼</span>
+                        </button>
+                        
+                        <div id="reflection-3" class="reflection-container">
+                            <div class="reflection-prompts">
+                                <div class="reflection-prompt">How do you ensure equitable attention and engagement between in-person and remote students?</div>
+                                <div class="reflection-prompt">What strategies do you use to facilitate discussions that bridge the physical-virtual divide?</div>
+                                <div class="reflection-prompt">How do you cultivate a sense of community among all participants regardless of location?</div>
+                                <div class="reflection-prompt">What approaches do you use to monitor and respond to student engagement across modalities?</div>
+                                <div class="reflection-prompt">How do you help students develop social presence when participating remotely?</div>
+                                <div class="reflection-prompt">What techniques do you employ to manage your attention between student groups?</div>
+                                <div class="reflection-prompt">How do you facilitate meaningful interaction between students in different participation modes?</div>
+                                <div class="reflection-prompt">What strategies do you use to ensure inclusive participation for students who might otherwise be marginalized?</div>
+                                <div class="reflection-prompt">How do you support students in making effective choices about their participation mode?</div>
+                                <div class="reflection-prompt">What approaches do you use to address the challenges of group identity and belonging in hybrid contexts?</div>
+                            </div>
+                        </div>
+                        
+                        <p>Based on your reflections, select the level that best describes your current capability:</p>
+                        
+                        <table class="capability-matrix">
+                            <tr>
+                                <th>Level</th>
+                                <th>Description</th>
+                                <th>Select</th>
+                            </tr>
+                            <tr id="dim3-level1-row">
+                                <td><strong>1 - EMERGING</strong></td>
+                                <td>I struggle to keep remote students as engaged as those who are present in-person. My facilitation approach tends to prioritize one participation mode over the other. I implement few specific strategies for community building across modalities. I find it challenging to monitor and respond to the engagement of all students simultaneously. I have limited approaches for supporting student agency in hybrid contexts.</td>
+                                <td><input type="radio" name="dimension3" value="1" onchange="selectLevel('dimension3', 1)"></td>
+                            </tr>
+                            <tr id="dim3-level2-row">
+                                <td><strong>2 - DEVELOPING</strong></td>
+                                <td>I implement basic inclusion strategies to acknowledge all participants. I use simple rotation of attention between student groups but sometimes overlook remote participants. I create structured participation opportunities but may not consistently balance engagement across modes. I implement introductory community-building activities but struggle to maintain connection throughout the course. I provide basic guidance for student participation choices.</td>
+                                <td><input type="radio" name="dimension3" value="2" onchange="selectLevel('dimension3', 2)"></td>
+                            </tr>
+                            <tr id="dim3-level3-row">
+                                <td><strong>3 - FUNCTIONAL</strong></td>
+                                <td>I create engaging experiences for both participation modes with intentional facilitation strategies. I implement effective protocols for balancing attention and participation across student groups. I monitor and manage engagement patterns to ensure relative equity. I facilitate meaningful cross-modal interaction between students in different locations. I address belonging and inclusion challenges with specific approaches.</td>
+                                <td><input type="radio" name="dimension3" value="3" onchange="selectLevel('dimension3', 3)"></td>
+                            </tr>
+                            <tr id="dim3-level4-row">
+                                <td><strong>4 - PROFICIENT</strong></td>
+                                <td>I design sophisticated approaches to engagement that foster strong connections across modalities. I implement strategic techniques to create parallel participation opportunities across locations. I facilitate multiple participation channels with effective monitoring systems. I develop ongoing community-building activities that transcend physical separation. I provide frameworks that support informed student choice and agency.</td>
+                                <td><input type="radio" name="dimension3" value="4" onchange="selectLevel('dimension3', 4)"></td>
+                            </tr>
+                            <tr id="dim3-level5-row">
+                                <td><strong>5 - ADVANCED</strong></td>
+                                <td>I pioneer innovative engagement approaches that fully integrate physical and virtual spaces into a unified learning environment. My facilitation appears seamless across modes with dynamic techniques that respond to emerging needs. I develop deep community that transcends location limitations, creating genuine connection regardless of participation mode. I implement fluid boundary-crossing interaction patterns where modality becomes increasingly irrelevant to participation quality.</td>
+                                <td><input type="radio" name="dimension3" value="5" onchange="selectLevel('dimension3', 5)"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="btn-container">
+                    <button class="btn btn-secondary" onclick="previousStep()">Previous</button>
+                    <button id="next-btn-4" class="btn btn-primary" onclick="nextStep()" disabled>Next</button>
+                </div>
+            </section>
+
+            <!-- Step 5: Institutional Support Assessment -->
+            <section id="step-5" class="step">
+                <div class="step-content">
+                    <h2>Institutional Support Assessment</h2>
+                    
+                    <p>Assess the level of support and resources available in your institutional context. This will help determine how your capability levels translate into realistic implementation approaches.</p>
+                    
+                    <div class="slider-container">
+                        <div class="context-reflection">
+                            Reflect on: Available technologies • Technical support • Physical spaces
+                            • Institutional policies • Professional development • Workload considerations
+                        </div>
+                        
+                        <div class="slider-labels">
+                            <div class="slider-label">MINIMAL<br>SUPPORT</div>
+                            <div class="slider-label">BASIC<br>SUPPORT</div>
+                            <div class="slider-label">ADEQUATE<br>SUPPORT</div>
+                            <div class="slider-label">STRONG<br>SUPPORT</div>
+                            <div class="slider-label">COMPREHENSIVE<br>SUPPORT</div>
+                        </div>
+                        
+                        <div class="slider">
+                            <div class="slider-points">
+                                <div class="slider-point" onclick="selectSupportLevel(1)"></div>
+                                <div class="slider-point" onclick="selectSupportLevel(2)"></div>
+                                <div class="slider-point" onclick="selectSupportLevel(3)"></div>
+                                <div class="slider-point" onclick="selectSupportLevel(4)"></div>
+                                <div class="slider-point" onclick="selectSupportLevel(5)"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="slider-numbers">
+                            <div class="slider-number">1</div>
+                            <div class="slider-number">2</div>
+                            <div class="slider-number">3</div>
+                            <div class="slider-number">4</div>
+                            <div class="slider-number">5</div>
+                        </div>
+                        
+                        <div class="context-levels">
+                            <div class="context-level">
+                                <span class="context-level-number">Level 1: MINIMAL SUPPORT</span>
+                                Very limited resources; self-supported implementation with basic technology, inadequate spaces, and little or no technical assistance.
+                            </div>
+                            <div class="context-level">
+                                <span class="context-level-number">Level 2: BASIC SUPPORT</span>
+                                Fundamental resources available but significant gaps exist; standard videoconferencing tools with limited additional equipment and minimal technical support.
+                            </div>
+                            <div class="context-level">
+                                <span class="context-level-number">Level 3: ADEQUATE SUPPORT</span>
+                                Sufficient resources for standard implementation; reliable technology setup, designated hybrid spaces, and accessible technical support.
+                            </div>
+                            <div class="context-level">
+                                <span class="context-level-number">Level 4: STRONG SUPPORT</span>
+                                Well-resourced with comprehensive support systems; advanced technology configurations, purpose-designed spaces, and dedicated technical assistance.
+                            </div>
+                            <div class="context-level">
+                                <span class="context-level-number">Level 5: COMPREHENSIVE SUPPORT</span>
+                                Exceptional resources with institutional prioritization; cutting-edge technology ecosystems, multiple specialized hybrid teaching spaces, and immediate technical assistance.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="btn-container">
+                    <button class="btn btn-secondary" onclick="previousStep()">Previous</button>
+                    <button id="next-btn-5" class="btn btn-primary" onclick="generateResults()" disabled>View Results</button>
+                </div>
+            </section>
+
+            <!-- Step 6: Results -->
+            <section id="step-6" class="step">
+                <div class="step-content">
+                    <h2>Your Hybrid Teaching Readiness Profile</h2>
+                    
+                    <div class="compass-container">
+                        <svg id="compass-svg" class="compass-svg" width="600" height="600" viewBox="0 0 600 600">
+                            <!-- Background circles -->
+                            <circle cx="300" cy="300" r="240" fill="none" stroke="#e0e0e0" stroke-width="1" />
+                            <circle cx="300" cy="300" r="190" fill="none" stroke="#e0e0e0" stroke-width="1" />
+                            <circle cx="300" cy="300" r="140" fill="none" stroke="#e0e0e0" stroke-width="1" />
+                            <circle cx="300" cy="300" r="90" fill="none" stroke="#e0e0e0" stroke-width="1" />
+                            <circle cx="300" cy="300" r="40" fill="none" stroke="#e0e0e0" stroke-width="1" />
+                            
+                            <!-- Implementation zones shading -->
+                            <path d="M300,300 L300,60 A240,240 0 0,1 508,180 Z" fill="rgba(55, 148, 110, 0.05)" stroke="none" />
+                            <path d="M300,300 L508,180 A240,240 0 0,1 508,420 Z" fill="rgba(55, 148, 110, 0.05)" stroke="none" />
+                            <path d="M300,300 L508,420 A240,240 0 0,1 300,540 Z" fill="rgba(55, 148, 110, 0.05)" stroke="none" />
+                            <path d="M300,300 L300,540 A240,240 0 0,1 92,420 Z" fill="rgba(55, 148, 110, 0.05)" stroke="none" />
+                            <path d="M300,300 L92,420 A240,240 0 0,1 92,180 Z" fill="rgba(55, 148, 110, 0.05)" stroke="none" />
+                            <path d="M300,300 L92,180 A240,240 0 0,1 300,60 Z" fill="rgba(55, 148, 110, 0.05)" stroke="none" />
+                            
+                            <path d="M300,300 L300,110 A190,190 0 0,1 464,205 Z" fill="rgba(100, 100, 180, 0.1)" stroke="none" />
+                            <path d="M300,300 L464,205 A190,190 0 0,1 464,395 Z" fill="rgba(100, 100, 180, 0.1)" stroke="none" />
+                            <path d="M300,300 L464,395 A190,190 0 0,1 300,490 Z" fill="rgba(100, 100, 180, 0.1)" stroke="none" />
+                            <path d="M300,300 L300,490 A190,190 0 0,1 136,395 Z" fill="rgba(100, 100, 180, 0.1)" stroke="none" />
+                            <path d="M300,300 L136,395 A190,190 0 0,1 136,205 Z" fill="rgba(100, 100, 180, 0.1)" stroke="none" />
+                            <path d="M300,300 L136,205 A190,190 0 0,1 300,110 Z" fill="rgba(100, 100, 180, 0.1)" stroke="none" />
+                            
+                            <path d="M300,300 L300,160 A140,140 0 0,1 421,230 Z" fill="rgba(45, 114, 165, 0.15)" stroke="none" />
+                            <path d="M300,300 L421,230 A140,140 0 0,1 421,370 Z" fill="rgba(45, 114, 165, 0.15)" stroke="none" />
+                            <path d="M300,300 L421,370 A140,140 0 0,1 300,440 Z" fill="rgba(45, 114, 165, 0.15)" stroke="none" />
+                            <path d="M300,300 L300,440 A140,140 0 0,1 179,370 Z" fill="rgba(45, 114, 165, 0.15)" stroke="none" />
+                            <path d="M300,300 L179,370 A140,140 0 0,1 179,230 Z" fill="rgba(45, 114, 165, 0.15)" stroke="none" />
+                            <path d="M300,300 L179,230 A140,140 0 0,1 300,160 Z" fill="rgba(45, 114, 165, 0.15)" stroke="none" />
+                            
+                            <!-- Zone labels -->
+                            <text x="300" y="150" text-anchor="end" fill="#37946E" font-size="14" font-weight="bold">TRANSFORMATIVE</text>
+                            <text x="300" y="200" text-anchor="end" fill="#6464B4" font-size="14" font-weight="bold">ENHANCED</text>
+                            <text x="300" y="250" text-anchor="end" fill="#2D72A5" font-size="14" font-weight="bold">ESSENTIAL</text>
+                            
+                            <!-- Axes -->
+                            <line x1="300" y1="300" x2="300" y2="40" stroke="#333" stroke-width="2" />
+                            <line x1="300" y1="300" x2="526" y2="430" stroke="#333" stroke-width="2" />
+                            <line x1="300" y1="300" x2="74" y2="430" stroke="#333" stroke-width="2" />
+                            
+                            <!-- Axis Labels -->
+                            <text x="300" y="30" text-anchor="middle" font-size="16" font-weight="bold">Learning Environment</text>
+                            <text x="300" y="50" text-anchor="middle" font-size="16" font-weight="bold">& Technology</text>
+                            
+                            <text x="540" y="450" text-anchor="end" font-size="16" font-weight="bold">Learning Experience</text>
+                            <text x="540" y="470" text-anchor="end" font-size="16" font-weight="bold">Design & Assessment</text>
+                            
+                            <text x="60" y="450" text-anchor="start" font-size="16" font-weight="bold">Facilitation, Equity</text>
+                            <text x="60" y="470" text-anchor="start" font-size="16" font-weight="bold">& Community</text>
+                            
+                            <!-- Scale markers -->
+                            <text x="314" y="65" text-anchor="start" font-size="14">5</text>
+                            <text x="314" y="115" text-anchor="start" font-size="14">4</text>
+                            <text x="314" y="165" text-anchor="start" font-size="14">3</text>
+                            <text x="314" y="215" text-anchor="start" font-size="14">2</text>
+                            <text x="314" y="265" text-anchor="start" font-size="14">1</text>
+                            
+                            <!-- User's readiness shape and points will be added dynamically via JavaScript -->
+                        </svg>
+                        
+                        <p><small>The compass visualizes your capabilities across the three dimensions and maps them to implementation levels (Essential, Enhanced, Transformative).</small></p>
+                    </div>
+                    
+                    <div class="profile-analysis">
+                        <div class="profile-header">
+                            <div class="profile-badge-container">
+                                <span class="profile-label">Your profile is:</span>
+                                <div id="profile-type" class="profile-type">
+                                    <!-- Dynamically populated -->
+                                </div>
+                            </div>
+                            <div class="profile-title">
+                                <h3>Readiness Profile Analysis</h3>
+                            </div>
+                        </div>
+                        
+                        <div id="profile-description" class="profile-description">
+                            <!-- Dynamically populated -->
+                        </div>
+                        
+                        <div id="profile-characteristics" class="profile-section">
+                            <!-- Dynamically populated -->
+                        </div>
+                        
+                        <div id="profile-approach" class="profile-section">
+                            <!-- Dynamically populated -->
+                        </div>
+                    </div>
+                    
+                    <div class="implementation-matrix">
+                        <h3>Implementation Recommendations</h3>
+                        <p>Based on your capability levels and institutional support context, here are the recommended implementation levels for each dimension:</p>
+                        
+                        <table class="implementation-table">
+                            <thead>
+                                <tr>
+                                    <th>Dimension</th>
+                                    <th>Capability Level</th>
+                                    <th>Capability-Based Implementation</th>
+                                    <th>Support Impact</th>
+                                    <th>Final Recommended Implementation</th>
+                                </tr>
+                            </thead>
+                            <tbody id="implementation-recommendations">
+                                <!-- Dynamically populated -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="export-options">
+                        <button class="btn btn-export-print" onclick="window.print()">Print Results</button>
+                        <button class="btn btn-export-pdf" onclick="exportToPDF()">Save as PDF</button>
+                    </div>
+                </div>
+                
+                <div class="btn-container">
+                    <button class="btn btn-secondary" onclick="previousStep()">Back to Assessment</button>
+                    <button class="btn btn-primary" onclick="resetAssessment()">Start New Assessment</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+        </footer>
+    </div>
+
+    <script>
+        // Application State
+        const appState = {
+            currentStep: 1,
+            dimension1: 0,
+            dimension2: 0,
+            dimension3: 0,
+            supportLevel: 0,
+            profileType: '',
+        };
+
+        // Implementation level mapping
+        const implementationLevels = {
+            1: "Essential",
+            2: "Essential",
+            3: "Enhanced",
+            4: "Enhanced",
+            5: "Transformative"
+        };
+
+        // Implementation level colors
+        const implementationColors = {
+            "Essential": "#2D72A5",
+            "Enhanced": "#6464B4",
+            "Transformative": "#37946E"
+        };
+
+        // Calculate SVG coordinates for a capability level
+        function calculateLevelCoordinates(dimension, level) {
+            const center = 300;
+            const maxRadius = 240;
+            const levelStep = 50;
+            const radius = maxRadius - (5 - level) * levelStep;
+            
+            // Calculate angle (in radians) for the dimension
+            let angle;
+            if (dimension === 1) angle = -Math.PI/2;  // Top (270 degrees)
+            else if (dimension === 2) angle = Math.PI/6;  // Bottom right (30 degrees)
+            else angle = 5*Math.PI/6;  // Bottom left (150 degrees)
+            
+            const x = center + radius * Math.cos(angle);
+            const y = center + radius * Math.sin(angle);
+            
+            return { x, y };
+        }
+
+        // Navigation functions
+        function nextStep() {
+            if (appState.currentStep < 6) {
+                document.getElementById(`step-${appState.currentStep}`).classList.remove('active');
+                appState.currentStep++;
+                document.getElementById(`step-${appState.currentStep}`).classList.add('active');
+                updateProgressBar();
+            }
+        }
+
+        function previousStep() {
+            if (appState.currentStep > 1) {
+                document.getElementById(`step-${appState.currentStep}`).classList.remove('active');
+                appState.currentStep--;
+                document.getElementById(`step-${appState.currentStep}`).classList.add('active');
+                updateProgressBar();
+            }
+        }
+
+        function updateProgressBar() {
+            const steps = document.querySelectorAll('.progress-step');
+            steps.forEach((step, index) => {
+                const stepNum = index + 1;
+                if (stepNum < appState.currentStep) {
+                    step.classList.add('completed');
+                    step.classList.remove('active');
+                } else if (stepNum === appState.currentStep) {
+                    step.classList.add('active');
+                    step.classList.remove('completed');
+                } else {
+                    step.classList.remove('active', 'completed');
+                }
+            });
+        }
+
+        // Toggle reflection prompts visibility
+        function toggleReflection(id) {
+            const container = document.getElementById(id);
+            const iconElement = document.getElementById(`${id}-icon`);
+            
+            if (container.classList.contains('visible')) {
+                container.classList.remove('visible');
+                iconElement.textContent = '▼';
+            } else {
+                container.classList.add('visible');
+                iconElement.textContent = '▲';
+            }
+        }
+
+        // Handle capability level selection
+        function selectLevel(dimension, level) {
+            // Update state
+            appState[dimension] = level;
+            
+            // Highlight selected row
+            for (let i = 1; i <= 5; i++) {
+                const rowId = `${dimension}-level${i}-row`;
+                const row = document.getElementById(rowId);
+                if (row) { // Check if row exists before accessing it
+                    if (i === level) {
+                        row.classList.add('selected-row');
+                    } else {
+                        row.classList.remove('selected-row');
+                    }
+                }
+            }
+            
+            // Enable next button
+            const nextBtnId = `next-btn-${appState.currentStep}`;
+            const nextBtn = document.getElementById(nextBtnId);
+            if (nextBtn) {
+                nextBtn.disabled = false;
+            }
+        }
+
+        // Handle support level selection
+        function selectSupportLevel(level) {
+            // Update state
+            appState.supportLevel = level;
+            
+            // Highlight selected slider point
+            const sliderPoints = document.querySelectorAll('.slider-point');
+            sliderPoints.forEach((point, index) => {
+                if (index + 1 === level) {
+                    point.classList.add('active');
+                } else {
+                    point.classList.remove('active');
+                }
+            });
+            
+            // Enable next button
+            const nextBtn = document.getElementById('next-btn-5');
+            if (nextBtn) {
+                nextBtn.disabled = false;
+            }
+        }
+
+        // Generate results
+        function generateResults() {
+            // Navigate to results page
+            document.getElementById(`step-${appState.currentStep}`).classList.remove('active');
+            appState.currentStep++;
+            document.getElementById(`step-${appState.currentStep}`).classList.add('active');
+            updateProgressBar();
+            
+            // Draw compass visualization
+            drawCompass();
+            
+            // Determine profile type
+            determineProfileType();
+            
+            // Generate implementation recommendations
+            generateImplementationRecommendations();
+        }
+
+        // Draw compass visualization
+        function drawCompass() {
+            const svg = document.getElementById('compass-svg');
+            
+            // Get coordinates for each dimension
+            const dim1Coords = calculateLevelCoordinates(1, appState.dimension1);
+            const dim2Coords = calculateLevelCoordinates(2, appState.dimension2);
+            const dim3Coords = calculateLevelCoordinates(3, appState.dimension3);
+            
+            // Draw point for dimension 1
+            const point1 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            point1.setAttribute("cx", dim1Coords.x);
+            point1.setAttribute("cy", dim1Coords.y);
+            point1.setAttribute("r", 8);
+            point1.setAttribute("fill", implementationColors[implementationLevels[appState.dimension1]]);
+            point1.setAttribute("stroke", "#fff");
+            point1.setAttribute("stroke-width", 1);
+            svg.appendChild(point1);
+            
+            // Draw point for dimension 2
+            const point2 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            point2.setAttribute("cx", dim2Coords.x);
+            point2.setAttribute("cy", dim2Coords.y);
+            point2.setAttribute("r", 8);
+            point2.setAttribute("fill", implementationColors[implementationLevels[appState.dimension2]]);
+            point2.setAttribute("stroke", "#fff");
+            point2.setAttribute("stroke-width", 1);
+            svg.appendChild(point2);
+            
+            // Draw point for dimension 3
+            const point3 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            point3.setAttribute("cx", dim3Coords.x);
+            point3.setAttribute("cy", dim3Coords.y);
+            point3.setAttribute("r", 8);
+            point3.setAttribute("fill", implementationColors[implementationLevels[appState.dimension3]]);
+            point3.setAttribute("stroke", "#fff");
+            point3.setAttribute("stroke-width", 1);
+            svg.appendChild(point3);
+            
+            // Draw path connecting points
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            path.setAttribute("d", `M${dim1Coords.x},${dim1Coords.y} L${dim2Coords.x},${dim2Coords.y} L${dim3Coords.x},${dim3Coords.y} Z`);
+            path.setAttribute("fill", "rgba(100, 100, 180, 0.2)");
+            path.setAttribute("stroke", "#6464B4");
+            path.setAttribute("stroke-width", 2);
+            path.setAttribute("stroke-dasharray", "5,3");
+            svg.appendChild(path);
+            
+            // Add labels for selected levels
+            const label1 = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            label1.setAttribute("x", dim1Coords.x);
+            label1.setAttribute("y", dim1Coords.y - 15);
+            label1.setAttribute("text-anchor", "middle");
+            label1.setAttribute("font-size", 14);
+            label1.setAttribute("font-weight", "bold");
+            label1.setAttribute("fill", implementationColors[implementationLevels[appState.dimension1]]);
+            label1.textContent = appState.dimension1;
+            svg.appendChild(label1);
+            
+            const label2 = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            label2.setAttribute("x", dim2Coords.x + 15);
+            label2.setAttribute("y", dim2Coords.y);
+            label2.setAttribute("text-anchor", "start");
+            label2.setAttribute("font-size", 14);
+            label2.setAttribute("font-weight", "bold");
+            label2.setAttribute("fill", implementationColors[implementationLevels[appState.dimension2]]);
+            label2.textContent = appState.dimension2;
+            svg.appendChild(label2);
+            
+            const label3 = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            label3.setAttribute("x", dim3Coords.x - 15);
+            label3.setAttribute("y", dim3Coords.y);
+            label3.setAttribute("text-anchor", "end");
+            label3.setAttribute("font-size", 14);
+            label3.setAttribute("font-weight", "bold");
+            label3.setAttribute("fill", implementationColors[implementationLevels[appState.dimension3]]);
+            label3.textContent = appState.dimension3;
+            svg.appendChild(label3);
+        }
+
+        // Determine profile type based on capability levels
+        function determineProfileType() {
+            const dim1 = appState.dimension1;
+            const dim2 = appState.dimension2;
+            const dim3 = appState.dimension3;
+            const support = appState.supportLevel;
+            
+            // Check if all dimensions are at similar levels
+            const maxDiff = Math.max(Math.abs(dim1 - dim2), Math.abs(dim1 - dim3), Math.abs(dim2 - dim3));
+            
+            if (maxDiff <= 1) {
+                // Balanced profiles
+                const avgLevel = Math.round((dim1 + dim2 + dim3) / 3);
+                if (avgLevel <= 2) {
+                    appState.profileType = "Balanced Beginner";
+                } else if (avgLevel >= 4) {
+                    appState.profileType = "Balanced Advanced";
+                } else {
+                    appState.profileType = "Balanced Intermediate";
+                }
+            } else {
+                // Check for dimension-dominant profiles
+                if (dim1 > dim2 && dim1 > dim3) {
+                    appState.profileType = "Technology-Forward";
+                } else if (dim2 > dim1 && dim2 > dim3) {
+                    appState.profileType = "Pedagogy-Centered";
+                } else if (dim3 > dim1 && dim3 > dim2) {
+                    appState.profileType = "Community-Focused";
+                } else {
+                    // Fall back to balanced assessment if no clear dominance
+                    const avgLevel = Math.round((dim1 + dim2 + dim3) / 3);
+                    if (avgLevel <= 2) {
+                        appState.profileType = "Balanced Beginner";
+                    } else if (avgLevel >= 4) {
+                        appState.profileType = "Balanced Advanced";
+                    } else {
+                        appState.profileType = "Balanced Intermediate";
+                    }
+                }
+            }
+            
+            // Check for resource constraints or advantages
+            const avgCapability = (dim1 + dim2 + dim3) / 3;
+            if (support < avgCapability - 1) {
+                appState.profileType = "Resource-Constrained";
+            } else if (support > avgCapability + 1) {
+                appState.profileType = "Resource-Advantaged";
+            }
+            
+            // Display profile type and description
+            displayProfileAnalysis();
+        }
+
+        // Display profile analysis
+        function displayProfileAnalysis() {
+            const profileType = document.getElementById('profile-type');
+            const profileDescription = document.getElementById('profile-description');
+            const profileCharacteristics = document.getElementById('profile-characteristics');
+            const profileApproach = document.getElementById('profile-approach');
+            
+            profileType.textContent = appState.profileType;
+            
+            // Set profile descriptions based on type
+            let description = '';
+            let characteristics = '';
+            let approach = '';
+            
+            switch(appState.profileType) {
+                case "Technology-Forward":
+                    description = `You demonstrate strongest capabilities in creating effective learning environments and integrating technology for hybrid teaching. This provides a solid technical foundation on which to build your pedagogical and facilitation skills.`;
+                    
+                    characteristics = `
+                        <h4>Key Characteristics:</h4>
+                        <ul>
+                            <li>Strong technical infrastructure skills and physical-virtual space design</li>
+                            <li>Effective technology troubleshooting and contingency planning</li>
+                            <li>Need for further development in learning design or facilitation techniques</li>
+                        </ul>
+                    `;
+                    
+                    approach = `
+                        <h4>Implementation Approach:</h4>
+                        <p>Leverage your technological strengths while developing pedagogical approaches and facilitation techniques. Research by Raes et al. (2019) suggests focusing on audio quality optimization and creating reliable technical infrastructures first, then building pedagogical sophistication.</p>
+                    `;
+                    break;
+                    
+                case "Pedagogy-Centered":
+                    description = `You demonstrate strongest capabilities in learning design, activity development, and assessment approaches for hybrid contexts. This provides a solid pedagogical foundation on which to build your technological and facilitation skills.`;
+                    
+                    characteristics = `
+                        <h4>Key Characteristics:</h4>
+                        <ul>
+                            <li>Strong instructional design skills adapted for hybrid contexts</li>
+                            <li>Effective assessment approaches that work across participation modes</li>
+                            <li>Need for further development in technology integration or community-building</li>
+                        </ul>
+                    `;
+                    
+                    approach = `
+                        <h4>Implementation Approach:</h4>
+                        <p>Apply your strong instructional design capabilities while progressively enhancing technological and facilitation approaches. Research by Wagner et al. (2024) indicates that focusing on activity design that works across modalities produces better outcomes than focusing primarily on technology.</p>
+                    `;
+                    break;
+                    
+                case "Community-Focused":
+                    description = `You demonstrate strongest capabilities in facilitation, equity maintenance, and community development across physical-virtual boundaries. This provides a solid engagement foundation on which to build your technological and design skills.`;
+                    
+                    characteristics = `
+                        <h4>Key Characteristics:</h4>
+                        <ul>
+                            <li>Strong facilitation skills that balance attention across participation modes</li>
+                            <li>Effective community building that creates connection regardless of location</li>
+                            <li>Need for further development in technology integration or learning design</li>
+                        </ul>
+                    `;
+                    
+                    approach = `
+                        <h4>Implementation Approach:</h4>
+                        <p>Build on your facilitation and engagement strengths while developing technological and pedagogical approaches. Research by Wagner et al. (2023) suggests that strong facilitation can partially compensate for technological limitations, making this a viable starting point.</p>
+                    `;
+                    break;
+                    
+                case "Balanced Beginner":
+                    description = `You demonstrate similar capabilities at an early developmental stage across all three dimensions of the Hybrid Learning Framework. This provides an opportunity to build a consistent foundation across all aspects of hybrid teaching.`;
+                    
+                    characteristics = `
+                        <h4>Key Characteristics:</h4>
+                        <ul>
+                            <li>Emerging skills in technology, learning design, and facilitation</li>
+                            <li>Consistent development needs across all dimensions</li>
+                            <li>Opportunity to build an integrated approach from the start</li>
+                        </ul>
+                    `;
+                    
+                    approach = `
+                        <h4>Implementation Approach:</h4>
+                        <p>Implement at the Essential level across all dimensions, focusing first on the dimension most critical to your immediate teaching context. Research by Handayani & Sulastri (2022) documents that educators typically progress through identifiable stages, requiring different support structures at each phase.</p>
+                    `;
+                    break;
+                    
+                case "Balanced Intermediate":
+                    description = `You demonstrate similar capabilities at a moderate developmental stage across all three dimensions of the Hybrid Learning Framework. This balanced approach provides a solid foundation for more sophisticated hybrid teaching implementation.`;
+                    
+                    characteristics = `
+                        <h4>Key Characteristics:</h4>
+                        <ul>
+                            <li>Functional skills in technology, learning design, and facilitation</li>
+                            <li>Balanced capabilities that enable cohesive implementation</li>
+                            <li>Ready for more advanced approaches in highest-rated dimension</li>
+                        </ul>
+                    `;
+                    
+                    approach = `
+                        <h4>Implementation Approach:</h4>
+                        <p>Move toward Enhanced implementation in your highest-rated dimension first, while maintaining Essential implementation in other dimensions. Research by Ørngreen et al. (2015) and Almuarik & Alangari (2024) suggests that managing cognitive load is crucial at this stage of development.</p>
+                    `;
+                    break;
+                    
+                case "Balanced Advanced":
+                    description = `You demonstrate similar capabilities at an advanced developmental stage across all three dimensions of the Hybrid Learning Framework. This integrated mastery enables sophisticated and innovative hybrid teaching approaches.`;
+                    
+                    characteristics = `
+                        <h4>Key Characteristics:</h4>
+                        <ul>
+                            <li>Advanced skills in technology, learning design, and facilitation</li>
+                            <li>Comprehensive understanding of hybrid teaching complexities</li>
+                            <li>Ready for transformative approaches where institutional context allows</li>
+                        </ul>
+                    `;
+                    
+                    approach = `
+                        <h4>Implementation Approach:</h4>
+                        <p>Pursue Transformative implementation in dimensions rated highest, with Enhanced implementation in other dimensions. Consider mentoring colleagues and contributing to institutional practice. Research by Griffin et al. (2022) highlights the role of advanced practitioners in building institutional capacity.</p>
+                    `;
+                    break;
+                    
+                case "Resource-Constrained":
+                    description = `Your capabilities exceed the level of institutional support available for hybrid teaching implementation. This mismatch requires strategic approaches that focus on sustainable, high-impact practices within resource limitations.`;
+                    
+                    characteristics = `
+                        <h4>Key Characteristics:</h4>
+                        <ul>
+                            <li>Personal capabilities that exceed available institutional resources</li>
+                            <li>Need for pragmatic implementation within constraints</li>
+                            <li>Potential for advocacy to enhance institutional support</li>
+                        </ul>
+                    `;
+                    
+                    approach = `
+                        <h4>Implementation Approach:</h4>
+                        <p>Implement at levels supported by institutional context while advocating for enhanced resources. Focus on low-resource, high-impact strategies. Research by Handayani & Sulastri (2022) emphasizes the importance of aligning ambition with available support to prevent burnout.</p>
+                    `;
+                    break;
+                    
+                case "Resource-Advantaged":
+                    description = `The level of institutional support available exceeds your current capability levels. This presents an opportunity for accelerated development through leveraging available resources to enhance your skills across all dimensions.`;
+                    
+                    characteristics = `
+                        <h4>Key Characteristics:</h4>
+                        <ul>
+                            <li>Institutional resources that exceed current personal capabilities</li>
+                            <li>Opportunity for rapid skill development and experimentation</li>
+                            <li>Access to support that can accelerate implementation progress</li>
+                        </ul>
+                    `;
+                    
+                    approach = `
+                        <h4>Implementation Approach:</h4>
+                        <p>Initially implement at levels matching your current capabilities while leveraging institutional resources to rapidly advance skills. Prioritize development in the dimension that would benefit most from available resources. Research by Fabian et al. (2024) suggests that strong institutional support can significantly accelerate capability development.</p>
+                    `;
+                    break;
+                    
+                default:
+                    description = `Based on your assessment, a specific profile could not be determined. Please review your selections and try again.`;
+            }
+            
+            profileDescription.innerHTML = description;
+            profileCharacteristics.innerHTML = characteristics;
+            profileApproach.innerHTML = approach;
+        }
+
+        // Determine implementation level based on capability and support
+        function determineImplementationLevel(dimension, capabilityLevel, supportLevel) {
+            let baseImplementation = implementationLevels[capabilityLevel];
+            let supportImpact = "No change";
+            let finalImplementation = baseImplementation;
+            
+            // Apply support level modifiers based on dimension
+            if (dimension === 1) { // Technology dimension most affected by support
+                if (supportLevel === 1 && capabilityLevel > 2) {
+                    finalImplementation = "Essential";
+                    supportImpact = "Reduced by 1-2 levels";
+                } else if (supportLevel === 2 && capabilityLevel > 3) {
+                    finalImplementation = "Enhanced";
+                    supportImpact = "Reduced by 1 level";
+                }
+            } else if (dimension === 2) { // Learning Design moderately affected
+                if (supportLevel === 1 && capabilityLevel > 3) {
+                    finalImplementation = "Enhanced";
+                    supportImpact = "Reduced by 1 level";
+                }
+            } else { // Facilitation least affected by support
+                // No reduction for Facilitation dimension at most support levels
+                supportImpact = "No change";
+            }
+            
+            // Resource-Advantaged can potentially enhance implementation
+            if (supportLevel >= 4 && capabilityLevel < 3 && appState.profileType === "Resource-Advantaged") {
+                supportImpact = "Potential acceleration";
+            }
+            
+            return {
+                baseImplementation,
+                supportImpact,
+                finalImplementation
+            };
+        }
+
+        // Generate implementation recommendations
+        function generateImplementationRecommendations() {
+            const implementationTable = document.getElementById('implementation-recommendations');
+            const dimensions = [
+                { id: 1, name: "Learning Environment & Technology", level: appState.dimension1 },
+                { id: 2, name: "Learning Experience Design & Assessment", level: appState.dimension2 },
+                { id: 3, name: "Facilitation, Equity & Community", level: appState.dimension3 }
+            ];
+            
+            let tableContent = '';
+            
+            dimensions.forEach(dim => {
+                const implementation = determineImplementationLevel(dim.id, dim.level, appState.supportLevel);
+                
+                tableContent += `
+                    <tr>
+                        <td>${dim.name}</td>
+                        <td>${dim.level} - ${getLevelName(dim.level)}</td>
+                        <td>${implementation.baseImplementation}</td>
+                        <td>${implementation.supportImpact}</td>
+                        <td><strong>${implementation.finalImplementation}</strong></td>
+                    </tr>
+                `;
+            });
+            
+            implementationTable.innerHTML = tableContent;
+        }
+
+        // Helper function to get level name from level value
+        function getLevelName(level) {
+            const levelNames = {
+                1: "EMERGING",
+                2: "DEVELOPING",
+                3: "FUNCTIONAL",
+                4: "PROFICIENT",
+                5: "ADVANCED"
+            };
+            return levelNames[level];
+        }
+
+        // Export to PDF function (simplified - in a real implementation, would use a library like jsPDF)
+        function exportToPDF() {
+            alert("In a full implementation, this would save the results as a PDF file using a library like jsPDF.\n\nFor now, please use the browser's print function (File > Print) and select 'Save as PDF' as the printer option.");
+            window.print();
+        }
+
+        // Reset assessment
+        function resetAssessment() {
+            // Reset state
+            appState.currentStep = 1;
+            appState.dimension1 = 0;
+            appState.dimension2 = 0;
+            appState.dimension3 = 0;
+            appState.supportLevel = 0;
+            appState.profileType = '';
+            
+            // Reset UI - uncheck all radio buttons
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.checked = false;
+            });
+            
+            // Reset selected rows
+            document.querySelectorAll('.selected-row').forEach(row => {
+                row.classList.remove('selected-row');
+            });
+            
+            // Reset support level slider
+            document.querySelectorAll('.slider-point').forEach(point => {
+                point.classList.remove('active');
+            });
+            
+            // Reset next buttons
+            document.querySelectorAll('.btn-primary').forEach(btn => {
+                if (btn.id.startsWith('next-btn-')) {
+                    btn.disabled = true;
+                }
+            });
+            
+            // Navigate to step 1
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.getElementById('step-1').classList.add('active');
+            
+            // Reset progress bar
+            updateProgressBar();
+        }
+
+        // Local storage functions for saving and loading assessment
+        function saveAssessment() {
+            localStorage.setItem('hybridTeachingCompass', JSON.stringify(appState));
+        }
+
+        // Load assessment from local storage
+        function loadAssessment() {
+            const savedState = localStorage.getItem('hybridTeachingCompass');
+            if (savedState) {
+                try {
+                    const parsedState = JSON.parse(savedState);
+                    
+                    // Only update state if values are valid
+                    if (parsedState.dimension1 > 0 && parsedState.dimension1 <= 5) {
+                        appState.dimension1 = parsedState.dimension1;
+                        // Update UI to reflect loaded state - safely
+                        const radioEl = document.querySelector(`input[name="dimension1"][value="${parsedState.dimension1}"]`);
+                        if (radioEl) {
+                            radioEl.checked = true;
+                            selectLevel('dimension1', parsedState.dimension1);
+                        }
+                    }
+                    
+                    if (parsedState.dimension2 > 0 && parsedState.dimension2 <= 5) {
+                        appState.dimension2 = parsedState.dimension2;
+                        // Update UI to reflect loaded state - safely
+                        const radioEl = document.querySelector(`input[name="dimension2"][value="${parsedState.dimension2}"]`);
+                        if (radioEl) {
+                            radioEl.checked = true;
+                            selectLevel('dimension2', parsedState.dimension2);
+                        }
+                    }
+                    
+                    if (parsedState.dimension3 > 0 && parsedState.dimension3 <= 5) {
+                        appState.dimension3 = parsedState.dimension3;
+                        // Update UI to reflect loaded state - safely
+                        const radioEl = document.querySelector(`input[name="dimension3"][value="${parsedState.dimension3}"]`);
+                        if (radioEl) {
+                            radioEl.checked = true;
+                            selectLevel('dimension3', parsedState.dimension3);
+                        }
+                    }
+                    
+                    if (parsedState.supportLevel > 0 && parsedState.supportLevel <= 5) {
+                        appState.supportLevel = parsedState.supportLevel;
+                        // Only call selectSupportLevel if we're on the right step
+                        if (document.querySelector('.slider-point')) {
+                            selectSupportLevel(parsedState.supportLevel);
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error loading saved assessment:", error);
+                    // Clear corrupted state
+                    localStorage.removeItem('hybridTeachingCompass');
+                }
+            }
+        }
+
+        // Autosave when values change
+        function setupAutosave() {
+            // Save whenever a dimension or support level changes
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', saveAssessment);
+            });
+            
+            document.querySelectorAll('.slider-point').forEach(point => {
+                point.addEventListener('click', saveAssessment);
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize event listeners for radio buttons
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const dimension = this.name;
+                    const level = parseInt(this.value);
+                    selectLevel(dimension, level);
+                });
+            });
+            
+            // Initialize event listeners for slider points
+            document.querySelectorAll('.slider-point').forEach((point, index) => {
+                point.addEventListener('click', function() {
+                    selectSupportLevel(index + 1);
+                });
+            });
+            
+            // Load saved assessment
+            loadAssessment();
+            
+            // Setup autosave
+            setupAutosave();
+        });
+    </script>
+</body>
+</html>

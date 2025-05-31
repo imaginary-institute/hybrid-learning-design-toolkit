@@ -1,0 +1,2099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Learning Activity Cards</title>
+    <!-- Add html2canvas and jsPDF libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        :root {
+            --receiving-color: #5B9BD5;
+            --responding-color: #4CAF50;
+            --creating-color: #F9A03F;
+            --border-color: #ddd;
+            --separator-color: #999;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --medium-gray: #666;
+            --light-medium-gray: #999;
+        
+            --card-width: 900px;
+            --side-width: calc(var(--card-width) / 2);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+
+        .card-selector {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background: white;
+        }
+
+        .nav-button {
+            padding: 10px 20px;
+            background-color: var(--responding-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .nav-button:hover {
+            background-color: #45a049;
+        }
+
+        .nav-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .batch-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            border-left: 2px solid #ddd;
+            padding-left: 20px;
+            margin-left: 20px;
+        }
+
+        .batch-label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .btn-batch {
+            background-color: #9C27B0;
+        }
+
+        .btn-batch:hover:not(:disabled) {
+            background-color: #7B1FA2;
+        }
+
+        .progress-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f0f4f8;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--responding-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .card-display {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .card-container {
+            width: var(--card-width);
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+        
+        .card-side {
+            width: var(--side-width);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-side-right {
+            border-left: 1px dotted var(--separator-color);
+        }
+
+        .card-side-left {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-header {
+            height: 50px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        .engagement-icon {
+            background-color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 18px;
+            margin: 0 5px;
+        }
+        
+        .purpose-label {
+            background-color: white;
+            color: var(--dark-gray);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .activity-content {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .activity-name {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--dark-gray);
+            margin-bottom: 5px;
+        }
+        
+        .engagement-level {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+        }
+        
+        .benefits {
+            margin-bottom: 20px;
+        }
+        
+        .benefits-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .benefits-list {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .benefits-list li {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .time-estimate {
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .time-icon {
+            margin-right: 8px;
+        }
+
+        .tech-structure {
+            border-top: 1px solid var(--light-gray);
+            padding-top: 15px;
+        }
+        
+        .tech-structure-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .tech-structure-list {
+            list-style-type: none;
+        }
+        
+        .tech-structure-list li {
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: flex;
+        }
+
+        .tech-structure-label {
+            font-weight: 600;
+            width: 70px;
+            margin-right: 5px;
+        }
+        
+        .card-side-right {
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .implementation-steps {
+            list-style-type: decimal;
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .implementation-steps li {
+            font-size: 14px;
+            margin-bottom: 5px;
+            padding-left: 5px;
+        }
+        
+        .implementation-steps .example-text {
+            font-style: italic;
+            font-size: 13px;
+            color: var(--medium-gray);
+            margin-top: 3px;
+            display: block;
+            padding-left: 0;
+        }
+        
+        .priority-star {
+            color: var(--responding-color);
+            margin-right: 5px;
+            font-weight: bold;
+        }
+        
+        .hybrid-considerations {
+            margin-bottom: 15px;
+        }
+        
+        .consideration-item {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .consideration-label {
+            font-weight: 600;
+            font-size: 14px;
+            margin-right: 5px;
+            min-width: 85px;
+            flex-shrink: 0;
+        }
+        
+        .consideration-text {
+            font-size: 14px;
+            flex: 1;
+        }
+        
+        .consideration-star {
+            color: var(--responding-color);
+            margin-right: 3px;
+            font-weight: bold;
+        }
+        
+        /* Loading overlay for export operations */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+        }
+
+        .spinner {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--responding-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Print styles for clean PDF export */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            
+            .controls {
+                display: none;
+            }
+            
+            .card-display {
+                margin: 0;
+            }
+            
+            .card-container {
+                box-shadow: none;
+                border: 2px solid var(--border-color);
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button class="nav-button" onclick="previousCard()">← Previous</button>
+        
+        <select class="card-selector" id="cardSelector" onchange="selectCard()">
+            <!-- Receiving (Passive) - 3 cards -->
+            <option value="0">Direct Instruction</option>
+            <option value="1">Multimedia Content Engagement</option>
+            <option value="2">Live Demonstration</option>
+            <!-- Responding (Active) - 14 cards -->
+            <option value="3">Expert Interview</option>
+            <option value="4">Interactive Content Exploration</option>
+            <option value="5">Annotation Activity</option>
+            <option value="6">KWL Cycle</option>
+            <option value="7">Flipped Learning Sequence</option>
+            <option value="8">Socratic Dialogue</option>
+            <option value="9">Structured Discussion Protocols</option>
+            <option value="10">Peer Feedback</option>
+            <option value="11">Field Exploration</option>
+            <option value="12">Gallery Walk</option>
+            <option value="13">Laboratory Activities</option>
+            <option value="14">Worked Example Analysis</option>
+            <option value="15">Case Study Analysis</option>
+            <option value="16">Skill Practice</option>
+            <!-- Creating (Constructive) - 9 cards -->
+            <option value="17">Concept/Mind Mapping</option>
+            <option value="18">Jigsaw Learning</option>
+            <option value="19">Formal Debate</option>
+            <option value="20">Open Inquiry Investigation</option>
+            <option value="21">Role Play & Simulation</option>
+            <option value="22">Creative Design Process</option>
+            <option value="23">Storytelling</option>
+            <option value="24">Digital-Physical Prototype Development</option>
+            <option value="25">Presentation & Exhibition</option>
+        </select>
+        
+        <button class="nav-button" onclick="nextCard()">Next →</button>
+        
+        <button class="nav-button" onclick="exportPNG()" style="background-color: #2196F3;">Export PNG</button>
+        <button class="nav-button" onclick="exportPDF()" style="background-color: #FF9800;">Export PDF</button>
+        
+        <div class="batch-controls">
+            <span class="batch-label">Batch Export:</span>
+            <button class="nav-button btn-batch" onclick="batchExportPNG()">All PNG</button>
+            <button class="nav-button btn-batch" onclick="batchExportPDF()">All PDF</button>
+            <button class="nav-button btn-batch" onclick="batchExportBoth()">All PNG + PDF</button>
+        </div>
+    </div>
+
+    <div class="progress-container" id="progressContainer">
+        <div class="progress-text" id="progressText">Preparing export...</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div style="font-size: 12px; color: #666;" id="progressDetails">This may take a few moments...</div>
+    </div>
+
+    <div class="card-display">
+        <div class="card-container" id="cardContainer">
+            <!-- Card content will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Generating export... This may take a moment.</p>
+    </div>
+
+    <script>
+        // Card data - All 26 Activity Cards
+        const cardData = [
+            // RECEIVING (Passive) - 3 cards
+            
+            // Card 1: Direct Instruction
+            {
+                id: "direct-instruction",
+                name: "Direct Instruction",
+                engagement: {
+                    level: "RECEIVING",
+                    icon: "R",
+                    color: "receiving"
+                },
+                category: "Knowledge Building",
+                categoryIcon: "K",
+                description: "Instructor presents concepts, explanations, and examples in a structured format, using presentation techniques that engage both on-site and remote learners through enhanced visuals, strategic questioning, and attention management.",
+                benefits: [
+                    "Provides clear, organized introduction to complex topics",
+                    "Establishes common reference points for all students",
+                    "Efficiently delivers foundational content before active application"
+                ],
+                timeEstimate: "15-45 min (plus 5 min setup)",
+                technology: {
+                    tech: "Core Platform: Video conferencing with screen share",
+                    format: "Content Tools: Slides, digital whiteboard, document camera",
+                    groups: "Interaction: Polls, chat monitoring<br>Format: Whole class with engagement every 5-10 min"
+                },
+                implementation: [
+                    "Structure content in 5-10 minute segments with clear transitions",
+                    "Incorporate visual anchors that work on screens and in-room displays",
+                    {
+                        step: "Use regular attention reset techniques (questions, polls, quick activities)",
+                        example: "Example: After explaining a concept, pause for a 60-second application question",
+                        priority: true
+                    },
+                    "Provide guided notes or templates that structure student engagement"
+                ],
+                considerations: {
+                    remote: "Ensure screen-optimized visuals; provide downloadable materials before session; use chat monitoring for questions; enable captions",
+                    onsite: "Position displays for visibility without blocking instructor view; establish clear protocols for questions; use wireless mic if moving",
+                    crossmodal: {
+                        text: "Alternate attention between remote and on-site students using name cards visible to all; use parallel response channels",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 2: Multimedia Content Engagement
+            {
+                id: "multimedia-content-engagement",
+                name: "Multimedia Content Engagement",
+                engagement: {
+                    level: "RECEIVING",
+                    icon: "R",
+                    color: "receiving"
+                },
+                category: "Knowledge Building",
+                categoryIcon: "K",
+                description: "Students engage with curated multimedia resources (videos, presentations, podcasts) that deliver course content, supported by structured viewing guides to focus attention and promote active processing regardless of participation mode.",
+                benefits: [
+                    "Enables flexible access to content in multiple formats",
+                    "Supports self-paced processing of complex information",
+                    "Creates shared reference points for follow-up activities"
+                ],
+                timeEstimate: "15-30 min (10 min minimum for meaningful engagement)",
+                technology: {
+                    tech: "Core Platform: LMS or content repository",
+                    format: "Content Tools: Video player with controls, transcripts",
+                    groups: "Interaction: Annotation tools, guided viewing forms<br>Format: Individual viewing with synchronized discussion"
+                },
+                implementation: [
+                    "Select high-quality multimedia (5-15 min ideal) aligned with objectives",
+                    {
+                        step: "Create structured viewing guide with timestamps and focus questions",
+                        example: "Example: \"At 2:30 - What assumption is the speaker making?\"",
+                        priority: true
+                    },
+                    "Provide multiple access options (streaming + download) with clear instructions",
+                    "Follow with immediate processing activity while content is fresh"
+                ],
+                considerations: {
+                    remote: "Ensure mobile-friendly formats; provide offline options for unreliable connections; include captions and transcripts",
+                    onsite: "Consider headphone requirements or dedicated viewing spaces; plan for varying completion speeds; have backup for tech issues",
+                    crossmodal: {
+                        text: "Use shared annotation tools or collaborative notes to gather real-time responses; create paired viewing buddies across modes",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 3: Live Demonstration
+            {
+                id: "live-demonstration",
+                name: "Live Demonstration",
+                engagement: {
+                    level: "RECEIVING",
+                    icon: "R",
+                    color: "receiving"
+                },
+                category: "Knowledge Building",
+                categoryIcon: "K",
+                description: "Instructor demonstrates a technique, process, or skill with careful attention to visibility for both on-site and remote participants through strategic camera positioning, verbal narration, and appropriate pacing with checkpoints.",
+                benefits: [
+                    "Models expert performance and thought processes",
+                    "Provides visual reference for complex procedures",
+                    "Connects theoretical concepts to practical application"
+                ],
+                timeEstimate: "10-30 min (plus 5 min tech setup)",
+                technology: {
+                    tech: "Core Platform: Video conferencing with multi-camera",
+                    format: "Content Tools: Document camera, mobile device, screen share",
+                    groups: "Documentation: Recording capability, screenshot tools<br>Format: Whole class with 2-3 checkpoint pauses"
+                },
+                implementation: [
+                    "Test all camera angles and audio before session begins",
+                    {
+                        step: "Use picture-in-picture showing both overview and close-up detail",
+                        example: "Example: Main camera on workspace, document camera on hands",
+                        priority: true
+                    },
+                    "Narrate continuously including \"what I'm thinking\" and \"what I'm noticing\"",
+                    "Build in 2-3 pause points for questions and comprehension checks"
+                ],
+                considerations: {
+                    remote: "Provide supplemental close-up images; ensure audio clarity for descriptions; offer recording for review; use multiple angles",
+                    onsite: "Position demo area to not block cameras; use displays showing camera feed so on-site students see remote view; designate question pauses",
+                    crossmodal: {
+                        text: "Assign on-site \"camera assistant\" to adjust views based on remote requests; use split attention between live demo and screen",
+                        priority: true
+                    }
+                }
+            },
+
+            // RESPONDING (Active) - 14 cards
+
+            // Card 4: Expert Interview
+            {
+                id: "expert-interview",
+                name: "Expert Interview",
+                engagement: {
+                    level: "RESPONDING",
+                    icon: "R",
+                    color: "responding"
+                },
+                category: "Knowledge Building",
+                categoryIcon: "K",
+                description: "Students prepare questions and engage with guest experts (who may join either physically or virtually), with structured Q&A protocols and moderation techniques that balance participation across both on-site and remote students.",
+                benefits: [
+                    "Connects course content to real-world applications and contexts",
+                    "Exposes students to diverse perspectives and current practice",
+                    "Provides authentic interaction with disciplinary professionals"
+                ],
+                timeEstimate: "30-60 min (optimal: 45 min)",
+                technology: {
+                    tech: "Core Platform: Video conferencing with gallery view",
+                    format: "Interaction Tools: Q&A platform, chat, raised hands",
+                    groups: "Documentation: Recording, shared notes<br>Format: Structured Q&A with question queue<br>Groups: Whole class with designated moderator"
+                },
+                implementation: [
+                    "Brief expert on hybrid format 48 hours prior with tech check",
+                    "Students submit questions in advance for curation and organization",
+                    {
+                        step: "Use visible question queue alternating between participation modes",
+                        example: "Example: Digital Q&A tool showing next 3 questions from each mode",
+                        priority: true
+                    },
+                    "Assign student roles: timekeeper, chat monitor, note-taker"
+                ],
+                considerations: {
+                    remote: "Test audio/video quality; enable captions; assign chat monitor to voice remote questions; use speaker spotlight for clarity",
+                    onsite: "Position any physical guest for camera visibility; use wireless mic for student questions; display remote participants prominently",
+                    crossmodal: {
+                        text: "Create mixed-mode question teams; use \"question tokens\" ensuring equal opportunities; document insights in shared space",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 5: Interactive Content Exploration
+            {
+                id: "interactive-content-exploration",
+                name: "Interactive Content Exploration",
+                engagement: {
+                    level: "RESPONDING",
+                    icon: "R",
+                    color: "responding"
+                },
+                category: "Knowledge Building",
+                categoryIcon: "K",
+                description: "Students interact with content through guided exploration, using digital tools and structured prompts that allow both on-site and remote participants to engage with material through questions, sorting activities, or interactive elements.",
+                benefits: [
+                    "Transforms passive content consumption into active engagement",
+                    "Provides immediate feedback as students interact with material",
+                    "Creates personalized pathways through content based on responses"
+                ],
+                timeEstimate: "20-40 min (includes debrief)",
+                technology: {
+                    tech: "Core Platform: Interactive content system (H5P, Genially)",
+                    format: "Content Tools: Branching scenarios, drag-drop, simulations",
+                    groups: "Tracking: Progress monitoring, response collection<br>Format: Individual/pairs with synchronization points<br>Checkpoints: Every 10 min"
+                },
+                implementation: [
+                    "Choose platform supporting diverse devices and connection speeds",
+                    {
+                        step: "Design 10-minute content chunks with checkpoint activities",
+                        example: "Example: Explore concept → Try application → Share insight",
+                        priority: true
+                    },
+                    "Create parallel paths achieving same objectives different ways",
+                    "End with synthesis activity comparing different pathway experiences"
+                ],
+                considerations: {
+                    remote: "Provide low-bandwidth alternatives; test on mobile devices; include offline backup activity; monitor progress dashboard",
+                    onsite: "Consider headphones vs speakers; plan paired work logistics; ensure WiFi capacity for simultaneous access",
+                    crossmodal: {
+                        text: "Assign exploration buddies across modes to compare discoveries; use breakout rooms for paired debriefs",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 6: Annotation Activity
+            {
+                id: "annotation-activity",
+                name: "Annotation Activity",
+                engagement: {
+                    level: "RESPONDING",
+                    icon: "R",
+                    color: "responding"
+                },
+                category: "Knowledge Building",
+                categoryIcon: "K",
+                description: "Students add notes, questions, connections, or analytical comments to texts or media using shared digital tools that make thinking visible and allow contributions from both on-site and remote participants.",
+                benefits: [
+                    "Develops critical reading and viewing skills",
+                    "Creates collective layer of analysis and questioning",
+                    "Makes thinking visible for instructor feedback and peer learning"
+                ],
+                timeEstimate: "15-30 min (20 min optimal)",
+                technology: {
+                    tech: "Core Platform: Collaborative annotation tool (Hypothesis, Perusall)",
+                    format: "Content Tools: PDF/video/image annotation features",
+                    groups: "Interaction: Real-time visibility, reply threads<br>Format: Individual contributions building collective analysis<br>Density: 3-5 annotations per student minimum"
+                },
+                implementation: [
+                    "Select text/media short enough for deep engagement (3-5 pages/min)",
+                    {
+                        step: "Provide annotation codes: 💡insight ❓question 🔗connection ⚡reaction",
+                        example: "Example: \"Mark key claims with 💡 and counterarguments with ❓\"",
+                        priority: true
+                    },
+                    "Model quality annotations showing depth over quantity",
+                    "Schedule synchronous review of annotation patterns"
+                ],
+                considerations: {
+                    remote: "Ensure tool works on all devices; allow asynchronous start; provide written instructions with screenshots",
+                    onsite: "Have devices available or print QR codes for quick access; consider projection of emerging annotations",
+                    crossmodal: {
+                        text: "Create annotation partnerships across modes; highlight exemplary annotations from both groups; use heatmaps to show focus areas",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 7: KWL Cycle
+            {
+                id: "kwl-cycle",
+                name: "KWL Cycle",
+                engagement: {
+                    level: "RESPONDING",
+                    icon: "R",
+                    color: "responding"
+                },
+                category: "Knowledge Building",
+                categoryIcon: "K",
+                description: "Students document what they Know, Want to know, and have Learned about a topic, using shared digital spaces that make thinking visible to all participants regardless of location while guiding learning progression.",
+                benefits: [
+                    "Activates prior knowledge and surfaces misconceptions",
+                    "Creates student-generated learning goals and questions",
+                    "Provides framework for monitoring learning progress"
+                ],
+                timeEstimate: "20-30 min total (K: 5-7 min, W: 5-7 min, L: 10-15 min)",
+                technology: {
+                    tech: "Core Platform: Digital whiteboard (Miro, Padlet, Jamboard)",
+                    format: "Content Tools: Sticky notes, columns, color coding",
+                    groups: "Interaction: Real-time collaboration, clustering<br>Format: Individual → small group → whole class<br>Structure: Three distinct phases across lesson/unit"
+                },
+                implementation: [
+                    "Create three-column template with clear headers and instructions",
+                    "K Phase: Individual brainstorm (3 min) then group sharing (4 min)",
+                    "W Phase: Generate questions individually then cluster as class",
+                    {
+                        step: "L Phase: Return to W questions, add evidence and new insights",
+                        example: "Example: \"Answer your original question and add one surprise learning\"",
+                        priority: true
+                    }
+                ],
+                considerations: {
+                    remote: "Use templates preventing overcrowding; assign board sections by name; enable cursor tracking to see activity",
+                    onsite: "Bridge physical sticky notes to digital board via photo or transcription; use large screen for collective viewing",
+                    crossmodal: {
+                        text: "Create mixed breakout groups for clustering; assign digital scribes to capture physical contributions; celebrate insights from all",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 8: Flipped Learning Sequence
+            {
+                id: "flipped-learning-sequence",
+                name: "Flipped Learning Sequence",
+                engagement: {
+                    level: "RESPONDING",
+                    icon: "R",
+                    color: "responding"
+                },
+                category: "Knowledge Building",
+                categoryIcon: "K",
+                description: "Students engage with content before class sessions, then participate in active learning during synchronous time, creating continuity between pre-class preparation and in-class activities with clear connections.",
+                benefits: [
+                    "Optimizes synchronous time for interaction and application",
+                    "Allows self-paced engagement with foundational content",
+                    "Creates more time for active learning and instructor guidance"
+                ],
+                timeEstimate: "Pre-class: 20-30 min | In-class: 30-90 min",
+                technology: {
+                    tech: "Core Platform: LMS with analytics",
+                    format: "Content Tools: Video, readings, self-check quizzes",
+                    groups: "Verification: Entry tickets, completion tracking<br>Format: Individual prep → collaborative application<br>Accountability: Points for preparation quality"
+                },
+                implementation: [
+                    "Create focused pre-work (15-20 min max) with clear purpose",
+                    {
+                        step: "Design entry ticket connecting directly to class activity",
+                        example: "Example: \"List 3 key concepts and 1 application question\"",
+                        priority: true
+                    },
+                    "Start class with 5-min peer exchange of preparation insights",
+                    "Move quickly to application using prep as foundation"
+                ],
+                considerations: {
+                    remote: "Provide downloadable content; include time estimates; offer choice in content format (video OR reading); track engagement",
+                    onsite: "Display entry ticket responses; create physical-digital bridges for sharing prep work; plan for non-completers",
+                    crossmodal: {
+                        text: "Pair prepared with unprepared students across modes; use breakout rooms for peer teaching; showcase diverse applications",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 9: Socratic Dialogue
+            {
+                id: "socratic-dialogue",
+                name: "Socratic Dialogue",
+                engagement: {
+                    level: "RESPONDING",
+                    icon: "R",
+                    color: "responding"
+                },
+                category: "Dialogue & Discussion",
+                categoryIcon: "D",
+                description: "Instructor guides students through a sequence of questions that develop critical thinking and deeper understanding, using facilitation techniques that balance participation between on-site and remote students with careful attention management.",
+                benefits: [
+                    "Develops reasoning skills through guided questioning",
+                    "Reveals student thinking and misconceptions",
+                    "Builds active listening and critical response capabilities"
+                ],
+                timeEstimate: "20-45 min (optimal: 30 min)",
+                technology: {
+                    tech: "Core Platform: Video conferencing with gallery view",
+                    format: "Interaction Tools: Hand raising, chat, breakout rooms",
+                    groups: "Documentation: Shared notes, concept map<br>Format: Whole class with structured turns<br>Participation: Random calling with wait time"
+                },
+                implementation: [
+                    "Prepare 5-7 question sequence building complexity progressively",
+                    {
+                        step: "Use visible randomizer for calling on students from both modes",
+                        example: "Example: Digital spinner showing all student names/photos",
+                        priority: true
+                    },
+                    "Enforce 7-second wait time using visible timer",
+                    "Document emerging ideas on shared visual display"
+                ],
+                considerations: {
+                    remote: "Monitor video feeds for non-verbal cues; use chat for \"thinking in progress\" notes; enable hand-raise notifications",
+                    onsite: "Position yourself to see both screen and room; use directional prompts (\"build on what Maya just said\")",
+                    crossmodal: {
+                        text: "Alternate between modes every 2-3 responses; use \"turn and talk\" with assigned cross-modal partners via breakouts",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 10: Structured Discussion Protocols
+            {
+                id: "structured-discussion-protocols",
+                name: "Structured Discussion Protocols",
+                engagement: {
+                    level: "RESPONDING",
+                    icon: "R",
+                    color: "responding"
+                },
+                category: "Dialogue & Discussion",
+                categoryIcon: "D",
+                description: "Students engage in discussions using established protocols (Think-Pair-Share, Fishbowl, etc.) adapted for hybrid contexts, with clear participation guidelines and role assignments that ensure equitable engagement regardless of location.",
+                benefits: [
+                    "Provides structured frameworks for equitable participation",
+                    "Creates clear expectations for contribution and listening",
+                    "Develops collaborative thinking and communication skills"
+                ],
+                timeEstimate: "15-45 min (varies by protocol and depth)",
+                technology: {
+                    tech: "Core Platform: Video conferencing with breakout rooms",
+                    format: "Interaction Tools: Timer, role cards, speaker queue",
+                    groups: "Documentation: Protocol templates, shared notes<br>Format: Varies (pairs, triads, fishbowl, etc.)<br>Roles: Speaker, listener, recorder, timekeeper"
+                },
+                implementation: [
+                    "Choose protocol matching desired interaction depth and time",
+                    {
+                        step: "Adapt protocol with explicit hybrid instructions and role cards",
+                        example: "Example: Think (2 min) → Pair across modes (5 min) → Share (8 min)",
+                        priority: true
+                    },
+                    "Assign clear roles rotating each round, visible to all",
+                    "Use visual timer and audio cues for transitions"
+                ],
+                considerations: {
+                    remote: "Pre-assign breakout rooms; provide written protocols; use reaction emojis for quick consensus; record breakout discussions",
+                    onsite: "Create stations mixing standing/sitting; use mobile devices for cross-modal pairs; designate tech troubleshooter",
+                    crossmodal: {
+                        text: "Design protocols requiring cross-modal interaction; use \"inside-outside\" circles virtually; share air-time tracking publicly",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 11: Peer Feedback
+            {
+                id: "peer-feedback",
+                name: "Peer Feedback",
+                engagement: {
+                    level: "RESPONDING",
+                    icon: "R",
+                    color: "responding"
+                },
+                category: "Dialogue & Discussion",
+                categoryIcon: "D",
+                description: "Students review and respond to each other's work following structured protocols, with clear criteria and guidance for constructive feedback that enables meaningful exchange regardless of participation mode.",
+                benefits: [
+                    "Develops evaluative skills and critical analysis",
+                    "Provides diverse perspectives on student work",
+                    "Creates opportunities for revision and improvement"
+                ],
+                timeEstimate: "30-60 min (includes exchange and response)",
+                technology: {
+                    tech: "Core Platform: LMS or sharing platform",
+                    format: "Interaction Tools: Commenting, rubrics, peer review assignments",
+                    groups: "Documentation: Feedback forms, version tracking<br>Format: Pairs/triads with specific protocols<br>Structure: Timed rounds with role rotation"
+                },
+                implementation: [
+                    "Provide rubric with specific criteria and quality indicators",
+                    {
+                        step: "Use \"Two Stars and a Wish\" or similar structured format",
+                        example: "Example: 2 strengths (specific) + 1 improvement (actionable)",
+                        priority: true
+                    },
+                    "Model quality feedback using anonymous samples",
+                    "Include 10-min response phase for clarification"
+                ],
+                considerations: {
+                    remote: "Use platform supporting inline comments; enable anonymous options if desired; provide examples as video walkthroughs",
+                    onsite: "Create feedback stations with printed work + digital comments; use QR codes for quick access to digital versions",
+                    crossmodal: {
+                        text: "Deliberately pair across modes for diverse perspectives; schedule synchronous exchange windows; celebrate cross-modal insights",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 12: Field Exploration
+            {
+                id: "field-exploration",
+                name: "Field Exploration",
+                engagement: {
+                    level: "RESPONDING",
+                    icon: "R",
+                    color: "responding"
+                },
+                category: "Discovery & Inquiry",
+                categoryIcon: "I",
+                description: "Students explore locations or environments (either physically or virtually) with structured observation guides, documenting findings in shared formats that enable meaningful exchange between on-site and remote participants.",
+                benefits: [
+                    "Connects course concepts to authentic contexts",
+                    "Develops observation and documentation skills",
+                    "Creates common experiential foundation for analysis"
+                ],
+                timeEstimate: "30-90 min (45 min typical)",
+                technology: {
+                    tech: "Core Platform: Mobile devices with data collection app",
+                    format: "Content Tools: Virtual tours, mapping tools, 360° images",
+                    groups: "Documentation: Photos, videos, observation forms<br>Format: Individual/pairs exploring parallel environments<br>Structure: Guided observation protocol"
+                },
+                implementation: [
+                    "Identify parallel physical and virtual exploration sites",
+                    {
+                        step: "Create observation guide working for both environments",
+                        example: "Example: \"Find 3 examples of X, photograph/screenshot, explain connection\"",
+                        priority: true
+                    },
+                    "Set clear boundaries (physical) and pathways (virtual)",
+                    "Schedule synchronous sharing session immediately after"
+                ],
+                considerations: {
+                    remote: "Curate high-quality virtual sites; provide navigation tips; use tools like Google Earth VR; include accessibility alternatives",
+                    onsite: "Ensure safe exploration zones; require buddy system; provide backup virtual option for weather",
+                    crossmodal: {
+                        text: "Design complementary observations where each mode explores different aspects; create combined analysis teams",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 13: Gallery Walk
+            {
+                id: "gallery-walk",
+                name: "Gallery Walk",
+                engagement: {
+                    level: "RESPONDING",
+                    icon: "R",
+                    color: "responding"
+                },
+                category: "Discovery & Inquiry",
+                categoryIcon: "I",
+                description: "Students move through a sequence of \"stations\" containing content or questions, responding to each and building on previous contributions, with equivalent pathways designed for both on-site and remote participants.",
+                benefits: [
+                    "Encourages engagement with multiple perspectives or examples",
+                    "Builds collective knowledge through cumulative contributions",
+                    "Creates movement and variety in learning experience"
+                ],
+                timeEstimate: "20-45 min (5-8 min per station)",
+                technology: {
+                    tech: "Core Platform: Digital stations (Padlet boards, Google Slides)",
+                    format: "Interaction Tools: Comments, sticky notes, reactions",
+                    groups: "Navigation: Clear numbering, timer, rotation bell<br>Format: Groups rotating through 4-6 stations<br>Documentation: Cumulative responses at each station"
+                },
+                implementation: [
+                    "Create 4-6 stations with parallel physical/digital versions",
+                    {
+                        step: "Design prompts building on previous responses",
+                        example: "Example: Station 1: \"List examples\" → Station 2: \"Add categories\"",
+                        priority: true
+                    },
+                    "Use timer with audio/visual cues for rotation",
+                    "End with synthesis reviewing all station contributions"
+                ],
+                considerations: {
+                    remote: "Number stations clearly; use breakout rooms as stations; provide navigation slide; enable editing access",
+                    onsite: "Post QR codes for digital access; manage movement flow; designate digital scribes for physical contributions",
+                    crossmodal: {
+                        text: "Synchronize rotations exactly; highlight contributions from both modes at each station; create final gallery view",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 14: Laboratory Activities
+            {
+                id: "laboratory-activities",
+                name: "Laboratory Activities",
+                engagement: {
+                    level: "RESPONDING",
+                    icon: "R",
+                    color: "responding"
+                },
+                category: "Discovery & Inquiry",
+                categoryIcon: "I",
+                description: "Students conduct investigations using laboratory procedures, with adaptations for both on-site students (physical equipment) and remote students (home kits or simulations). Both groups collect, analyze, and interpret data.",
+                benefits: [
+                    "Connects theoretical concepts with observable phenomena",
+                    "Develops procedural and scientific reasoning skills",
+                    "Builds understanding through direct experience"
+                ],
+                timeEstimate: "45-90 min (60 min typical)",
+                technology: {
+                    tech: "Core Platform: Video conferencing with breakouts",
+                    format: "Lab Tools: Equipment/simulations, data platforms",
+                    groups: "Documentation: Lab notebooks, shared data sheets<br>Format: Partners with defined roles<br>Checkpoints: Every 15-20 minutes"
+                },
+                implementation: [
+                    "Choose remote approach: simulation, home kit, or partnership observation",
+                    {
+                        step: "Create role cards: Experimenter, Data Recorder, Quality Checker",
+                        example: "Example: Remote student manages data while on-site performs procedure",
+                        priority: true
+                    },
+                    "Schedule checkpoint meetings: Start, Middle (data check), End",
+                    "Build shared dataset combining all observations"
+                ],
+                considerations: {
+                    remote: "Send materials 1 week early; test simulations on various devices; create picture guides for procedures; focus on analysis",
+                    onsite: "Set up camera stations; verbalize all observations; photograph key moments; maintain safety protocols",
+                    crossmodal: {
+                        text: "Design complementary roles leveraging each mode's strengths; ensure equal contribution to conclusions",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 15: Worked Example Analysis
+            {
+                id: "worked-example-analysis",
+                name: "Worked Example Analysis",
+                engagement: {
+                    level: "RESPONDING",
+                    icon: "R",
+                    color: "responding"
+                },
+                category: "Application & Practice",
+                categoryIcon: "A",
+                description: "Students examine step-by-step solutions to problems, identifying key principles and strategies, with guided instruction that helps both on-site and remote students recognize effective approaches and common misconceptions.",
+                benefits: [
+                    "Reduces cognitive load when learning complex procedures",
+                    "Develops analytical skills through guided deconstruction",
+                    "Builds pattern recognition for problem-solving approaches"
+                ],
+                timeEstimate: "15-30 min per example set",
+                technology: {
+                    tech: "Core Platform: Shared screen with annotation",
+                    format: "Content Tools: Step-by-step solutions, comparison tools",
+                    groups: "Interaction: Highlighting, commenting, voting<br>Format: Individual analysis → pair compare → class discuss<br>Examples: 2-3 problems increasing in complexity"
+                },
+                implementation: [
+                    "Present example with clear step numbering and decision points",
+                    {
+                        step: "Pause at critical steps: \"Why this approach and not another?\"",
+                        example: "Example: Highlight where solution could diverge, discuss choices",
+                        priority: true
+                    },
+                    "Compare correct solution with common error example",
+                    "Students recreate similar problem with partner"
+                ],
+                considerations: {
+                    remote: "Use annotation tools to highlight key steps; provide downloadable examples; enable screen annotation permissions",
+                    onsite: "Display on multiple screens for visibility; use document camera for live annotation; provide printed copies",
+                    crossmodal: {
+                        text: "Partners across modes explain steps to each other; use breakout rooms for pair work; share discovered patterns",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 16: Case Study Analysis
+            {
+                id: "case-study-analysis",
+                name: "Case Study Analysis",
+                engagement: {
+                    level: "RESPONDING",
+                    icon: "R",
+                    color: "responding"
+                },
+                category: "Application & Practice",
+                categoryIcon: "A",
+                description: "Students examine authentic cases or scenarios to identify principles and apply theoretical frameworks, using shared viewing and annotation tools that work for both on-site and remote participants with structured analysis protocols.",
+                benefits: [
+                    "Connects theory to authentic contexts and applications",
+                    "Develops analytical thinking and professional judgment",
+                    "Builds pattern recognition across different contexts"
+                ],
+                timeEstimate: "30-60 min (45 min typical)",
+                technology: {
+                    tech: "Core Platform: Collaborative document platform",
+                    format: "Content Tools: Case materials, analysis templates",
+                    groups: "Interaction: Shared frameworks, group editing<br>Format: Small groups (3-4) with assigned sections<br>Roles: Lead analyst, devil's advocate, synthesizer"
+                },
+                implementation: [
+                    "Distribute case materials 10 minutes before analysis begins",
+                    {
+                        step: "Provide analysis framework with specific questions per section",
+                        example: "Example: SITUATION → PROBLEM → ANALYSIS → RECOMMENDATION",
+                        priority: true
+                    },
+                    "Assign groups different perspectives to analyze same case",
+                    "Conclude with cross-group comparison of recommendations"
+                ],
+                considerations: {
+                    remote: "Use collaborative docs with assigned cursor colors; create private group channels; ensure materials are mobile-friendly",
+                    onsite: "Print key exhibits; create analysis stations; use whiteboards for framework mapping; photograph for digital sharing",
+                    crossmodal: {
+                        text: "Mix groups deliberately; assign digital documenter role; schedule mid-point check-ins; combine visual analyses",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 17: Skill Practice
+            {
+                id: "skill-practice",
+                name: "Skill Practice",
+                engagement: {
+                    level: "RESPONDING",
+                    icon: "R",
+                    color: "responding"
+                },
+                category: "Application & Practice",
+                categoryIcon: "A",
+                description: "Students develop and refine skills through guided practice and feedback, with parallel activities designed for both on-site and remote participants to develop similar competencies through appropriate modality adaptations.",
+                benefits: [
+                    "Builds procedural knowledge through structured repetition",
+                    "Develops competence and confidence through guided practice",
+                    "Provides immediate application of theoretical concepts"
+                ],
+                timeEstimate: "30-60 min (include demo + practice + debrief)",
+                technology: {
+                    tech: "Core Platform: Video with multiple camera angles",
+                    format: "Practice Tools: Simulations, practice materials, recording",
+                    groups: "Feedback: Peer observation forms, self-assessment<br>Format: Demo → guided practice → independent → review<br>Structure: 3-4 practice rounds with increasing complexity"
+                },
+                implementation: [
+                    "Demonstrate skill with verbal narration of decision-making",
+                    {
+                        step: "Create practice stations with clear success criteria",
+                        example: "Example: \"Complete 3 attempts hitting 2 of 3 quality markers\"",
+                        priority: true
+                    },
+                    "Use peer coaching pairs for observation and feedback",
+                    "End with self-recording and reflection"
+                ],
+                considerations: {
+                    remote: "Adapt physical skills to available spaces/materials; use simulation tools; enable self-recording; provide modification options",
+                    onsite: "Set up practice zones visible to cameras; rotate through stations; maintain safety protocols",
+                    crossmodal: {
+                        text: "Create coaching pairs across modes using observation sheets; share video demonstrations from both settings",
+                        priority: true
+                    }
+                }
+            },
+
+            // CREATING (Constructive) - 9 cards
+
+            // Card 18: Concept/Mind Mapping
+            {
+                id: "concept-mind-mapping",
+                name: "Concept/Mind Mapping",
+                engagement: {
+                    level: "CREATING",
+                    icon: "C",
+                    color: "creating"
+                },
+                category: "Knowledge Building",
+                categoryIcon: "K",
+                description: "Students build visual representations of concepts and relationships, using collaborative tools that allow contributions from both physical and digital spaces to create shared understanding across participation modes.",
+                benefits: [
+                    "Makes thinking visible by externalizing mental models",
+                    "Demonstrates relationships between concepts and ideas",
+                    "Develops organizational and systems thinking skills"
+                ],
+                timeEstimate: "30-60 min (simple: 30, complex: 60)",
+                technology: {
+                    tech: "Core Platform: Digital mind mapping tool (Miro, Mural)",
+                    format: "Features: Real-time collaboration, templates, linking",
+                    groups: "Format: Individual draft → pair merge → group synthesis<br>Complexity: 15-20 nodes for focused maps<br>Export: High-res image and outline format"
+                },
+                implementation: [
+                    "Start with central concept and provide 5-7 required subtopics",
+                    {
+                        step: "Use consistent visual grammar: shapes, colors, line types",
+                        example: "Example: Rectangles=concepts, ovals=examples, red lines=conflicts",
+                        priority: true
+                    },
+                    "Build individually (10 min) then merge in pairs (15 min)",
+                    "Create unified class map highlighting different perspectives"
+                ],
+                considerations: {
+                    remote: "Choose tool with strong zoom/navigation; assign map sectors to prevent overlap; use cursor tracking; enable voice narration",
+                    onsite: "Start with paper then digitize; use photo capture for physical maps; project emerging digital map",
+                    crossmodal: {
+                        text: "Create live mapping partnerships; alternate who controls the digital tool; celebrate unique contributions",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 19: Jigsaw Learning
+            {
+                id: "jigsaw-learning",
+                name: "Jigsaw Learning",
+                engagement: {
+                    level: "CREATING",
+                    icon: "C",
+                    color: "creating"
+                },
+                category: "Knowledge Building",
+                categoryIcon: "K",
+                description: "Students work in \"expert groups\" to master content, then reorganize to share expertise with peers, using coordination strategies that connect on-site and remote participants throughout the process with clear transition points.",
+                benefits: [
+                    "Creates positive interdependence through shared responsibility",
+                    "Develops teaching and explanation skills",
+                    "Enables deep learning of specific content areas"
+                ],
+                timeEstimate: "60-120 min (expert: 30-45, teaching: 30-45, synthesis: 15)",
+                technology: {
+                    tech: "Core Platform: Video conferencing with persistent breakouts",
+                    format: "Content Tools: Expert resources, teaching templates",
+                    groups: "Coordination: Group assignment dashboard, timers<br>Format: Expert groups → teaching groups → whole class<br>Group Size: 4-5 per expert topic, 4-5 person teaching groups"
+                },
+                implementation: [
+                    "Divide content into 4-5 equivalent expert topics",
+                    "Expert phase: Deep dive with guided questions and required deliverables",
+                    {
+                        step: "Transition: 5-min prep where experts create 1-page teaching guides",
+                        example: "Example: 3 key points, 2 examples, 1 check-for-understanding question",
+                        priority: true
+                    },
+                    "Teaching phase: Each expert teaches for 7-10 minutes",
+                    "Synthesis: Return to expert groups to discuss what they learned"
+                ],
+                considerations: {
+                    remote: "Use persistent breakout rooms with clear naming; provide digital expert packets; enable screen sharing for teaching",
+                    onsite: "Create physical expert zones; manage transitions smoothly; use mobile devices for accessing digital resources",
+                    crossmodal: {
+                        text: "Ensure each expert group has both modalities; create mixed teaching groups; use shared slides for teaching",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 20: Formal Debate
+            {
+                id: "formal-debate",
+                name: "Formal Debate",
+                engagement: {
+                    level: "CREATING",
+                    icon: "C",
+                    color: "creating"
+                },
+                category: "Dialogue & Discussion",
+                categoryIcon: "D",
+                description: "Students research positions, develop arguments, and engage in structured debate with defined roles and speaking turns that can be fulfilled equally from either on-site or remote locations with thoughtful format adaptation.",
+                benefits: [
+                    "Develops evidence-based argumentation skills",
+                    "Encourages consideration of multiple perspectives",
+                    "Builds public speaking and critical listening abilities"
+                ],
+                timeEstimate: "45-90 min (prep can be asynchronous)",
+                technology: {
+                    tech: "Core Platform: Video conferencing with spotlight feature",
+                    format: "Supporting Tools: Timer display, evidence repository",
+                    groups: "Documentation: Shared notes for arguments, flow sheet<br>Format: Modified parliamentary or Oxford style<br>Teams: 3-4 per side with specific roles"
+                },
+                implementation: [
+                    "Assign positions and roles 1 week before debate",
+                    "Provide research organizer template and evidence requirements",
+                    {
+                        step: "Use visible speaking order and timer for all to see",
+                        example: "Example: Screen share showing speaker queue and countdown timer",
+                        priority: true
+                    },
+                    "Include audience participation through questions or voting"
+                ],
+                considerations: {
+                    remote: "Test audio before debate; use video spotlight on current speaker; enable virtual backgrounds for team identity; mute protocols",
+                    onsite: "Position team members for camera visibility; use podium mic; display remote speakers prominently",
+                    crossmodal: {
+                        text: "Mix teams across modes; alternate speakers between modes; use digital evidence sharing; conduct audience polls digitally",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 21: Open Inquiry Investigation
+            {
+                id: "open-inquiry-investigation",
+                name: "Open Inquiry Investigation",
+                engagement: {
+                    level: "CREATING",
+                    icon: "C",
+                    color: "creating"
+                },
+                category: "Discovery & Inquiry",
+                categoryIcon: "I",
+                description: "Students formulate research questions, design investigation methods, collect and analyze data, and draw conclusions, using hybrid-appropriate tools and protocols that allow meaningful participation regardless of location.",
+                benefits: [
+                    "Develops experimental design and research skills",
+                    "Builds evidence-based reasoning capabilities",
+                    "Encourages creative problem-solving and iteration"
+                ],
+                timeEstimate: "Multiple sessions (3-4 weeks typical)",
+                technology: {
+                    tech: "Core Platform: Project management tool, video conferencing",
+                    format: "Research Tools: Databases, survey platforms, analysis software",
+                    groups: "Documentation: Lab notebooks, data repositories<br>Format: Individual or teams with weekly check-ins<br>Milestones: Question → Method → Data → Analysis → Presentation"
+                },
+                implementation: [
+                    "Week 1: Question development workshop and peer review",
+                    "Week 2: Methods design with feasibility check",
+                    {
+                        step: "Week 3-4: Data collection with mid-point consultation",
+                        example: "Example: Schedule progress check to troubleshoot and pivot if needed",
+                        priority: true
+                    },
+                    "Week 5: Analysis and presentation preparation"
+                ],
+                considerations: {
+                    remote: "Focus on digital data collection methods; use online surveys, databases, simulations; provide analysis tool tutorials",
+                    onsite: "Ensure safety protocols for physical investigations; create documentation requirements; establish equipment checkout",
+                    crossmodal: {
+                        text: "Form teams with complementary investigation approaches; combine physical and digital data collection; peer review across modes",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 22: Role Play & Simulation
+            {
+                id: "role-play-simulation",
+                name: "Role Play & Simulation",
+                engagement: {
+                    level: "CREATING",
+                    icon: "C",
+                    color: "creating"
+                },
+                category: "Application & Practice",
+                categoryIcon: "A",
+                description: "Students assume different roles or perspectives within structured scenarios, using interaction protocols that connect on-site and remote participants in meaningful exchanges that apply course concepts in realistic contexts.",
+                benefits: [
+                    "Applies theoretical knowledge in authentic contexts",
+                    "Develops perspective-taking and social awareness",
+                    "Creates experiential foundation for complex concepts"
+                ],
+                timeEstimate: "30-60 min (briefing: 10, simulation: 30, debrief: 20)",
+                technology: {
+                    tech: "Core Platform: Video conferencing with renamed participants",
+                    format: "Supporting Tools: Breakout rooms, chat as \"text messages\"",
+                    groups: "Props/Materials: Role cards, scenario briefs, artifacts<br>Format: Briefing → simulation → debrief<br>Groups: 4-8 participants per scenario"
+                },
+                implementation: [
+                    "Distribute role cards with private motivations 24 hours early",
+                    "Create realistic constraints and decision points",
+                    {
+                        step: "Use \"freeze frame\" technique to pause and analyze key moments",
+                        example: "Example: \"Freeze - everyone explain your character's current thinking\"",
+                        priority: true
+                    },
+                    "Debrief connecting actions to course concepts"
+                ],
+                considerations: {
+                    remote: "Use virtual backgrounds for role identity; rename in platform to character names; use private chat for \"side conversations\"",
+                    onsite: "Arrange furniture to create scenario space; use props; establish stage area visible to cameras",
+                    crossmodal: {
+                        text: "Design roles leveraging location (e.g., remote = phone calls, on-site = in-person meeting); use breakout rooms creatively",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 23: Creative Design Process
+            {
+                id: "creative-design-process",
+                name: "Creative Design Process",
+                engagement: {
+                    level: "CREATING",
+                    icon: "C",
+                    color: "creating"
+                },
+                category: "Creation & Production",
+                categoryIcon: "P",
+                description: "Students generate and develop ideas through structured creative processes, using collaboration methods that enable meaningful contributions from both on-site and remote participants with intentional ideation and refinement phases.",
+                benefits: [
+                    "Develops creative thinking and problem-solving skills",
+                    "Builds collaborative ideation capabilities",
+                    "Creates innovation through diverse perspective integration"
+                ],
+                timeEstimate: "60-120 min (ideation: 30, development: 60, presentation: 30)",
+                technology: {
+                    tech: "Core Platform: Digital whiteboard with templates",
+                    format: "Ideation Tools: Mind maps, sketching, brainstorming",
+                    groups: "Development: Prototyping tools, mockup software<br>Format: Individual → small group → whole class<br>Phases: Diverge → converge → prototype → share"
+                },
+                implementation: [
+                    "Frame challenge with clear constraints and success criteria",
+                    "Individual ideation sprint (10 min) generating 10+ ideas",
+                    {
+                        step: "Small group idea clustering and \"Yes, and...\" building (20 min)",
+                        example: "Example: Each person presents ideas, others must build not critique",
+                        priority: true
+                    },
+                    "Converge on 2-3 concepts for rapid prototyping",
+                    "Gallery showcase with peer feedback"
+                ],
+                considerations: {
+                    remote: "Use infinite canvas tools; provide digital asset libraries; enable quick mockup tools; practice screen annotation",
+                    onsite: "Supply diverse physical materials; photograph prototypes; create maker stations; document process",
+                    crossmodal: {
+                        text: "Assign complementary prototyping roles; remote creates digital mockups while on-site builds physical; combine outputs",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 24: Storytelling
+            {
+                id: "storytelling",
+                name: "Storytelling",
+                engagement: {
+                    level: "CREATING",
+                    icon: "C",
+                    color: "creating"
+                },
+                category: "Creation & Production",
+                categoryIcon: "P",
+                description: "Students create narratives in various formats, developing stories that communicate key concepts or perspectives with opportunities for both on-site and remote students to contribute meaningful elements.",
+                benefits: [
+                    "Develops narrative thinking and communication skills",
+                    "Creates emotional connection to abstract concepts",
+                    "Builds digital and multimodal communication capabilities"
+                ],
+                timeEstimate: "30-60 min (planning: 15, creation: 30, sharing: 15)",
+                technology: {
+                    tech: "Core Platform: Varies by format (video, audio, written)",
+                    format: "Creation Tools: Recording software, collaborative docs",
+                    groups: "Story Elements: Templates, asset libraries<br>Format: Individual or collaborative creation<br>Output: 2-5 minute stories"
+                },
+                implementation: [
+                    "Provide story purpose tied to learning objectives",
+                    {
+                        step: "Offer story structure template: Setup → Conflict → Resolution",
+                        example: "Example: \"Tell the journey of a molecule through...\"",
+                        priority: true
+                    },
+                    "Choose format options matching available tools",
+                    "Create sharing festival with appreciations protocol"
+                ],
+                considerations: {
+                    remote: "Use screen recording for digital stories; provide copyright-free asset libraries; test platform sharing capabilities",
+                    onsite: "Create recording spaces; use mobile devices for capture; consider live performance options",
+                    crossmodal: {
+                        text: "Develop chain stories with contributions from both modes; combine live and recorded elements; celebrate format diversity",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 25: Digital-Physical Prototype Development
+            {
+                id: "digital-physical-prototype-development",
+                name: "Digital-Physical Prototype Development",
+                engagement: {
+                    level: "CREATING",
+                    icon: "C",
+                    color: "creating"
+                },
+                category: "Creation & Production",
+                categoryIcon: "P",
+                description: "Students design and create solutions that combine both digital and physical components, developing prototypes that demonstrate concept application and problem-solving with adaptations for meaningful creation regardless of location.",
+                benefits: [
+                    "Fosters creative problem-solving and design thinking",
+                    "Develops technical skills in both physical and digital domains",
+                    "Connects abstract principles with tangible applications"
+                ],
+                timeEstimate: "90-180 min (ideation: 30, build: 90, integrate: 30, present: 30)",
+                technology: {
+                    tech: "Core Platform: Video conf with screen share, cameras",
+                    format: "Digital Tools: Design software, coding platforms",
+                    groups: "Physical Tools: Maker materials, basic components<br>Documentation: Photos, videos, process journal<br>Teams: 3-4 with defined digital/physical roles"
+                },
+                implementation: [
+                    "Present challenge requiring both digital and physical solutions",
+                    "Brainstorm with visual documentation of all ideas",
+                    {
+                        step: "Assign complementary roles: Digital Lead, Physical Lead, Integrator",
+                        example: "Example: Digital creates app interface while Physical builds device",
+                        priority: true
+                    },
+                    "Schedule 3 sync points: initial design, mid-build, integration",
+                    "Document process for final presentation"
+                ],
+                considerations: {
+                    remote: "Focus on digital components (UI, code, 3D models); use household materials for simple physical prototypes; AR visualization",
+                    onsite: "Create maker stations; ensure documentation setup; manage materials distribution; photograph stages",
+                    crossmodal: {
+                        text: "Design requires both components equally; use video calls for integration testing; create unified documentation",
+                        priority: true
+                    }
+                }
+            },
+
+            // Card 26: Presentation & Exhibition
+            {
+                id: "presentation-exhibition",
+                name: "Presentation & Exhibition",
+                engagement: {
+                    level: "CREATING",
+                    icon: "C",
+                    color: "creating"
+                },
+                category: "Creation & Production",
+                categoryIcon: "P",
+                description: "Students create and share original work with authentic audiences, using presentation formats that effectively showcase contributions from both on-site and remote participants with intentional planning and delivery.",
+                benefits: [
+                    "Develops communication and presentation skills",
+                    "Creates accountability through public sharing",
+                    "Builds confidence and ownership of learning"
+                ],
+                timeEstimate: "Presentations: 5-10 min each; Full event: 60-90 min",
+                technology: {
+                    tech: "Core Platform: Streaming-capable video conferencing",
+                    format: "Presentation Tools: Slides, video, live demo capabilities",
+                    groups: "Exhibition: Virtual gallery, hybrid showcase<br>Format: Individual/group presentations + Q&A<br>Audience: Class, invited guests, public"
+                },
+                implementation: [
+                    "Define audience and presentation requirements early",
+                    "Provide templates and technical specifications",
+                    {
+                        step: "Schedule tech rehearsal for all presenters",
+                        example: "Example: Test screenshare, audio, transitions 24 hours before",
+                        priority: true
+                    },
+                    "Create program with presenter order and timing",
+                    "Design audience engagement (Q&A, polls, feedback forms)"
+                ],
+                considerations: {
+                    remote: "Ensure stable connection; prepare pre-recorded backup; practice screen management; use virtual backgrounds professionally",
+                    onsite: "Position for camera visibility; test lighting; prepare physical materials; assign tech assistant",
+                    crossmodal: {
+                        text: "Alternate between remote/on-site presenters; use consistent visual templates; create unified gallery experience",
+                        priority: true
+                    }
+                }
+            }
+        ];
+
+        let currentCardIndex = 0;
+
+        function renderCard(cardIndex) {
+            const card = cardData[cardIndex];
+            const container = document.getElementById('cardContainer');
+            
+            // Set color variables
+            const colorVar = `--${card.engagement.color}-color`;
+            
+            // Determine engagement level text
+            let engagementLevelText = card.engagement.level;
+            if (card.engagement.level === "RECEIVING") {
+                engagementLevelText = "RECEIVING (Passive)";
+            } else if (card.engagement.level === "RESPONDING") {
+                engagementLevelText = "RESPONDING (Active)";
+            } else if (card.engagement.level === "CREATING") {
+                engagementLevelText = "CREATING (Constructive)";
+            }
+            
+            container.innerHTML = `
+                <!-- Front Side (Left) -->
+                <div class="card-side card-side-left">
+                    <div class="card-header" style="background-color: var(${colorVar});">
+                        <div class="engagement-icon" style="color: var(${colorVar});">${card.categoryIcon}</div>
+                        <div class="purpose-label">${card.category}</div>
+                    </div>
+                    
+                    <div class="activity-content">
+                        <h2 class="activity-name">${card.name}</h2>
+                        <div class="engagement-level" style="color: var(${colorVar});">${engagementLevelText}</div>
+                        
+                        <p class="description">${card.description}</p>
+                        
+                        <div class="benefits">
+                            <h3 class="benefits-title">Key Benefits:</h3>
+                            <ul class="benefits-list">
+                                ${card.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div class="time-estimate">
+                            <span class="time-icon" style="color: var(${colorVar});">⏱</span>
+                            <strong>Time:</strong> ${card.timeEstimate}
+                        </div>
+                        
+                        <div class="tech-structure">
+                            <h3 class="tech-structure-title" style="color: var(${colorVar});">TECHNOLOGY & STRUCTURE</h3>
+                            <ul class="tech-structure-list">
+                                <li style="margin-bottom: 8px;">
+                                    <span style="display: block;">• <strong>${card.technology.tech}</strong></span>
+                                </li>
+                                <li style="margin-bottom: 8px;">
+                                    <span style="display: block;">• <strong>${card.technology.format}</strong></span>
+                                </li>
+                                <li style="margin-bottom: 8px;">
+                                    <span style="display: block;">• ${card.technology.groups}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Back Side (Right) -->
+                <div class="card-side card-side-right">
+                    <div class="section">
+                        <h3 class="section-title" style="color: var(${colorVar});">IMPLEMENTATION</h3>
+                        <ol class="implementation-steps">
+                            ${card.implementation.map(item => {
+                                if (typeof item === 'string') {
+                                    return `<li>${item}</li>`;
+                                } else {
+                                    const priorityStr = item.priority ? '<span class="priority-star">⭐</span>' : '';
+                                    const exampleStr = item.example ? `<div class="example-text"><em>${item.example}</em></div>` : '';
+                                    return `<li>${priorityStr}${item.step}${exampleStr}</li>`;
+                                }
+                            }).join('')}
+                        </ol>
+                    </div>
+                    
+                    <div class="section">
+                        <h3 class="section-title" style="color: var(${colorVar});">HYBRID CONSIDERATIONS</h3>
+                        <div class="hybrid-considerations">
+                            <div class="consideration-item">
+                                <span class="consideration-label">• Remote:</span>
+                                <span class="consideration-text">${card.considerations.remote}</span>
+                            </div>
+                            <div class="consideration-item">
+                                <span class="consideration-label">• On-site:</span>
+                                <span class="consideration-text">${card.considerations.onsite}</span>
+                            </div>
+                            <div class="consideration-item">
+                                <span class="consideration-label">• ${card.considerations.crossmodal.priority ? '<span class="consideration-star">⭐</span>' : ''}Cross-modal:</span>
+                                <span class="consideration-text">${card.considerations.crossmodal.text}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectCard() {
+            const selector = document.getElementById('cardSelector');
+            currentCardIndex = parseInt(selector.value);
+            renderCard(currentCardIndex);
+            updateNavButtons();
+        }
+
+        function previousCard() {
+            if (currentCardIndex > 0) {
+                currentCardIndex--;
+                document.getElementById('cardSelector').value = currentCardIndex;
+                renderCard(currentCardIndex);
+                updateNavButtons();
+            }
+        }
+
+        function nextCard() {
+            if (currentCardIndex < cardData.length - 1) {
+                currentCardIndex++;
+                document.getElementById('cardSelector').value = currentCardIndex;
+                renderCard(currentCardIndex);
+                updateNavButtons();
+            }
+        }
+
+        function updateNavButtons() {
+            const prevBtn = document.querySelector('.nav-button');
+            const nextBtn = document.querySelector('.nav-button:nth-child(3)');
+            
+            prevBtn.disabled = currentCardIndex === 0;
+            nextBtn.disabled = currentCardIndex === cardData.length - 1;
+        }
+
+        // Export functions
+        const { jsPDF } = window.jspdf;
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        
+        // Helper function to render a specific card temporarily
+        function renderCardTemporary(cardIndex) {
+            const originalIndex = currentCardIndex;
+            currentCardIndex = cardIndex;
+            renderCard(cardIndex);
+            return originalIndex;
+        }
+        
+        // Helper function to restore original card
+        function restoreCard(originalIndex) {
+            currentCardIndex = originalIndex;
+            renderCard(originalIndex);
+            document.getElementById('cardSelector').value = originalIndex;
+            updateNavButtons();
+        }
+        
+        // Helper function to export a single card as PNG (returns Promise)
+        function exportSingleCardPNG(cardIndex) {
+            return new Promise((resolve, reject) => {
+                const card = cardData[cardIndex];
+                const filename = `${card.id}-card.png`;
+                const cardContainer = document.getElementById('cardContainer');
+                
+                html2canvas(cardContainer, {
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: '#ffffff'
+                }).then(function(canvas) {
+                    const imgData = canvas.toDataURL('image/png');
+                    const link = document.createElement('a');
+                    link.download = filename;
+                    link.href = imgData;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    resolve(filename);
+                }).catch(reject);
+            });
+        }
+        
+        // Helper function to export a single card as PDF (returns Promise)
+        function exportSingleCardPDF(cardIndex) {
+            return new Promise((resolve, reject) => {
+                const card = cardData[cardIndex];
+                const filename = `${card.id}-card.pdf`;
+                const cardContainer = document.getElementById('cardContainer');
+                
+                html2canvas(cardContainer, {
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: '#ffffff'
+                }).then(function(canvas) {
+                    const canvasWidth = canvas.width;
+                    const canvasHeight = canvas.height;
+                    const pdfWidth = canvasWidth * 0.75;
+                    const pdfHeight = canvasHeight * 0.75;
+                    const orientation = pdfWidth > pdfHeight ? 'landscape' : 'portrait';
+                    
+                    const pdf = new jsPDF({
+                        orientation: orientation,
+                        unit: 'pt',
+                        format: [pdfWidth, pdfHeight]
+                    });
+                    
+                    const imgData = canvas.toDataURL('image/png');
+                    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                    pdf.save(filename);
+                    resolve(filename);
+                }).catch(reject);
+            });
+        }
+        
+        // Update progress display
+        function updateProgress(current, total, currentCard, action) {
+            const progressContainer = document.getElementById('progressContainer');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            const progressDetails = document.getElementById('progressDetails');
+            
+            const percentage = (current / total) * 100;
+            progressFill.style.width = percentage + '%';
+            progressText.textContent = `Exporting ${current} of ${total} cards...`;
+            progressDetails.textContent = `Currently processing: ${currentCard} (${action})`;
+        }
+        
+        // Show/hide progress container
+        function showProgress() {
+            document.getElementById('progressContainer').style.display = 'flex';
+            // Disable all buttons during batch export
+            const buttons = document.querySelectorAll('.nav-button');
+            buttons.forEach(btn => btn.disabled = true);
+        }
+        
+        function hideProgress() {
+            document.getElementById('progressContainer').style.display = 'none';
+            // Re-enable all buttons
+            const buttons = document.querySelectorAll('.nav-button');
+            buttons.forEach(btn => btn.disabled = false);
+            updateNavButtons();
+        }
+        
+        // Batch export PNG
+        async function batchExportPNG() {
+            showProgress();
+            const originalIndex = currentCardIndex;
+            const totalCards = cardData.length;
+            let successCount = 0;
+            let failCount = 0;
+            
+            try {
+                for (let i = 0; i < totalCards; i++) {
+                    const card = cardData[i];
+                    updateProgress(i + 1, totalCards, card.name, 'PNG');
+                    
+                    renderCardTemporary(i);
+                    
+                    // Small delay to ensure rendering is complete
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    
+                    try {
+                        await exportSingleCardPNG(i);
+                        successCount++;
+                    } catch (error) {
+                        console.error(`Failed to export ${card.name} as PNG:`, error);
+                        failCount++;
+                    }
+                }
+                
+                restoreCard(originalIndex);
+                alert(`Batch PNG export complete!\nSuccess: ${successCount}\nFailed: ${failCount}`);
+                
+            } catch (error) {
+                console.error('Batch PNG export error:', error);
+                alert('Batch export encountered an error. Check console for details.');
+                restoreCard(originalIndex);
+            } finally {
+                hideProgress();
+            }
+        }
+        
+        // Batch export PDF
+        async function batchExportPDF() {
+            showProgress();
+            const originalIndex = currentCardIndex;
+            const totalCards = cardData.length;
+            let successCount = 0;
+            let failCount = 0;
+            
+            try {
+                for (let i = 0; i < totalCards; i++) {
+                    const card = cardData[i];
+                    updateProgress(i + 1, totalCards, card.name, 'PDF');
+                    
+                    renderCardTemporary(i);
+                    
+                    // Small delay to ensure rendering is complete
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    
+                    try {
+                        await exportSingleCardPDF(i);
+                        successCount++;
+                    } catch (error) {
+                        console.error(`Failed to export ${card.name} as PDF:`, error);
+                        failCount++;
+                    }
+                }
+                
+                restoreCard(originalIndex);
+                alert(`Batch PDF export complete!\nSuccess: ${successCount}\nFailed: ${failCount}`);
+                
+            } catch (error) {
+                console.error('Batch PDF export error:', error);
+                alert('Batch export encountered an error. Check console for details.');
+                restoreCard(originalIndex);
+            } finally {
+                hideProgress();
+            }
+        }
+        
+        // Batch export both PNG and PDF
+        async function batchExportBoth() {
+            showProgress();
+            const originalIndex = currentCardIndex;
+            const totalCards = cardData.length;
+            const totalExports = totalCards * 2; // PNG + PDF for each card
+            let successCount = 0;
+            let failCount = 0;
+            let currentExport = 0;
+            
+            try {
+                for (let i = 0; i < totalCards; i++) {
+                    const card = cardData[i];
+                    renderCardTemporary(i);
+                    
+                    // Export PNG
+                    currentExport++;
+                    updateProgress(currentExport, totalExports, card.name, 'PNG');
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    
+                    try {
+                        await exportSingleCardPNG(i);
+                        successCount++;
+                    } catch (error) {
+                        console.error(`Failed to export ${card.name} as PNG:`, error);
+                        failCount++;
+                    }
+                    
+                    // Export PDF
+                    currentExport++;
+                    updateProgress(currentExport, totalExports, card.name, 'PDF');
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    
+                    try {
+                        await exportSingleCardPDF(i);
+                        successCount++;
+                    } catch (error) {
+                        console.error(`Failed to export ${card.name} as PDF:`, error);
+                        failCount++;
+                    }
+                }
+                
+                restoreCard(originalIndex);
+                alert(`Batch PNG + PDF export complete!\nSuccess: ${successCount}\nFailed: ${failCount}`);
+                
+            } catch (error) {
+                console.error('Batch export error:', error);
+                alert('Batch export encountered an error. Check console for details.');
+                restoreCard(originalIndex);
+            } finally {
+                hideProgress();
+            }
+        }
+        
+        // Export as PNG
+        function exportPNG() {
+            // Show loading overlay
+            loadingOverlay.style.display = 'flex';
+            
+            // Hide controls for export
+            const controls = document.querySelector('.controls');
+            controls.style.display = 'none';
+            
+            // Get current card info for filename
+            const currentCard = cardData[currentCardIndex];
+            const filename = `${currentCard.id}-card.png`;
+            
+            // Get card container
+            const cardContainer = document.getElementById('cardContainer');
+            
+            // Use html2canvas to capture the card
+            html2canvas(cardContainer, {
+                scale: 2, // Higher scale for better quality
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#ffffff'
+            }).then(function(canvas) {
+                // Convert canvas to PNG data URL
+                const imgData = canvas.toDataURL('image/png');
+                
+                // Create a download link
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = imgData;
+                
+                // Trigger download
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Restore controls
+                controls.style.display = 'flex';
+                
+                // Hide loading overlay
+                loadingOverlay.style.display = 'none';
+            }).catch(function(error) {
+                console.error('Error generating PNG:', error);
+                alert('Error generating PNG. Please try again.');
+                
+                // Restore controls and hide loading
+                controls.style.display = 'flex';
+                loadingOverlay.style.display = 'none';
+            });
+        }
+        
+        // Export as PDF
+        function exportPDF() {
+            // Show loading overlay
+            loadingOverlay.style.display = 'flex';
+            
+            // Hide controls for export
+            const controls = document.querySelector('.controls');
+            controls.style.display = 'none';
+            
+            // Get current card info for filename
+            const currentCard = cardData[currentCardIndex];
+            const filename = `${currentCard.id}-card.pdf`;
+            
+            // Get card container
+            const cardContainer = document.getElementById('cardContainer');
+            
+            // Use html2canvas to capture the card
+            html2canvas(cardContainer, {
+                scale: 2, // Higher scale for better quality
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#ffffff'
+            }).then(function(canvas) {
+                // Get canvas dimensions in pixels
+                const canvasWidth = canvas.width;
+                const canvasHeight = canvas.height;
+                
+                // Convert pixels to points (1 pixel = 0.75 points for 96 DPI)
+                const pdfWidth = canvasWidth * 0.75;
+                const pdfHeight = canvasHeight * 0.75;
+                
+                // Determine orientation based on aspect ratio
+                const orientation = pdfWidth > pdfHeight ? 'landscape' : 'portrait';
+                
+                // Create PDF with exact card dimensions
+                const pdf = new jsPDF({
+                    orientation: orientation,
+                    unit: 'pt',
+                    format: [pdfWidth, pdfHeight]
+                });
+                
+                // Add canvas image to PDF (fill entire PDF, no margins)
+                const imgData = canvas.toDataURL('image/png');
+                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                
+                // Save PDF
+                pdf.save(filename);
+                
+                // Restore controls
+                controls.style.display = 'flex';
+                
+                // Hide loading overlay
+                loadingOverlay.style.display = 'none';
+            }).catch(function(error) {
+                console.error('Error generating PDF:', error);
+                alert('Error generating PDF. Please try again.');
+                
+                // Restore controls and hide loading
+                controls.style.display = 'flex';
+                loadingOverlay.style.display = 'none';
+            });
+        }
+
+        // Initialize
+        renderCard(0);
+        updateNavButtons();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Sequence Canvas Generator</title>
+    <!-- Add html2canvas and jsPDF libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        :root {
+            --receiving-color: #5B9BD5;
+            --responding-color: #4CAF50;
+            --creating-color: #F9A03F;
+            --assessment-primary: #8B5A96;
+            --modality-color: #9C27B0;
+            
+            --receiving-bg: rgba(91, 155, 213, 0.1);
+            --responding-bg: rgba(76, 175, 80, 0.1);
+            --creating-bg: rgba(249, 160, 63, 0.1);
+            --modality-bg: rgba(156, 39, 176, 0.1);
+            
+            --border-color: #ddd;
+            --separator-color: #999;
+            --light-gray: #f5f5f5;
+            --medium-gray: #666;
+            --dark-gray: #333;
+            
+            --header-bg: #f0f4f8;
+            --canvas-bg: white;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 15px;
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .canvas-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .control-label {
+            font-weight: bold;
+            color: #555;
+            min-width: auto;
+        }
+
+        .nav-button {
+            padding: 8px 16px;
+            background-color: var(--responding-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .nav-button:hover:not(:disabled) {
+            background-color: #45a049;
+        }
+
+        .nav-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .btn-primary {
+            background-color: var(--receiving-color);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: #4A8BC2;
+        }
+
+        .btn-remove {
+            background-color: #e74c3c;
+        }
+
+        .btn-remove:hover:not(:disabled) {
+            background-color: #c0392b;
+        }
+
+        .btn-export {
+            background-color: #2196F3;
+        }
+
+        .btn-export:hover:not(:disabled) {
+            background-color: #1976D2;
+        }
+
+        .btn-export-pdf {
+            background-color: #FF9800;
+        }
+
+        .btn-export-pdf:hover:not(:disabled) {
+            background-color: #F57C00;
+        }
+
+        .btn-export-print {
+            background-color: var(--assessment-primary);
+        }
+
+        .btn-export-print:hover:not(:disabled) {
+            background-color: #7A4F85;
+        }
+
+        .segment-count {
+            background-color: white;
+            color: var(--receiving-color);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .scale-selection {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .scale-label {
+            font-weight: bold;
+            color: #555;
+            margin-right: 10px;
+        }
+
+        .scale-option {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+
+        .scale-option input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        .custom-input {
+            padding: 4px 8px;
+            width: 120px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-left: 5px;
+        }
+
+        .export-controls {
+            display: flex;
+            gap: 8px;
+            border-left: 2px solid var(--border-color);
+            padding-left: 20px;
+            margin-left: 20px;
+        }
+
+        .canvas-container {
+            overflow-x: auto;
+            padding-bottom: 20px;
+        }
+
+        .canvas {
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 0 auto;
+            background-color: var(--canvas-bg);
+            min-width: 800px;
+            width: max-content;
+        }
+
+        .header {
+            background-color: var(--header-bg);
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+
+        .control-panel {
+            padding: 15px;
+            background-color: #eef5ff;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .course-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--medium-gray);
+        }
+
+        .info-input {
+            padding: 8px;
+            border: 1px dashed #aaa;
+            border-radius: 4px;
+            background-color: #fff;
+            min-height: 38px;
+        }
+
+        .implementation-section {
+            background-color: var(--light-gray);
+            padding: 15px 15px 35px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .implementation-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .implementation-label {
+            font-weight: bold;
+            margin-right: 15px;
+            min-width: 160px;
+            color: var(--dark-gray);
+        }
+
+        .slider-container {
+            flex-grow: 1;
+            position: relative;
+            height: 30px;
+            max-width: 500px;
+        }
+
+        .slider-track {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 2px;
+            width: 100%;
+            background-color: var(--border-color);
+        }
+
+        .slider-ticks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slider-tick {
+            width: 2px;
+            height: 10px;
+            background-color: var(--border-color);
+        }
+
+        .slider-labels {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+
+        .slider-label {
+            font-size: 12px;
+            color: var(--medium-gray);
+        }
+
+        .learning-goals {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--dark-gray);
+        }
+
+        .goals-area {
+            min-height: 80px;
+            border: 1px dashed #aaa;
+            border-radius: 4px;
+            padding: 10px;
+            background-color: #fcfcfc;
+        }
+
+        .main-grid {
+            display: table;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .grid-row {
+            display: table-row;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .grid-row:last-child {
+            border-bottom: none;
+        }
+
+        .grid-cell {
+            display: table-cell;
+            padding: 0;
+            border-right: 1px solid var(--border-color);
+            position: relative;
+            vertical-align: top;
+            min-width: 150px;
+        }
+
+        .grid-cell:last-child {
+            border-right: none;
+        }
+
+        .first-column {
+            width: 120px;
+            min-width: 120px;
+            max-width: 120px;
+        }
+
+        .grid-header {
+            text-align: center;
+            font-weight: bold;
+            padding: 10px;
+            background-color: var(--light-gray);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .segment-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .segment-title {
+            margin-bottom: 5px;
+        }
+
+        .duration-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .duration-line {
+            flex-grow: 1;
+            height: 1px;
+            border-bottom: 1px solid #aaa;
+            max-width: 80px;
+        }
+
+        .time-unit {
+            font-size: 12px;
+            color: var(--medium-gray);
+        }
+
+        .engagement-cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 5px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            height: 100%;
+        }
+
+        .receiving-cell {
+            background-color: var(--receiving-color);
+        }
+        
+        .responding-cell {
+            background-color: var(--responding-color);
+        }
+        
+        .creating-cell {
+            background-color: var(--creating-color);
+        }
+
+        .modality-cell {
+            background-color: var(--modality-color);
+        }
+
+        .activity-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .card-area {
+            flex: 1;
+            min-height: 80px;
+            border-bottom: 1px dashed #ccc;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .notes-area {
+            flex: 1;
+            min-height: 70px;
+            padding: 10px;
+        }
+
+        .receiving-area .card-area {
+            background-color: var(--receiving-bg);
+        }
+        
+        .responding-area .card-area {
+            background-color: var(--responding-bg);
+        }
+        
+        .creating-area .card-area {
+            background-color: var(--creating-bg);
+        }
+
+        .modality-area .card-area {
+            background-color: var(--modality-bg);
+        }
+
+        .card-placeholder {
+            font-style: italic;
+            color: #999;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .notes-guide {
+            color: #999;
+            font-style: italic;
+            font-size: 12px;
+        }
+
+        .modality-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .modality-section {
+            flex: 1;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px dashed #ccc;
+        }
+
+        .modality-section:last-child {
+            border-bottom: none;
+        }
+
+        .modality-label {
+            font-weight: bold;
+            font-size: 12px;
+            color: var(--dark-gray);
+            margin-bottom: 5px;
+        }
+
+        .modality-space {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 4px;
+        }
+
+        .note {
+            font-style: italic;
+            color: var(--medium-gray);
+            font-size: 13px;
+        }
+
+        /* Loading overlay for export operations */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+        }
+
+        .spinner {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--responding-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        /* Horizontal scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            display: none;
+            align-items: center;
+            font-size: 12px;
+            gap: 5px;
+            z-index: 100;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                background-color: white;
+            }
+            
+            .canvas {
+                box-shadow: none;
+                border: 1px solid black;
+            }
+            
+            .controls, .control-panel {
+                display: none;
+            }
+            
+            .duration-container {
+                border-bottom: 1px solid black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <div class="canvas-controls">
+            <div class="control-group">
+                <span class="control-label">Scale:</span>
+                <label class="scale-option">
+                    <input type="radio" name="scale" value="session" checked> Session (hours)
+                </label>
+                <label class="scale-option">
+                    <input type="radio" name="scale" value="module"> Module (days/weeks)
+                </label>
+                <label class="scale-option">
+                    <input type="radio" name="scale" value="course"> Course (weeks/months)
+                </label>
+                <label class="scale-option">
+                    <input type="radio" name="scale" value="custom"> Custom:
+                    <input type="text" class="custom-input" placeholder="Define scale...">
+                </label>
+            </div>
+            
+            <div class="control-group">
+                <span class="control-label">Segments:</span>
+                <button class="nav-button btn-primary" id="segmentsBtn">
+                    <span class="segment-count" id="segmentCount">3</span>
+                </button>
+                <button class="nav-button btn-remove" id="removeSegmentBtn">← Remove</button>
+                <button class="nav-button btn-primary" id="addSegmentBtn">Add →</button>
+            </div>
+            
+            <div class="control-group">
+                <span class="control-label">Size:</span>
+                <button class="nav-button btn-primary" id="increaseRowsBtn">+ Height</button>
+                <button class="nav-button btn-remove" id="decreaseRowsBtn">- Height</button>
+                <button class="nav-button btn-primary" id="increaseColumnsBtn">+ Width</button>
+                <button class="nav-button btn-remove" id="decreaseColumnsBtn">- Width</button>
+            </div>
+        </div>
+        
+        <div class="export-controls">
+            <button class="nav-button btn-export" id="exportImageBtn">Export PNG</button>
+            <button class="nav-button btn-export-pdf" id="exportPdfBtn">Export PDF</button>
+            <button class="nav-button btn-export-print" onclick="window.print()">Print</button>
+        </div>
+    </div>
+
+    <div class="canvas-container" id="canvasContainer">
+        <div class="canvas" id="canvasToExport">
+            <div class="header">
+                <h1>HYBRID LEARNING ACTIVITY SEQUENCE CANVAS</h1>
+            </div>
+            
+            <!-- Course Info and Implementation Section -->
+            <div class="course-info">
+                <div class="info-group">
+                    <div class="info-label">COURSE TITLE:</div>
+                    <div class="info-input" contenteditable="true"></div>
+                </div>
+                <div class="info-group">
+                    <div class="info-label">DESIGNER(S):</div>
+                    <div class="info-input" contenteditable="true"></div>
+                </div>
+            </div>
+            
+            <!-- Implementation Level Section -->
+            <div class="implementation-section">
+                <div class="implementation-container">
+                    <div class="implementation-label">IMPLEMENTATION LEVEL:</div>
+                    <div class="slider-container">
+                        <div class="slider-track"></div>
+                        <div class="slider-ticks">
+                            <div class="slider-tick"></div>
+                            <div class="slider-tick"></div>
+                            <div class="slider-tick"></div>
+                        </div>
+                        <div class="slider-labels">
+                            <div class="slider-label">Essential</div>
+                            <div class="slider-label">Enhanced</div>
+                            <div class="slider-label">Transformative</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Learning Goals Section -->
+            <div class="learning-goals">
+                <div class="section-title">LEARNING GOALS:</div>
+                <div class="goals-area" contenteditable="true" data-placeholder="Space for adding learning goals (using sticky notes or writing directly)..."></div>
+            </div>
+            
+            <!-- Main Grid -->
+            <div class="main-grid" id="mainGrid">
+                <!-- Headers Row -->
+                <div class="grid-row" id="headerRow">
+                    <div class="grid-cell first-column">
+                        <div class="grid-header">ENGAGEMENT LEVEL</div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="grid-header">
+                            <div class="segment-header">
+                                <div class="segment-title">SEGMENT 1</div>
+                                <div class="duration-container">
+                                    <span class="duration-line"></span>
+                                    <span class="time-unit">(min)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="grid-header">
+                            <div class="segment-header">
+                                <div class="segment-title">SEGMENT 2</div>
+                                <div class="duration-container">
+                                    <span class="duration-line"></span>
+                                    <span class="time-unit">(min)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="grid-header">
+                            <div class="segment-header">
+                                <div class="segment-title">SEGMENT 3</div>
+                                <div class="duration-container">
+                                    <span class="duration-line"></span>
+                                    <span class="time-unit">(min)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Receiving Row -->
+                <div class="grid-row" id="receivingRow">
+                    <div class="grid-cell first-column">
+                        <div class="engagement-cell receiving-cell">
+                            RECEIVING<br>(Passive)
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="activity-container receiving-area">
+                            <div class="card-area">
+                                <div class="card-placeholder">Place activity card here</div>
+                            </div>
+                            <div class="notes-area">
+                                <div class="notes-guide">Space for activity details</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="activity-container receiving-area">
+                            <div class="card-area">
+                                <div class="card-placeholder">Place activity card here</div>
+                            </div>
+                            <div class="notes-area">
+                                <div class="notes-guide">Space for activity details</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="activity-container receiving-area">
+                            <div class="card-area">
+                                <div class="card-placeholder">Place activity card here</div>
+                            </div>
+                            <div class="notes-area">
+                                <div class="notes-guide">Space for activity details</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Responding Row -->
+                <div class="grid-row" id="respondingRow">
+                    <div class="grid-cell first-column">
+                        <div class="engagement-cell responding-cell">
+                            RESPONDING<br>(Active)
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="activity-container responding-area">
+                            <div class="card-area">
+                                <div class="card-placeholder">Place activity card here</div>
+                            </div>
+                            <div class="notes-area">
+                                <div class="notes-guide">Space for activity details</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="activity-container responding-area">
+                            <div class="card-area">
+                                <div class="card-placeholder">Place activity card here</div>
+                            </div>
+                            <div class="notes-area">
+                                <div class="notes-guide">Space for activity details</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="activity-container responding-area">
+                            <div class="card-area">
+                                <div class="card-placeholder">Place activity card here</div>
+                            </div>
+                            <div class="notes-area">
+                                <div class="notes-guide">Space for activity details</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Creating Row -->
+                <div class="grid-row" id="creatingRow">
+                    <div class="grid-cell first-column">
+                        <div class="engagement-cell creating-cell">
+                            CREATING<br>(Constructive)
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="activity-container creating-area">
+                            <div class="card-area">
+                                <div class="card-placeholder">Place activity card here</div>
+                            </div>
+                            <div class="notes-area">
+                                <div class="notes-guide">Space for activity details</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="activity-container creating-area">
+                            <div class="card-area">
+                                <div class="card-placeholder">Place activity card here</div>
+                            </div>
+                            <div class="notes-area">
+                                <div class="notes-guide">Space for activity details</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="activity-container creating-area">
+                            <div class="card-area">
+                                <div class="card-placeholder">Place activity card here</div>
+                            </div>
+                            <div class="notes-area">
+                                <div class="notes-guide">Space for activity details</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modality Row -->
+                <div class="grid-row" id="modalityRow">
+                    <div class="grid-cell first-column">
+                        <div class="engagement-cell modality-cell">
+                            MODALITY<br>ADJUSTMENTS
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="activity-container modality-area">
+                            <div class="modality-container">
+                                <div class="modality-section">
+                                    <div class="modality-label">For remote students:</div>
+                                    <div class="modality-space"></div>
+                                </div>
+                                <div class="modality-section">
+                                    <div class="modality-label">For on-site students:</div>
+                                    <div class="modality-space"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="activity-container modality-area">
+                            <div class="modality-container">
+                                <div class="modality-section">
+                                    <div class="modality-label">For remote students:</div>
+                                    <div class="modality-space"></div>
+                                </div>
+                                <div class="modality-section">
+                                    <div class="modality-label">For on-site students:</div>
+                                    <div class="modality-space"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="activity-container modality-area">
+                            <div class="modality-container">
+                                <div class="modality-section">
+                                    <div class="modality-label">For remote students:</div>
+                                    <div class="modality-space"></div>
+                                </div>
+                                <div class="modality-section">
+                                    <div class="modality-label">For on-site students:</div>
+                                    <div class="modality-space"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Horizontal scroll indicator -->
+        <div class="scroll-indicator" id="scrollIndicator">
+            Scroll horizontally to see more segments →
+        </div>
+        
+        <!-- Note -->
+        <div style="text-align: center; margin-top: 15px;">
+            <span class="note">This canvas is designed to be printed or exported for use on collaborative boards.</span>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Generating export... This may take a moment.</p>
+    </div>
+
+    <script>
+        // Function to update all segment titles and time units
+        function updateSegmentsForScale(scale) {
+            let unitText = '(min)';
+            let titlePrefix = 'SEGMENT';
+            
+            // Update units based on selected scale
+            switch(scale) {
+                case 'session':
+                    unitText = '(min)';
+                    titlePrefix = 'SEGMENT';
+                    break;
+                case 'module':
+                    unitText = '(days)';
+                    titlePrefix = 'SESSION';
+                    break;
+                case 'course':
+                    unitText = '(weeks)';
+                    titlePrefix = 'MODULE';
+                    break;
+                case 'custom':
+                    const customInput = document.querySelector('.custom-input');
+                    unitText = customInput.value ? `(${customInput.value})` : '';
+                    titlePrefix = 'SEGMENT';
+                    break;
+            }
+            
+            // Update all time units and titles
+            const headerRow = document.getElementById('headerRow');
+            const cells = headerRow.querySelectorAll('.grid-cell:not(.first-column)');
+            
+            cells.forEach((cell, index) => {
+                const timeUnit = cell.querySelector('.time-unit');
+                const segmentTitle = cell.querySelector('.segment-title');
+                
+                if (timeUnit) {
+                    timeUnit.textContent = unitText;
+                }
+                
+                if (segmentTitle) {
+                    segmentTitle.textContent = `${titlePrefix} ${index + 1}`;
+                }
+            });
+        }
+        
+        // Check if horizontal scrolling is needed
+        function checkHorizontalScroll() {
+            const container = document.getElementById('canvasContainer');
+            const canvas = document.getElementById('canvasToExport');
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            
+            if (canvas.offsetWidth > container.offsetWidth) {
+                scrollIndicator.style.display = 'flex';
+            } else {
+                scrollIndicator.style.display = 'none';
+            }
+        }
+        
+        // Get column widths (excluding first column)
+        function getColumnWidths() {
+            const headerRow = document.getElementById('headerRow');
+            const cells = headerRow.querySelectorAll('.grid-cell:not(.first-column)');
+            const widths = [];
+            
+            cells.forEach(cell => {
+                // Get computed style if no inline style is set
+                const computedStyle = window.getComputedStyle(cell);
+                const width = cell.style.width || computedStyle.width;
+                widths.push(width);
+            });
+            
+            return widths;
+        }
+        
+        // Apply column widths to all cells in each column
+        function applyColumnWidths(widths) {
+            const rows = document.querySelectorAll('.grid-row');
+            
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('.grid-cell:not(.first-column)');
+                
+                cells.forEach((cell, index) => {
+                    if (index < widths.length) {
+                        cell.style.width = widths[index];
+                    }
+                });
+            });
+        }
+
+        // Set consistent column width for all columns
+        function setConsistentColumnWidth(width) {
+            const rows = document.querySelectorAll('.grid-row');
+            
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('.grid-cell:not(.first-column)');
+                cells.forEach(cell => {
+                    cell.style.width = width;
+                });
+            });
+        }
+
+        // Get heights for all rows in the grid
+        function getRowHeights() {
+            const rowIds = ['receivingRow', 'respondingRow', 'creatingRow', 'modalityRow'];
+            const heights = {};
+            
+            rowIds.forEach(rowId => {
+                const row = document.getElementById(rowId);
+                if (row) {
+                    const containers = row.querySelectorAll('.activity-container');
+                    
+                    if (containers.length > 0) {
+                        const firstContainer = containers[0];
+                        // Get computed style if no inline style is set
+                        const computedStyle = window.getComputedStyle(firstContainer);
+                        heights[rowId] = firstContainer.style.height || computedStyle.height;
+                    }
+                }
+            });
+            
+            return heights;
+        }
+        
+        // Apply heights to all cells in a row
+        function applyRowHeights(heights) {
+            Object.keys(heights).forEach(rowId => {
+                const row = document.getElementById(rowId);
+                if (row) {
+                    const containers = row.querySelectorAll('.activity-container');
+                    
+                    containers.forEach(container => {
+                        container.style.height = heights[rowId];
+                    });
+                }
+            });
+        }
+
+        // Set consistent row height for all activity containers
+        function setConsistentRowHeight(height) {
+            const rowIds = ['receivingRow', 'respondingRow', 'creatingRow', 'modalityRow'];
+            
+            rowIds.forEach(rowId => {
+                const row = document.getElementById(rowId);
+                if (row) {
+                    const containers = row.querySelectorAll('.activity-container');
+                    containers.forEach(container => {
+                        container.style.height = height;
+                    });
+                }
+            });
+        }
+
+        // Scale Selection
+        const scaleRadios = document.querySelectorAll('input[name="scale"]');
+        
+        scaleRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                updateSegmentsForScale(this.value);
+            });
+        });
+        
+        // Custom scale input
+        const customInput = document.querySelector('.custom-input');
+        customInput.addEventListener('input', function() {
+            const customRadio = document.querySelector('input[value="custom"]');
+            if (customRadio.checked) {
+                updateSegmentsForScale('custom');
+            }
+        });
+        
+        // Segment Management
+        const addSegmentBtn = document.getElementById('addSegmentBtn');
+        const removeSegmentBtn = document.getElementById('removeSegmentBtn');
+        const segmentCountElement = document.getElementById('segmentCount');
+        const mainGrid = document.getElementById('mainGrid');
+        
+        // Add segment function
+        addSegmentBtn.addEventListener('click', function() {
+            // Get current segments count
+            const headerRow = document.getElementById('headerRow');
+            const segmentColumns = headerRow.querySelectorAll('.grid-cell:not(.first-column)');
+            const currentCount = segmentColumns.length;
+            const newCount = currentCount + 1;
+            
+            // Soft warning for large number of segments instead of hard limit
+            if (newCount > 15) {
+                if (!confirm('Adding many segments may affect browser performance but will work for export. Continue?')) {
+                    return;
+                }
+            }
+            
+            // Update segment count display
+            segmentCountElement.textContent = newCount;
+            
+            // Get currently selected scale
+            const selectedScale = document.querySelector('input[name="scale"]:checked').value;
+            
+            // Get existing column width for consistency
+            const existingWidths = getColumnWidths();
+            const columnWidth = existingWidths.length > 0 ? existingWidths[0] : '150px';
+            
+            // Get existing row heights for consistency
+            const rowHeights = getRowHeights();
+            
+            // Add a new column to each row
+            const rows = mainGrid.querySelectorAll('.grid-row');
+            rows.forEach((row, rowIndex) => {
+                // Create a new segment column
+                const newSegment = document.createElement('div');
+                newSegment.className = 'grid-cell';
+                newSegment.style.width = columnWidth;
+                
+                // Based on which row we're adding to
+                if (rowIndex === 0) { // Header row
+                    let unitText = '(min)';
+                    let titlePrefix = 'SEGMENT';
+                    
+                    switch(selectedScale) {
+                        case 'session':
+                            unitText = '(min)';
+                            titlePrefix = 'SEGMENT';
+                            break;
+                        case 'module':
+                            unitText = '(days)';
+                            titlePrefix = 'SESSION';
+                            break;
+                        case 'course':
+                            unitText = '(weeks)';
+                            titlePrefix = 'MODULE';
+                            break;
+                        case 'custom':
+                            unitText = customInput.value ? `(${customInput.value})` : '';
+                            titlePrefix = 'SEGMENT';
+                            break;
+                    }
+                    
+                    newSegment.innerHTML = `
+                        <div class="grid-header">
+                            <div class="segment-header">
+                                <div class="segment-title">${titlePrefix} ${newCount}</div>
+                                <div class="duration-container">
+                                    <span class="duration-line"></span>
+                                    <span class="time-unit">${unitText}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } 
+                else if (rowIndex === 1) { // Receiving row
+                    newSegment.innerHTML = `
+                        <div class="activity-container receiving-area">
+                            <div class="card-area">
+                                <div class="card-placeholder">Place activity card here</div>
+                            </div>
+                            <div class="notes-area">
+                                <div class="notes-guide">Space for activity details</div>
+                            </div>
+                        </div>
+                    `;
+                }
+                else if (rowIndex === 2) { // Responding row
+                    newSegment.innerHTML = `
+                        <div class="activity-container responding-area">
+                            <div class="card-area">
+                                <div class="card-placeholder">Place activity card here</div>
+                            </div>
+                            <div class="notes-area">
+                                <div class="notes-guide">Space for activity details</div>
+                            </div>
+                        </div>
+                    `;
+                }
+                else if (rowIndex === 3) { // Creating row
+                    newSegment.innerHTML = `
+                        <div class="activity-container creating-area">
+                            <div class="card-area">
+                                <div class="card-placeholder">Place activity card here</div>
+                            </div>
+                            <div class="notes-area">
+                                <div class="notes-guide">Space for activity details</div>
+                            </div>
+                        </div>
+                    `;
+                }
+                else if (rowIndex === 4) { // Modality row
+                    newSegment.innerHTML = `
+                        <div class="activity-container modality-area">
+                            <div class="modality-container">
+                                <div class="modality-section">
+                                    <div class="modality-label">For remote students:</div>
+                                    <div class="modality-space"></div>
+                                </div>
+                                <div class="modality-section">
+                                    <div class="modality-label">For on-site students:</div>
+                                    <div class="modality-space"></div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                // Append the new segment to the row
+                row.appendChild(newSegment);
+                
+                // Apply consistent heights to the new container if needed
+                if (rowIndex > 0) {
+                    const rowId = row.id;
+                    if (rowHeights[rowId]) {
+                        const newContainer = newSegment.querySelector('.activity-container');
+                        if (newContainer) {
+                            newContainer.style.height = rowHeights[rowId];
+                        }
+                    }
+                }
+            });
+            
+            // Check if horizontal scrolling is needed
+            checkHorizontalScroll();
+        });
+        
+        // Remove segment function
+        removeSegmentBtn.addEventListener('click', function() {
+            // Get current segments count
+            const headerRow = document.getElementById('headerRow');
+            const segmentColumns = headerRow.querySelectorAll('.grid-cell:not(.first-column)');
+            const currentCount = segmentColumns.length;
+            
+            // Don't allow fewer than 1 segment
+            if (currentCount <= 1) {
+                alert('At least one segment is required.');
+                return;
+            }
+            
+            const newCount = currentCount - 1;
+            segmentCountElement.textContent = newCount;
+            
+            // For each row, remove the last column (not including the first column)
+            const rows = mainGrid.querySelectorAll('.grid-row');
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('.grid-cell:not(.first-column)');
+                const lastCell = cells[cells.length - 1];
+                row.removeChild(lastCell);
+            });
+            
+            // Check if horizontal scrolling is still needed
+            checkHorizontalScroll();
+        });
+        
+        // Row height adjustment - global controls
+        const increaseRowsBtn = document.getElementById('increaseRowsBtn');
+        const decreaseRowsBtn = document.getElementById('decreaseRowsBtn');
+        
+        increaseRowsBtn.addEventListener('click', function() {
+            const contentRows = ['receivingRow', 'respondingRow', 'creatingRow', 'modalityRow'];
+            
+            contentRows.forEach(rowId => {
+                const row = document.getElementById(rowId);
+                if (row) {
+                    const activityContainers = row.querySelectorAll('.activity-container');
+                    
+                    activityContainers.forEach(container => {
+                        // Get computed height if no inline height is set
+                        const computedStyle = window.getComputedStyle(container);
+                        const currentHeight = container.style.height 
+                            ? parseInt(container.style.height) 
+                            : parseInt(computedStyle.height);
+                            
+                        container.style.height = (currentHeight + 30) + 'px';
+                    });
+                }
+            });
+        });
+        
+        decreaseRowsBtn.addEventListener('click', function() {
+            const contentRows = ['receivingRow', 'respondingRow', 'creatingRow', 'modalityRow'];
+            
+            contentRows.forEach(rowId => {
+                const row = document.getElementById(rowId);
+                if (row) {
+                    const activityContainers = row.querySelectorAll('.activity-container');
+                    
+                    activityContainers.forEach(container => {
+                        // Get computed height if no inline height is set
+                        const computedStyle = window.getComputedStyle(container);
+                        const currentHeight = container.style.height 
+                            ? parseInt(container.style.height) 
+                            : parseInt(computedStyle.height);
+                            
+                        // Don't go below 150px to maintain usability
+                        if (currentHeight >= 180) {
+                            container.style.height = (currentHeight - 30) + 'px';
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Column width adjustment - global controls
+        const increaseColumnsBtn = document.getElementById('increaseColumnsBtn');
+        const decreaseColumnsBtn = document.getElementById('decreaseColumnsBtn');
+        
+        increaseColumnsBtn.addEventListener('click', function() {
+            // Get current width from first column (excluding first column)
+            const headerRow = document.getElementById('headerRow');
+            const firstCell = headerRow.querySelector('.grid-cell:not(.first-column)');
+            
+            if (firstCell) {
+                const computedStyle = window.getComputedStyle(firstCell);
+                const currentWidth = firstCell.style.width 
+                    ? parseInt(firstCell.style.width) 
+                    : parseInt(computedStyle.width);
+                    
+                const newWidth = (currentWidth + 20) + 'px';
+                setConsistentColumnWidth(newWidth);
+            }
+            
+            // Check horizontal scroll after width changes
+            checkHorizontalScroll();
+        });
+        
+        decreaseColumnsBtn.addEventListener('click', function() {
+            // Get current width from first column (excluding first column)
+            const headerRow = document.getElementById('headerRow');
+            const firstCell = headerRow.querySelector('.grid-cell:not(.first-column)');
+            
+            if (firstCell) {
+                const computedStyle = window.getComputedStyle(firstCell);
+                const currentWidth = firstCell.style.width 
+                    ? parseInt(firstCell.style.width) 
+                    : parseInt(computedStyle.width);
+                    
+                // Don't go below 120px to maintain usability
+                if (currentWidth >= 140) {
+                    const newWidth = (currentWidth - 20) + 'px';
+                    setConsistentColumnWidth(newWidth);
+                }
+            }
+            
+            // Check horizontal scroll after width changes
+            checkHorizontalScroll();
+        });
+
+        // Export functions
+        const { jsPDF } = window.jspdf;
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        
+        // Export as PNG
+        document.getElementById('exportImageBtn').addEventListener('click', function() {
+            // Show loading overlay
+            loadingOverlay.style.display = 'flex';
+            
+            // Hide controls and scroll indicator for export
+            const controlsSection = document.querySelector('.controls');
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            
+            if (controlsSection) controlsSection.style.display = 'none';
+            if (scrollIndicator) scrollIndicator.style.display = 'none';
+            
+            // Get canvas element
+            const canvas = document.getElementById('canvasToExport');
+            
+            // Use html2canvas to capture the canvas
+            html2canvas(canvas, {
+                scale: 2, // Higher scale for better quality
+                useCORS: true,
+                allowTaint: true,
+                scrollX: 0,
+                scrollY: 0,
+                windowWidth: document.documentElement.offsetWidth,
+                windowHeight: document.documentElement.offsetHeight
+            }).then(function(canvas) {
+                // Convert canvas to PNG data URL
+                const imgData = canvas.toDataURL('image/png');
+                
+                // Create a download link
+                const link = document.createElement('a');
+                link.download = 'hybrid-learning-canvas.png';
+                link.href = imgData;
+                
+                // Trigger download
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Restore controls and check scroll indicator
+                if (controlsSection) controlsSection.style.display = 'flex';
+                checkHorizontalScroll();
+                
+                // Hide loading overlay
+                loadingOverlay.style.display = 'none';
+            }).catch(function(error) {
+                console.error('Export error:', error);
+                alert('Export failed. Please try again.');
+                
+                // Restore controls and hide loading overlay
+                if (controlsSection) controlsSection.style.display = 'flex';
+                checkHorizontalScroll();
+                loadingOverlay.style.display = 'none';
+            });
+        });
+        
+        // Export as PDF
+        document.getElementById('exportPdfBtn').addEventListener('click', function() {
+            // Show loading overlay
+            loadingOverlay.style.display = 'flex';
+            
+            // Hide controls and scroll indicator for export
+            const controlsSection = document.querySelector('.controls');
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            
+            if (controlsSection) controlsSection.style.display = 'none';
+            if (scrollIndicator) scrollIndicator.style.display = 'none';
+            
+            // Get canvas element
+            const canvas = document.getElementById('canvasToExport');
+            
+            // Use html2canvas to capture the canvas
+            html2canvas(canvas, {
+                scale: 2, // Higher scale for better quality
+                useCORS: true,
+                allowTaint: true,
+                scrollX: 0,
+                scrollY: 0,
+                windowWidth: document.documentElement.offsetWidth,
+                windowHeight: document.documentElement.offsetHeight
+            }).then(function(canvas) {
+                // Get canvas dimensions
+                const canvasWidth = canvas.width;
+                const canvasHeight = canvas.height;
+                
+                // Calculate PDF dimensions to fit the canvas
+                // For very wide canvases, use a larger format than A4
+                let pdfWidth, pdfHeight, orientation;
+                
+                if (canvasWidth > canvasHeight * 1.5) {
+                    // For very wide canvases, create a custom sized PDF
+                    pdfWidth = 1190.55; // About A3 width in points
+                    pdfHeight = (canvasHeight * pdfWidth) / canvasWidth;
+                    orientation = 'landscape';
+                } else {
+                    // For normal width canvases, use standard A4
+                    pdfWidth = 595.28; // A4 width in points
+                    pdfHeight = (canvasHeight * pdfWidth) / canvasWidth;
+                    orientation = pdfHeight > pdfWidth ? 'portrait' : 'landscape';
+                }
+                
+                // Create PDF
+                const pdf = new jsPDF({
+                    orientation: orientation,
+                    unit: 'pt',
+                    format: [pdfWidth, pdfHeight]
+                });
+                
+                // Add canvas image to PDF
+                const imgData = canvas.toDataURL('image/png');
+                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                
+                // Save PDF
+                pdf.save('hybrid-learning-canvas.pdf');
+                
+                // Restore controls and check scroll indicator
+                if (controlsSection) controlsSection.style.display = 'flex';
+                checkHorizontalScroll();
+                
+                // Hide loading overlay
+                loadingOverlay.style.display = 'none';
+            }).catch(function(error) {
+                console.error('Export error:', error);
+                alert('Export failed. Please try again.');
+                
+                // Restore controls and hide loading overlay
+                if (controlsSection) controlsSection.style.display = 'flex';
+                checkHorizontalScroll();
+                loadingOverlay.style.display = 'none';
+            });
+        });
+        
+        // Check for horizontal scroll on initial load
+        window.addEventListener('load', function() {
+            checkHorizontalScroll();
+        });
+        
+        // Check for horizontal scroll when window is resized
+        window.addEventListener('resize', function() {
+            checkHorizontalScroll();
+        });
+    </script>
+</body>
+</html>

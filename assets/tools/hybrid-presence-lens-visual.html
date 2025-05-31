@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Hybrid Presence Lens - Enhanced Visual Guide</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root {
+    --primary-blue: #5B9BD5; --primary-green: #4CAF50; --primary-orange: #F9A03F; --primary-purple: #8B5A96;
+    --light-blue: #E3F2FD; --light-green: #E8F5E8; --light-orange: #FFF3E0; --light-purple: #F3E5F5;
+    --border-color: #ddd; --light-gray: #f8f9fa; --medium-gray: #6c757d; --text-color: #333333; --background-color: #FFFFFF;
+}
+* { box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 14px; line-height: 1.5; color: var(--text-color); background-color: var(--light-gray); padding: 30px; margin: 0 auto; max-width: 1200px; }
+h1 { font-size: 2.2em; text-align: center; font-weight: 600; margin-bottom: 10px; }
+h2 { font-size: 1.8em; border-bottom: 2px solid var(--primary-blue); padding-bottom: 10px; margin-top: 40px; font-weight: 600; }
+h3 { font-size: 1.4em; margin-top: 30px; font-weight: 600; }
+.subtitle { text-align: center; font-style: italic; color: var(--medium-gray); margin-bottom: 30px; font-size: 1.1em; }
+.section { background: var(--background-color); border-radius: 8px; padding: 25px; margin: 30px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--border-color); }
+.blue-accent { border-left: 4px solid var(--primary-blue); }
+.green-accent { border-left: 4px solid var(--primary-green); }
+.orange-accent { border-left: 4px solid var(--primary-orange); }
+.purple-accent { border-left: 4px solid var(--primary-purple); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0; }
+.card { background: var(--background-color); border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--border-color); }
+.highlight { background: var(--light-green); border: 1px solid var(--primary-green); border-radius: 6px; padding: 15px; margin: 15px 0; }
+.warning { background: #fff5f5; border: 1px solid #dc3545; border-radius: 6px; padding: 15px; margin: 15px 0; }
+.table { width: 100%; border-collapse: collapse; margin: 20px 0; background: var(--background-color); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.table th { background: var(--light-gray); padding: 12px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border-color); }
+.table td { padding: 10px 12px; border: 1px solid var(--border-color); vertical-align: top; }
+.export-controls { position: sticky; top: 0; background: var(--background-color); padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; z-index: 100; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; border: 1px solid var(--border-color); }
+.btn-export { background-color: var(--primary-blue); color: white; border: none; padding: 8px 16px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: 500; }
+.btn-export:hover { background-color: #4a90e2; }
+.btn-export:nth-child(2) { background-color: var(--primary-orange); }
+.btn-export:nth-child(2):hover { background-color: #e8940a; }
+.btn-print { background-color: var(--primary-purple) !important; }
+.loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 1000; }
+.loading-content { background: var(--background-color); padding: 40px; border-radius: 8px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+.loading-spinner { width: 40px; height: 40px; border: 4px solid var(--light-gray); border-top: 4px solid var(--primary-blue); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--medium-gray); font-style: italic; }
+@media print { .export-controls { display: none !important; } body { background: white; margin: 0; padding: 20px; } }
+@media (max-width: 768px) { .grid { grid-template-columns: 1fr; } .table { font-size: 12px; } }
+</style>
+</head>
+<body>
+
+<div class="export-controls">
+    <button class="btn-export" onclick="exportPNG()">Export as PNG</button>
+    <button class="btn-export" onclick="exportPDF()">Export as PDF</button>
+    <button class="btn-export btn-print" onclick="window.print()">Print Guide</button>
+</div>
+
+<div id="contentToExport">
+
+<h1>🔍 HYBRID PRESENCE LENS</h1>
+<div class="subtitle">Understanding & Quick Diagnosis for Hybrid Learning</div>
+
+<div class="section blue-accent">
+    <h3>Understanding Presence: The Foundation</h3>
+    <p><strong>What is "Presence" in Learning?</strong><br>
+    Presence is the sense of "being there" and "being together" that enables meaningful learning. In traditional classrooms, physical proximity creates natural presence. In hybrid environments, we must intentionally design for presence across physical and virtual spaces.</p>
+    
+    <h4>The Presence Challenge in Hybrid</h4>
+    <div style="text-align: center; margin: 20px 0;">
+        <svg width="100%" height="200" viewBox="0 0 800 200">
+            <!-- Traditional Classroom -->
+            <g>
+                <text x="150" y="30" text-anchor="middle" font-weight="bold" font-size="14">TRADITIONAL CLASSROOM</text>
+                
+                <!-- Teacher -->
+                <circle cx="150" cy="70" r="15" fill="#5B9BD5" stroke="#333" stroke-width="2"/>
+                <text x="150" y="76" text-anchor="middle" font-size="18">🧑‍🏫</text>
+                
+                <!-- Connection lines from teacher to students -->
+                <line x1="150" y1="85" x2="110" y2="130" stroke="#333" stroke-width="2"/>
+                <line x1="150" y1="85" x2="150" y2="130" stroke="#333" stroke-width="2"/>
+                <line x1="150" y1="85" x2="190" y2="130" stroke="#333" stroke-width="2"/>
+                
+                <!-- Students -->
+                <circle cx="110" cy="140" r="12" fill="#4CAF50" stroke="#333" stroke-width="1"/>
+                <text x="110" y="146" text-anchor="middle" font-size="16">👥</text>
+                
+                <circle cx="150" cy="140" r="12" fill="#4CAF50" stroke="#333" stroke-width="1"/>
+                <text x="150" y="146" text-anchor="middle" font-size="16">👥</text>
+                
+                <circle cx="190" cy="140" r="12" fill="#4CAF50" stroke="#333" stroke-width="1"/>
+                <text x="190" y="146" text-anchor="middle" font-size="16">👥</text>
+                
+                <text x="150" y="175" text-anchor="middle" font-style="italic" font-size="12">Natural presence from proximity</text>
+            </g>
+            
+            <!-- VS Arrow -->
+            <text x="400" y="105" text-anchor="middle" font-size="24" font-weight="bold" color="#666">VS</text>
+            
+            <!-- Hybrid Classroom -->
+            <g>
+                <text x="650" y="30" text-anchor="middle" font-weight="bold" font-size="14">HYBRID CLASSROOM</text>
+                
+                <!-- Teacher -->
+                <circle cx="650" cy="70" r="15" fill="#5B9BD5" stroke="#333" stroke-width="2"/>
+                <text x="650" y="76" text-anchor="middle" font-size="18">🧑‍🏫</text>
+                
+                <!-- Connection lines -->
+                <line x1="650" y1="85" x2="610" y2="130" stroke="#333" stroke-width="2"/>
+                <line x1="650" y1="85" x2="650" y2="130" stroke="#333" stroke-width="2"/>
+                <line x1="650" y1="85" x2="690" y2="130" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
+                
+                <!-- Physical students -->
+                <circle cx="610" cy="140" r="12" fill="#4CAF50" stroke="#333" stroke-width="1"/>
+                <text x="610" y="146" text-anchor="middle" font-size="16">👥</text>
+                
+                <!-- Split line showing division -->
+                <line x1="650" y1="85" x2="650" y2="165" stroke="#F9A03F" stroke-width="4"/>
+                
+                <!-- Remote student -->
+                <rect x="672" y="128" width="36" height="24" fill="#8B5A96" stroke="#333" stroke-width="1" rx="3"/>
+                <text x="690" y="143" text-anchor="middle" font-size="16">💻</text>
+                
+                <text x="650" y="175" text-anchor="middle" font-style="italic" font-size="12">Split presence requires intention</text>
+            </g>
+        </svg>
+    </div>
+    <div class="highlight">
+        <strong>Why This Matters:</strong> Without intentional presence-building, hybrid learning fractures into two parallel experiences—creating inequity, reducing engagement, and limiting learning potential for all students.
+    </div>
+</div>
+
+<div class="section">
+    <h3>The Three Presences Work Together</h3>
+    <div style="text-align: center; margin: 20px 0;">
+        <svg width="100%" height="220" viewBox="0 0 400 220">
+            <!-- Teaching Presence at top -->
+            <circle cx="200" cy="50" r="25" fill="#8B5A96" stroke="#333" stroke-width="2"/>
+            <text x="200" y="45" text-anchor="middle" font-size="20">🎯</text>
+            <text x="200" y="30" text-anchor="middle" font-weight="bold" font-size="12">TEACHING</text>
+            <text x="200" y="90" text-anchor="middle" font-style="italic" font-size="11">"I know what to do"</text>
+            
+            <!-- Connection lines with arrows -->
+            <line x1="180" y1="70" x2="110" y2="130" stroke="#333" stroke-width="3"/>
+            <polygon points="115,135 105,130 115,125" fill="#333"/>
+            
+            <line x1="220" y1="70" x2="290" y2="130" stroke="#333" stroke-width="3"/>
+            <polygon points="285,135 295,130 285,125" fill="#333"/>
+            
+            <!-- Social Presence (left) -->
+            <circle cx="100" cy="150" r="25" fill="#F9A03F" stroke="#333" stroke-width="2"/>
+            <text x="100" y="145" text-anchor="middle" font-size="20">💬</text>
+            <text x="100" y="185" text-anchor="middle" font-weight="bold" font-size="12">SOCIAL</text>
+            <text x="100" y="200" text-anchor="middle" font-style="italic" font-size="11">"I belong here"</text>
+            
+            <!-- Cognitive Presence (right) -->
+            <circle cx="300" cy="150" r="25" fill="#5B9BD5" stroke="#333" stroke-width="2"/>
+            <text x="300" y="145" text-anchor="middle" font-size="20">🧠</text>
+            <text x="300" y="185" text-anchor="middle" font-weight="bold" font-size="12">COGNITIVE</text>
+            <text x="300" y="200" text-anchor="middle" font-style="italic" font-size="11">"I think deeply"</text>
+            
+            <!-- Bidirectional connection between Social and Cognitive -->
+            <line x1="125" y1="150" x2="275" y2="150" stroke="#333" stroke-width="3"/>
+            <polygon points="130,155 120,150 130,145" fill="#333"/>
+            <polygon points="270,155 280,150 270,145" fill="#333"/>
+        </svg>
+    </div>
+    <p><strong>The Dynamic:</strong> Teaching presence enables both social and cognitive presence. Social presence supports cognitive presence. When one fails, all suffer.</p>
+</div>
+
+<h2>The 3 Essential Presences Explained</h2>
+
+<div class="grid">
+    <div class="card purple-accent">
+        <h4>🎯 Teaching Presence</h4>
+        <p><em>"Can students access guidance equally?"</em></p>
+        <div class="highlight">
+            <strong>What it looks like when working:</strong>
+            <ul><li>Clear instructions heard/seen by all</li><li>Balanced feedback across modalities</li><li>Visible facilitation and direction</li><li>Equal support for all students</li></ul>
+        </div>
+        <div class="warning">
+            <strong>Warning signs of breakdown:</strong>
+            <ul><li>❌ Remote students frequently confused</li><li>❌ Only on-site students get feedback</li><li>❌ Defaulting to lecture mode</li><li>❌ One group always waiting</li></ul>
+        </div>
+    </div>
+    
+    <div class="card orange-accent">
+        <h4>💬 Social Presence</h4>
+        <p><em>"Can students connect across spaces?"</em></p>
+        <div class="highlight">
+            <strong>What it looks like when working:</strong>
+            <ul><li>Names known across modalities</li><li>Voluntary cross-modal collaboration</li><li>Shared jokes and references</li><li>Informal connections happening</li></ul>
+        </div>
+        <div class="warning">
+            <strong>Warning signs of breakdown:</strong>
+            <ul><li>❌ "Us vs them" language</li><li>❌ Modality silos forming</li><li>❌ Silent remote students</li><li>❌ No cross-modal friendships</li></ul>
+        </div>
+    </div>
+    
+    <div class="card blue-accent">
+        <h4>🧠 Cognitive Presence</h4>
+        <p><em>"Can students think together?"</em></p>
+        <div class="highlight">
+            <strong>What it looks like when working:</strong>
+            <ul><li>Ideas build across locations</li><li>Deep questioning emerges</li><li>Shared understanding develops</li><li>Collaborative knowledge creation</li></ul>
+        </div>
+        <div class="warning">
+            <strong>Warning signs of breakdown:</strong>
+            <ul><li>❌ Parallel conversations</li><li>❌ Surface-level exchanges</li><li>❌ Fragmented outputs</li><li>❌ Ideas don't connect</li></ul>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h3>🎪 The Triple Presence Matrix</h3>
+    <p><em>Where presence must happen in hybrid learning</em></p>
+    <table class="table">
+        <thead><tr><th></th><th>🎯 Teaching</th><th>💬 Social</th><th>🧠 Cognitive</th></tr></thead>
+        <tbody>
+            <tr><td><strong>Physical Space</strong></td><td>✓</td><td>✓</td><td>✓</td></tr>
+            <tr><td><strong>Digital Platform</strong></td><td>✓</td><td>✓</td><td>✓</td></tr>
+            <tr><td><strong>Remote Contexts</strong></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        </tbody>
+    </table>
+    <p style="text-align: center; font-style: italic;">Each ✓ = An intentional design requirement</p>
+</div>
+
+<h2>🤝 The Presence Partnership</h2>
+
+<div class="section green-accent">
+    <p><strong>Presence is Co-Created Between Instructors and Students:</strong></p>
+    <div style="text-align: center; margin: 20px 0;">
+        <svg width="100%" height="150" viewBox="0 0 500 150">
+            <!-- Instructor Role (left side) -->
+            <g>
+                <text x="80" y="25" text-anchor="middle" font-weight="bold" font-size="13">INSTRUCTOR ROLE</text>
+                <text x="80" y="45" text-anchor="middle" font-size="12">Creates Opportunities</text>
+                <circle cx="80" cy="70" r="20" fill="#5B9BD5" stroke="#333" stroke-width="2"/>
+                <text x="80" y="76" text-anchor="middle" font-size="18">🧑‍🏫</text>
+            </g>
+            
+            <!-- Student Role (right side) -->
+            <g>
+                <text x="420" y="25" text-anchor="middle" font-weight="bold" font-size="13">STUDENT ROLE</text>
+                <text x="420" y="45" text-anchor="middle" font-size="12">Actively Participates</text>
+                <circle cx="420" cy="70" r="20" fill="#4CAF50" stroke="#333" stroke-width="2"/>
+                <text x="420" y="76" text-anchor="middle" font-size="18">🎓</text>
+            </g>
+            
+            <!-- Bidirectional arrows -->
+            <line x1="105" y1="70" x2="395" y2="70" stroke="#333" stroke-width="3"/>
+            <polygon points="110,75 100,70 110,65" fill="#333"/>
+            <polygon points="390,75 400,70 390,65" fill="#333"/>
+            
+            <!-- Shared Learning Community (center box) -->
+            <rect x="150" y="95" width="200" height="40" fill="#E8F5E8" stroke="#4CAF50" stroke-width="2" rx="8"/>
+            <text x="250" y="110" text-anchor="middle" font-weight="bold" font-size="13">SHARED LEARNING COMMUNITY</text>
+            <text x="250" y="125" text-anchor="middle" font-size="11">Where Everyone "Shows Up"</text>
+            
+            <!-- Connection lines from instructor and student to community -->
+            <line x1="80" y1="90" x2="180" y2="95" stroke="#666" stroke-width="2" stroke-dasharray="3,3"/>
+            <line x1="420" y1="90" x2="320" y2="95" stroke="#666" stroke-width="2" stroke-dasharray="3,3"/>
+        </svg>
+    </div>
+    
+    <h4>The Presence Pact</h4>
+    <p><em>A mutual agreement for hybrid learning communities:</em></p>
+    
+    <table class="table">
+        <thead><tr><th>Instructors Commit To:</th><th>Students Commit To:</th></tr></thead>
+        <tbody>
+            <tr><td>Design multiple presence pathways</td><td>Find sustainable ways to "show up"</td></tr>
+            <tr><td>Recognize diverse participation modes</td><td>Signal engagement consistently</td></tr>
+            <tr><td>Create strategic camera moments</td><td>Participate in key visual moments when possible</td></tr>
+            <tr><td>Celebrate all forms of engagement</td><td>Support peers' presence choices</td></tr>
+            <tr><td>Balance individual needs with community</td><td>Contribute to collective learning</td></tr>
+        </tbody>
+    </table>
+    
+    <div class="highlight">
+        💡 <strong>See Also:</strong> Share the Hybrid Learning Participant Guide with students to establish shared expectations about presence and participation
+    </div>
+    
+    <h4>Facilitating the Balance</h4>
+    <p><strong>When presence gaps appear, consider:</strong></p>
+    <ul>
+        <li>Are there barriers I haven't recognized?</li>
+        <li>Have I provided multiple ways to show presence?</li>
+        <li>Am I celebrating diverse participation equally?</li>
+        <li>Have we discussed our presence pact as a community?</li>
+    </ul>
+</div>
+
+<h2>🚨 Quick Diagnostic Tool</h2>
+
+<div class="section">
+    <h3>Step 1: Identify the Symptoms</h3>
+    <table class="table">
+        <thead><tr><th>If you see...</th><th>Likely Presence Gap</th><th>Primary Dimension</th></tr></thead>
+        <tbody>
+            <tr><td>Tech confusion, can't hear/see content</td><td>🎯 Teaching</td><td>Check Dimension 1 setup</td></tr>
+            <tr><td>Students don't know each other's names</td><td>💬 Social</td><td>Focus on Dimension 3 tools</td></tr>
+            <tr><td>Ideas don't build on each other</td><td>🧠 Cognitive</td><td>Review Dimension 2 design</td></tr>
+            <tr><td>Everything feels difficult/fragmented</td><td>🎯💬🧠 All three</td><td>Start with facilitation basics</td></tr>
+        </tbody>
+    </table>
+    
+    <h3>Step 2: Apply Targeted Solutions</h3>
+    <div class="grid">
+        <div class="card purple-accent">
+            <strong>🎯 Teaching Presence Gap? Try these cards:</strong>
+            <ul><li><strong>A1</strong> - Presence Signaling</li><li><strong>A2</strong> - Attention Cycling</li><li><strong>A3</strong> - Full-Group Refocusing</li><li><strong>A4</strong> - Remote Spotlight Rotation</li><li><strong>A5</strong> - Unified Pause Points</li></ul>
+        </div>
+        <div class="card orange-accent">
+            <strong>💬 Social Presence Gap? Try these cards:</strong>
+            <ul><li><strong>C1</strong> - Cross-Modal Introductions</li><li><strong>C2</strong> - Shared Experience Creation</li><li><strong>C3</strong> - Mixed-Mode Grouping</li><li><strong>C4</strong> - Parallel Social Spaces</li><li><strong>C5</strong> - Community Visualization</li><li><strong>CB1-CB5</strong> - Course Beginning activities</li></ul>
+        </div>
+        <div class="card blue-accent">
+            <strong>🧠 Cognitive Presence Gap? Try these cards:</strong>
+            <ul><li><strong>D1</strong> - Structured Turn-Taking</li><li><strong>D2</strong> - Question Redirection</li><li><strong>D3</strong> - Cross-Modal Discussion Parsing</li><li><strong>D4</strong> - Distributed Facilitation</li><li><strong>D5</strong> - Digital Dialogue Extensions</li><li><strong>P1</strong> - Digital Backchanneling</li></ul>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h3>✅ Presence Health Check Tool</h3>
+    <p><strong>Quick Assessment: Rate each presence (1-5) for your last session</strong></p>
+    <table class="table">
+        <thead><tr><th>Presence Type</th><th>On-site</th><th>Remote</th><th>Gap Size</th><th>If gap >2, try cards:</th></tr></thead>
+        <tbody>
+            <tr><td>🎯 Teaching</td><td>___/5</td><td>___/5</td><td>___</td><td>A1, A2, A4</td></tr>
+            <tr><td>💬 Social</td><td>___/5</td><td>___/5</td><td>___</td><td>C1, C3, CB series</td></tr>
+            <tr><td>🧠 Cognitive</td><td>___/5</td><td>___/5</td><td>___</td><td>D1, D3, P1</td></tr>
+        </tbody>
+    </table>
+    <p style="text-align: center; font-weight: bold; font-size: 1.1em;">Biggest gap? That's your starting point!</p>
+</div>
+
+<div class="section orange-accent">
+    <h3>💡 Remember the Presence Equation</h3>
+    <div style="text-align: center; font-size: 1.2em; line-height: 1.8; margin: 20px 0;">
+        Strong Teaching Presence<br>
+        +<br>
+        Inclusive Social Presence<br>
+        +<br>
+        Distributed Cognitive Presence<br>
+        +<br>
+        <strong>SHARED RESPONSIBILITY</strong><br>
+        =<br>
+        ✨ <strong>EFFECTIVE HYBRID LEARNING</strong> ✨
+    </div>
+    <p style="text-align: center;"><strong>Next Step:</strong> Use the Hybrid Facilitation Quick Guide for specific routines and in-session protocols.</p>
+</div>
+
+<div class="footer">
+    <em>Hybrid Learning Design Toolkit | 2025 imaginary institute | Modified CC BY-SA 4.0</em>
+</div>
+
+</div>
+
+<div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <p>Generating export... This may take a moment.</p>
+    </div>
+</div>
+
+<script>
+const { jsPDF } = window.jspdf;
+const loadingOverlay = document.getElementById('loadingOverlay');
+
+function exportPNG() {
+    loadingOverlay.style.display = 'flex';
+    const exportControls = document.querySelector('.export-controls');
+    exportControls.style.display = 'none';
+    const contentToExport = document.getElementById('contentToExport');
+    
+    html2canvas(contentToExport, { scale: 2, useCORS: true, allowTaint: true, backgroundColor: '#ffffff', scrollX: 0, scrollY: 0 }).then(function(canvas) {
+        const imgData = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.download = 'hybrid-presence-lens-enhanced.png';
+        link.href = imgData;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        exportControls.style.display = 'flex';
+        loadingOverlay.style.display = 'none';
+    });
+}
+
+function exportPDF() {
+    loadingOverlay.style.display = 'flex';
+    const exportControls = document.querySelector('.export-controls');
+    exportControls.style.display = 'none';
+    const contentToExport = document.getElementById('contentToExport');
+    
+    html2canvas(contentToExport, { scale: 2, useCORS: true, allowTaint: true, backgroundColor: '#ffffff', scrollX: 0, scrollY: 0 }).then(function(canvas) {
+        const canvasWidth = canvas.width;
+        const canvasHeight = canvas.height;
+        const pdfWidth = canvasWidth * 0.75;
+        const pdfHeight = canvasHeight * 0.75;
+        
+        const pdf = new jsPDF({ orientation: 'portrait', unit: 'pt', format: [pdfWidth, pdfHeight] });
+        const imgData = canvas.toDataURL('image/png');
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('hybrid-presence-lens-enhanced.pdf');
+        
+        exportControls.style.display = 'flex';
+        loadingOverlay.style.display = 'none';
+    });
+}
+
+document.addEventListener('keydown', function(event) {
+    if ((event.ctrlKey || event.metaKey) && event.key === 'p') { event.preventDefault(); window.print(); }
+    if ((event.ctrlKey || event.metaKey) && event.key === 's') { event.preventDefault(); exportPNG(); }
+    if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.key === 'S') { event.preventDefault(); exportPDF(); }
+});
+</script>
+
+</body>
+</html> 

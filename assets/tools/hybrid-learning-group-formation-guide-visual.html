@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Hybrid Learning Group Formation Guide - Visual Reference</title>
+
+<!-- Add html2canvas and jsPDF libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style type="text/css">
+:root {
+    --primary-blue: #5B9BD5;
+    --primary-green: #4CAF50;
+    --primary-orange: #F9A03F;
+    --primary-purple: #8B5A96;
+    
+    --light-blue: #E3F2FD;
+    --light-green: #E8F5E8;
+    --light-orange: #FFF3E0;
+    --light-purple: #F3E5F5;
+    
+    --border-color: #ddd;
+    --light-gray: #f8f9fa;
+    --medium-gray: #6c757d;
+    --dark-gray: #343a40;
+    
+    --text-color: #333333;
+    --background-color: #FFFFFF;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-color);
+    background-color: var(--light-gray);
+    padding: 30px;
+    margin: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2.2em;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 1.8em;
+    border-bottom: 2px solid var(--primary-blue);
+    color: var(--text-color);
+    padding-bottom: 10px;
+    margin-top: 40px;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.4em;
+    color: var(--text-color);
+    margin-top: 30px;
+    font-weight: 600;
+}
+
+h4 {
+    font-size: 1.2em;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.subtitle {
+    text-align: center;
+    font-style: italic;
+    color: var(--medium-gray);
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.decision-framework {
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary-blue);
+    border-radius: 8px;
+    padding: 25px;
+    margin: 30px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.decision-tree {
+    background: var(--light-blue);
+    border: 1px solid var(--primary-blue);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.considerations-section {
+    background: var(--background-color);
+    border-radius: 8px;
+    padding: 25px;
+    margin: 30px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary-orange);
+}
+
+.size-reference {
+    background: var(--background-color);
+    border-radius: 8px;
+    padding: 25px;
+    margin: 30px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--success-color);
+}
+
+.protocols-section {
+    background: var(--background-color);
+    border-radius: 8px;
+    padding: 25px;
+    margin: 30px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary-purple);
+}
+
+.protocol-card {
+    background: var(--light-gray);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.protocol-a {
+    border-left: 4px solid var(--primary-green);
+}
+
+.protocol-b {
+    border-left: 4px solid var(--primary-orange);
+}
+
+.protocol-c {
+    border-left: 4px solid var(--info-color);
+}
+
+.reference-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: var(--background-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.reference-table th {
+    background: var(--light-gray);
+    color: var(--text-color);
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.reference-table td {
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    vertical-align: top;
+}
+
+.reference-table tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.card-tag {
+    background: var(--primary-blue);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9em;
+    white-space: nowrap;
+}
+
+.formation-methods {
+    background: var(--light-green);
+    border: 1px solid var(--success-color);
+    border-radius: 6px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.troubleshooting-section {
+    background: var(--background-color);
+    border-radius: 8px;
+    padding: 25px;
+    margin: 30px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--danger-color);
+}
+
+.checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.checklist-item {
+    background: var(--light-gray);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 15px;
+    text-align: center;
+}
+
+.remember-section {
+    background: var(--light-blue);
+    border: 1px solid var(--primary-blue);
+    border-radius: 8px;
+    padding: 25px;
+    margin: 30px 0;
+}
+
+.export-controls {
+    position: sticky;
+    top: 0;
+    background: var(--background-color);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    border: 1px solid var(--border-color);
+}
+
+.btn-export {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn-export:hover {
+    background-color: #4a90e2;
+}
+
+.btn-export:nth-child(2) {
+    background-color: var(--primary-orange);
+}
+
+.btn-export:nth-child(2):hover {
+    background-color: #e8940a;
+}
+
+.btn-print {
+    background-color: var(--primary-purple) !important;
+}
+
+.btn-print:hover {
+    background-color: #7b4f86 !important;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-content {
+    background: var(--background-color);
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--light-gray);
+    border-top: 4px solid var(--primary-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+hr {
+    background: var(--border-color);
+    border: 0 none;
+    color: transparent;
+    height: 1px;
+    margin: 30px 0;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    color: var(--medium-gray);
+    font-style: italic;
+}
+
+@media print {
+    .export-controls {
+        display: none !important;
+    }
+    body {
+        background: white;
+        margin: 0;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .checklist-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .reference-table {
+        font-size: 12px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Export Controls -->
+<div class="export-controls">
+    <button class="btn-export" onclick="exportPNG()">Export as PNG</button>
+    <button class="btn-export" onclick="exportPDF()">Export as PDF</button>
+    <button class="btn-export btn-print" onclick="window.print()">Print Guide</button>
+</div>
+
+<!-- Main content wrapper for export -->
+<div id="contentToExport">
+
+<h1>👥 GROUP FORMATION GUIDE</h1>
+<div class="subtitle">Quick reference for forming effective groups in hybrid learning environments</div>
+
+<div class="decision-framework">
+    <h2>🎯 Decision Framework</h2>
+    
+    <h3>Quick Decision Tree</h3>
+    <p>Start here to determine your grouping approach:</p>
+    
+    <div class="decision-tree">
+        <svg width="100%" height="350" viewBox="0 0 800 350">
+            <!-- Start -->
+            <rect x="300" y="20" width="200" height="40" fill="#5B9BD5" stroke="#333" stroke-width="2" rx="5"/>
+            <text x="400" y="45" text-anchor="middle" fill="white" font-weight="bold" font-size="14">What is your PRIMARY need?</text>
+            
+            <!-- First level branches -->
+            <line x1="400" y1="60" x2="150" y2="110" stroke="#333" stroke-width="2"/>
+            <line x1="400" y1="60" x2="400" y2="110" stroke="#333" stroke-width="2"/>
+            <line x1="400" y1="60" x2="650" y2="110" stroke="#333" stroke-width="2"/>
+            
+            <!-- Short Activity -->
+            <rect x="50" y="120" width="200" height="40" fill="#4CAF50" stroke="#333" stroke-width="2" rx="5"/>
+            <text x="150" y="145" text-anchor="middle" fill="white" font-weight="bold" font-size="12">SHORT ACTIVITY (single session)</text>
+            
+            <!-- Project Work -->
+            <rect x="300" y="120" width="200" height="40" fill="#F9A03F" stroke="#333" stroke-width="2" rx="5"/>
+            <text x="400" y="145" text-anchor="middle" fill="white" font-weight="bold" font-size="12">PROJECT WORK (2-4 weeks)</text>
+            
+            <!-- Semester Teams -->
+            <rect x="550" y="120" width="200" height="40" fill="#8B5A96" stroke="#333" stroke-width="2" rx="5"/>
+            <text x="650" y="145" text-anchor="middle" fill="white" font-weight="bold" font-size="12">SEMESTER-LONG TEAMS</text>
+            
+            <!-- Second level branches -->
+            <line x1="150" y1="160" x2="150" y2="190" stroke="#333" stroke-width="2"/>
+            <line x1="400" y1="160" x2="400" y2="190" stroke="#333" stroke-width="2"/>
+            <line x1="650" y1="160" x2="650" y2="190" stroke="#333" stroke-width="2"/>
+            
+            <!-- Second level questions -->
+            <text x="150" y="210" text-anchor="middle" font-size="11" font-style="italic">Random mixing OK?</text>
+            <text x="400" y="210" text-anchor="middle" font-size="11" font-style="italic">Mixed modalities essential?</text>
+            <text x="650" y="210" text-anchor="middle" font-size="11" font-style="italic">Deep collaboration needed?</text>
+            
+            <!-- Final level branches -->
+            <line x1="150" y1="220" x2="75" y2="260" stroke="#333" stroke-width="2"/>
+            <line x1="150" y1="220" x2="225" y2="260" stroke="#333" stroke-width="2"/>
+            
+            <line x1="400" y1="220" x2="325" y2="260" stroke="#333" stroke-width="2"/>
+            <line x1="400" y1="220" x2="475" y2="260" stroke="#333" stroke-width="2"/>
+            
+            <line x1="650" y1="220" x2="575" y2="260" stroke="#333" stroke-width="2"/>
+            <line x1="650" y1="220" x2="725" y2="260" stroke="#333" stroke-width="2"/>
+            
+            <!-- Final answers -->
+            <text x="75" y="275" text-anchor="middle" font-size="10" font-weight="bold">YES:</text>
+            <text x="75" y="290" text-anchor="middle" font-size="10">Random Groups</text>
+            
+            <text x="225" y="275" text-anchor="middle" font-size="10" font-weight="bold">NO:</text>
+            <text x="225" y="290" text-anchor="middle" font-size="10">Interest Clusters</text>
+            
+            <text x="325" y="275" text-anchor="middle" font-size="10" font-weight="bold">YES:</text>
+            <text x="325" y="290" text-anchor="middle" font-size="10">Mixed Groups (A)</text>
+            
+            <text x="475" y="275" text-anchor="middle" font-size="10" font-weight="bold">NO:</text>
+            <text x="475" y="290" text-anchor="middle" font-size="10">Parallel Groups (B)</text>
+            
+            <text x="575" y="275" text-anchor="middle" font-size="10" font-weight="bold">YES:</text>
+            <text x="575" y="290" text-anchor="middle" font-size="10">Mixed with roles</text>
+            
+            <text x="725" y="275" text-anchor="middle" font-size="10" font-weight="bold">NO:</text>
+            <text x="725" y="290" text-anchor="middle" font-size="10">Flexible config</text>
+            
+            <!-- Yes/No labels -->
+            <text x="112" y="240" text-anchor="middle" font-size="9" fill="#4CAF50">YES</text>
+            <text x="188" y="240" text-anchor="middle" font-size="9" fill="#dc3545">NO</text>
+            
+            <text x="362" y="240" text-anchor="middle" font-size="9" fill="#4CAF50">YES</text>
+            <text x="438" y="240" text-anchor="middle" font-size="9" fill="#dc3545">NO</text>
+            
+            <text x="612" y="240" text-anchor="middle" font-size="9" fill="#4CAF50">YES</text>
+            <text x="688" y="240" text-anchor="middle" font-size="9" fill="#dc3545">NO</text>
+        </svg>
+    </div>
+</div>
+
+<div class="considerations-section">
+    <h3>🔍 Key Considerations</h3>
+    
+    <p><strong>Before forming groups, assess:</strong></p>
+    <ul>
+        <li>☐ Ratio of remote to on-site students</li>
+        <li>☐ Technology reliability and student access</li>
+        <li>☐ Time zone distribution (for remote students)</li>
+        <li>☐ Prior hybrid collaboration experience</li>
+        <li>☐ Project complexity and duration</li>
+    </ul>
+</div>
+
+<div class="size-reference">
+    <h3>📏 Group Size Quick Reference</h3>
+    
+    <table class="reference-table">
+        <thead>
+            <tr>
+                <th>Size</th>
+                <th>Best For</th>
+                <th>Hybrid Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>2</strong></td>
+                <td>Quick tasks, peer review</td>
+                <td>Easiest cross-modal pairing</td>
+            </tr>
+            <tr>
+                <td><strong>3-4</strong></td>
+                <td>Most projects, discussions</td>
+                <td>Optimal for mixed groups</td>
+            </tr>
+            <tr>
+                <td><strong>5-6</strong></td>
+                <td>Complex projects</td>
+                <td>Maximum for effective hybrid work</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="formation-methods">
+        <h4>Formation Methods</h4>
+        <p><strong>For balanced groups, use cards from the main deck:</strong></p>
+        <ul>
+            <li><span class="card-tag">EW1</span> <strong>Expertise Directory</strong> - Form groups based on complementary skills</li>
+            <li><span class="card-tag">EW2</span> <strong>Skills Mapping</strong> - Visual skill distribution for balanced teams</li>
+            <li><span class="card-tag">EW3</span> <strong>Group Identity Builder</strong> - Post-formation bonding activity</li>
+            <li><span class="card-tag">EW4</span> <strong>Study Buddy Matching</strong> - For pairs or initial partnerships</li>
+            <li><span class="card-tag">EW5</span> <strong>Chain Reaction Formation</strong> - Dynamic mixed-modality formation</li>
+        </ul>
+    </div>
+</div>
+
+<div class="protocols-section">
+    <h2>⚙️ Essential Protocols</h2>
+    
+    <div class="protocol-card protocol-a">
+        <h3>Protocol A: Mixed Modality Groups</h3>
+        <p><strong>When to use:</strong> Project work, community building, skill development</p>
+        
+        <h4>Basic Setup:</h4>
+        <ol>
+            <li>Never isolate single remote students (minimum 2 per group)</li>
+            <li>Appoint rotating "Bridge Builder" role (connects modalities)</li>
+            <li>All members join digital platform, even if on-site</li>
+            <li>Create shared digital workspace from day one</li>
+        </ol>
+        
+        <p><strong>Supporting Cards:</strong></p>
+        <ul>
+            <li><span class="card-tag">C3</span> <strong>Mixed-Mode Grouping</strong> - Detailed facilitation strategies</li>
+            <li><span class="card-tag">T2</span> <strong>Technology Buddy System</strong> - Pair support across modes</li>
+            <li><span class="card-tag">P5</span> <strong>Engagement Role Rotation</strong> - Structured roles for equity</li>
+        </ul>
+    </div>
+    
+    <div class="protocol-card protocol-b">
+        <h3>Protocol B: Parallel Groups with Exchange</h3>
+        <p><strong>When to use:</strong> Limited tech, scheduling challenges, complementary tasks</p>
+        
+        <h4>Basic Setup:</h4>
+        <ol>
+            <li>Form separate remote and on-site groups</li>
+            <li>Create "sister group" partnerships</li>
+            <li>Design interdependent tasks</li>
+            <li>Schedule 2-3 formal exchange points</li>
+            <li>Provide unified submission format</li>
+        </ol>
+        
+        <p><strong>Supporting Cards:</strong></p>
+        <ul>
+            <li><span class="card-tag">D4</span> <strong>Distributed Facilitation</strong> - Managing parallel discussions</li>
+            <li><span class="card-tag">A4</span> <strong>Remote Spotlight Rotation</strong> - Ensuring visibility</li>
+            <li><span class="card-tag">C2</span> <strong>Shared Experience Creation</strong> - Building connections</li>
+        </ul>
+    </div>
+    
+    <div class="protocol-card protocol-c">
+        <h3>Protocol C: Quick Random Groups</h3>
+        <p><strong>When to use:</strong> Brief activities, discussions, brainstorming</p>
+        
+        <h4>Basic Setup:</h4>
+        <ol>
+            <li>Pre-assign numbers to ensure modality mix</li>
+            <li>Use breakout rooms or physical zones</li>
+            <li>Provide identical prompts/tasks</li>
+            <li>Keep to 10-15 minute maximum</li>
+            <li>Share outcomes in main space</li>
+        </ol>
+        
+        <p><strong>Supporting Cards:</strong></p>
+        <ul>
+            <li><span class="card-tag">P3</span> <strong>Synchronized Engagement Moments</strong> - Quick unified activities</li>
+            <li><span class="card-tag">A3</span> <strong>Full-Group Refocusing</strong> - Bringing groups back together</li>
+        </ul>
+    </div>
+</div>
+
+<div class="troubleshooting-section">
+    <h3>🚨 Troubleshooting Quick Fixes</h3>
+    
+    <table class="reference-table">
+        <thead>
+            <tr>
+                <th>Issue</th>
+                <th>Quick Solution</th>
+                <th>Reference Card</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Remote isolation</td>
+                <td>Implement buddy system</td>
+                <td><span class="card-tag">T2</span> <span class="card-tag">AA1</span></td>
+            </tr>
+            <tr>
+                <td>Uneven participation</td>
+                <td>Add structured roles</td>
+                <td><span class="card-tag">P5</span> <span class="card-tag">D4</span></td>
+            </tr>
+            <tr>
+                <td>Tech failures</td>
+                <td>Pre-establish backup channels</td>
+                <td><span class="card-tag">T3</span> <span class="card-tag">T4</span></td>
+            </tr>
+            <tr>
+                <td>Scheduling conflicts</td>
+                <td>Create async touchpoints</td>
+                <td><span class="card-tag">C4</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="remember-section">
+    <h3>💡 Remember</h3>
+    
+    <div class="checklist-grid">
+        <div class="checklist-item">
+            <strong>✓ Start simple</strong><br>
+            Basic mixed pairs before complex groups
+        </div>
+        
+        <div class="checklist-item">
+            <strong>✓ Document everything</strong><br>
+            Shared visibility prevents gaps
+        </div>
+        
+        <div class="checklist-item">
+            <strong>✓ Check in often</strong><br>
+            Early intervention prevents issues
+        </div>
+        
+        <div class="checklist-item">
+            <strong>✓ Reference the card deck</strong><br>
+            Don't reinvent solutions
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <em>This tool is part of the Hybrid Learning Design Toolkit. For research foundation and references, see the main Toolkit Overview document.</em>
+</div>
+
+</div>
+
+<!-- Loading overlay -->
+<div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <p>Generating export... This may take a moment.</p>
+    </div>
+</div>
+
+<script>
+const { jsPDF } = window.jspdf;
+const loadingOverlay = document.getElementById('loadingOverlay');
+
+// Export as PNG
+function exportPNG() {
+    loadingOverlay.style.display = 'flex';
+    
+    const exportControls = document.querySelector('.export-controls');
+    exportControls.style.display = 'none';
+    
+    const contentToExport = document.getElementById('contentToExport');
+    
+    html2canvas(contentToExport, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        scrollX: 0,
+        scrollY: 0
+    }).then(function(canvas) {
+        const imgData = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.download = 'hybrid-learning-group-formation-guide-visual.png';
+        link.href = imgData;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        exportControls.style.display = 'flex';
+        loadingOverlay.style.display = 'none';
+    }).catch(function(error) {
+        console.error('Error generating PNG:', error);
+        alert('Error generating PNG. Please try again.');
+        exportControls.style.display = 'flex';
+        loadingOverlay.style.display = 'none';
+    });
+}
+
+// Export as PDF
+function exportPDF() {
+    loadingOverlay.style.display = 'flex';
+    
+    const exportControls = document.querySelector('.export-controls');
+    exportControls.style.display = 'none';
+    
+    const contentToExport = document.getElementById('contentToExport');
+    
+    html2canvas(contentToExport, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        scrollX: 0,
+        scrollY: 0
+    }).then(function(canvas) {
+        const canvasWidth = canvas.width;
+        const canvasHeight = canvas.height;
+        
+        // Convert pixels to points (1 point = 1.33 pixels approximately)
+        const pdfWidth = canvasWidth * 0.75;
+        const pdfHeight = canvasHeight * 0.75;
+        
+        // Create PDF with custom dimensions to fit content
+        const pdf = new jsPDF({
+            orientation: 'portrait',
+            unit: 'pt',
+            format: [pdfWidth, pdfHeight]
+        });
+        
+        const imgData = canvas.toDataURL('image/png');
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('hybrid-learning-group-formation-guide-visual.pdf');
+        
+        exportControls.style.display = 'flex';
+        loadingOverlay.style.display = 'none';
+    }).catch(function(error) {
+        console.error('Error generating PDF:', error);
+        alert('Error generating PDF. Please try again.');
+        exportControls.style.display = 'flex';
+        loadingOverlay.style.display = 'none';
+    });
+}
+
+// Add keyboard shortcuts
+document.addEventListener('keydown', function(event) {
+    if ((event.ctrlKey || event.metaKey) && event.key === 'p') {
+        event.preventDefault();
+        window.print();
+    }
+    if ((event.ctrlKey || event.metaKey) && event.key === 's') {
+        event.preventDefault();
+        exportPNG();
+    }
+    if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.key === 'S') {
+        event.preventDefault();
+        exportPDF();
+    }
+});
+</script>
+
+</body>
+
+</html> 

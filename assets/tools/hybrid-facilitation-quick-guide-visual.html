@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Hybrid Facilitation Quick Guide - Visual Reference</title>
+
+<!-- Add html2canvas and jsPDF libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style type="text/css">
+:root {
+    --primary-blue: #5B9BD5;
+    --primary-green: #4CAF50;
+    --primary-orange: #F9A03F;
+    --primary-purple: #8B5A96;
+    
+    --light-blue: #E3F2FD;
+    --light-green: #E8F5E8;
+    --light-orange: #FFF3E0;
+    --light-purple: #F3E5F5;
+    
+    --border-color: #ddd;
+    --light-gray: #f8f9fa;
+    --medium-gray: #6c757d;
+    --dark-gray: #343a40;
+    
+    --text-color: #333333;
+    --background-color: #FFFFFF;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-color);
+    background-color: var(--light-gray);
+    padding: 30px;
+    margin: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2.2em;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 1.8em;
+    border-bottom: 2px solid var(--primary-blue);
+    color: var(--text-color);
+    padding-bottom: 10px;
+    margin-top: 40px;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.4em;
+    color: var(--text-color);
+    margin-top: 30px;
+    font-weight: 600;
+}
+
+h4 {
+    font-size: 1.2em;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.subtitle {
+    text-align: center;
+    font-style: italic;
+    color: var(--medium-gray);
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.section {
+    background: var(--background-color);
+    border-radius: 8px;
+    padding: 25px;
+    margin: 30px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
+}
+
+.blue-accent {
+    border-left: 4px solid var(--primary-blue);
+}
+
+.green-accent {
+    border-left: 4px solid var(--primary-green);
+}
+
+.orange-accent {
+    border-left: 4px solid var(--primary-orange);
+}
+
+.purple-accent {
+    border-left: 4px solid var(--primary-purple);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.card {
+    background: var(--background-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
+}
+
+.highlight {
+    background: var(--light-green);
+    border: 1px solid var(--primary-green);
+    border-radius: 6px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.warning {
+    background: #fff5f5;
+    border: 1px solid #dc3545;
+    border-radius: 6px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: var(--background-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.table th {
+    background: var(--light-gray);
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.table td {
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    vertical-align: top;
+}
+
+.export-controls {
+    position: sticky;
+    top: 0;
+    background: var(--background-color);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    border: 1px solid var(--border-color);
+}
+
+.btn-export {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-export:hover {
+    background-color: #4a90e2;
+}
+
+.btn-export:nth-child(2) {
+    background-color: var(--primary-orange);
+}
+
+.btn-export:nth-child(2):hover {
+    background-color: #e8940a;
+}
+
+.btn-print {
+    background-color: var(--primary-purple) !important;
+}
+
+.btn-print:hover {
+    background-color: #7b4f86 !important;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-content {
+    background: var(--background-color);
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--light-gray);
+    border-top: 4px solid var(--primary-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+hr {
+    background: var(--border-color);
+    border: 0 none;
+    color: transparent;
+    height: 1px;
+    margin: 30px 0;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    color: var(--medium-gray);
+    font-style: italic;
+}
+
+@media print {
+    .export-controls {
+        display: none !important;
+    }
+    body {
+        background: white;
+        margin: 0;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    .table {
+        font-size: 12px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Export Controls -->
+<div class="export-controls">
+    <button class="btn-export" onclick="exportPNG()">Export as PNG</button>
+    <button class="btn-export" onclick="exportPDF()">Export as PDF</button>
+    <button class="btn-export btn-print" onclick="window.print()">Print Guide</button>
+</div>
+
+<!-- Main content wrapper for export -->
+<div id="contentToExport">
+
+<h1>🎯 HYBRID FACILITATION QUICK GUIDE</h1>
+<div class="subtitle">In-session reference for live hybrid teaching</div>
+
+<h2>✅ Essential Setup & Opening Routines</h2>
+
+<div class="section blue-accent">
+    <h3>Pre-Session Checklist</h3>
+    
+    <h4>Environment Setup</h4>
+    <table class="table">
+        <thead><tr><th>Item</th><th>✓</th><th>Why It Matters</th></tr></thead>
+        <tbody>
+            <tr><td>📹 Camera shows teaching area + gestures</td><td>☐</td><td>Remote students need visual cues</td></tr>
+            <tr><td>🖼️ Display showing remote participants</td><td>☐</td><td>Creates mutual awareness</td></tr>
+            <tr><td>📄 Materials in both formats</td><td>☐</td><td>Universal access</td></tr>
+            <tr><td>💬 Chat/backup channel ready</td><td>☐</td><td>Technical resilience</td></tr>
+            <tr><td>🎯 Strategy cards selected</td><td>☐</td><td>Ready to implement</td></tr>
+        </tbody>
+    </table>
+    
+    <h4>Opening Protocol (First 3 minutes)</h4>
+    <div style="background: var(--light-blue); padding: 15px; border-radius: 6px; margin: 15px 0; font-family: monospace;">
+        1️⃣ ACKNOWLEDGE: "Welcome everyone here in the room AND online"<br>
+        2️⃣ ESTABLISH: How to participate (multiple ways to show presence)<br>
+        3️⃣ VERIFY: "Remote folks, confirm you can see the slide"<br>
+        4️⃣ CONNECT: Use names from both modalities immediately<br>
+        5️⃣ PRESENCE PACT: "Remember, we all find ways to show up"
+    </div>
+    
+    <div class="highlight">
+        💡 <strong>Try card A1</strong> - Presence Signaling for verbal confirmation patterns<br>
+        💡 <strong>Reference</strong> - The Participant Guide students received about presence
+    </div>
+</div>
+
+<div class="section green-accent">
+    <h3>Core Facilitation Rhythms</h3>
+    
+    <h4>⏱️ Attention Pattern (Every 7-10 min)</h4>
+    <div style="background: var(--light-green); padding: 15px; border-radius: 6px; margin: 15px 0; text-align: center; font-family: monospace;">
+        Room → Remote → Room → Remote<br>
+        "Let's hear from..." → "Online, your turn..." → "Back to room..."
+    </div>
+    
+    <div class="highlight">
+        💡 <strong>Try card A2</strong> - Attention Cycling for structured rotation
+    </div>
+    
+    <h4>Essential Habits</h4>
+    <table class="table">
+        <thead><tr><th>Do This</th><th>Say This</th><th>Frequency</th></tr></thead>
+        <tbody>
+            <tr><td>👁️ Look at camera</td><td><em>"I'm writing [X] on board"</em></td><td>When writing/demonstrating</td></tr>
+            <tr><td>🌉 Name contributors</td><td><em>"As Sarah in chat said..."</em></td><td>Every contribution</td></tr>
+            <tr><td>💻 Check chat</td><td><em>"Let me check online input"</em></td><td>Every 3-5 min</td></tr>
+            <tr><td>🤝 Balance sources</td><td><em>"Remote first this time"</em></td><td>Alternate question sources</td></tr>
+        </tbody>
+    </table>
+    
+    <h4>Closing Routine</h4>
+    <ol>
+        <li>Synthesize both modes: <em>"Room said... Online added..."</em></li>
+        <li>Preview next session: <em>"Next time we'll..."</em></li>
+        <li>Ensure access: <em>"Materials posted in..."</em></li>
+    </ol>
+    
+    <div class="highlight">
+        💡 <strong>Try card A3</strong> - Full-Group Refocusing to bring everyone together
+    </div>
+</div>
+
+<h2>🚨 Quick Fixes for Common Challenges</h2>
+
+<div class="section orange-accent">
+    <h3>🔴 Remote Students Silent/Invisible</h3>
+    
+    <h4>Understanding the Dynamic:</h4>
+    <ul>
+        <li>Students may have legitimate constraints</li>
+        <li>Community needs presence signals</li>
+        <li>Balance is negotiated, not mandated</li>
+    </ul>
+    
+    <div class="warning">
+        <strong>Warning Signs:</strong>
+        <ul>
+            <li>No chat activity for 10+ minutes</li>
+            <li>All cameras off</li>
+            <li>No voluntary responses</li>
+            <li>Names rarely mentioned</li>
+        </ul>
+    </div>
+    
+    <h4>Quick Fixes:</h4>
+    <table class="table">
+        <thead><tr><th>Action</th><th>Say This</th><th>Card to Try</th></tr></thead>
+        <tbody>
+            <tr><td>Acknowledge constraints</td><td><em>"I know cameras can be challenging—how can we see you're here?"</em></td><td><strong>C1</strong> - Cross-Modal Intros</td></tr>
+            <tr><td>Offer alternatives</td><td><em>"Camera, chat, reactions—show us you're engaged somehow"</em></td><td><strong>P1</strong> - Digital Backchanneling</td></tr>
+            <tr><td>Create camera moments</td><td><em>"Let's do cameras on for introductions, then you choose"</em></td><td><strong>A4</strong> - Remote Spotlight</td></tr>
+            <tr><td>Celebrate all presence</td><td><em>"Love seeing that active chat participation!"</em></td><td><strong>AA1</strong> - Partner Check-ins</td></tr>
+            <tr><td>Reference shared agreement</td><td><em>"Remember our presence pact—everyone shows up somehow"</em></td><td><strong>C2</strong> - Shared Experience</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="section purple-accent">
+    <h3>🟡 Participation Imbalance</h3>
+    
+    <div class="warning">
+        <strong>Warning Signs:</strong>
+        <ul>
+            <li>80%+ from one location</li>
+            <li>Same voices dominating</li>
+            <li>One group always first</li>
+            <li>Other group waiting</li>
+        </ul>
+    </div>
+    
+    <h4>Quick Fixes:</h4>
+    <table class="table">
+        <thead><tr><th>Strategy</th><th>Implementation</th><th>Card to Try</th></tr></thead>
+        <tbody>
+            <tr><td>Force alternation</td><td>"Remote first, then room" protocol</td><td><strong>D1</strong> - Structured Turn-Taking</td></tr>
+            <tr><td>Make visible</td><td>Draw/type contributions live</td><td><strong>P4</strong> - Participation Dashboard</td></tr>
+            <tr><td>Shift deliberately</td><td>"Now let's hear from [other mode]"</td><td><strong>A2</strong> - Attention Cycling</td></tr>
+            <tr><td>Mix groups</td><td>Cross-modal pairs for discussion</td><td><strong>C3</strong> - Mixed-Mode Grouping</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="section blue-accent">
+    <h3>🔵 Technology Barriers</h3>
+    
+    <div class="warning">
+        <strong>Warning Signs:</strong>
+        <ul>
+            <li>Repeated "Can you hear me?"</li>
+            <li>Platform confusion</li>
+            <li>Dropping connections</li>
+            <li>Feature failures</li>
+        </ul>
+    </div>
+    
+    <h4>Quick Fixes:</h4>
+    <table class="table">
+        <thead><tr><th>Problem</th><th>Immediate Action</th><th>Card to Try</th></tr></thead>
+        <tbody>
+            <tr><td>Audio/video issues</td><td>Verify + narrate everything</td><td><strong>T4</strong> - Digital Task Verification</td></tr>
+            <tr><td>Access confusion</td><td>Assign peer helper</td><td><strong>T2</strong> - Technology Buddy System</td></tr>
+            <tr><td>Platform problems</td><td>Use simpler tools</td><td><strong>T3</strong> - Platform Smoothing</td></tr>
+            <tr><td>Lost connections</td><td>Continue + document</td><td><strong>T1</strong> - Backchannel Management</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="section green-accent">
+    <h3>⚫ Low Energy/Flat Engagement</h3>
+    
+    <h4>Understanding the Dynamic:</h4>
+    <ul>
+        <li>Energy affects everyone's ability to show presence</li>
+        <li>Multiple factors beyond just "engagement"</li>
+        <li>Community energy is co-created</li>
+    </ul>
+    
+    <div class="warning">
+        <strong>Warning Signs:</strong>
+        <ul>
+            <li>Minimal responses</li>
+            <li>Slow to start</li>
+            <li>Visible fatigue</li>
+            <li>Flat affect</li>
+        </ul>
+    </div>
+    
+    <h4>Quick Energy Boosts:</h4>
+    <table class="table">
+        <thead><tr><th>Duration</th><th>Activity</th><th>Card to Try</th></tr></thead>
+        <tbody>
+            <tr><td>30 seconds</td><td>Stand/stretch/breathe together</td><td><strong>AA3</strong> - Digital-Physical Mirror</td></tr>
+            <tr><td>1 minute</td><td>Share word/emoji about energy</td><td><strong>AA2</strong> - Show & Tell Flash</td></tr>
+            <tr><td>2 minutes</td><td>Partner energy check</td><td><strong>P3</strong> - Synchronized Moments</td></tr>
+            <tr><td>Ongoing</td><td>Vary response modes</td><td><strong>P2</strong> - Response Mode Variety</td></tr>
+            <tr><td>Strategic</td><td>"Cameras on for 2 minutes if you can!"</td><td><strong>C2</strong> - Shared Experience</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="section orange-accent">
+    <h3>🟣 Community Fragmentation</h3>
+    
+    <div class="warning">
+        <strong>Warning Signs:</strong>
+        <ul>
+            <li>"Us vs them" language</li>
+            <li>Modality silos</li>
+            <li>No cross-references</li>
+            <li>Separate conversations</li>
+        </ul>
+    </div>
+    
+    <h4>Bridge Builders:</h4>
+    <table class="table">
+        <thead><tr><th>Approach</th><th>How to Implement</th><th>Card to Try</th></tr></thead>
+        <tbody>
+            <tr><td>Force integration</td><td>Mixed-modality groups required</td><td><strong>C3</strong> - Mixed-Mode Grouping</td></tr>
+            <tr><td>Share thinking</td><td>"Room found X, online found Y"</td><td><strong>D3</strong> - Cross-Modal Parsing</td></tr>
+            <tr><td>Create unity</td><td>Shared visual/experience</td><td><strong>C2</strong> - Shared Experience</td></tr>
+            <tr><td>See everyone</td><td>Display full community</td><td><strong>C5</strong> - Community Visualization</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<h2>⚡ Decision Flow for Quick Action</h2>
+
+<div class="section">
+    <div style="background: var(--light-gray); padding: 20px; border-radius: 6px; margin: 15px 0; font-family: monospace;">
+        Is the issue about...<br><br>
+        
+        HEARING/SEEING? → Check tech → Try cards T1-T4<br>
+        PARTICIPATION? → Check balance → Try cards D1-D5, P1-P5<br>
+        CONNECTION? → Check community → Try cards C1-C5, CB series<br>
+        ENERGY? → Quick boost → Try cards AA1-AA5, P3<br>
+        CONFUSION? → Check teaching presence → Try cards A1-A5
+    </div>
+</div>
+
+<h2>📊 Session Flow with Card Integration</h2>
+
+<div class="section purple-accent">
+    <table class="table">
+        <thead><tr><th>Phase</th><th>Essential Action</th><th>Common Cards</th></tr></thead>
+        <tbody>
+            <tr><td><strong>Opening</strong></td><td>Acknowledge all + tech check + presence pact</td><td>A1, C1</td></tr>
+            <tr><td><strong>Early</strong></td><td>Establish patterns</td><td>A2, D1</td></tr>
+            <tr><td><strong>Middle</strong></td><td>Monitor balance</td><td>P4, D2</td></tr>
+            <tr><td><strong>Energy dip</strong></td><td>Quick activation</td><td>AA2, P3</td></tr>
+            <tr><td><strong>Complex activity</strong></td><td>Support integration</td><td>C3, D3</td></tr>
+            <tr><td><strong>Closing</strong></td><td>Synthesize + preview</td><td>A3, C5</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<h2>💡 Quick Reminders</h2>
+
+<div class="section green-accent">
+    <h3>The 3 Presence Check:</h3>
+    <ul>
+        <li>🎯 Teaching: Can all access my instruction equally?</li>
+        <li>💬 Social: Are students connecting across spaces?</li>
+        <li>🧠 Cognitive: Are ideas building together?</li>
+    </ul>
+    
+    <h3>The Presence Partnership:</h3>
+    <ul>
+        <li>Instructors create opportunities</li>
+        <li>Students actively participate</li>
+        <li>Both negotiate balance together</li>
+    </ul>
+    
+    <div class="highlight">
+        <strong>If presence is breaking down → Check the Hybrid Presence Lens for diagnosis</strong>
+    </div>
+    
+    <h3>Card Categories at a Glance:</h3>
+    <div style="background: var(--light-green); padding: 15px; border-radius: 6px; margin: 15px 0; font-family: monospace;">
+        A1-A5: Attention & Teaching Presence<br>
+        C1-C5: Community & Social Presence<br>
+        D1-D5: Discussion & Cognitive Presence<br>
+        P1-P5: Participation Tools<br>
+        T1-T4: Technology Support<br>
+        AA1-AA5: Energy & Activation<br>
+        CB1-CB5: Course Beginning
+    </div>
+</div>
+
+<div class="footer">
+    <em>Hybrid Learning Design Toolkit | 2025 imaginary institute | Modified CC BY-SA 4.0</em>
+</div>
+
+</div>
+
+<!-- Loading overlay -->
+<div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <p>Generating export... This may take a moment.</p>
+    </div>
+</div>
+
+<script>
+const { jsPDF } = window.jspdf;
+const loadingOverlay = document.getElementById('loadingOverlay');
+
+// Export as PNG
+function exportPNG() {
+    loadingOverlay.style.display = 'flex';
+    
+    const exportControls = document.querySelector('.export-controls');
+    exportControls.style.display = 'none';
+    
+    const contentToExport = document.getElementById('contentToExport');
+    
+    html2canvas(contentToExport, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        scrollX: 0,
+        scrollY: 0
+    }).then(function(canvas) {
+        const imgData = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.download = 'hybrid-facilitation-quick-guide.png';
+        link.href = imgData;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        exportControls.style.display = 'flex';
+        loadingOverlay.style.display = 'none';
+    }).catch(function(error) {
+        console.error('Error generating PNG:', error);
+        alert('Error generating PNG. Please try again.');
+        exportControls.style.display = 'flex';
+        loadingOverlay.style.display = 'none';
+    });
+}
+
+// Export as PDF
+function exportPDF() {
+    loadingOverlay.style.display = 'flex';
+    
+    const exportControls = document.querySelector('.export-controls');
+    exportControls.style.display = 'none';
+    
+    const contentToExport = document.getElementById('contentToExport');
+    
+    html2canvas(contentToExport, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        scrollX: 0,
+        scrollY: 0
+    }).then(function(canvas) {
+        const canvasWidth = canvas.width;
+        const canvasHeight = canvas.height;
+        
+        // Convert pixels to points (1 point = 1.33 pixels approximately)
+        const pdfWidth = canvasWidth * 0.75;
+        const pdfHeight = canvasHeight * 0.75;
+        
+        // Create PDF with custom dimensions to fit content
+        const pdf = new jsPDF({
+            orientation: 'portrait',
+            unit: 'pt',
+            format: [pdfWidth, pdfHeight]
+        });
+        
+        const imgData = canvas.toDataURL('image/png');
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('hybrid-facilitation-quick-guide.pdf');
+        
+        exportControls.style.display = 'flex';
+        loadingOverlay.style.display = 'none';
+    }).catch(function(error) {
+        console.error('Error generating PDF:', error);
+        alert('Error generating PDF. Please try again.');
+        exportControls.style.display = 'flex';
+        loadingOverlay.style.display = 'none';
+    });
+}
+
+// Add keyboard shortcuts
+document.addEventListener('keydown', function(event) {
+    if ((event.ctrlKey || event.metaKey) && event.key === 'p') {
+        event.preventDefault();
+        window.print();
+    }
+    if ((event.ctrlKey || event.metaKey) && event.key === 's') {
+        event.preventDefault();
+        exportPNG();
+    }
+    if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.key === 'S') {
+        event.preventDefault();
+        exportPDF();
+    }
+});
+</script>
+
+</body>
+
+</html> 
