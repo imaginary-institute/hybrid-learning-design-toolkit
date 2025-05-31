@@ -4,6 +4,12 @@ theme: just-the-docs
 
 url: https://collideorscape.github.io/hybrid-learning-design-toolkit
 
+# Plugins for GitHub Pages compatibility
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
 # Navigation
 nav_external_links:
   - title: GitHub Repository

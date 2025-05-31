@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 
-gem "jekyll", "~> 4.4.1" # installed by `gem jekyll`
-# gem "webrick"        # required when using Ruby >= 3 and Jekyll <= 4.2.2
+# Use github-pages gem for GitHub Pages compatibility
+gem "github-pages", "~> 232", group: :jekyll_plugins
 
-gem "just-the-docs", "0.10.1" # pinned to the current release
-# gem "just-the-docs"        # always download the latest release
+# Theme - use git source for better GitHub Pages compatibility  
+gem "just-the-docs"
+
+# Required for Ruby 3+
 gem "webrick"

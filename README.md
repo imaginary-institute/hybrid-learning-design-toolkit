@@ -49,22 +49,7 @@ Visit the toolkit: **[https://imaginary-institute.github.io/hybrid-learning-desi
 - **Presence Lens Introduction** - Research-based frameworks for understanding presence
 - **Facilitation Resilience Guide** - Diagnostic tools and research-based interventions
 
-## 🛠️ For Developers
-
-### Local Development
-```bash
-# Clone the repository
-git clone https://github.com/imaginary-institute/hybrid-learning-design-toolkit.git
-cd hybrid-learning-design-toolkit
-
-# Install dependencies
-bundle install
-
-# Serve locally
-bundle exec jekyll serve
-
-# View at http://localhost:4000
-```
+## Technical Details
 
 ### Built With
 - **Jekyll** - Static site generator
@@ -83,32 +68,6 @@ bundle exec jekyll serve
 └── index.md                            # Site homepage
 ```
 
-## 📖 Research Foundation
-
-This toolkit is grounded in empirical research and proven frameworks:
-
-### Key Research Insights
-- **Audio quality is the #1 factor** for remote student engagement (Wagner et al., 2023)
-- **"Triple presence"** across physical, digital, and remote contexts must be intentionally integrated (Bülow, 2022)
-- **Activity-centered design** creates more effective learning environments than technology-first approaches (Goodyear et al., 2021)
-
-### Theoretical Frameworks
-- **Activity-Centered Analysis and Design (ACAD)** - Physical-digital integration analysis
-- **ICAP Framework** - Engagement progression from Receiving → Responding → Creating
-- **Community of Inquiry** - Teaching, social, and cognitive presence in hybrid contexts
-- **Universal Design for Learning** - Ensuring environments work for diverse learners
-
-## 🤝 Contributing
-
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-### Ways to Contribute
-- 🐛 Report bugs or issues with tools
-- 💡 Suggest new features or improvements  
-- 📝 Improve documentation
-- 🔧 Add new tools or enhance existing ones
-- 🧪 Share research or case studies
-
 ## 📄 License
 
 This project is licensed under a **Modified Creative Commons Attribution-ShareAlike 4.0 International License** - see the [LICENSE](LICENSE) file for details.
@@ -120,23 +79,5 @@ This project is licensed under a **Modified Creative Commons Attribution-ShareAl
 - ❌ **Cannot resell** the toolkit itself as a standalone product
 
 Commercial use for training and consulting is welcome with attribution. However, redistribution or resale of this Toolkit or derivative versions as a standalone product is prohibited.
-
-## 📚 Citation
-
-If you use this toolkit in your research or practice, please cite:
-
-```
-[Your Name] (2024). Hybrid Learning Design Toolkit: A comprehensive, research-based toolkit 
-for designing effective hybrid learning experiences. GitHub. 
-https://github.com/imaginary-institute/hybrid-learning-design-toolkit
-```
-
-## 🙏 Acknowledgments
-
-This toolkit builds upon the research and insights of many educators and researchers in hybrid learning, instructional design, and educational technology. Special thanks to the post-pandemic education community for sharing experiences that informed these tools.
-
----
-
-**📧 Questions?** Open an issue or reach out via [your contact method].
 
 **🌟 Found this helpful?** Star the repository and share with colleagues!
