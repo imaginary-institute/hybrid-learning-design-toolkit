@@ -13,7 +13,7 @@ The Hybrid Learning Design Toolkit provides educators with practical, evidence-b
 ## 🚀 Quick Start
 
 ### Live Demo
-Visit the toolkit: **[https://imaginary-institute.github.io/hybrid-learning-design-toolkit](https://imaginary-institute.github.io/hybrid-learning-design-toolkit)**
+Visit the toolkit: **[https://collideorscape.github.io/hybrid-learning-design-toolkit/](https://collideorscape.github.io/hybrid-learning-design-toolkit/)**
 
 ### Getting Started
 1. **Take the Self-Assessment** to identify your current readiness level

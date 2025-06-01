@@ -83,10 +83,9 @@ The toolkit works across all disciplines and subject areas—from laboratory sci
 For theoretical background, detailed frameworks, and complete documentation:
 
 <div style="text-align: center; margin: 30px 0;">
-<a href="/hybrid-learning-design-toolkit-short_overview" style="background-color: #24292e; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold;">📖 Read Complete Overview</a>
+<a href="/hybrid-learning-design-toolkit-short_overview" style="background-color: #24292e; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold;">📖 Read the Toolkit Overview</a>
 </div>
 
 ---
 
-*A research-informed design project synthesizing best practices in hybrid learning | Version 1.0*
-*Version 1.0 | Last Updated: [Date] | [Provide Feedback](mailto:feedback@hybridlearning.edu)*
+*A research-informed design project synthesizing best practices in hybrid learning | Version 1.0  | Last Updated: [31/05/2025]*

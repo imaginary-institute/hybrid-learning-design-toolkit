@@ -1,10 +1,10 @@
 ---
-title: All Tools
+title: Tools Gallery
 layout: default
 nav_order: 7
 ---
 
-# 🛠️ All Tools
+# 🛠️ Tools Full Gallery
 
 Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed to support specific aspects of hybrid teaching and learning.
 
