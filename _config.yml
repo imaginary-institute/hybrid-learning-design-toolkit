@@ -1,8 +1,8 @@
 title: Hybrid Learning Design Toolkit
 description: A comprehensive toolkit for designing effective hybrid learning experiences that seamlessly blend online and in-person instruction
-theme: just-the-docs
+theme: minima
 
-url: https://collideorscape.github.io/hybrid-learning-design-toolkit
+url: https://imaginary-institute.github.io/hybrid-learning-design-toolkit
 
 # Plugins for GitHub Pages compatibility
 plugins:
@@ -13,7 +13,7 @@ plugins:
 # Navigation
 nav_external_links:
   - title: GitHub Repository
-    url: https://github.com/collideorscape/hybrid-learning-design-toolkit
+    url: https://github.com/imaginary-institute/hybrid-learning-design-toolkit
 
 # Search
 search_enabled: true
