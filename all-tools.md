@@ -18,7 +18,7 @@ Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed t
 <span style="background: #17a2b8; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Assessment Tool</span>
 <p style="margin: 0; color: #4a5568; line-height: 1.5;">Comprehensive framework for evaluating your readiness across the three essential dimensions of hybrid teaching. Creates visual representation of capabilities and growth areas.</p>
 </div>
-<a href="/00-orientation-support-tools/hybrid-learning-self-assessment" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
+<a href="{{ '/00-orientation-support-tools/hybrid-learning-self-assessment' | relative_url }}" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
 </div>
 
 <div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
@@ -60,7 +60,7 @@ Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed t
 <span style="background: #28a745; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Canvas Tool</span>
 <p style="margin: 0; color: #4a5568; line-height: 1.5;">Visual design tool for integrating physical, digital, and remote learning contexts. Start here to map your hybrid environment before selecting technology.</p>
 </div>
-<a href="/01-dimension-01-environment-technology-design-kit/hybrid-learning-space-mapping-canvas" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
+<a href="{{ '/01-dimension-01-environment-technology-design-kit/hybrid-learning-space-mapping-canvas' | relative_url }}" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
 </div>
 
 <div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
@@ -111,7 +111,7 @@ Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed t
 <span style="background: #28a745; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Canvas Tool</span>
 <p style="margin: 0; color: #4a5568; line-height: 1.5;">Design learning sequences that balance cognitive engagement levels. Plan smooth transitions between activities that work across modalities.</p>
 </div>
-<a href="/02-dimension-02-learning-experience-assessment-kit/hybrid-activity-sequence-canvas" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
+<a href="{{ '/02-dimension-02-learning-experience-assessment-kit/hybrid-activity-sequence-canvas' | relative_url }}" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
 </div>
 
 <div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
@@ -120,7 +120,7 @@ Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed t
 <span style="background: #6f42c1; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Card Collection</span>
 <p style="margin: 0; color: #4a5568; line-height: 1.5;">Curated collection of 26 research-based activity patterns organized by cognitive engagement level with hybrid implementation guidance.</p>
 </div>
-<a href="/02-dimension-02-learning-experience-assessment-kit/hybrid-learning-activity-cards" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
+<a href="{{ '/02-dimension-02-learning-experience-assessment-kit/hybrid-learning-activity-cards' | relative_url }}" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
 </div>
 
 <div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
@@ -129,7 +129,7 @@ Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed t
 <span style="background: #6f42c1; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Card Collection</span>
 <p style="margin: 0; color: #4a5568; line-height: 1.5;">Collection of 14 assessment strategies designed for hybrid contexts, organized by purpose and aligned with activity engagement levels.</p>
 </div>
-<a href="/02-dimension-02-learning-experience-assessment-kit/hybrid-learning-assessment-cards" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
+<a href="{{ '/02-dimension-02-learning-experience-assessment-kit/hybrid-learning-assessment-cards' | relative_url }}" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
 </div>
 
 <div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
@@ -171,7 +171,7 @@ Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed t
 <span style="background: #6f42c1; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Card Collection</span>
 <p style="margin: 0; color: #4a5568; line-height: 1.5;">25 research-based facilitation techniques organized by color-coded categories. Address common challenges when teaching simultaneously to on-site and remote students.</p>
 </div>
-<a href="/03-dimension-03-facilitation-equity-community-design-kit/hybrid-learning-interaction-strategy-cards" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
+<a href="{{ '/03-dimension-03-facilitation-equity-community-design-kit/hybrid-learning-interaction-strategy-cards' | relative_url }}" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
 </div>
 
 <div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
@@ -180,7 +180,7 @@ Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed t
 <span style="background: #6f42c1; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Card Collection</span>
 <p style="margin: 0; color: #4a5568; line-height: 1.5;">25 structured activities designed to connect students regardless of participation mode. Create unified community identity across physical and virtual spaces.</p>
 </div>
-<a href="/03-dimension-03-facilitation-equity-community-design-kit/hybrid-learning-community-building-cards" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
+<a href="{{ '/03-dimension-03-facilitation-equity-community-design-kit/hybrid-learning-community-building-cards' | relative_url }}" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
 </div>
 
 <div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
