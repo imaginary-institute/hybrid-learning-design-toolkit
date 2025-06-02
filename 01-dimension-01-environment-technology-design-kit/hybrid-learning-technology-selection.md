@@ -15,14 +15,14 @@ Choosing technology for hybrid learning often starts backwards—with available 
 
 
 {: .note }
-> **Interactive Visual Reference Guide**  
-> *Comprehensive visual guide with decision matrices, checklists, and implementation charts - ready to print or export*
+> **Interactive Technology Selection Guide**  
+> *Decision matrix and comparison framework for evaluating hybrid learning tools - with filtering and export options*
 >
-> <a href="/assets/tools/hybrid-learning-technology-selection-guide-visual.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-technology-selection-guide-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
-> **Tip:** Start with the "What do participants need to see/hear/do?" questions before exploring specific technology options.
+> **Tip:** Use this before investing in new tools—the systematic approach ensures technology choices support your specific pedagogical goals.
 
 ## Purpose
 The Technology Selection Guide helps educators make informed choices by:

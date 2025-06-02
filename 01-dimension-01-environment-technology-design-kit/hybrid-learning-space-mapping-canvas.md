@@ -18,8 +18,8 @@ Creating effective hybrid learning environments requires more than adding camera
 > **Interactive Space Canvas Generator**  
 > *Interactive Tool - Design, customize, and export the Canvas in different formats (PDF, PNG)*
 >
-> <a href="/assets/tools/hybrid-learning-space-mapping-canvas.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-space-mapping-canvas.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
 > **Tip:** Use this tool to map your physical and digital spaces before your next hybrid session. Export as PDF to keep handy during class.

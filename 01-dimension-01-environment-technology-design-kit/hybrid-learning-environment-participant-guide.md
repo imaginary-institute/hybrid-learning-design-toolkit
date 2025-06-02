@@ -15,14 +15,14 @@ Students in hybrid environments often feel like passive recipients of whatever t
 
 
 {: .note }
-> **Interactive Visual Reference Guide**  
-> *Comprehensive participant checklist and troubleshooting guide - ready to print or export*
+> **Interactive Participant Guide**  
+> *Comprehensive setup and troubleshooting guide for students participating in hybrid learning experiences*
 >
-> <a href="/assets/tools/hybrid-participants-quick-guide-visual.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-participants-quick-guide-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
-> **Tip:** Share this with students to help them understand their rights and options for hybrid participation.
+> **Tip:** Share this with students before your first hybrid session—it covers technical setup, participation norms, and troubleshooting basics.
 
 ## Purpose
 The Participant Guide empowers student success by:

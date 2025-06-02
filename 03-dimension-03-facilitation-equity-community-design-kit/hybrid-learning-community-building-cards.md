@@ -15,14 +15,14 @@ Building cohesive learning communities across hybrid environments requires inten
 
 
 {: .note }
-> **Interactive Cards Generator**  
-> *Browse, filter, and export community building cards by activity type, group size, or implementation level*
+> **Interactive Community Building Cards**  
+> *Digital card collection with community-building strategies specifically designed for hybrid learning contexts*
 >
-> <a href="/assets/tools/hybrid-learning-community-building-cards.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-community-building-cards.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
-> **Tip:** Choose activities that work well across modalities to strengthen connections between all participants.
+> **Tip:** Filter by session timing (beginning, throughout, end) to find strategies that fit your community-building goals.
 
 ### Digital / Printable Community Cards
 Print-ready digital card deck

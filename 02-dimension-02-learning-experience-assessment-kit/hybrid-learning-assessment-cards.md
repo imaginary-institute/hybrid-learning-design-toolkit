@@ -15,14 +15,14 @@ Assessment in hybrid learning environments presents unique challenges around equ
 
 
 {: .note }
-> **Interactive Cards Generator**  
-> *Browse, filter, and export assessment cards by assessment type, modality, or implementation level*
+> **Interactive Assessment Method Cards**  
+> *Digital card collection with 14 assessment strategies designed for hybrid learning contexts, with filtering and customization options*
 >
-> <a href="/assets/tools/hybrid-learning-assessment-cards.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-assessment-cards.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
-> **Tip:** Match assessment strategies to your activity types to ensure consistent participant experience across modalities.
+> **Tip:** Filter by assessment purpose (formative, summative, peer) to find methods that fit your evaluation needs.
 
 ### Digital / Printable Assessment Cards
 Print-ready digital card deck

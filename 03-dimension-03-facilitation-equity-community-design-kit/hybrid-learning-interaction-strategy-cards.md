@@ -15,14 +15,14 @@ Effective hybrid facilitation requires systematic strategies for managing discus
 
 
 {: .note }
-> **Interaction Activity Cards Generator**  
-> *Browse, filter, and export interaction strategy cards by scenario, group size, or implementation level*
+> **Interactive Interaction Strategy Cards**  
+> *Digital card collection with interaction strategies and engagement techniques for hybrid learning facilitation*
 >
-> <a href="/assets/tools/hybrid-learning-interaction-strategy-cards.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-interaction-strategy-cards.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
-> **Tip:** Filter by your typical group size and participation challenges to find strategies that fit your context.
+> **Tip:** Filter by interaction type (synchronous, asynchronous, blended) to find strategies that match your session format.
 
 ### Digital / Printable Strategy Cards
 Print-ready digital card deck

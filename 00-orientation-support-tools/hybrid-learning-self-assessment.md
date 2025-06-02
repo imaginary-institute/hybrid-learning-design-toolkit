@@ -16,34 +16,34 @@ Effective hybrid teaching requires awareness of one's capabilities across multip
 
 
 {: .note }
-> ### **Interactive Self-Assessment Tool**  
-> *Web-based application with clickable decision paths*
+> **Interactive Self-Assessment Tool**  
+> *30 reflection prompts with personalized quick wins and implementation recommendations*
 >
-> <a href="/assets/tools/hybrid-learning-self-assessment-tool.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-self-assessment-tool.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
-> **Tip:** Take the assessment when you have 10-15 minutes to reflect deeply on each prompt for the most accurate results.
+> **Tip:** Use this for capability self-assessment and to get personalized quick wins based on your readiness profile.
 
 {: .note }
-> ### **Compass Standalone Template**  
-> *Print-ready standalone document for self-assessment and framework reference*
+> **Hybrid Learning Teaching Compass**  
+> *Visual reference guide showing the three dimensions and key decision points*
 >
-> <a href="/assets/tools/hybrid-learning-compass-standalone.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-compass-standalone.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
-> **Tip:** Perfect for offline use or workshops where you need physical copies.
+> **Tip:** Print this visual overview to keep handy while exploring the toolkit or planning your hybrid sessions.
 
 {: .note }
-> ### **Self-Assessment Rubric Standalone**  
-> *Detailed rubric template for comprehensive self-evaluation*
+> **Quick Self-Assessment Rubric**  
+> *Simple printable rubric for self-evaluation across the three dimensions*
 >
-> <a href="/assets/tools/hybrid-learning-self-assessment-standalone-rubric.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-self-assessment-standalone-rubric.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
-> **Tip:** Use this for deeper reflection when you need to document specific evidence for each capability level.
+> **Tip:** Use this version if you prefer a quick, printable reference for ongoing self-reflection.
 
 ## Purpose
 The Self-Assessment Tool serves as a foundational orientation instrument, enabling educators to:

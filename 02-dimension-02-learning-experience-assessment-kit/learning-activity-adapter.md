@@ -13,11 +13,11 @@ nav_order: 6
 Not every learning activity translates seamlessly to hybrid environments. The Learning Activity Adapter provides systematic analysis tools for redesigning activities to work equitably across participation modes. Whether you're retrofitting existing content or designing new hybrid-specific activities, this tool ensures learning experiences are equivalent (not identical) for all students regardless of location.
 
 {: .note }
-> **Interactive Activity Hybrid Adapter**  
-> *Side-by-side experience mapping, cognitive load analysis, and design adaptation guidance with export options*
+> **Interactive Adaptation Planning Worksheet**  
+> *Step-by-step planning tool for adapting existing activities to hybrid contexts with guided prompts and export options*
 >
-> <a href="/assets/tools/hybrid-learning-adaptation-planning-worksheet-visual.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-adaptation-planning-worksheet-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
 > **Tip:** Use this for complex activities, high-stakes assessments, or when troubleshooting activities that aren't working well for remote students.

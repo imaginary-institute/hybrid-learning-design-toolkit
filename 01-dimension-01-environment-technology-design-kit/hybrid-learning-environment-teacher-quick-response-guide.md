@@ -15,14 +15,14 @@ When technology fails mid-session, instructors need immediate solutions, not len
 
 
 {: .note }
-> **Quick Response-Troubleshooting Guide**  
-> *Quick-access emergency protocols and immediate response strategies - ready to print or export*
+> **Interactive Teaching Quick Response Guide**  
+> *Emergency response protocols and real-time adaptation strategies for common hybrid teaching challenges*
 >
-> <a href="/assets/tools/hybrid-learning-environment-teacher-quick-response-guide-visual.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-environment-teacher-quick-response-guide-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
-> **Tip:** Print and keep within arm's reach during hybrid sessions for instant access to emergency protocols.
+> **Tip:** Keep this accessible during live sessions—quick decision trees help you respond confidently when technology or participation issues arise.
 
 ## Purpose
 The Quick Response Guide enables confident hybrid facilitation by:

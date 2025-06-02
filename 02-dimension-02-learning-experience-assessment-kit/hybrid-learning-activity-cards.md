@@ -15,14 +15,14 @@ Choosing the right learning activity for hybrid contexts requires understanding 
 
 
 {: .note }
-> **Interactive Cards Generator**  
-> *Browse, filter, and export activity cards by learning objectives, modality, or implementation level*
+> **Interactive Activity Strategy Cards**  
+> *Digital card deck with 26 activity strategies, filtering by modality, group size, and learning objectives*
 >
-> <a href="/assets/tools/hybrid-learning-activity-cards.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-activity-cards.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
-> **Tip:** Filter by your implementation level and learning objectives to find activities that match your current context.
+> **Tip:** Use filters to find activities that match your specific needs—time constraints, group size, or learning objectives.
 
 ### Digital / Printable Activity Cards
 Print-ready digital card deck

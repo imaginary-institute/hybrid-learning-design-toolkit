@@ -14,14 +14,14 @@ This Implementation Levels Cards helps you understand the three levels of hybrid
 
 
 {: .note }
-> **Interactive Cards Generator**  
-> *Browse, filter, and export the cards*
+> **Interactive Implementation Level Cards**  
+> *Visual guide showing Essential and Enhanced implementation levels across all toolkit resources with actionable next steps*
 >
-> <a href="/assets/tools/hybrid-learning-implementation-cards.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-implementation-cards.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
-> **Tip:** Filter by your current dimension and implementation level to see relevant approaches.
+> **Tip:** Use this to understand how toolkit tools can be adapted to match your experience level and available time.
 
 {: .note }
 > **Digital / Printable Implementation Cards**  

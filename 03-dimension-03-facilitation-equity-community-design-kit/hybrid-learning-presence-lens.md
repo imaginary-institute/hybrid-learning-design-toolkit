@@ -15,14 +15,14 @@ Understanding "presence" is fundamental to effective hybrid facilitation, yet it
 
 
 {: .note }
-> **Hybrid Presence Lens**  
-> *Comprehensive presence refernce guide with quick diagnostic tools and targeted solutions*
+> **Interactive Presence Lens Tool**  
+> *Visual analysis framework for evaluating and enhancing presence across hybrid learning environments*
 >
-> <a href="/assets/tools/hybrid-presence-lens-visual.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-presence-lens-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
-> **Tip:** Use this before implementing specific facilitation techniques to understand which presence gaps need attention.
+> **Tip:** Use this to systematically evaluate how well your hybrid environment supports different types of presence for all participants.
 
 ## Purpose
 The Presence Lens serves as the theoretical foundation for all Dimension 3 tools, enabling facilitators to:

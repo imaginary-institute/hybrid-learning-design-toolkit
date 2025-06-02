@@ -13,11 +13,11 @@ nav_order: 5
 When building your Activity Sequence Canvas, you need quick, reliable guidance for modality decisions. The Modality Companion for the Canvas provides instant access to decision frameworks and implementation checklists that help you choose the right approach for each Canvas activity—ensuring equitable experiences whether students are attending remotely, on-site, or switching between modalities.
 
 {: .note }
-> **Interactive Visual Reference Guide**  
-> *Quick decision matrices, modality comparison charts, and implementation checklists - designed for use alongside the Canvas*
+> **Interactive Modality Planning Reference Guide**  
+> *Comprehensive reference tool with modality definitions, implementation guidance, and quick decision aids*
 >
-> <a href="/assets/tools/hybrid-learning-modality-planning-reference-guide-visual.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-modality-planning-reference-guide-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
 > **Tip:** Keep this open while working on your Canvas to make fast, informed modality decisions for each activity.

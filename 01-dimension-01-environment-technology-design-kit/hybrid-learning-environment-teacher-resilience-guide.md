@@ -15,14 +15,14 @@ Technical challenges in hybrid environments aren't failures—they're opportunit
 
 
 {: .note }
-> **Interactive Visual Reference Guide**  
-> *Comprehensive resilience strategies and troubleshooting guide - ready to print or export*
+> **Interactive Environment & Technology Resilience Guide**  
+> *Comprehensive visual guide with troubleshooting flowcharts, backup protocols, and quick-reference checklists*
 >
-> <a href="/assets/tools/hybrid-learning-environment-teacher-resilience-guide-visual.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-environment-teacher-resilience-guide-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
-> **Tip:** Keep this handy during your first few hybrid sessions for quick reference when things don't go as planned.
+> **Tip:** Create your backup plans before you need them—this guide helps you anticipate and prepare for common technical challenges.
 
 ## Purpose
 The Resilience Guide builds instructor confidence and capability by:

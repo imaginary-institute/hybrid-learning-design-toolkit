@@ -17,14 +17,14 @@ Choosing which dimension to focus on first can feel overwhelming when everything
 
 
 {: .note }
-> **Interactive Visual Decision Tree**  
-> *Interactive visual guide with step-by-step navigation and clear decision pathways*
+> **Interactive Decision Tree Tool**  
+> *Step-by-step visual guide to identify your ideal starting dimension based on readiness, interests, and constraints*
 >
-> <a href="/assets/tools/hybrid-learning-decision-tree-starting-dimension-visual.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-decision-tree-starting-dimension-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
-> **Tip:** Follow the guided questions to identify which dimension best matches your current priority or constraint.
+> **Tip:** Use this if you're unsure where to begin—the tool will guide you to your optimal starting point based on your specific context and readiness.
 
 ## Purpose
 The Decision Tree serves as a quick-start navigation tool within the Orientation and Support Tools, enabling educators to:

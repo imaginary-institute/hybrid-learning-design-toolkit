@@ -15,14 +15,14 @@ Effective hybrid learning requires systematic sequencing of activities that enga
 
 
 {: .note }
-> **Interactive Canvas Generator**  
-> *Design, customize, and export the Canvas in different formats (PDF, PNG)*
+> **Interactive Activity Sequence Canvas Generator**  
+> *Dynamic planning tool - Design, customize, and export Activity Sequence Canvas in multiple formats*
 >
-> <a href="/assets/tools/hybrid-learning-activity-sequence-canvas-generator.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-activity-sequence-canvas-generator.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
-> **Tip:** Start with your learning objectives and work backwards to sequence activities that create meaningful progression.
+> **Tip:** Use this to map your entire session or learning sequence visually. The export feature lets you keep the canvas handy during teaching.
 
 ## Purpose
 The Activity Sequence Canvas serves as the central planning tool for Dimension 2, enabling educators to:

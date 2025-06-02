@@ -15,14 +15,14 @@ Forming effective groups in hybrid learning environments requires intentional st
 Whether you're organizing brief collaborative activities, semester-long project teams, or anything in between, this guide helps you navigate the complex considerations of group formation when students are distributed across different learning spaces.
 
 {: .note }
-> **Group Formation Guide**  
-> *Visual decision frameworks and protocol cards for immediate use*
+> **Interactive Group Formation Guide**  
+> *Visual guide with group formation strategies, timing considerations, and implementation templates*
 >
-> <a href="/assets/tools/hybrid-learning-group-formation-guide-visual.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-group-formation-guide-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
-> **Tip:** Start with the decision tree to quickly identify the best grouping approach for your specific context.
+> **Tip:** Use this to plan group formation strategies that work across participation modes and create meaningful connections.
 
 ## Purpose
 The Group Formation Guide addresses one of the most common sources of inequity in hybrid learning: poorly formed groups that inadvertently isolate remote students or create unbalanced collaboration experiences. This tool helps you:

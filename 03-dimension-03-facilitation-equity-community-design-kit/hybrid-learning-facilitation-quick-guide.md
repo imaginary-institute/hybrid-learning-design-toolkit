@@ -15,14 +15,14 @@ When you're actively teaching a hybrid session, you need immediate, actionable g
 
 
 {: .note }
-> **Facilitation Quick Guide**  
-> *Comprehensive quick-reference guide with troubleshooting protocols and essential routines*
+> **Interactive Facilitation Quick Guide**  
+> *Rapid-access facilitation strategies and troubleshooting protocols for hybrid learning environments*
 >
-> <a href="/assets/tools/hybrid-facilitation-quick-guide-visual.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-facilitation-quick-guide-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
-> **Tip:** Keep this open in a second browser tab during hybrid sessions for immediate troubleshooting and routine reminders.
+> **Tip:** Keep this accessible during live sessions for quick reference when facilitation challenges arise.
 
 ## Purpose
 The Facilitation Quick Guide serves as your in-session support system, enabling facilitators to:

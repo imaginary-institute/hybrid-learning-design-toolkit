@@ -12,7 +12,7 @@ nav_order: 4
 ## Overview
 Quick wins are evidence-based strategies that can be implemented immediately with minimal preparation or resources, yet produce noticeable improvements in hybrid teaching effectiveness. The Quick Wins Guides provide two complementary resources: Universal practices that benefit all hybrid educators regardless of context, and Dimension-specific strategies tailored to your identified starting point. Together, these guides ensure educators can begin improving their hybrid teaching immediately while building confidence for larger transformations.
 
-**Want personalized recommendations?** Take the [Interactive Self-Assessment Tool →](/assets/tools/hybrid-learning-self-assessment-tool.html) to get customized quick wins based on your specific readiness profile.
+**Want personalized recommendations?** Take the [Interactive Self-Assessment Tool →]({{ '/assets/tools/hybrid-learning-self-assessment-tool.html' | relative_url }}) to get customized quick wins based on your specific readiness profile.
 
 
 
@@ -20,8 +20,8 @@ Quick wins are evidence-based strategies that can be implemented immediately wit
 > **Universal Quick Wins Visual Guide**  
 > *Comprehensive visual guide with action checklists and implementation tips - ready to print or export*
 >
-> <a href="/assets/tools/hybrid-learning-quick-wins-universal-visual.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-quick-wins-universal-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
 > **Tip:** Start here if you want proven strategies that work immediately in any hybrid context.
@@ -30,8 +30,8 @@ Quick wins are evidence-based strategies that can be implemented immediately wit
 > **Quick Wins by Dimension Visual Guide**  
 > *Dimension-specific strategies tailored to your identified starting point*
 >
-> <a href="/assets/tools/hybrid-learning-quick-wins-by-dimension-visual.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-quick-wins-by-dimension-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
 > **Tip:** Use this after completing the Decision Tree to get targeted quick wins for your chosen focus area.

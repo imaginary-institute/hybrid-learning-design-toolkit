@@ -11,11 +11,11 @@ nav_order: 5
 Ensuring equitable learning experiences across participation modes requires systematic analysis of how activities and assessments work differently for on-site and remote students. The Hybrid Learning Adaptation Planning Worksheet provides a structured framework for side-by-side experience mapping, cognitive load analysis, and participation equity planning to identify and address potential disparities before they impact learning.
 
 {: .note }
-> **Interactive Planning Worksheet**  
-> *Guided adaptation planning with side-by-side experience mapping, cognitive load analysis, and export options*
+> **Interactive Adaptation Planning Worksheet**  
+> *Step-by-step planning tool for adapting existing activities to hybrid contexts with guided prompts and export options*
 >
-> <a href="/assets/tools/hybrid-learning-adaptation-planning-worksheet-visual.html" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Launch Tool →
+> <a href="{{ '/assets/tools/hybrid-learning-adaptation-planning-worksheet-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
 > </a>
 >
 > **Tip:** Use this when adapting existing content for hybrid delivery or planning new hybrid-specific activities.
