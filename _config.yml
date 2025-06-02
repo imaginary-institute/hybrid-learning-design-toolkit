@@ -1,6 +1,6 @@
 title: Hybrid Learning Design Toolkit
 description: A comprehensive toolkit for designing effective hybrid learning experiences that seamlessly blend online and in-person instruction
-theme: minima
+remote_theme: just-the-docs/just-the-docs
 
 url: https://imaginary-institute.github.io/hybrid-learning-design-toolkit
 
@@ -31,7 +31,6 @@ collections:
   tools:
     output: true
     permalink: /:collection/:name/
-
 
 # Footer content - simple with one link
 footer_content: 'Hybrid Learning Design Toolkit | 2025 <a href="https://imaginary.institute">imaginary institute</a> | Modified CC BY-SA 4.0'
