@@ -26,8 +26,8 @@ Effective hybrid teaching requires awareness of one's capabilities across multip
 > **Tip:** Use this for capability self-assessment and to get personalized quick wins based on your readiness profile.
 
 {: .note }
-> **Hybrid Learning Teaching Compass**  
-> *Visual reference guide showing the three dimensions and key decision points*
+> **Standalone Hybrid Learning Teaching Compass**  
+> *Printable Visual Compass reference showing the three dimensions and key decision points*
 >
 > <a href="{{ '/assets/tools/hybrid-learning-compass-standalone.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
 > Explore Tool →
@@ -36,7 +36,7 @@ Effective hybrid teaching requires awareness of one's capabilities across multip
 > **Tip:** Print this visual overview to keep handy while exploring the toolkit or planning your hybrid sessions.
 
 {: .note }
-> **Quick Self-Assessment Rubric**  
+> **Standalone Self-Assessment Rubric**  
 > *Simple printable rubric for self-evaluation across the three dimensions*
 >
 > <a href="{{ '/assets/tools/hybrid-learning-self-assessment-standalone-rubric.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">

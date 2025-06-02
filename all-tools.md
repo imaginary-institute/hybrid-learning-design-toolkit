@@ -27,7 +27,7 @@ Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed t
 <span style="background: #ffc107; color: #1a202c; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Quick Reference</span>
 <p style="margin: 0; color: #4a5568; line-height: 1.5;">Systematic approach to identifying your optimal starting point based on current capabilities, available resources, and immediate constraints.</p>
 </div>
-<a href="/00-orientation-support-tools/hybrid-learning-decision-tree" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
+<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
 </div>
 
 <div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
@@ -36,7 +36,7 @@ Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed t
 <span style="background: #6f42c1; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Card Collection</span>
 <p style="margin: 0; color: #4a5568; line-height: 1.5;">Understand the three levels of hybrid teaching sophistication across all dimensions. Navigate Essential, Enhanced, and Transformative approaches.</p>
 </div>
-<a href="/00-orientation-support-tools/hybrid-learning-implementation-level-cards" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
+<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
 </div>
 
 <div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
@@ -45,7 +45,7 @@ Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed t
 <span style="background: #ffc107; color: #1a202c; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Quick Reference</span>
 <p style="margin: 0; color: #4a5568; line-height: 1.5;">Evidence-based strategies that can be implemented immediately with minimal preparation. Universal practices that benefit all hybrid educators.</p>
 </div>
-<a href="/00-orientation-support-tools/hybrid-learning-quick-wins" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
+<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
 </div>
 
 </div>
@@ -69,7 +69,7 @@ Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed t
 <span style="background: #ffc107; color: #1a202c; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Quick Reference</span>
 <p style="margin: 0; color: #4a5568; line-height: 1.5;">Choose tools based on pedagogical needs, not hype. Includes budget-conscious alternatives and accessibility considerations.</p>
 </div>
-<a href="/01-dimension-01-environment-technology-design-kit/hybrid-learning-technology-selection" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
+<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
 </div>
 
 <div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
@@ -78,7 +78,7 @@ Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed t
 <span style="background: #007bff; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Guide</span>
 <p style="margin: 0; color: #4a5568; line-height: 1.5;">Comprehensive strategies for handling technical challenges gracefully. Includes scenario-based protocols and backup activities.</p>
 </div>
-<a href="/01-dimension-01-environment-technology-design-kit/hybrid-learning-environment-teacher-resilience-guide" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
+<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
 </div>
 
 <div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
@@ -87,7 +87,7 @@ Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed t
 <span style="background: #ffc107; color: #1a202c; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Quick Reference</span>
 <p style="margin: 0; color: #4a5568; line-height: 1.5;">In-the-moment troubleshooting and 60-second readiness checks for active teaching sessions.</p>
 </div>
-<a href="/01-dimension-01-environment-technology-design-kit/hybrid-learning-environment-teacher-quick-response-guide" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
+<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
 </div>
 
 <div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
@@ -96,7 +96,7 @@ Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed t
 <span style="background: #007bff; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Guide</span>
 <p style="margin: 0; color: #4a5568; line-height: 1.5;">Comprehensive guide for students on participating effectively in hybrid learning. Balances individual rights with community presence responsibilities.</p>
 </div>
-<a href="/01-dimension-01-environment-technology-design-kit/hybrid-learning-environment-participant-guide" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
+<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
 </div>
 
 </div>
@@ -138,7 +138,7 @@ Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed t
 <span style="background: #fd7e14; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Worksheet</span>
 <p style="margin: 0; color: #4a5568; line-height: 1.5;">Structured frameworks for equity analysis and adaptation planning. Comprehensive visual reference with adaptation strategies.</p>
 </div>
-<a href="/02-dimension-02-learning-experience-assessment-kit/learning-activity-adapter" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
+<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
 </div>
 
 <div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
@@ -147,7 +147,7 @@ Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed t
 <span style="background: #ffc107; color: #1a202c; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Quick Reference</span>
 <p style="margin: 0; color: #4a5568; line-height: 1.5;">Planning frameworks and equity checklists for ensuring equitable experiences across different participation modalities.</p>
 </div>
-<a href="/02-dimension-02-learning-experience-assessment-kit/modality-companion-for-canvas" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
+<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
 </div>
 
 </div>
@@ -162,7 +162,7 @@ Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed t
 <span style="background: #007bff; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Guide</span>
 <p style="margin: 0; color: #4a5568; line-height: 1.5;">Research-based frameworks for understanding teaching, social, and cognitive presence in hybrid learning with diagnostic tools and targeted solutions.</p>
 </div>
-<a href="/03-dimension-03-facilitation-equity-community-design-kit/hybrid-learning-presence-lens" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
+<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
 </div>
 
 <div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
@@ -189,7 +189,7 @@ Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed t
 <span style="background: #ffc107; color: #1a202c; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Quick Reference</span>
 <p style="margin: 0; color: #4a5568; line-height: 1.5;">Decision frameworks and proven protocols for creating effective teams that work across physical and virtual boundaries. Includes troubleshooting strategies for common group dynamics issues.</p>
 </div>
-<a href="/03-dimension-03-facilitation-equity-community-design-kit/hybrid-learning-group-formation-guide" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
+<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
 </div>
 
 <div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
@@ -198,7 +198,7 @@ Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed t
 <span style="background: #ffc107; color: #1a202c; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Quick Reference</span>
 <p style="margin: 0; color: #4a5568; line-height: 1.5;">In-the-moment reference for essential routines, quick fixes for common challenges, and decision flows for live hybrid teaching sessions.</p>
 </div>
-<a href="/03-dimension-03-facilitation-equity-community-design-kit/hybrid-learning-facilitation-quick-guide" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
+<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
 </div>
 
 </div>

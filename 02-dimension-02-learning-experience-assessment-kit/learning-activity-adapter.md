@@ -13,12 +13,12 @@ nav_order: 6
 Not every learning activity translates seamlessly to hybrid environments. The Learning Activity Adapter provides systematic analysis tools for redesigning activities to work equitably across participation modes. Whether you're retrofitting existing content or designing new hybrid-specific activities, this tool ensures learning experiences are equivalent (not identical) for all students regardless of location.
 
 {: .note }
-> **Interactive Adaptation Planning Worksheet**  
+> **Adaptation Planning Worksheet**  
 > *Step-by-step planning tool for adapting existing activities to hybrid contexts with guided prompts and export options*
 >
-> <a href="{{ '/assets/tools/hybrid-learning-adaptation-planning-worksheet-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Explore Tool →
-> </a>
+> <span style="display: inline-block; background: #9ca3af; color: #6b7280; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px; cursor: not-allowed;">
+> Coming Soon
+> </span>
 >
 > **Tip:** Use this for complex activities, high-stakes assessments, or when troubleshooting activities that aren't working well for remote students.
 
@@ -33,6 +33,3 @@ The Learning Activity Adapter serves as a systematic design analysis tool, enabl
 - Troubleshoot existing activities that aren't working well for remote students
 - Design assessment approaches that maintain validity across modalities
 
-## How It Works
-
-The adapter provides a structured comparison framework with dedicated sections for experience mapping, cognitive load analysis, and equity verification. Side-by-side analysis helps you understand exactly how on-site and remote students will experience each aspect of the activity—from access and participation to interaction and assessment opportunities. The tool includes systematic prompts for identifying potential barriers and planning inclusive alternatives that ensure equivalent learning outcomes for all students. 

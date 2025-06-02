@@ -15,14 +15,14 @@ Students in hybrid environments often feel like passive recipients of whatever t
 
 
 {: .note }
-> **Interactive Participant Guide**  
+> **Participant Guide**  
 > *Comprehensive setup and troubleshooting guide for students participating in hybrid learning experiences*
 >
-> <a href="{{ '/assets/tools/hybrid-participants-quick-guide-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Explore Tool →
-> </a>
+> <span style="display: inline-block; background: #9ca3af; color: #6b7280; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px; cursor: not-allowed;">
+> Coming Soon
+> </span>
 >
-> **Tip:** Share this with students before your first hybrid session—it covers technical setup, participation norms, and troubleshooting basics.
+> **Tip:** Share this (or create your own based on this example) with students before your first hybrid session—it covers technical setup, participation norms, and troubleshooting basics.
 
 ## Purpose
 The Participant Guide empowers student success by:
@@ -35,6 +35,3 @@ The Participant Guide empowers student success by:
 - Building inclusive learning communities through peer support
 - Normalizing diverse engagement modes and preferences
 
-## How It Works
-
-The guide uses a rights-based framework that presents participation options as choices available to all students. Self-assessment tools help learners identify their needs across visual, audio, and participation dimensions. Flexible strategies accommodate different comfort levels and contexts, while advocacy resources provide concrete scripts for communicating needs. Technical tips enable personal customization, and community guidance encourages peer support across differences.

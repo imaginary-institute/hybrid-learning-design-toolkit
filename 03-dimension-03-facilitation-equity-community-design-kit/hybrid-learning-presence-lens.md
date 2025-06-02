@@ -15,14 +15,14 @@ Understanding "presence" is fundamental to effective hybrid facilitation, yet it
 
 
 {: .note }
-> **Interactive Presence Lens Tool**  
-> *Visual analysis framework for evaluating and enhancing presence across hybrid learning environments*
+> **Hybrid Presence Lens**  
+> *Interactive diagnostic tool for understanding the three types of presence and their intersections in hybrid learning*
 >
-> <a href="{{ '/assets/tools/hybrid-presence-lens-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Explore Tool →
-> </a>
+> <span style="display: inline-block; background: #9ca3af; color: #6b7280; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px; cursor: not-allowed;">
+> Coming Soon
+> </span>
 >
-> **Tip:** Use this to systematically evaluate how well your hybrid environment supports different types of presence for all participants.
+> **Tip:** Use this when you need to diagnose presence breakdowns or understand why something doesn't feel quite right in your hybrid sessions.
 
 ## Purpose
 The Presence Lens serves as the theoretical foundation for all Dimension 3 tools, enabling facilitators to:
@@ -49,10 +49,4 @@ The Presence Lens works as the foundational framework that informs all other fac
 - **Before using Group Formation Guide**: Consider presence implications of group structures
 - **When troubleshooting**: Return to presence diagnosis to identify root causes
 
-The tool emphasizes that presence is co-created between instructors and students through a "presence pact" - a mutual agreement about how everyone will show up in the hybrid learning community.
 
-## Research Foundation
-
-Built on the Community of Inquiry framework's three presences, the tool addresses the fundamental challenge where remote students often feel like "second-class citizens" despite technological connectivity. Research reveals that facilitation quality, not technology sophistication, determines whether hybrid learning feels unified or fragmented.
-
-The framework recognizes that effective hybrid learning requires "equivalency" rather than identical experiences - equivalent opportunities for teaching, social, and cognitive presence across all participation modes. 

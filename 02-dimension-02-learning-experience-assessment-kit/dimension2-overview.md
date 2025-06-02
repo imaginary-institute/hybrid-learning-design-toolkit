@@ -164,9 +164,9 @@ These digital tools enable educators to create personalized versions of the core
 
 ### Success Indicators
 
-✓ **Essential**: All students actively participate regardless of location
-✓ **Enhanced**: Engagement levels are balanced; diverse activity types are used
-✓ **Transformative**: Location becomes irrelevant to learning quality
+• **Essential**: All students actively participate regardless of location
+• **Enhanced**: Engagement levels are balanced; diverse activity types are used
+• **Transformative**: Location becomes irrelevant to learning quality
 
 ### Integration with Other Dimensions
 

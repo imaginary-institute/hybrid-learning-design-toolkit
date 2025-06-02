@@ -14,23 +14,15 @@ This Implementation Levels Cards helps you understand the three levels of hybrid
 
 
 {: .note }
-> **Interactive Implementation Level Cards**  
-> *Visual guide showing Essential and Enhanced implementation levels across all toolkit resources with actionable next steps*
+> **Implementation Level Cards**  
+> *12 interactive cards helping you understand and navigate the Essential-Enhanced-Transformative progression*
 >
-> <a href="{{ '/assets/tools/hybrid-learning-implementation-cards.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Explore Tool →
-> </a>
+> <span style="display: inline-block; background: #9ca3af; color: #6b7280; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px; cursor: not-allowed;">
+> Coming Soon
+> </span>
 >
-> **Tip:** Use this to understand how toolkit tools can be adapted to match your experience level and available time.
+> **Tip:** Use these cards to understand the thinking behind implementation levels and make strategic choices about your hybrid teaching approach.
 
-{: .note }
-> **Digital / Printable Implementation Cards**  
-> *Print-ready digital card deck*
->
-> Coming soon
-> {: .label .label-yellow }
->
-> **Tip:** Perfect for offline workshops or team planning sessions.
 
 ## Understanding Implementation Levels
 
@@ -41,12 +33,4 @@ Think of implementation levels as **depths of engagement** rather than quality j
 
 You might operate at different levels across different dimensions, or even use different levels for different activities within a single course. The goal is to match your approach to your current capacity while maintaining educational effectiveness.
 
-## How These Guides Connects to the Toolkit
-
-This guide works as a companion to several key components:
-
-- **Hybrid Teaching Compass**: After completing your self-assessment, use this guide to understand what your readiness profile means in practical terms
-- **Decision Tree for Starting Dimension**: Once you've identified where to begin, this guide shows you what to expect at your recommended implementation level
-- **Dimension-Specific Tools**: Each tool in the three dimensions includes implementation level indicators—this guide explains what those levels mean
-- **Quick Wins Guides**: The quick wins are organized by implementation level; this guide helps you understand why certain activities are suggested for your level
 

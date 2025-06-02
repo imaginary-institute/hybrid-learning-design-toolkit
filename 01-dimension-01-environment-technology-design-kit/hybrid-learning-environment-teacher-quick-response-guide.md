@@ -15,12 +15,12 @@ When technology fails mid-session, instructors need immediate solutions, not len
 
 
 {: .note }
-> **Interactive Teaching Quick Response Guide**  
+> **Teaching Quick Response Guide**  
 > *Emergency response protocols and real-time adaptation strategies for common hybrid teaching challenges*
 >
-> <a href="{{ '/assets/tools/hybrid-learning-environment-teacher-quick-response-guide-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Explore Tool →
-> </a>
+> <span style="display: inline-block; background: #9ca3af; color: #6b7280; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px; cursor: not-allowed;">
+> Coming Soon
+> </span>
 >
 > **Tip:** Keep this accessible during live sessions—quick decision trees help you respond confidently when technology or participation issues arise.
 
@@ -34,7 +34,3 @@ The Quick Response Guide enables confident hybrid facilitation by:
 - Supplying emergency communication scripts for calm messaging
 - Creating 30-second recovery protocols for any barrier type
 - Maintaining teaching flow despite technical disruptions
-
-## How It Works
-
-The guide uses a rapid-access format with color-coded sections for different challenge types. The 60-second readiness check ensures basic functionality before sessions begin. Critical flowcharts provide decision trees that lead to appropriate responses within seconds. Emergency scripts maintain professional communication during disruptions, while rapid pivot strategies keep students engaged regardless of technical status.

@@ -13,14 +13,14 @@ nav_order: 5
 When building your Activity Sequence Canvas, you need quick, reliable guidance for modality decisions. The Modality Companion for the Canvas provides instant access to decision frameworks and implementation checklists that help you choose the right approach for each Canvas activity—ensuring equitable experiences whether students are attending remotely, on-site, or switching between modalities.
 
 {: .note }
-> **Interactive Modality Planning Reference Guide**  
-> *Comprehensive reference tool with modality definitions, implementation guidance, and quick decision aids*
+> **Interactive Modality Planning Reference**  
+> *Quick reference guide for making modality adjustments during canvas work with templates and examples*
 >
-> <a href="{{ '/assets/tools/hybrid-learning-modality-planning-reference-guide-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Explore Tool →
-> </a>
+> <span style="display: inline-block; background: #9ca3af; color: #6b7280; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px; cursor: not-allowed;">
+> Coming Soon
+> </span>
 >
-> **Tip:** Keep this open while working on your Canvas to make fast, informed modality decisions for each activity.
+> **Tip:** Keep this open alongside the Activity Sequence Canvas for quick guidance on modality-specific adjustments.
 
 ## Purpose
 The Modality Companion serves as your Canvas-building assistant, enabling you to:
@@ -33,5 +33,3 @@ The Modality Companion serves as your Canvas-building assistant, enabling you to
 - Create seamless transitions between different participation modes
 - Match implementation complexity to your context and capabilities
 
-## How It Works
-This companion tool provides structured decision support optimized for Canvas creation workflow. Quick reference sections help you rapidly assess access, participation, visibility, and technology considerations for each activity you're planning. Implementation level indicators guide complexity choices, while modality comparison charts show the strengths and limitations of each approach. Use it as a desktop reference while building your Canvas to ensure every activity works effectively across participation modes. 

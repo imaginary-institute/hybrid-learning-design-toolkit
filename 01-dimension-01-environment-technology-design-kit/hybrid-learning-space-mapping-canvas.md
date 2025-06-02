@@ -27,13 +27,8 @@ Creating effective hybrid learning environments requires more than adding camera
 ## Purpose
 The Space Mapping Canvas serves as the foundational planning tool for Dimension 1, enabling educators to:
 
-- Map activity zones based on learning functions rather than furniture placement
 - Analyze visibility, audibility, and participation across all three presence contexts
 - Identify potential barriers and exclusions before implementation
 - Plan technology integration starting with needs rather than available tools
 - Consider learner variability in every design decision
 - Create unified experiences across physical and virtual boundaries
-
-## How It Works
-
-The canvas provides a structured visual framework with dedicated spaces for mapping physical room layout, digital platform features, and remote student contexts. Activity zones are defined by function (presentation, collaboration, reflection) rather than location. Gap analysis prompts help identify misalignments between spaces, while technology mapping sections ensure tools serve pedagogical purposes rather than driving them.

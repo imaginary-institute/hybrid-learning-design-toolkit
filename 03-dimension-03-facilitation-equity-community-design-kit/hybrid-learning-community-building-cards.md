@@ -2,7 +2,7 @@
 title: "Community Building Cards"
 layout: default
 parent: "Dimension 3: Facilitation, Equity & Community"
-nav_order: 2
+nav_order: 3
 ---
 
 # Community Building Cards
@@ -24,11 +24,6 @@ Building cohesive learning communities across hybrid environments requires inten
 >
 > **Tip:** Filter by session timing (beginning, throughout, end) to find strategies that fit your community-building goals.
 
-### Digital / Printable Community Cards
-Print-ready digital card deck
-
-Coming soon
-{: .label .label-yellow }
 
 ## Purpose
 The Community Building Cards serve as systematic community development support, enabling educators to:
@@ -41,5 +36,3 @@ The Community Building Cards serve as systematic community development support, 
 - Navigate the specific challenges of hybrid community formation
 - Maintain community cohesion through course transitions and challenges
 
-## How It Works
-Cards are organized by course timeline phases (Beginning, Early Week, Midpoint, Later Course, Ending/Transition) with color-coded categories to support systematic community development. Each card provides implementation steps, hybrid adaptations, technology requirements, and pairing suggestions. Activities range from quick energizers to sustained connection-building experiences, all designed to create inclusive community experiences that bridge rather than divide participation modes. 

@@ -15,26 +15,22 @@ Choosing technology for hybrid learning often starts backwards—with available 
 
 
 {: .note }
-> **Interactive Technology Selection Guide**  
-> *Decision matrix and comparison framework for evaluating hybrid learning tools - with filtering and export options*
+> **Technology Selection Guide**  
+> *Strategic tool selection frameworks with implementation matrices and budget considerations*
 >
-> <a href="{{ '/assets/tools/hybrid-learning-technology-selection-guide-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Explore Tool →
-> </a>
+> <span style="display: inline-block; background: #9ca3af; color: #6b7280; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px; cursor: not-allowed;">
+> Coming Soon
+> </span>
 >
-> **Tip:** Use this before investing in new tools—the systematic approach ensures technology choices support your specific pedagogical goals.
+> **Tip:** Use this before investing in new technology—it guides strategic selection based on teaching needs rather than marketing promises.
 
 ## Purpose
 The Technology Selection Guide helps educators make informed choices by:
 
 - Starting with pedagogical needs rather than technology features
 - Organizing selection criteria by visibility, audibility, and participation requirements
-- Providing budget-conscious alternatives across implementation levels
 - Highlighting red flags for exclusionary technology choices
 - Considering learner variability in every technology decision
 - Matching technology sophistication to institutional readiness
 - Building flexible technology ecosystems rather than isolated tools
 
-## How It Works
-
-The guide uses a structured decision-making process beginning with need identification across see/hear/participate dimensions. For each need category, it provides technology options ranging from basic to advanced, with clear cost implications and accessibility considerations. Integration strategies help create coherent technology ecosystems, while red flag checklists prevent common pitfalls.

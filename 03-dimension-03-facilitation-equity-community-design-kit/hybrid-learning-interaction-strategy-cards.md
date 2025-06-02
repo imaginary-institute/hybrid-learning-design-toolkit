@@ -2,7 +2,7 @@
 title: "Interaction Strategy Cards"
 layout: default
 parent: "Dimension 3: Facilitation, Equity & Community"
-nav_order: 1
+nav_order: 2
 ---
 
 # Interaction Strategy Cards Guide
@@ -24,11 +24,7 @@ Effective hybrid facilitation requires systematic strategies for managing discus
 >
 > **Tip:** Filter by interaction type (synchronous, asynchronous, blended) to find strategies that match your session format.
 
-### Digital / Printable Strategy Cards
-Print-ready digital card deck
 
-Coming soon
-{: .label .label-yellow }
 
 
 ## Purpose
@@ -42,5 +38,3 @@ The Interaction Strategy Cards serve as practical facilitation support, enabling
 - Implement research-based solutions for common hybrid teaching challenges
 - Develop confident facilitation skills through proven, structured approaches
 
-## How It Works
-Cards are organized in five color-coded categories: Discussion Orchestration (Purple), Attention Management (Blue), Participation Activation (Green), Technology Integration (Gray), and Connection Building (Orange). Each card provides implementation steps, hybrid-specific considerations, technology requirements, and connections to companion strategies. The system supports different implementation levels (Essential, Enhanced, Transformative) allowing educators to match strategies to their context and capabilities. 

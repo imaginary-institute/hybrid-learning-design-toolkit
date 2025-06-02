@@ -17,22 +17,22 @@ Quick wins are evidence-based strategies that can be implemented immediately wit
 
 
 {: .note }
-> **Universal Quick Wins Visual Guide**  
-> *Comprehensive visual guide with action checklists and implementation tips - ready to print or export*
+> **Universal Quick Wins Guide**  
+> *Ready-to-implement actions that improve hybrid learning immediately, requiring no assessment or expertise*
 >
-> <a href="{{ '/assets/tools/hybrid-learning-quick-wins-universal-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Explore Tool →
-> </a>
+> <span style="display: inline-block; background: #9ca3af; color: #6b7280; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px; cursor: not-allowed;">
+> Coming Soon
+> </span>
 >
-> **Tip:** Start here if you want proven strategies that work immediately in any hybrid context.
+> **Tip:** Start here if you want immediate improvements without assessment or complexity.
 
 {: .note }
-> **Quick Wins by Dimension Visual Guide**  
-> *Dimension-specific strategies tailored to your identified starting point*
+> **Quick Wins by Dimension**  
+> *Targeted quick wins organized by the three hybrid learning dimensions with implementation level options*
 >
-> <a href="{{ '/assets/tools/hybrid-learning-quick-wins-by-dimension-visual.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Explore Tool →
-> </a>
+> <span style="display: inline-block; background: #9ca3af; color: #6b7280; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px; cursor: not-allowed;">
+> Coming Soon
+> </span>
 >
 > **Tip:** Use this after completing the Decision Tree to get targeted quick wins for your chosen focus area.
 
@@ -47,12 +47,5 @@ The Quick Wins Guides serve as action catalysts within the Orientation and Suppo
 - Connect quick actions to comprehensive toolkit resources
 - Establish foundational practices while pursuing targeted development
 
-## How It Works
-The guides function at two levels:
 
-**General Quick Wins** presents essential practices organized into four categories (pre-session rituals, attention management, participation equity, technology resilience) that work in any hybrid context.
-
-**Quick Wins by Starting Dimension** provides 2-4 targeted strategies based on Decision Tree results, tailored to the chosen dimension (Environment & Technology, Learning Experience & Assessment, or Facilitation, Equity & Community) and implementation level.
-
-Quick Wins are immediately implementable practices that deliver measurable improvements in hybrid teaching effectiveness. These strategies target specific readiness levels within each dimension (Environment & Technology, Learning Experience & Assessment, or Facilitation, Equity & Community) and implementation level.
 

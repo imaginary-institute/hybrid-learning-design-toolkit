@@ -60,6 +60,7 @@ body {
     margin: 0;
     max-width: 1200px;
     margin: 0 auto;
+    margin-left: 290px;
 }
 
 body > *:first-child {
@@ -513,6 +514,12 @@ kbd {
     .export-controls {
         display: none !important;
     }
+    .toc-sidebar {
+        display: none !important;
+    }
+    body {
+        margin-left: 0 !important;
+    }
 }
 
 /* Export controls styling */
@@ -738,12 +745,130 @@ footer {
     color: var(--hint-color);
     font-style: italic;
 }
+
+/* Table of Contents Sidebar */
+.toc-sidebar {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 250px;
+    max-height: 70vh;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    z-index: 500;
+    overflow-y: auto;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.toc-header {
+    background-color: var(--essential-color);
+    color: white;
+    padding: 14px 18px;
+    border-radius: 8px 8px 0 0;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+}
+
+.toc-content {
+    padding: 6px 0;
+}
+
+.toc-item {
+    display: block;
+    padding: 10px 18px;
+    color: var(--heading-color);
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.3;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.toc-item:hover {
+    background-color: var(--light-essential);
+    border-left-color: var(--essential-color);
+    color: var(--essential-color);
+    text-decoration: none;
+}
+
+.toc-item.active {
+    background-color: var(--light-essential);
+    border-left-color: var(--essential-color);
+    color: var(--essential-color);
+    font-weight: 600;
+}
+
+/* Remove bottom border from last item */
+.toc-item:last-child {
+    border-bottom: none;
+}
+
+/* Adjust main content to make room for TOC */
+body {
+    margin-left: 290px;
+}
+
+/* Hide TOC on print and export */
+@media print {
+    .toc-sidebar {
+        display: none !important;
+    }
+    body {
+        margin-left: 0 !important;
+    }
+}
+
+/* Responsive design - hide TOC on smaller screens */
+@media (max-width: 1400px) {
+    .toc-sidebar {
+        display: none;
+    }
+    body {
+        margin-left: 0;
+    }
+}
+
+/* Smooth scrolling for TOC links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Offset for fixed header navigation */
+h1, h2, h3 {
+    scroll-margin-top: 20px;
+}
 </style>
 
 
 </head>
 
 <body>
+
+<!-- Table of Contents Sidebar -->
+<nav class="toc-sidebar">
+    <div class="toc-header">
+        Quick Navigation
+    </div>
+    <div class="toc-content">
+        <a href="#toc_1" class="toc-item">Overview</a>
+        <a href="#toc_2" class="toc-item">Connect to Canvas Work</a>
+        <a href="#toc_3" class="toc-item">Inclusive Response Protocols</a>
+        <a href="#toc_7" class="toc-item">Universal Backup Activities</a>
+        <a href="#toc_10" class="toc-item">Inclusive Role Definitions</a>
+        <a href="#toc_14" class="toc-item">Comprehensive Preparation</a>
+        <a href="#toc_20" class="toc-item">Quick Reference Responses</a>
+        <a href="#toc_23" class="toc-item">Post-Session Practice</a>
+        <a href="#toc_26" class="toc-item">Universal Design Principles</a>
+        <a href="#toc_27" class="toc-item">Remember</a>
+    </div>
+</nav>
 
 <!-- Export Controls -->
 <div class="export-controls">
@@ -819,25 +944,25 @@ footer {
 <tr>
 <td style="text-align: left"><strong>📄 Content Not Accessible</strong></td>
 <td style="text-align: left">• Screen reader users<br>• Low vision<br>• Cognitive differences<br>• Low bandwidth</td>
-<td style="text-align: left">✓ Provide 3+ formats simultaneously<br>✓ Verbal + text + download<br>✓ Extended access time<br>✓ Peer format support</td>
+<td style="text-align: left">• Provide 3+ formats simultaneously<br>• Verbal + text + download<br>• Extended access time<br>• Peer format support</td>
 <td style="text-align: left">• Share materials in advance<br>• Multiple formats default<br>• Built-in processing time<br>• Never single format</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>👥 People Can&#39;t See Each Other</strong></td>
 <td style="text-align: left">• Camera-off participants<br>• Bandwidth limits<br>• Privacy needs</td>
-<td style="text-align: left">✓ Normalize all presence modes<br>✓ Names/avatars/voice presence<br>✓ Describe participants<br>✓ Value all equally</td>
+<td style="text-align: left">• Normalize all presence modes<br>• Names/avatars/voice presence<br>• Describe participants<br>• Value all equally</td>
 <td style="text-align: left">• Camera-optional policy<br>• Multiple presence indicators<br>• Rich profiles<br>• Focus on ideas</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>🖼️ Visual Info Inaccessible</strong></td>
 <td style="text-align: left">• Blind/low vision<br>• Different learning styles<br>• Technical limits</td>
-<td style="text-align: left">✓ Automatic verbal descriptions<br>✓ Tactile/audio alternatives<br>✓ Peer description support<br>✓ Multiple representations</td>
+<td style="text-align: left">• Automatic verbal descriptions<br>• Tactile/audio alternatives<br>• Peer description support<br>• Multiple representations</td>
 <td style="text-align: left">• Description-first mindset<br>• Multi-sensory materials<br>• Collaborative description<br>• Built-in alternatives</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>🎭 Demonstrations Not Visible</strong></td>
 <td style="text-align: left">• Visual processing needs<br>• Device limitations</td>
-<td style="text-align: left">✓ Multi-angle when possible<br>✓ Step-by-step narration<br>✓ Supplementary guides<br>✓ Recorded alternatives</td>
+<td style="text-align: left">• Multi-angle when possible<br>• Step-by-step narration<br>• Supplementary guides<br>• Recorded alternatives</td>
 <td style="text-align: left">• Plan demos for audio<br>• Create text guides<br>• Multiple examples<br>• Record everything</td>
 </tr>
 </tbody>
@@ -859,25 +984,25 @@ footer {
 <tr>
 <td style="text-align: left"><strong>🔇 Audio Communication Barriers</strong></td>
 <td style="text-align: left">• Deaf/hard of hearing<br>• Auditory processing<br>• Noisy environments<br>• Anxiety</td>
-<td style="text-align: left">✓ Real-time text always<br>✓ Visual cues for audio<br>✓ Multiple channels open<br>✓ Async options standard</td>
+<td style="text-align: left">• Real-time text always<br>• Visual cues for audio<br>• Multiple channels open<br>• Async options standard</td>
 <td style="text-align: left">• Multi-modal default<br>• Captions always on<br>• Visual supplements<br>• Text-first options</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>🎤 Speaking Challenges</strong></td>
 <td style="text-align: left">• Speech differences<br>• Anxiety<br>• Language<br>• Technical issues</td>
-<td style="text-align: left">✓ Celebrate text participation<br>✓ Extra contribution time<br>✓ Multiple expression formats<br>✓ No pressure to speak</td>
+<td style="text-align: left">• Celebrate text participation<br>• Extra contribution time<br>• Multiple expression formats<br>• No pressure to speak</td>
 <td style="text-align: left">• Text equally valued<br>• Various input methods<br>• Patience built-in<br>• Choice normalized</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>🎧 Listening Fatigue</strong></td>
 <td style="text-align: left">• Attention differences<br>• Processing needs<br>• Multitasking</td>
-<td style="text-align: left">✓ Chunk information<br>✓ Processing breaks<br>✓ Record for replay<br>✓ Written key points</td>
+<td style="text-align: left">• Chunk information<br>• Processing breaks<br>• Record for replay<br>• Written key points</td>
 <td style="text-align: left">• Shorter segments<br>• Built-in pauses<br>• Always record<br>• Written summaries</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>🌐 Cross-Location Audio</strong></td>
 <td style="text-align: left">• Technical limits<br>• Time zones<br>• Environments</td>
-<td style="text-align: left">✓ Time-shifted participation<br>✓ Recorded contributions<br>✓ Text discussions<br>✓ Flexible synchronicity</td>
+<td style="text-align: left">• Time-shifted participation<br>• Recorded contributions<br>• Text discussions<br>• Flexible synchronicity</td>
 <td style="text-align: left">• Async-friendly design<br>• Record everything<br>• Text alternatives<br>• Time zone equity</td>
 </tr>
 </tbody>
@@ -899,25 +1024,25 @@ footer {
 <tr>
 <td style="text-align: left"><strong>🎮 Engagement Method Barriers</strong></td>
 <td style="text-align: left">• Motor differences<br>• Tech access<br>• Comfort levels</td>
-<td style="text-align: left">✓ Always 3+ response ways<br>✓ Extended time standard<br>✓ Partner/proxy options<br>✓ Async alternatives</td>
+<td style="text-align: left">• Always 3+ response ways<br>• Extended time standard<br>• Partner/proxy options<br>• Async alternatives</td>
 <td style="text-align: left">• Choice architecture<br>• Flexible timing<br>• Collaborative options<br>• Multiple pathways</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>👥 Collaboration Challenges</strong></td>
 <td style="text-align: left">• Social anxiety<br>• Time zones<br>• Tech limits<br>• Processing</td>
-<td style="text-align: left">✓ Solo work alternatives<br>✓ Async collaboration<br>✓ Role flexibility<br>✓ Various group sizes</td>
+<td style="text-align: left">• Solo work alternatives<br>• Async collaboration<br>• Role flexibility<br>• Various group sizes</td>
 <td style="text-align: left">• Individual options<br>• Time-shifted work<br>• Self-selected roles<br>• Size variety</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>✍️ Expression Limitations</strong></td>
 <td style="text-align: left">• Language<br>• Confidence<br>• Tech skills<br>• Disabilities</td>
-<td style="text-align: left">✓ Multimodal responses<br>✓ Template supports<br>✓ Peer assistance<br>✓ Private options</td>
+<td style="text-align: left">• Multimodal responses<br>• Template supports<br>• Peer assistance<br>• Private options</td>
 <td style="text-align: left">• Format choice<br>• Scaffolding available<br>• Buddy system<br>• 1-on-1 channels</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>⏱️ Pace Mismatches</strong></td>
 <td style="text-align: left">• Processing speed<br>• Multitasking<br>• Interruptions</td>
-<td style="text-align: left">✓ Self-paced options<br>✓ Catch-up supports<br>✓ Key summaries<br>✓ Flexible deadlines</td>
+<td style="text-align: left">• Self-paced options<br>• Catch-up supports<br>• Key summaries<br>• Flexible deadlines</td>
 <td style="text-align: left">• Variable pacing<br>• Review materials<br>• Clear priorities<br>• Grace periods</td>
 </tr>
 </tbody>
@@ -929,8 +1054,31 @@ footer {
 
 <h3 id="toc_8">🔄 The Universal Pivot Protocol</h3>
 
-<div><pre><code class="language-none">1. PAUSE &amp; ACKNOWLEDGE (5 sec)     →     2. OFFER 3 OPTIONS (20 sec)     →     3. EXTEND TIME     →     4. FOLLOW UP
-&quot;Let&#39;s make this work&quot;                    &quot;Choose what works best&quot;              Double original         Check inclusion</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: center"><strong>Step 1</strong></th>
+<th style="text-align: center"><strong>Step 2</strong></th>
+<th style="text-align: center"><strong>Step 3</strong></th>
+<th style="text-align: center"><strong>Step 4</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center"><strong>PAUSE & ACKNOWLEDGE</strong><br>(5 seconds)</td>
+<td style="text-align: center"><strong>OFFER 3 OPTIONS</strong><br>(20 seconds)</td>
+<td style="text-align: center"><strong>EXTEND TIME</strong><br>(Double original)</td>
+<td style="text-align: center"><strong>FOLLOW UP</strong><br>(Check inclusion)</td>
+</tr>
+<tr>
+<td style="text-align: center"><em>"Let's make this work"</em></td>
+<td style="text-align: center"><em>"Choose what works best"</em></td>
+<td style="text-align: center">Allow extra processing time</td>
+<td style="text-align: center">Ensure everyone included</td>
+</tr>
+</tbody>
+</table>
 
 <h3 id="toc_9">🎯 Core Flexible Activities</h3>
 
@@ -947,22 +1095,22 @@ footer {
 <tr>
 <td style="text-align: left"><strong>🤔 Think-Pair-Share-Choose</strong></td>
 <td style="text-align: left">• Think: Individual processing<br>• Pair: Optional partnering<br>• Share: Multiple formats<br>• Choose: Sync or async</td>
-<td style="text-align: left">✓ Time flexible<br>✓ Solo option<br>✓ Format choice<br>✓ Timing choice</td>
+<td style="text-align: left">• Time flexible<br>• Solo option<br>• Format choice<br>• Timing choice</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>🎪 Station Rotation Flexible</strong></td>
 <td style="text-align: left">• Physical + digital stations<br>• Self-paced progression<br>• Multi-modal per station<br>• Home alternatives</td>
-<td style="text-align: left">✓ Location flexible<br>✓ Pace control<br>✓ Format variety<br>✓ Remote-friendly</td>
+<td style="text-align: left">• Location flexible<br>• Pace control<br>• Format variety<br>• Remote-friendly</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>🧩 Jigsaw Inclusive</strong></td>
 <td style="text-align: left">• Expert groups by choice<br>• Multiple expertise paths<br>• Various sharing formats<br>• Individual options</td>
-<td style="text-align: left">✓ Comfort-based groups<br>✓ Learning style match<br>✓ Expression choice<br>✓ Solo pathway</td>
+<td style="text-align: left">• Comfort-based groups<br>• Learning style match<br>• Expression choice<br>• Solo pathway</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>🖼️ Gallery Walk Universal</strong></td>
 <td style="text-align: left">• Physical + virtual galleries<br>• Multi-sensory descriptions<br>• Sync + async viewing<br>• Multiple responses</td>
-<td style="text-align: left">✓ Access variety<br>✓ Time flexibility<br>✓ Response options<br>✓ Format diversity</td>
+<td style="text-align: left">• Access variety<br>• Time flexibility<br>• Response options<br>• Format diversity</td>
 </tr>
 </tbody>
 </table>
@@ -1091,27 +1239,27 @@ footer {
 <tbody>
 <tr>
 <td style="text-align: left">1️⃣ <strong>Access Check</strong></td>
-<td style="text-align: left"><em>&quot;Let&#39;s ensure everyone can participate fully&quot;</em></td>
+<td style="text-align: left"><em>"Let's ensure everyone can participate fully"</em></td>
 <td style="text-align: left">Set inclusive tone</td>
 </tr>
 <tr>
 <td style="text-align: left">2️⃣ <strong>Choice Reminder</strong></td>
-<td style="text-align: left"><em>&quot;Multiple ways to engage - choose what works&quot;</em></td>
+<td style="text-align: left"><em>"Multiple ways to engage - choose what works"</em></td>
 <td style="text-align: left">Normalize options</td>
 </tr>
 <tr>
 <td style="text-align: left">3️⃣ <strong>Channel Check</strong></td>
-<td style="text-align: left"><em>&quot;I&#39;m monitoring video, audio, chat, and reactions&quot;</em></td>
+<td style="text-align: left"><em>"I'm monitoring video, audio, chat, and reactions"</em></td>
 <td style="text-align: left">Show attentiveness</td>
 </tr>
 <tr>
 <td style="text-align: left">4️⃣ <strong>Comfort Setting</strong></td>
-<td style="text-align: left"><em>&quot;Adjust your participation mode anytime&quot;</em></td>
+<td style="text-align: left"><em>"Adjust your participation mode anytime"</em></td>
 <td style="text-align: left">Permission to adapt</td>
 </tr>
 <tr>
 <td style="text-align: left">5️⃣ <strong>Support Available</strong></td>
-<td style="text-align: left"><em>&quot;We&#39;re here to help each other succeed&quot;</em></td>
+<td style="text-align: left"><em>"We're here to help each other succeed"</em></td>
 <td style="text-align: left">Community focus</td>
 </tr>
 </tbody>
@@ -1136,7 +1284,7 @@ footer {
 <tr>
 <td style="text-align: center">1️⃣</td>
 <td style="text-align: center">5 sec</td>
-<td style="text-align: left"><strong>NORMALIZE</strong>: <em>&quot;This is why we have options&quot;</em></td>
+<td style="text-align: left"><strong>NORMALIZE</strong>: <em>"This is why we have options"</em></td>
 </tr>
 <tr>
 <td style="text-align: center">2️⃣</td>
@@ -1146,7 +1294,7 @@ footer {
 <tr>
 <td style="text-align: center">3️⃣</td>
 <td style="text-align: center">5 sec</td>
-<td style="text-align: left"><strong>SUPPORT</strong>: <em>&quot;What works best for you?&quot;</em></td>
+<td style="text-align: left"><strong>SUPPORT</strong>: <em>"What works best for you?"</em></td>
 </tr>
 <tr>
 <td style="text-align: center">4️⃣</td>
@@ -1158,27 +1306,44 @@ footer {
 
 <h3 id="toc_22">🔀 Inclusive Decision Tree</h3>
 
-<h3 id="toc_23">Inclusive Decision Tree</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left"><strong>Decision Point</strong></th>
+<th style="text-align: left"><strong>Options</strong></th>
+<th style="text-align: left"><strong>Action</strong></th>
+</tr>
+</thead>
 
-<div><pre><code class="language-none">Barrier Detected
-    │
-    ├─ Built-in Alternative?
-    │   ├─ Yes → Smoothly transition
-    │   └─ No → Create one together
-    │
-    ├─ Affects One or Many?
-    │   ├─ One → Private support + public normalization
-    │   └─ Many → Celebrate creative solutions
-    │
-    └─ Learning Continues?
-        ├─ Yes → Document for improvement
-        └─ No → Priority pivot to inclusion</code></pre></div>
+<tbody>
+<tr>
+<td style="text-align: left"><strong>🚧 Barrier Detected</strong></td>
+<td style="text-align: left">Assess situation</td>
+<td style="text-align: left">Move to next decision</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>🛤️ Built-in Alternative?</strong></td>
+<td style="text-align: left">✅ <strong>Yes</strong><br>❌ <strong>No</strong></td>
+<td style="text-align: left">→ Smoothly transition<br>→ Create one together</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>👥 Affects One or Many?</strong></td>
+<td style="text-align: left">👤 <strong>One person</strong><br>👥 <strong>Many people</strong></td>
+<td style="text-align: left">→ Private support + public normalization<br>→ Celebrate creative solutions</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>📚 Learning Continues?</strong></td>
+<td style="text-align: left">✅ <strong>Yes</strong><br>❌ <strong>No</strong></td>
+<td style="text-align: left">→ Document for improvement<br>→ Priority pivot to inclusion</td>
+</tr>
+</tbody>
+</table>
 
 <hr>
 
-<h2 id="toc_24">6️⃣ POST-SESSION PRACTICE</h2>
+<h2 id="toc_23">6️⃣ POST-SESSION PRACTICE</h2>
 
-<h3 id="toc_25">🔍 Reflection Framework</h3>
+<h3 id="toc_24">🔍 Reflection Framework</h3>
 
 <table>
 <thead>
@@ -1213,13 +1378,40 @@ footer {
 </tbody>
 </table>
 
-<h3 id="toc_26">📊 Continuous Improvement</h3>
+<h3 id="toc_25">📊 Continuous Improvement</h3>
 
-<div><pre><code class="language-none">Student Voice → Anonymous Feedback → Barrier Patterns → Design Updates → Innovation Catalog</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: center"><strong>Step 1</strong></th>
+<th style="text-align: center"><strong>Step 2</strong></th>
+<th style="text-align: center"><strong>Step 3</strong></th>
+<th style="text-align: center"><strong>Step 4</strong></th>
+<th style="text-align: center"><strong>Step 5</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center"><strong>👂 Student Voice</strong></td>
+<td style="text-align: center"><strong>💭 Anonymous Feedback</strong></td>
+<td style="text-align: center"><strong>🔍 Barrier Patterns</strong></td>
+<td style="text-align: center"><strong>🔧 Design Updates</strong></td>
+<td style="text-align: center"><strong>📚 Innovation Catalog</strong></td>
+</tr>
+<tr>
+<td style="text-align: center">Gather input</td>
+<td style="text-align: center">Safe sharing</td>
+<td style="text-align: center">Identify trends</td>
+<td style="text-align: center">Implement changes</td>
+<td style="text-align: center">Share solutions</td>
+</tr>
+</tbody>
+</table>
 
 <hr>
 
-<h2 id="toc_27">🌟 UNIVERSAL DESIGN PRINCIPLES</h2>
+<h2 id="toc_26">🌟 UNIVERSAL DESIGN PRINCIPLES</h2>
 
 <table>
 <thead>
@@ -1261,12 +1453,14 @@ footer {
 
 <hr>
 
-<h2 id="toc_28">💡 Remember</h2>
+<h2 id="toc_27">💡 Remember</h2>
 
 <blockquote>
 <p><strong>True resilience = designing for the margins from the start</strong></p>
 
-<p>The goal isn&#39;t perfect technology—it&#39;s perfect inclusion.</p>
+<p>The goal isn't perfect technology—it's perfect inclusion.</p>
+
+<p><strong>Foundation Principle:</strong> Start Accessible → Build Options → Support Choice → Enable Success</p>
 </blockquote>
 
 <hr>
@@ -1381,6 +1575,57 @@ document.addEventListener('keydown', function(event) {
         event.preventDefault();
         exportPDF();
     }
+});
+
+// Table of Contents functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const tocItems = document.querySelectorAll('.toc-item, .toc-subitem');
+    const sections = document.querySelectorAll('h1[id], h2[id], h3[id]');
+    
+    // Highlight active section in TOC
+    function highlightActiveSection() {
+        let current = '';
+        const scrollPosition = window.scrollY + 100; // Offset for better UX
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        tocItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('href') === `#${current}`) {
+                item.classList.add('active');
+            }
+        });
+    }
+    
+    // Update active section on scroll
+    window.addEventListener('scroll', highlightActiveSection);
+    
+    // Initial highlight
+    highlightActiveSection();
+    
+    // Smooth scroll with offset for TOC clicks
+    tocItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                const offsetTop = targetSection.offsetTop - 20;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 });
 </script>
 

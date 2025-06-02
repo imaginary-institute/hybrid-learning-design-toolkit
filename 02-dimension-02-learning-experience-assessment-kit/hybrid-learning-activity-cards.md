@@ -1,16 +1,16 @@
 ---
-title: "Activity Strategy Cards"
+title: "Activity Cards"
 layout: default
 parent: "Dimension 2: Learning Experience & Assessment"
 nav_order: 3
 ---
 
-# Activity Strategy Cards
+# Learning Activity Strategy Cards
 
 <span style="background: #6f42c1; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 24px;">Card Collection</span>
 
 ## Overview
-Choosing the right learning activity for hybrid contexts requires understanding both pedagogical purpose and technical feasibility across participation modes. The Hybrid Learning Activity Strategy Cards provide a curated collection of 26 research-based activity patterns organized by cognitive engagement level, each with specific guidance for hybrid implementation, technology requirements, and equity considerations.
+Choosing the right learning activity for hybrid contexts requires understanding both pedagogical purpose and technical feasibility across participation modes. The Hybrid Learning Activity Strategy Cards provide a curated collection of 26 research-based activity patterns organized by cognitive engagement level, each with specific guidance for hybrid implementation, technology requirements, and equity considerations. Used in combination with the Activity Sequence canvas they allow for flexible approach to Hybrid Learning Experience Design.
 
 
 
@@ -24,11 +24,7 @@ Choosing the right learning activity for hybrid contexts requires understanding 
 >
 > **Tip:** Use filters to find activities that match your specific needs—time constraints, group size, or learning objectives.
 
-### Digital / Printable Activity Cards
-Print-ready digital card deck
 
-Coming soon
-{: .label .label-yellow }
 
 ## Purpose
 The Activity Strategy Cards serve as a practical activity selection resource, enabling educators to:
@@ -41,6 +37,3 @@ The Activity Strategy Cards serve as a practical activity selection resource, en
 - Combine activities strategically to create balanced learning sequences
 - Adapt traditional activities for effective hybrid delivery
 
-## How It Works
-
-The cards are organized in three color-coded categories: Receiving activities (blue) for information consumption, Responding activities (green) for active engagement with content, and Creating activities (orange) for knowledge construction and synthesis. Each card provides implementation steps, hybrid considerations, technology requirements, time estimates, and suggestions for combination with other activities. The system supports different implementation levels (Essential, Enhanced, Transformative) allowing educators to match activities to their context and capabilities. 
