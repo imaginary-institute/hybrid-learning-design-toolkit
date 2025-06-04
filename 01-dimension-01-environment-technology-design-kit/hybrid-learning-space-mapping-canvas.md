@@ -10,25 +10,25 @@ nav_order: 2
 <span style="background: #28a745; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 24px;">Canvas Tool</span>
 
 ## Overview
-Creating effective hybrid learning environments requires more than adding cameras to traditional classrooms. The Space Mapping Canvas provides a visual design framework for integrating the "triple presence" of hybrid learning—physical classroom, digital platform, and remote students' contexts—into a unified learning environment where all participants can engage equitably regardless of location.
-
-
+The Hybrid Learning Space Mapping Canvas is a comprehensive planning template that helps educators visualize and analyze their hybrid learning environment across three interconnected contexts: **Physical Classroom**, **Digital Environment**, and **Remote Students' Contexts**. This tool provides structured spaces for mapping concrete elements and analyzing how different forms of presence manifest across all learning spaces.
 
 {: .note }
-> **Interactive Space Canvas Generator**  
-> *Interactive Tool - Design, customize, and export the Canvas in different formats (PDF, PNG)*
+> **Interactive Canvas Generator**  
+> *Printable Worksheet Tool - Design your hybrid environment and export in multiple formats*
 >
 > <a href="{{ '/assets/tools/hybrid-learning-space-mapping-canvas.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> Explore Tool →
+> Open Canvas Tool →
 > </a>
 >
-> **Tip:** Use this tool to map your physical and digital spaces before your next hybrid session. Export as PDF to keep handy during class.
+> **Tip:** This tool generates a printable worksheet for sketching and writing areas for analysis. Export as PDF or PNG to use during planning sessions or keep as reference during teaching.
 
 ## Purpose
-The Space Mapping Canvas serves as the foundational planning tool for Dimension 1, enabling educators to:
+This canvas serves as a foundational design tool that enables educators to:
 
-- Analyze visibility, audibility, and participation across all three presence contexts
-- Identify potential barriers and exclusions before implementation
-- Plan technology integration starting with needs rather than available tools
-- Consider learner variability in every design decision
-- Create unified experiences across physical and virtual boundaries
+- **Map concrete elements** across all the "three learning spaces" with dedicated sketching areas
+- **Analyze presence types** (Teaching, Social, Cognitive) across physical and digital boundaries  
+- **Identify integration opportunities** between in-person and remote learning experiences
+- **Plan holistically** by considering what you control, what tools you'll use, and what resources learners bring
+- **Export and use** as a physical planning worksheet during design and implementation
+
+
