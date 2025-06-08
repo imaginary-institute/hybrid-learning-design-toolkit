@@ -7,7 +7,6 @@ nav_order: 2
 
 # Interaction Strategy Cards Guide
 
-<span style="background: #6f42c1; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 24px;">Card Collection</span>
 
 ## Overview
 Effective hybrid facilitation requires systematic strategies for managing discussion, attention, participation, technology, and community across dual participation modes. The Interaction Strategy Cards provide 25 research-based facilitation techniques organized by color-coded categories to address the most common challenges educators face when teaching simultaneously to on-site and remote students.
@@ -18,7 +17,7 @@ Effective hybrid facilitation requires systematic strategies for managing discus
 > **Interactive Interaction Strategy Cards**  
 > *Digital card collection with interaction strategies and engagement techniques for hybrid learning facilitation*
 >
-> <a href="{{ '/assets/tools/hybrid-learning-interaction-strategy-cards.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> <a href="{{ '/assets/tools/hybrid-learning-interaction-strategy-cards.html' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
 > Explore Tool →
 > </a>
 >

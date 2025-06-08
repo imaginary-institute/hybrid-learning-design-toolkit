@@ -7,7 +7,6 @@ nav_order: 6
 
 # Learning Activity Hybrid Adapter
 
-<span style="background: #fd7e14; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 24px;">Worksheet</span>
 
 ## Overview
 Not every learning activity translates seamlessly to hybrid environments. The Learning Activity Adapter provides systematic analysis tools for redesigning activities to work equitably across participation modes. Whether you're retrofitting existing content or designing new hybrid-specific activities, this tool ensures learning experiences are equivalent (not identical) for all students regardless of location.

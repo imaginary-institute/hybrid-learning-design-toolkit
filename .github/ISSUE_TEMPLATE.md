@@ -1,61 +1,69 @@
 ---
-name: General Issue
-about: Report a bug, suggest an improvement, or ask a question
-title: "[CATEGORY] Brief description"
+name: General Issue Template
+about: Use this template for bug reports, feature requests, and other issues
+title: ''
 labels: ''
 assignees: ''
 ---
 
-## 📋 Issue Type
-<!-- Please check one -->
-- [ ] 🐛 Bug report
-- [ ] 💡 Feature request  
-- [ ] 📝 Documentation improvement
-- [ ] ❓ Question or support request
-- [ ] 🧪 Research contribution
+**Thank you for contributing to the Hybrid Learning Design Toolkit!**
 
-## 🎯 Which part of the toolkit is this about?
-<!-- Please check all that apply -->
-- [ ] Orientation tools
-- [ ] Dimension 1 (Environment & Technology)
-- [ ] Dimension 2 (Learning Experience & Assessment)  
-- [ ] Dimension 3 (Facilitation, Equity & Community)
-- [ ] Site navigation or general usability
-- [ ] Interactive HTML tools
-- [ ] Documentation or README
+## <i class="fas fa-clipboard-list"></i> Issue Type
 
-## 📝 Description
-<!-- Clear description of the issue, suggestion, or question -->
+Please check the type of issue you're reporting:
+- [ ] <i class="fas fa-bug"></i> Bug report
+- [ ] <i class="fas fa-lightbulb"></i> Feature request
+- [ ] <i class="fas fa-file-alt"></i> Documentation improvement
+- [ ] <i class="fas fa-question-circle"></i> Question
+- [ ] <i class="fas fa-flask"></i> Research contribution
 
+## <i class="fas fa-bullseye"></i> Which part of the toolkit is this about?
 
+Please check all that apply:
+- [ ] Orientation & Support Tools (Self-Assessment, Decision Tree, etc.)
+- [ ] Dimension 1: Environment & Technology
+- [ ] Dimension 2: Learning Experience & Assessment  
+- [ ] Dimension 3: Facilitation, Equity & Community
+- [ ] General site navigation or structure
+- [ ] Mobile/responsive design
+- [ ] Accessibility
+- [ ] Other: _______________
 
-## 🔍 Steps to Reproduce (for bugs)
-<!-- If reporting a bug, include specific steps -->
-1. 
-2. 
-3. 
+## <i class="fas fa-file-alt"></i> Description
+
+**Briefly describe the issue, feature request, or question:**
+
+[Your description here]
+
+## <i class="fas fa-search"></i> Steps to Reproduce (for bugs)
+
+If this is a bug report, please provide steps to reproduce:
+
+1. Go to '...'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
 
 **Expected behavior:**
+[What you expected to happen]
 
-**Actual behavior:**
+**Actual behavior:** 
+[What actually happened]
 
-## 💡 Proposed Solution (for suggestions)
-<!-- If suggesting an improvement, describe your idea -->
+## <i class="fas fa-lightbulb"></i> Proposed Solution (for suggestions)
 
+If you have ideas for how to address this issue:
 
+[Your suggestions here]
 
-## 🌍 Context
-<!-- Help us understand your situation -->
-- **Device/Platform:** (e.g., iPhone Safari, Windows Chrome, etc.)
-- **Your role:** (e.g., K-12 teacher, university instructor, instructional designer)
-- **Institution type:** (e.g., public university, community college, corporate training)
-- **Hybrid experience level:** (e.g., new to hybrid, experienced educator)
-
-## 📎 Additional Information
-<!-- Screenshots, links, research citations, or other relevant details -->
-
-
+**Additional context:**
+Add any other context, screenshots, or examples that would be helpful.
 
 ---
+
+**Environment Details (if relevant):**
+- Device: [e.g., iPhone 12, Windows laptop]
+- Browser: [e.g., Chrome 91, Safari 14]
+- Screen size: [e.g., mobile, tablet, desktop]
 
 **Thank you for helping improve the Hybrid Learning Design Toolkit! 🙏** 

@@ -6,7 +6,7 @@ has_children: true
 has_toc: false
 ---
 
-# Orientation & Support Tools
+# Getting Started: Orientation & Support Tools
 
 Where should you start? What can you do immediately while planning deeper changes?
 The Orientation & Support Tools function as your navigation system, helping you assess where you are, decide where to go, and take confident first steps without overwhelming transformation.
@@ -17,29 +17,29 @@ Building on change management theory, technology adoption frameworks, stages of 
 
 <div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 30px 0;">
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #2c3e50;">🧭 Self-Assessment</h3>
-<p style="margin-bottom: 15px; color: #555;">Comprehensive self-assessment across all three dimensions. Maps your readiness profile with reflection prompts, rubrics and tailored recommendations.</p>
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-user-check tool-icon"></i>Self-Assessment</h3>
+<p style="margin-bottom: auto; color: #555;">Comprehensive self-assessment across all three dimensions. Maps your readiness profile with reflection prompts, rubrics and tailored recommendations.</p>
 
-<a href="hybrid-learning-self-assessment" style="display: inline-block; background: #6c757d; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-left: 10px;">Explore Tool →</a>
+<a href="hybrid-learning-self-assessment" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #2c3e50;">🗺️ Decision Tree</h3>
-<p style="margin-bottom: 15px; color: #555;">Strategic navigation tool for identifying your best entry point. Problem-based and interest-based paths lead to targeted dimension recommendations.</p>
-<a href="hybrid-learning-decision-tree" style="display: inline-block; background: #6c757d; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Explore Tool →</a>
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-sitemap tool-icon"></i>Decision Tree</h3>
+<p style="margin-bottom: auto; color: #555;">Strategic navigation tool for identifying your best entry point. Problem-based and interest-based paths lead to targeted dimension recommendations.</p>
+<a href="hybrid-learning-decision-tree" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #2c3e50;">📋 Implementation Cards</h3>
-<p style="margin-bottom: 15px; color: #555;">12 cards clarifying Essential, Enhanced, and Transformative levels. Visual indicators, success criteria, and progression guidance for each dimension.</p>
-<a href="hybrid-learning-implementation-level-cards" style="display: inline-block; background: #6c757d; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Explore Tool →</a>
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-clipboard-check tool-icon"></i>Implementation Cards</h3>
+<p style="margin-bottom: auto; color: #555;">12 cards clarifying Essential, Enhanced, and Transformative levels. Visual indicators, success criteria, and progression guidance for each dimension.</p>
+<a href="hybrid-learning-implementation-level-cards" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #2c3e50;">⚡ Quick Wins Guides</h3>
-<p style="margin-bottom: 15px; color: #555;">Universal strategies that work immediately in any context, plus dimension-specific quick wins tailored to your identified starting point and implementation level.</p>
-<a href="hybrid-learning-quick-wins" style="display: inline-block; background: #6c757d; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Explore Tool →</a>
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-rocket tool-icon"></i>Quick Wins Guides</h3>
+<p style="margin-bottom: auto; color: #555;">Universal strategies that work immediately in any context, plus dimension-specific quick wins tailored to your identified starting point and implementation level.</p>
+<a href="hybrid-learning-quick-wins" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
 </div>
@@ -48,14 +48,7 @@ Building on change management theory, technology adoption frameworks, stages of 
 
 These tools form a coordinated navigation system for your hybrid learning development journey. Rather than working in isolation, they connect to create a comprehensive approach to strategic planning and sustainable progress:
 
-### The Tool Flow
 
-```
-🧭 Self-Assessment → 🗺️ Decision Tree → 📋 Implementation Cards
-                               ↓
-⚡ Quick Wins Guides ←───────── Targeted Dimension Toolkit
-
-```
 {: .note }
 >#### Key Connections
 >- **Self-Assessment → Decision Tree**: Comprehensive assessment informs strategic entry point decisions
@@ -68,15 +61,15 @@ These tools form a coordinated navigation system for your hybrid learning develo
 This orientation toolkit offers two main pathways depending on your available time and development approach. Whether you want comprehensive assessment and planning or need immediate guidance for urgent challenges, these tools can be combined strategically. Below are recommended **workflows for different scenarios** to help you navigate your hybrid learning journey effectively.
 
 {: .note }
->### **🎯 Comprehensive Assessment Path** (when you have time for strategic planning)
->1. **Complete Self-Assessment** - Map your detailed readiness profile across all three dimensions
->2. **Review Readiness Recommendations** - Understand your strengths and priority development areas
->3. **Use Implementation Level Cards** - Set appropriate expectations for your chosen implementation level
->4. **Access Dimension-Specific Quick Wins** - Get targeted actions for your recommended starting dimension
->5. **Begin Dimension Toolkit** - Start with confidence in your chosen dimension's tools
+>### **<i class="fas fa-bullseye"></i> Comprehensive Assessment Path** (when you have time for strategic planning)
+>1. **Self-Assessment Tool** - Complete comprehensive evaluation to map current readiness and identify growth areas
+>2. **Decision Tree** - Use strategic navigation to find optimal starting dimension based on assessment results
+>3. **Implementation Level Cards** - Set realistic progression goals using Essential → Enhanced → Transformative framework
+>4. **Quick Wins** - Start implementing immediately while planning deeper changes
+>5. **Dimension-Specific Toolkits** - Access targeted tools based on Decision Tree recommendations and assessment insights
 
 {: .note }
->### **🚨 Quick Start Path** (when you need immediate guidance)
+>### **<i class="fas fa-exclamation-triangle"></i> Quick Start Path** (when you need immediate guidance)
 >1. **Use Decision Tree** - Quickly identify urgent needs and recommended entry point
 >2. **Note Your Recommended Dimension** - Understand which toolkit will best address your challenges
 >3. **Review Relevant Implementation Cards** - Set realistic expectations for your context
@@ -84,7 +77,7 @@ This orientation toolkit offers two main pathways depending on your available ti
 >5. **Add Dimension-Specific Quick Wins** - Layer in targeted actions based on your identified path
 
 {: .note }
->### **🔄 Ongoing Development Path** (for iterative improvement)
+>### **<i class="fas fa-sync-alt"></i> Ongoing Development Path** (for iterative improvement)
 >1. **Revisit Self-Assessment** - Regularly update your readiness profile as you grow
 >2. **Expand Implementation Levels** - Use Implementation Cards to guide progression to next level
 >3. **Cross-Dimension Integration** - Use Decision Tree to identify connections between dimensions

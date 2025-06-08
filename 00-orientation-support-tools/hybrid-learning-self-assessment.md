@@ -1,5 +1,5 @@
 ---
-title: "Hybrid Self-Assessment"
+title: "Self-Assessment"
 layout: default
 parent: "Getting started: Orientation & Support"
 nav_order: 1
@@ -7,11 +7,9 @@ nav_order: 1
 
 # Hybrid Learning and Teaching Self-Assessment
 
-<span style="background: #17a2b8; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 24px;">Assessment Tool</span>
-
 ## Overview
 
-Effective hybrid teaching requires awareness of one's capabilities across multiple dimensions. The Hybrid Learning and Teaching Self-Assessment Tool (also called the "Hybrid Learning Teaching Compass") provides a comprehensive framework for educators to evaluate their readiness across the three essential dimensions of hybrid teaching, creating a visual representation of current capabilities and targeted growth areas.
+Effective hybrid teaching requires awareness of one's level of experience across multiple dimensions. The Hybrid Learning and Teaching Self-Assessment Tool (also called the "Hybrid Learning Teaching Compass") provides a comprehensive framework for educators to evaluate their readiness across the three essential dimensions of hybrid teaching, creating a visual representation of current experience level and targeted growth areas.
 
 
 
@@ -19,7 +17,7 @@ Effective hybrid teaching requires awareness of one's capabilities across multip
 > **Interactive Self-Assessment Tool**  
 > *30 reflection prompts with personalized quick wins and implementation recommendations*
 >
-> <a href="{{ '/assets/tools/hybrid-learning-self-assessment-tool.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> <a href="{{ '/assets/tools/hybrid-learning-self-assessment-tool.html' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
 > Explore Tool →
 > </a>
 >
@@ -29,7 +27,7 @@ Effective hybrid teaching requires awareness of one's capabilities across multip
 > **Standalone Hybrid Learning Teaching Compass**  
 > *Printable Visual Compass reference showing the three dimensions and key decision points*
 >
-> <a href="{{ '/assets/tools/hybrid-learning-compass-standalone.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> <a href="{{ '/assets/tools/hybrid-learning-compass-standalone.html' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
 > Explore Tool →
 > </a>
 >
@@ -39,7 +37,7 @@ Effective hybrid teaching requires awareness of one's capabilities across multip
 > **Standalone Self-Assessment Rubric**  
 > *Simple printable rubric for self-evaluation across the three dimensions*
 >
-> <a href="{{ '/assets/tools/hybrid-learning-self-assessment-standalone-rubric.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> <a href="{{ '/assets/tools/hybrid-learning-self-assessment-standalone-rubric.html' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
 > Explore Tool →
 > </a>
 >

@@ -7,7 +7,6 @@ nav_order: 3
 
 # Technology Selection Guide
 
-<span style="background: #ffc107; color: #1a202c; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 24px;">Quick Reference</span>
 
 ## Overview
 Choosing technology for hybrid learning often starts backwards—with available tools rather than pedagogical needs. The Technology Selection Guide reframes this process around three fundamental questions: What do participants need to see? What do they need to hear? How do they need to participate? This need-based approach ensures technology serves learning rather than constraining it.

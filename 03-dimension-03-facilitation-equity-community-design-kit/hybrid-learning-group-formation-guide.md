@@ -7,7 +7,6 @@ nav_order: 5
 
 # Group Formation Guide
 
-<span style="background: #ffc107; color: #1a202c; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 24px;">Quick Reference</span>
 
 ## Overview
 Forming effective groups in hybrid learning environments requires intentional strategies that account for the unique challenges of mixed-modality collaboration. The Group Formation Guide provides decision frameworks, proven protocols, and troubleshooting strategies for creating teams that work across physical and virtual boundaries.

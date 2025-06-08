@@ -17,34 +17,34 @@ Building on the concept of "triple presence" across physical, digital, and remot
 
 <div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 30px 0;">
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #2c3e50;">🗺️ Space Mapping Canvas</h3>
-<p style="margin-bottom: 15px; color: #555;">Visual design tool for integrating physical, digital, and remote learning contexts. Start here to map your hybrid environment before selecting technology.</p>
-<a href="hybrid-learning-space-mapping-canvas" style="display: inline-block; background: #007bff; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Explore Tool →</a>
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-map tool-icon"></i>Space Mapping Canvas</h3>
+<p style="margin-bottom: auto; color: #555;">Visual design tool for integrating physical, digital, and remote learning contexts. Start here to map your hybrid environment before selecting technology.</p>
+<a href="hybrid-learning-space-mapping-canvas" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #2c3e50;">🔧 Technology Selection</h3>
-<p style="margin-bottom: 15px; color: #555;">Choose tools based on pedagogical needs, not hype. Includes budget-conscious alternatives and accessibility considerations.</p>
-<a href="hybrid-learning-technology-selection" style="display: inline-block; background: #007bff; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Explore Tool →</a>
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-cogs tool-icon"></i>Technology Selection</h3>
+<p style="margin-bottom: auto; color: #555;">Choose tools based on pedagogical needs, not hype. Includes budget-conscious alternatives and accessibility considerations.</p>
+<a href="hybrid-learning-technology-selection" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #2c3e50;">🛡️ Resilience Guide</h3>
-<p style="margin-bottom: 15px; color: #555;">Comprehensive strategies for handling technical challenges gracefully. Includes scenario-based protocols and backup activities.</p>
-<a href="hybrid-learning-environment-teacher-resilience-guide" style="display: inline-block; background: #007bff; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Explore Tool →</a>
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-universal-access tool-icon"></i>Inclusive Environment Guide</h3>
+<p style="margin-bottom: auto; color: #555;">Comprehensive inclusive protocols for visibility, audibility, and participation challenges. Universal design principles and backup activities.</p>
+<a href="hybrid-learning-environment-inclusive-guide" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #2c3e50;">⚡ Quick Response Guide</h3>
-<p style="margin-bottom: 15px; color: #555;">In-the-moment troubleshooting and 60-second readiness checks for active teaching sessions.</p>
-<a href="hybrid-learning-environment-teacher-quick-response-guide" style="display: inline-block; background: #007bff; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Explore Tool →</a>
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-bolt tool-icon"></i>Quick Response Guide</h3>
+<p style="margin-bottom: auto; color: #555;">In-the-moment troubleshooting and 60-second readiness checks for active teaching sessions.</p>
+<a href="hybrid-learning-environment-quick-response-guide" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #2c3e50;">👥 Participant Guide</h3>
-<p style="margin-bottom: 15px; color: #555;">Resources to empower students with choice and agency in their hybrid learning participation.</p>
-<a href="hybrid-learning-environment-participant-guide" style="display: inline-block; background: #007bff; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Explore Tool →</a>
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-users tool-icon"></i>Participant Guide</h3>
+<p style="margin-bottom: auto; color: #555;">Resources to empower students with choice and agency in their hybrid learning participation.</p>
+<a href="hybrid-learning-environment-participant-guide" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
 </div>
@@ -56,16 +56,16 @@ These tools form a coordinated system for building effective hybrid environments
 ### The Tool Flow
 
 ```
-🗺️ Space Mapping Canvas → 🔧 Technology Selection → 🛡️ Resilience Planning
+Space Mapping Canvas → Technology Selection → Inclusive Environment Guide
                                         ↓
-👥 Participant Guide ←─────────────── ⚡ Quick Response Guide
+Participant Guide ←─────────────── Quick Response Guide
 
 ```
 {: .note }
 >#### Key Connections
 >- **Space Canvas → Technology Selection**: Your space analysis directly informs which technologies will work in your context
->- **Technology Selection → Resilience Planning**: Knowing your tech setup helps you plan for specific failure modes
->- **Resilience Planning → Quick Response**: Your resilience protocols become your quick response scripts
+>- **Technology Selection → Inclusive Environment Guide**: Knowing your tech setup helps you plan for inclusive protocols
+>- **Inclusive Environment Guide → Quick Response**: Your inclusive protocols become your quick response scripts
 >- **All Tools → Participant Guide**: Everything you learn helps you better support student choice and agency
 
 ## Where to start
@@ -73,23 +73,23 @@ These tools form a coordinated system for building effective hybrid environments
 This dimension offers multiple entry points depending on your context and needs. Whether you're planning ahead for hybrid implementation, responding to an immediate need, or looking to improve an existing setup, the tools can be combined strategically. Below are recommended **workflows for different scenarios** to help you navigate these resources effectively.
 
 {: .note }
->### **🎯 First-Time Implementation Path**
+>### **<i class="fas fa-bullseye"></i> First-Time Implementation Path**
 >1. **Start with Space Mapping Canvas** - Map your physical and digital spaces before making technology decisions
 >2. **Use Technology Selection Guide** - Choose tools based on your space analysis and pedagogical needs
->3. **Build Resilience with Resilience Guide** - Develop protocols for when technology doesn't cooperate
+>3. **Build Inclusivity with Inclusive Environment Guide** - Develop protocols for universal accessibility and participation
 >4. **Prepare Quick Response Guide** - Create your emergency toolkit for live sessions
 >5. **Empower Students with Participant Guide** - Give students agency in their participation
 
 {: .note }
->### **🚨 Crisis Mode Path** (when you need to start teaching hybrid immediately)
+>### **<i class="fas fa-exclamation-triangle"></i> Crisis Mode Path** (when you need to start teaching hybrid immediately)
 >1. **Quick Response Guide** - Get immediate solutions for common problems
 >2. **Space Mapping Canvas** - Quickly assess your current setup's strengths and gaps
 >3. **Technology Selection** - Identify critical improvements you can make right away
->4. **Resilience Guide** - Develop backup plans for your specific context
+>4. **Inclusive Environment Guide** - Develop inclusive protocols for your specific context
 
 {: .note }
->### **🔄 Ongoing Improvement Path**
->1. **Use insights from Quick Response** experiences to refine your **Resilience planning**
+>### **<i class="fas fa-sync-alt"></i> Ongoing Improvement Path**
+>1. **Use insights from Quick Response** experiences to refine your **Inclusive Environment planning**
 >2. **Update Technology Selection** based on what works (and doesn't) in practice
 >3. **Iterate on Space Mapping** as you discover new arrangements that work better
 >4. **Expand Participant Guide** resources based on student feedback

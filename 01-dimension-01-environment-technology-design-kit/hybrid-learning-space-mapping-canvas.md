@@ -7,7 +7,6 @@ nav_order: 2
 
 # Hybrid Learning Space Mapping Canvas
 
-<span style="background: #28a745; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 24px;">Canvas Tool</span>
 
 ## Overview
 The Hybrid Learning Space Mapping Canvas is a comprehensive planning template that helps educators visualize and analyze their hybrid learning environment across three interconnected contexts: **Physical Classroom**, **Digital Environment**, and **Remote Students' Contexts**. This tool provides structured spaces for mapping concrete elements and analyzing how different forms of presence manifest across all learning spaces.
@@ -16,7 +15,7 @@ The Hybrid Learning Space Mapping Canvas is a comprehensive planning template th
 > **Interactive Canvas Generator**  
 > *Printable Worksheet Tool - Design your hybrid environment and export in multiple formats*
 >
-> <a href="{{ '/assets/tools/hybrid-learning-space-mapping-canvas.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> <a href="{{ '/assets/tools/hybrid-learning-space-mapping-canvas.html' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
 > Open Canvas Tool →
 > </a>
 >

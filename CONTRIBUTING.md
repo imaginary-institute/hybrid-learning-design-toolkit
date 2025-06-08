@@ -1,169 +1,172 @@
-# Contributing to Hybrid Learning Design Toolkit
+# Contributing to the Hybrid Learning Design Toolkit
 
-Thank you for your interest in contributing to the Hybrid Learning Design Toolkit! This project aims to provide educators with research-based, practical tools for creating effective hybrid learning experiences.
+Thank you for your interest in improving the Hybrid Learning Design Toolkit! This project thrives on community contributions and collaborative improvement.
 
-## 🎯 Ways to Contribute
+## <i class="fas fa-bullseye"></i> Ways to Contribute
 
-### 🐛 Report Issues
-- **Bug reports** for broken tools or site functionality
-- **Content issues** such as unclear instructions or missing information
-- **Accessibility problems** that prevent users from accessing tools
-- **Research updates** when new relevant studies are published
+There are many ways to contribute to this project, regardless of your technical background or experience level:
 
-### 💡 Suggest Improvements  
-- **New tool ideas** based on identified gaps in hybrid learning support
-- **Enhancement suggestions** for existing tools
-- **User experience improvements** for navigation or tool usability
-- **Additional implementation levels** or use cases
+- **Share your experience** using the tools in real teaching contexts
+- **Suggest improvements** to existing tools or documentation  
+- **Report issues** you encounter while using the toolkit
+- **Contribute research** that could inform tool development
+- **Help with documentation** to make tools more accessible
+- **Translate tools** for broader accessibility
 
-### 📝 Documentation
-- **Improve tool descriptions** with clearer language or examples
-- **Add case studies** showing real-world tool applications
-- **Create video tutorials** or visual guides
-- **Translate content** into other languages
+### <i class="fas fa-lightbulb"></i> Suggest Improvements
 
-### 🔧 Technical Contributions
-- **Fix bugs** in interactive HTML tools
-- **Improve responsive design** for mobile/tablet usage
-- **Add new interactive features** to existing tools
-- **Optimize site performance** or accessibility
+**What we're looking for:**
+- Usability feedback from real classroom testing
+- Missing scenarios or edge cases in existing tools
+- Suggestions for new tool functionality
+- Ideas for better integration between tools
+- Accessibility improvements
 
-### 🧪 Research & Validation
-- **Share implementation experiences** and outcomes
-- **Contribute research citations** relevant to hybrid learning
-- **Validate tool effectiveness** through case studies
-- **Suggest evidence-based improvements**
+### <i class="fas fa-file-alt"></i> Documentation
 
-## 🚀 Getting Started
+**Help us improve:**
+- Clarity of tool instructions and guidance
+- Accuracy of implementation examples
+- Accessibility of language and concepts
+- Completeness of use case coverage
 
-### 1. Set Up Local Development
-```bash
-# Fork the repository on GitHub
-# Clone your fork locally
-git clone https://github.com/YOUR-USERNAME/hybrid-learning-design-toolkit.git
-cd hybrid-learning-design-toolkit
+### <i class="fas fa-cogs"></i> Technical Contributions
 
-# Install dependencies
-bundle install
+**If you have technical skills:**
+- Improve interactive tool functionality
+- Enhance mobile responsiveness
+- Fix bugs in HTML/CSS/JavaScript tools
+- Optimize site performance
+- Improve accessibility features
 
-# Run locally
-bundle exec jekyll serve
-# Visit http://localhost:4000 to see your changes
-```
+### <i class="fas fa-flask"></i> Research & Validation
 
-### 2. Understand the Structure
+**If you're researching hybrid learning:**
+- Share relevant studies that could inform tool development
+- Contribute empirical data from tool usage
+- Suggest evidence-based improvements
+- Help validate tool effectiveness
+
+## <i class="fas fa-rocket"></i> Getting Started
+
+### For Non-Technical Contributors
+
+1. **Use the tools** in your teaching practice
+2. **Take notes** on what works well and what doesn't
+3. **Open an issue** using our issue template to share feedback
+4. **Join discussions** on existing issues to share your perspective
+
+### For Technical Contributors
+
+1. **Fork the repository** to your GitHub account
+2. **Set up local development environment**:
+   ```bash
+   git clone https://github.com/your-username/hybrid-learning-design-toolkit.git
+   cd hybrid-learning-design-toolkit
+   bundle install
+   bundle exec jekyll serve
+   ```
+3. **Make your changes** in a feature branch
+4. **Test thoroughly** across different devices and browsers
+5. **Submit a pull request** with clear description of changes
+
+### Development Setup
+
+This project uses:
+- **Jekyll** for static site generation
+- **Just the Docs** theme for documentation structure
+- **HTML/CSS/JavaScript** for interactive tools
+- **GitHub Pages** for hosting
+
+### File Structure
 ```
 ├── 00-orientation-support-tools/        # Navigation and assessment tools
 ├── 01-dimension-01-environment/         # Technology and environment design
 ├── 02-dimension-02-learning-experience/ # Activity and assessment design  
 ├── 03-dimension-03-facilitation/        # Community and facilitation tools
 ├── assets/tools/                        # Interactive HTML tools
+├── _includes/                           # Jekyll includes and custom HTML
 ├── _config.yml                          # Jekyll configuration
-└── _tool-inventory-reference.md         # Master tool tracking (not public)
+└── index.md                            # Site homepage
 ```
 
-### 3. Choose Your Contribution Type
+## <i class="fas fa-clipboard-list"></i> Contribution Guidelines
 
-**For Content/Documentation:**
-- Edit markdown files directly
-- Follow existing formatting patterns
-- Test locally before submitting
+### Quality Standards
 
-**For Interactive Tools:**
-- Tools are in `/assets/tools/` as standalone HTML files
-- Test thoroughly across browsers and devices
-- Ensure mobile responsiveness
+**All contributions should:**
+- Be based on educational research or evidence-based practice
+- Maintain accessibility standards (WCAG 2.1 AA)
+- Work across different devices and browsers
+- Use clear, jargon-free language
+- Follow existing design patterns and styling
 
-**For New Tools:**
-- Start with a GitHub issue describing the proposed tool
-- Follow the existing tool page template structure
-- Create both markdown page and HTML tool (if interactive)
+### Content Guidelines
 
-## 📋 Contribution Guidelines
+**When contributing content:**
+- **Ground in research**: Include citations for educational claims
+- **Focus on practice**: Provide concrete, actionable guidance
+- **Consider equity**: Ensure tools work for diverse learners and contexts
+- **Maintain scope**: Keep contributions aligned with hybrid learning focus
+- **Test thoroughly**: Try tools in real teaching contexts when possible
 
-### Content Standards
-- **Research-based**: Include citations for educational claims
-- **Practical focus**: Tools should solve real hybrid learning problems
-- **Accessible language**: Minimize jargon; explain technical terms
-- **Inclusive design**: Consider diverse educator contexts and student needs
+### Code Guidelines
 
-### Technical Standards
-- **Mobile-first**: All tools must work on smartphones and tablets
-- **Accessibility**: Follow WCAG 2.1 AA guidelines
-- **Performance**: Interactive tools should load quickly
-- **Browser compatibility**: Test on Chrome, Firefox, Safari, Edge
+**When contributing code:**
+- **Follow existing patterns**: Match current HTML/CSS/JavaScript structure
+- **Mobile-first design**: Ensure responsive functionality
+- **Accessibility**: Include proper ARIA labels, semantic HTML, keyboard navigation
+- **Browser compatibility**: Test in Chrome, Firefox, Safari, Edge
+- **Clean code**: Use clear variable names, comments, and consistent formatting
 
-### Style Guidelines
-- **Consistent formatting**: Follow existing markdown patterns
-- **Clear headings**: Use descriptive, scannable section headers
-- **Action-oriented**: Write instructions that tell users what to do
-- **Tool integration**: Show how new tools connect to existing ones
+### Review Process
 
-## 🔄 Submission Process
+1. **Initial review** by maintainers for scope and quality
+2. **Community feedback** period for substantial changes
+3. **Technical review** for code contributions
+4. **Testing phase** for new tools or major updates
+5. **Final approval** and integration
 
-### 1. Before You Start
-- **Search existing issues** to avoid duplicates
-- **Open an issue** for major changes or new features
-- **Discuss approach** with maintainers for complex contributions
+### Feedback and Communication
 
-### 2. Making Changes
-- **Create a feature branch** from main: `git checkout -b feature/your-feature-name`
-- **Make focused commits** with descriptive messages
-- **Test thoroughly** including mobile devices and screen readers
-- **Update documentation** for any new features
+- **Be specific** about issues and suggestions
+- **Provide context** about your teaching situation and needs
+- **Be patient** - this is a volunteer-maintained project
+- **Be constructive** - focus on solutions and improvements
+- **Be respectful** - remember there are people behind the project
 
-### 3. Pull Request
-- **Use descriptive title** summarizing the change
-- **Link related issues** using "Fixes #issue-number"
-- **Describe the change** including rationale and testing done
-- **Include screenshots** for visual changes
-- **Request review** from maintainers
+## <i class="fas fa-compass"></i> Specific Areas Needing Help
 
-### 4. Review Process
-- Maintainers will review within 7 days
-- Address feedback promptly
-- Be open to suggestions and iterations
-- Celebrate when merged! 🎉
+### High Priority Needs
 
-## 🧭 Specific Areas Needing Help
+1. **Real-world testing** of tools in diverse teaching contexts
+2. **Accessibility improvements** for screen readers and assistive technology
+3. **Mobile optimization** for better smartphone/tablet experience
+4. **Translation** for broader accessibility
+5. **Integration examples** showing how tools work together
 
-### High Priority
-- **Mobile optimization** for all interactive tools
-- **Accessibility improvements** across the site
-- **Case studies** from educators using the toolkit
-- **Missing Dimension 3 tools** (Facilitation Essentials, Group Formation Guide, Facilitation Troubleshooting)
+### Content Development
 
-### Research Contributions
-- **Updated citations** for hybrid learning research
-- **International perspectives** on hybrid education
-- **Effectiveness studies** of specific tools
-- **Implementation guides** for different institutional contexts
+- **Case studies** showing successful tool implementation
+- **Troubleshooting guides** for common challenges
+- **Video demonstrations** of tool usage
+- **Research summaries** connecting tools to educational literature
 
 ### Technical Improvements
-- **Loading speed optimization** for tool-heavy pages
-- **Offline functionality** for interactive tools
-- **Export/print capabilities** for planning tools
-- **Integration** with common LMS platforms
 
-## ❓ Questions?
+- **Performance optimization** for faster loading
+- **Enhanced interactivity** in HTML tools
+- **Better data visualization** for assessment tools
+- **Improved export functionality** (PDF, images, etc.)
 
-### Getting Help
-- **GitHub Issues**: For bugs, feature requests, or questions
-- **GitHub Discussions**: For broader conversations about hybrid learning
-- **Documentation**: Check existing tool pages and README for context
+## Questions?
 
-### Code of Conduct
-This project follows a **welcoming and inclusive** approach:
-- **Respectful communication** in all interactions
-- **Constructive feedback** focused on ideas, not individuals  
-- **Collaborative spirit** recognizing diverse expertise
-- **Educational focus** keeping learner needs central
+- **General questions**: Open a GitHub issue with the "question" label
+- **Technical issues**: Open a bug report issue
+- **Collaboration proposals**: Email the maintainers directly
 
-## 🙏 Recognition
+Thank you for helping make hybrid learning more effective and equitable for educators and learners everywhere!
 
-Contributors will be acknowledged in:
-- **Contributors section** of the README
-- **Release notes** for significant contributions
-- **Academic citations** for research contributions (with permission)
+---
 
-Thank you for helping make hybrid learning more effective and equitable for educators and students worldwide! 🌟 
+*This contributing guide is designed to welcome contributors of all backgrounds and skill levels. If you have suggestions for improving this guide itself, please let us know!* 

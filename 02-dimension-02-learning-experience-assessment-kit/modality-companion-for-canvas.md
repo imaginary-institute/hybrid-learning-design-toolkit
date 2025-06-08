@@ -7,7 +7,6 @@ nav_order: 5
 
 # Modality Companion for the Canvas
 
-<span style="background: #ffc107; color: #1a202c; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 24px;">Quick Reference</span>
 
 ## Overview
 When building your Activity Sequence Canvas, you need quick, reliable guidance for modality decisions. The Modality Companion for the Canvas provides instant access to decision frameworks and implementation checklists that help you choose the right approach for each Canvas activity—ensuring equitable experiences whether students are attending remotely, on-site, or switching between modalities.

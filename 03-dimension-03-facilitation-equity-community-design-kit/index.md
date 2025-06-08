@@ -17,71 +17,71 @@ Drawing on research about "presence" in online environments, studies documenting
 
 <div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 30px 0;">
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #2c3e50;">👁️ Presence Lens</h3>
-<p style="margin-bottom: 15px; color: #555;">Research-based frameworks for understanding teaching, social, and cognitive presence in hybrid learning environments with diagnostic tools.</p>
-<a href="hybrid-learning-presence-lens" style="display: inline-block; background: #6f42c1; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Explore Tool →</a>
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-eye tool-icon"></i>Presence Lens</h3>
+<p style="margin-bottom: auto; color: #555;">Research-based frameworks for understanding teaching, social, and cognitive presence in hybrid learning environments with diagnostic tools.</p>
+<a href="hybrid-learning-presence-lens" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #2c3e50;">🎯 Interaction Strategy Cards</h3>
-<p style="margin-bottom: 15px; color: #555;">25 research-based facilitation techniques organized by color-coded categories to address common challenges when teaching simultaneously to on-site and remote students.</p>
-<a href="hybrid-learning-interaction-strategy-cards" style="display: inline-block; background: #6f42c1; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Explore Tool →</a>
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-bullseye tool-icon"></i>Interaction Strategy Cards</h3>
+<p style="margin-bottom: auto; color: #555;">25 research-based facilitation techniques organized by color-coded categories to address common challenges when teaching simultaneously to on-site and remote students.</p>
+<a href="hybrid-learning-interaction-strategy-cards" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #2c3e50;">🤝 Community Building Cards</h3>
-<p style="margin-bottom: 15px; color: #555;">Structured activities organized by course timeline phases to create unified community identity across physical and virtual participation modes.</p>
-<a href="hybrid-learning-community-building-cards" style="display: inline-block; background: #6f42c1; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Explore Tool →</a>
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-handshake tool-icon"></i>Community Building Cards</h3>
+<p style="margin-bottom: auto; color: #555;">Structured activities organized by course timeline phases to create unified community identity across physical and virtual participation modes.</p>
+<a href="hybrid-learning-community-building-cards" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #2c3e50;">👥 Group Formation Guide</h3>
-<p style="margin-bottom: 15px; color: #555;">Decision frameworks and proven protocols for creating effective teams that work across physical and virtual boundaries.</p>
-<a href="hybrid-learning-group-formation-guide" style="display: inline-block; background: #6f42c1; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Explore Tool →</a>
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-user-friends tool-icon"></i>Group Formation Guide</h3>
+<p style="margin-bottom: auto; color: #555;">Decision frameworks and proven protocols for creating effective teams that work across physical and virtual boundaries.</p>
+<a href="hybrid-learning-group-formation-guide" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #2c3e50;">⚡ Facilitation Quick Guide</h3>
-<p style="margin-bottom: 15px; color: #555;">In-the-moment reference for essential routines, quick fixes for common challenges, and decision flows for live hybrid teaching sessions.</p>
-<a href="hybrid-learning-facilitation-quick-guide" style="display: inline-block; background: #6f42c1; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Explore Tool →</a>
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-tachometer-alt tool-icon"></i>Facilitation Quick Guide</h3>
+<p style="margin-bottom: auto; color: #555;">In-the-moment reference for essential routines, quick fixes for common challenges, and decision flows for live hybrid teaching sessions.</p>
+<a href="hybrid-learning-facilitation-quick-guide" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
 </div>
 
 ## How These Tools Work Together
 
-These tools form a coordinated system for building human connection and equitable participation across hybrid learning environments. Rather than working in isolation, they connect to create a comprehensive approach to facilitation and community design:
+These tools form a coordinated system for building authentic community and equitable facilitation across hybrid contexts. Rather than working in isolation, they connect to create a comprehensive approach to human-centered hybrid learning design:
 
 ### The Tool Flow
 
 ```
-👁️ Presence Lens → ⚡ Facilitation Quick Guide → 🎯 Interaction Strategy Cards
-                                ↓
-👥 Group Formation ←─── 🤝 Community Building Cards
+<i class="fas fa-eye"></i> Presence Lens → <i class="fas fa-tachometer-alt"></i> Facilitation Quick Guide → <i class="fas fa-bullseye"></i> Interaction Strategy Cards
+
+<i class="fas fa-user-friends"></i> Group Formation ←─── <i class="fas fa-handshake"></i> Community Building Cards
 
 ```
 {: .note }
 >#### Key Connections
->- **Presence Lens → Facilitation Quick Guide**: Understanding presence theory enables effective in-session troubleshooting
->- **Facilitation Quick Guide → Interaction Strategy Cards**: Quick diagnosis leads to targeted strategy card selection
->- **Community Building Cards → Group Formation**: Timeline-based activities inform how to create effective cross-modal teams
->- **All Tools**: Everything connects back to presence principles for unified community building
+>- **Presence Lens → Facilitation Guide**: Presence diagnostics inform your quick facilitation decisions
+>- **Facilitation Guide → Interaction Cards**: In-the-moment challenges guide which interaction strategies to develop
+>- **Community Building → Group Formation**: Community activities inform how you structure effective groups
+>- **All Tools → Presence Lens**: Everything connects back to strengthening the three types of presence
 
 ## Where to start
 
-This dimension offers multiple entry points depending on your facilitation experience and current challenges. Whether you're struggling with attention management, trying to build community across distances, or looking to create truly equitable participation, the tools can be combined strategically. Below are recommended **workflows for different scenarios** to help you navigate these resources effectively.
+This dimension offers multiple entry points depending on your facilitation experience and community building needs. Whether you're facilitating your first hybrid session, building stronger classroom community, or refining advanced interaction strategies, the tools can be combined strategically. Below are recommended **workflows for different scenarios** to help you navigate these resources effectively.
 
 {: .note }
->### **🎯 First-Time Hybrid Facilitation Path**
->1. **Start with Presence Lens** - Understand the theoretical foundation of teaching, social, and cognitive presence
->2. **Use Facilitation Quick Guide** - Learn essential setup routines and core facilitation rhythms
->3. **Select Interaction Strategy Cards** - Choose 3-5 basic facilitation techniques (focus on attention cards)
->4. **Plan Community Building** - Add one timeline-appropriate community activity per week
->5. **Apply Group Formation Guide** - Structure cross-modal teams using proven protocols
+>### **<i class="fas fa-bullseye"></i> First-Time Hybrid Facilitation Path**
+>1. **Start with Presence Lens** - Understand the research framework and diagnostic tools for teaching, social, and cognitive presence
+>2. **Use Facilitation Quick Guide** - Develop essential routines and quick responses for live teaching
+>3. **Select Interaction Strategy Cards** - Choose 3-5 foundational techniques to practice and master
+>4. **Apply Community Building Cards** - Plan community activities for your course timeline phase
+>5. **Implement Group Formation Guide** - Create effective cross-modal teams using proven protocols
 
 {: .note }
->### **🚨 Crisis Mode Path** (when students are disengaged or community is fragmented)
+>### **<i class="fas fa-exclamation-triangle"></i> Crisis Mode Path** (when students are disengaged or community is fragmented)
 >1. **Facilitation Quick Guide** - Quick diagnostic and immediate responses to common problems
 >2. **Presence Lens** - Identify which type of presence is breaking down
 >3. **Interaction Strategy Cards** - Find specific techniques to re-engage struggling groups
@@ -89,7 +89,7 @@ This dimension offers multiple entry points depending on your facilitation exper
 >5. **Group Formation Guide** - Restructure groups to improve cross-modal connections
 
 {: .note }
->### **🔄 Community Enhancement Path**
+>### **<i class="fas fa-sync-alt"></i> Community Enhancement Path**
 >1. **Use Community Building Cards** systematically across course timeline phases
 >2. **Apply Group Formation Guide** to create intentional cross-modal partnerships
 >3. **Expand with Interaction Strategy Cards** to deepen facilitation sophistication

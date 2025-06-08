@@ -4,206 +4,243 @@ layout: default
 nav_order: 7
 ---
 
-# 🛠️ Tools Full Gallery
+# <i class="fas fa-tools"></i> Tools Full Gallery
 
-Explore all tools in the Hybrid Learning Design Toolkit. Each tool is designed to support specific aspects of hybrid teaching and learning.
+Access all hybrid learning design tools in one place. Each tool links to its interactive version with full functionality.
 
-## 🧭 Orientation & Support Tools
+## <i class="fas fa-compass"></i> Orientation & Support Tools
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin: 30px 0;">
+<div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 30px 0;">
 
-<div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
-<div style="flex-grow: 1;">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;">🧭 Self-Assessment Tool</h3>
-<span style="background: #17a2b8; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Assessment Tool</span>
-<p style="margin: 0; color: #4a5568; line-height: 1.5;">Comprehensive framework for evaluating your readiness across the three essential dimensions of hybrid teaching. Creates visual representation of capabilities and growth areas.</p>
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-user-check"></i> Self-Assessment Tool</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">Comprehensive self-assessment across all three dimensions. Maps your readiness profile with reflection prompts, rubrics and tailored recommendations.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Diagnostic assessment</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 15-30 minutes</p>
+
+<div style="display: flex; gap: 8px;">
+<a href="00-orientation-support-tools/hybrid-learning-self-assessment" style="flex: 1; text-align: center; background: #7253ed; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 500;">Use Tool</a>
 </div>
-<a href="{{ '/00-orientation-support-tools/hybrid-learning-self-assessment' | relative_url }}" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
-</div>
-
-<div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
-<div style="flex-grow: 1;">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;">🌲 Decision Tree</h3>
-<span style="background: #ffc107; color: #1a202c; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Quick Reference</span>
-<p style="margin: 0; color: #4a5568; line-height: 1.5;">Systematic approach to identifying your optimal starting point based on current capabilities, available resources, and immediate constraints.</p>
-</div>
-<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
 </div>
 
-<div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
-<div style="flex-grow: 1;">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;">📋 Implementation Level Cards</h3>
-<span style="background: #6f42c1; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Card Collection</span>
-<p style="margin: 0; color: #4a5568; line-height: 1.5;">Understand the three levels of hybrid teaching sophistication across all dimensions. Navigate Essential, Enhanced, and Transformative approaches.</p>
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-sitemap"></i> Decision Tree</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">Strategic navigation tool for identifying your best entry point. Problem-based and interest-based paths lead to targeted dimension recommendations.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Decision aid</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 5-10 minutes</p>
+
+<div style="display: flex; gap: 8px;">
+<a href="00-orientation-support-tools/hybrid-learning-decision-tree" style="flex: 1; text-align: center; background: #7253ed; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 500;">Use Tool</a>
 </div>
-<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
 </div>
 
-<div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
-<div style="flex-grow: 1;">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;">⚡ Quick Wins Guides</h3>
-<span style="background: #ffc107; color: #1a202c; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Quick Reference</span>
-<p style="margin: 0; color: #4a5568; line-height: 1.5;">Evidence-based strategies that can be implemented immediately with minimal preparation. Universal practices that benefit all hybrid educators.</p>
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-clipboard-check"></i> Implementation Level Cards</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">12 cards clarifying Essential, Enhanced, and Transformative levels. Visual indicators, success criteria, and progression guidance for each dimension.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Planning framework</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 10-15 minutes</p>
+
+<div style="display: flex; gap: 8px;">
+<a href="00-orientation-support-tools/hybrid-learning-implementation-level-cards" style="flex: 1; text-align: center; background: #7253ed; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 500;">Use Tool</a>
 </div>
-<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
 </div>
 
-</div>
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-rocket"></i> Quick Wins Guides</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">Universal strategies that work immediately in any context, plus dimension-specific quick wins tailored to your identified starting point and implementation level.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Implementation guide</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 5-15 minutes</p>
 
-## 🏗️ Dimension 1: Environment & Technology
-
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin: 30px 0;">
-
-<div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
-<div style="flex-grow: 1;">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;">🗺️ Space Mapping Canvas</h3>
-<span style="background: #28a745; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Canvas Tool</span>
-<p style="margin: 0; color: #4a5568; line-height: 1.5;">Visual design tool for integrating physical, digital, and remote learning contexts. Start here to map your hybrid environment before selecting technology.</p>
+<div style="display: flex; gap: 8px;">
+<a href="00-orientation-support-tools/hybrid-learning-quick-wins" style="flex: 1; text-align: center; background: #7253ed; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 500;">Use Tool</a>
 </div>
-<a href="{{ '/01-dimension-01-environment-technology-design-kit/hybrid-learning-space-mapping-canvas' | relative_url }}" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
-</div>
-
-<div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
-<div style="flex-grow: 1;">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;">🔧 Technology Selection</h3>
-<span style="background: #ffc107; color: #1a202c; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Quick Reference</span>
-<p style="margin: 0; color: #4a5568; line-height: 1.5;">Choose tools based on pedagogical needs, not hype. Includes budget-conscious alternatives and accessibility considerations.</p>
-</div>
-<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
-</div>
-
-<div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
-<div style="flex-grow: 1;">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;">🛡️ Resilience Guide</h3>
-<span style="background: #007bff; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Guide</span>
-<p style="margin: 0; color: #4a5568; line-height: 1.5;">Comprehensive strategies for handling technical challenges gracefully. Includes scenario-based protocols and backup activities.</p>
-</div>
-<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
-</div>
-
-<div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
-<div style="flex-grow: 1;">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;">⚡ Quick Response Guide</h3>
-<span style="background: #ffc107; color: #1a202c; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Quick Reference</span>
-<p style="margin: 0; color: #4a5568; line-height: 1.5;">In-the-moment troubleshooting and 60-second readiness checks for active teaching sessions.</p>
-</div>
-<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
-</div>
-
-<div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
-<div style="flex-grow: 1;">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;">👥 Participant Guide</h3>
-<span style="background: #007bff; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Guide</span>
-<p style="margin: 0; color: #4a5568; line-height: 1.5;">Comprehensive guide for students on participating effectively in hybrid learning. Balances individual rights with community presence responsibilities.</p>
-</div>
-<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
 </div>
 
 </div>
 
-## 📚 Dimension 2: Learning Experience & Assessment
+## <i class="fas fa-cogs"></i> Dimension 1: Environment & Technology
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin: 30px 0;">
+<div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 30px 0;">
 
-<div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
-<div style="flex-grow: 1;">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;">📋 Activity Sequence Canvas</h3>
-<span style="background: #28a745; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Canvas Tool</span>
-<p style="margin: 0; color: #4a5568; line-height: 1.5;">Design learning sequences that balance cognitive engagement levels. Plan smooth transitions between activities that work across modalities.</p>
-</div>
-<a href="{{ '/02-dimension-02-learning-experience-assessment-kit/hybrid-activity-sequence-canvas' | relative_url }}" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
-</div>
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-map"></i> Space Mapping Canvas</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">Visual design tool for integrating physical, digital, and remote learning contexts. Start here to map your hybrid environment before selecting technology.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Planning canvas</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 20-45 minutes</p>
 
-<div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
-<div style="flex-grow: 1;">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;">🎯 Activity Strategy Cards</h3>
-<span style="background: #6f42c1; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Card Collection</span>
-<p style="margin: 0; color: #4a5568; line-height: 1.5;">Curated collection of 26 research-based activity patterns organized by cognitive engagement level with hybrid implementation guidance.</p>
+<div style="display: flex; gap: 8px;">
+<a href="01-dimension-01-environment-technology-design-kit/hybrid-learning-space-mapping-canvas" style="flex: 1; text-align: center; background: #7253ed; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 500;">Use Tool</a>
 </div>
-<a href="{{ '/02-dimension-02-learning-experience-assessment-kit/hybrid-learning-activity-cards' | relative_url }}" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
 </div>
 
-<div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
-<div style="flex-grow: 1;">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;">📊 Assessment Method Cards</h3>
-<span style="background: #6f42c1; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Card Collection</span>
-<p style="margin: 0; color: #4a5568; line-height: 1.5;">Collection of 14 assessment strategies designed for hybrid contexts, organized by purpose and aligned with activity engagement levels.</p>
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-cogs"></i> Technology Selection</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">Choose tools based on pedagogical needs, not hype. Includes budget-conscious alternatives and accessibility considerations.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Selection guide</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 15-30 minutes</p>
+
+<div style="display: flex; gap: 8px;">
+<span style="flex: 1; text-align: center; background: #6c757d; color: white; padding: 8px 12px; border-radius: 4px; font-size: 12px; font-weight: 500; opacity: 0.7;">Coming Soon</span>
 </div>
-<a href="{{ '/02-dimension-02-learning-experience-assessment-kit/hybrid-learning-assessment-cards' | relative_url }}" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
 </div>
 
-<div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
-<div style="flex-grow: 1;">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;">🔄 Learning Activity Adapter</h3>
-<span style="background: #fd7e14; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Worksheet</span>
-<p style="margin: 0; color: #4a5568; line-height: 1.5;">Structured frameworks for equity analysis and adaptation planning. Comprehensive visual reference with adaptation strategies.</p>
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-universal-access"></i> Inclusive Environment Guide</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">Comprehensive inclusive protocols for visibility, audibility, and participation challenges. Universal design principles and backup activities.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Implementation guide</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 20-40 minutes</p>
+
+<div style="display: flex; gap: 8px;">
+<a href="01-dimension-01-environment-technology-design-kit/hybrid-learning-environment-inclusive-guide" style="flex: 1; text-align: center; background: #7253ed; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 500;">Use Tool</a>
 </div>
-<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
 </div>
 
-<div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
-<div style="flex-grow: 1;">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;">📐 Modality Companion for the Canvas</h3>
-<span style="background: #ffc107; color: #1a202c; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Quick Reference</span>
-<p style="margin: 0; color: #4a5568; line-height: 1.5;">Planning frameworks and equity checklists for ensuring equitable experiences across different participation modalities.</p>
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-bolt"></i> Quick Response Guide</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">In-the-moment troubleshooting and 60-second readiness checks for active teaching sessions.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Quick reference</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 1-5 minutes (in-session)</p>
+
+<div style="display: flex; gap: 8px;">
+<a href="01-dimension-01-environment-technology-design-kit/hybrid-learning-environment-quick-response-guide" style="flex: 1; text-align: center; background: #7253ed; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 500;">Use Tool</a>
 </div>
-<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
 </div>
 
-</div>
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-users"></i> Participant Guide</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">Resources to empower students with choice and agency in their hybrid learning participation.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Student resource</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 10-15 minutes</p>
 
-## 👥 Dimension 3: Facilitation, Equity & Community
-
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin: 30px 0;">
-
-<div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
-<div style="flex-grow: 1;">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;">👁️ Presence Lens</h3>
-<span style="background: #007bff; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Guide</span>
-<p style="margin: 0; color: #4a5568; line-height: 1.5;">Research-based frameworks for understanding teaching, social, and cognitive presence in hybrid learning with diagnostic tools and targeted solutions.</p>
+<div style="display: flex; gap: 8px;">
+<span style="flex: 1; text-align: center; background: #6c757d; color: white; padding: 8px 12px; border-radius: 4px; font-size: 12px; font-weight: 500; opacity: 0.7;">Coming Soon</span>
 </div>
-<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
-</div>
-
-<div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
-<div style="flex-grow: 1;">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;">💬 Interaction Strategy Cards</h3>
-<span style="background: #6f42c1; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Card Collection</span>
-<p style="margin: 0; color: #4a5568; line-height: 1.5;">25 research-based facilitation techniques organized by color-coded categories. Address common challenges when teaching simultaneously to on-site and remote students.</p>
-</div>
-<a href="{{ '/03-dimension-03-facilitation-equity-community-design-kit/hybrid-learning-interaction-strategy-cards' | relative_url }}" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
-</div>
-
-<div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
-<div style="flex-grow: 1;">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;">🤝 Community Building Cards</h3>
-<span style="background: #6f42c1; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Card Collection</span>
-<p style="margin: 0; color: #4a5568; line-height: 1.5;">25 structured activities designed to connect students regardless of participation mode. Create unified community identity across physical and virtual spaces.</p>
-</div>
-<a href="{{ '/03-dimension-03-facilitation-equity-community-design-kit/hybrid-learning-community-building-cards' | relative_url }}" style="display: block; background: #0366d6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; transition: background 0.2s ease; text-align: center; margin-top: 16px;">Explore Tool →</a>
-</div>
-
-<div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
-<div style="flex-grow: 1;">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;">👥 Group Formation Guide</h3>
-<span style="background: #ffc107; color: #1a202c; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Quick Reference</span>
-<p style="margin: 0; color: #4a5568; line-height: 1.5;">Decision frameworks and proven protocols for creating effective teams that work across physical and virtual boundaries. Includes troubleshooting strategies for common group dynamics issues.</p>
-</div>
-<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
-</div>
-
-<div style="border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.2s ease; display: flex; flex-direction: column; min-height: 320px;">
-<div style="flex-grow: 1;">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;">⚡ Facilitation Quick Guide</h3>
-<span style="background: #ffc107; color: #1a202c; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 16px;">Quick Reference</span>
-<p style="margin: 0; color: #4a5568; line-height: 1.5;">In-the-moment reference for essential routines, quick fixes for common challenges, and decision flows for live hybrid teaching sessions.</p>
-</div>
-<span style="display: block; background: #9ca3af; color: #6b7280; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 14px; text-align: center; margin-top: 16px; cursor: not-allowed;">Coming Soon</span>
 </div>
 
 </div>
 
+## <i class="fas fa-book"></i> Dimension 2: Learning Experience & Assessment
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 30px 0;">
+
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-clipboard-list"></i> Activity Sequence Canvas</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">Large-format planning template for organizing learning segments with engagement progression. Aligns activities, assessments, and modality adaptations across session/module/course scales.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Planning canvas</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 30-60 minutes</p>
+
+<div style="display: flex; gap: 8px;">
+<a href="02-dimension-02-learning-experience-assessment-kit/hybrid-activity-sequence-canvas" style="flex: 1; text-align: center; background: #7253ed; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 500;">Use Tool</a>
+</div>
+</div>
+
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-layer-group"></i> Activity Strategy Cards</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">A collection of 26 research-based activity patterns color-coded by engagement level with hybrid implementation guidance, time estimates, and tech requirements.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Strategy cards</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 10-20 minutes (selection)</p>
+
+<div style="display: flex; gap: 8px;">
+<a href="02-dimension-02-learning-experience-assessment-kit/hybrid-learning-activity-cards" style="flex: 1; text-align: center; background: #7253ed; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 500;">Use Tool</a>
+</div>
+</div>
+
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-chart-bar"></i> Assessment Method Cards</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">A collection of 14 assessment strategies for hybrid contexts including formative and summative approaches with equity considerations and technology requirements.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Assessment strategies</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 10-20 minutes</p>
+
+<div style="display: flex; gap: 8px;">
+<a href="02-dimension-02-learning-experience-assessment-kit/hybrid-learning-assessment-cards" style="flex: 1; text-align: center; background: #7253ed; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 500;">Use Tool</a>
+</div>
+</div>
+
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-compass"></i> Modality Companion for the Canvas</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">Quick decision helper for choosing the right modality approach for each Canvas activity. Use alongside the Canvas for fast, informed planning decisions.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Decision aid</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 5-10 minutes</p>
+
+<div style="display: flex; gap: 8px;">
+<span style="flex: 1; text-align: center; background: #6c757d; color: white; padding: 8px 12px; border-radius: 4px; font-size: 12px; font-weight: 500; opacity: 0.7;">Coming Soon</span>
+</div>
+</div>
+
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-exchange-alt"></i> Learning Activity Adapter</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">Transform existing activities for hybrid delivery with systematic adaptation strategies and modality optimization guidance.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Adaptation guide</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 15-25 minutes</p>
+
+<div style="display: flex; gap: 8px;">
+<span style="flex: 1; text-align: center; background: #6c757d; color: white; padding: 8px 12px; border-radius: 4px; font-size: 12px; font-weight: 500; opacity: 0.7;">Coming Soon</span>
+</div>
+</div>
+
+</div>
+
+## <i class="fas fa-users"></i> Dimension 3: Facilitation, Equity & Community
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 30px 0;">
+
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-eye"></i> Presence Lens</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">Research-based frameworks for understanding teaching, social, and cognitive presence in hybrid learning environments with diagnostic tools.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Diagnostic framework</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 15-25 minutes</p>
+
+<div style="display: flex; gap: 8px;">
+<span style="flex: 1; text-align: center; background: #6c757d; color: white; padding: 8px 12px; border-radius: 4px; font-size: 12px; font-weight: 500; opacity: 0.7;">Coming Soon</span>
+</div>
+</div>
+
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-bullseye"></i> Interaction Strategy Cards</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">25 research-based facilitation techniques organized by color-coded categories to address common challenges when teaching simultaneously to on-site and remote students.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Strategy cards</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 10-20 minutes</p>
+
+<div style="display: flex; gap: 8px;">
+<a href="03-dimension-03-facilitation-equity-community-design-kit/hybrid-learning-interaction-strategy-cards" style="flex: 1; text-align: center; background: #7253ed; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 500;">Use Tool</a>
+</div>
+</div>
+
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-handshake"></i> Community Building Cards</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">Structured activities organized by course timeline phases to create unified community identity across physical and virtual participation modes.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Activity cards</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 10-30 minutes per activity</p>
+
+<div style="display: flex; gap: 8px;">
+<a href="03-dimension-03-facilitation-equity-community-design-kit/hybrid-learning-community-building-cards" style="flex: 1; text-align: center; background: #7253ed; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 500;">Use Tool</a>
+</div>
+</div>
+
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-user-friends"></i> Group Formation Guide</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">Decision frameworks and proven protocols for creating effective teams that work across physical and virtual boundaries.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Implementation guide</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 15-25 minutes</p>
+
+<div style="display: flex; gap: 8px;">
+<span style="flex: 1; text-align: center; background: #6c757d; color: white; padding: 8px 12px; border-radius: 4px; font-size: 12px; font-weight: 500; opacity: 0.7;">Coming Soon</span>
+</div>
+</div>
+
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-tachometer-alt"></i> Facilitation Quick Guide</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">In-the-moment reference for essential routines, quick fixes for common challenges, and decision flows for live hybrid teaching sessions.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Quick reference</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 2-5 minutes (in-session)</p>
+
+<div style="display: flex; gap: 8px;">
+<span style="flex: 1; text-align: center; background: #6c757d; color: white; padding: 8px 12px; border-radius: 4px; font-size: 12px; font-weight: 500; opacity: 0.7;">Coming Soon</span>
+</div>
+</div>
+
+</div>
 
 ---
 
-*All tools are web-based and work on any modern device. No downloads or installations required.* 
+*All tools are part of the Hybrid Learning Design Toolkit — a comprehensive resource for creating effective hybrid learning experiences.* 

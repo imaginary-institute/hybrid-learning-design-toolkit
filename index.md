@@ -55,7 +55,7 @@ The toolkit works across all disciplines and subject areas—from laboratory sci
 <div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 30px 0;">
 
 <div style="flex: 1; min-width: 280px; background: #f0fff4; border: 2px solid #20c997; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #198754;">🧭 Orientation & Support</h3>
+<h3 style="margin-top: 0; color: #198754;"><i class="fas fa-compass"></i> Orientation & Support</h3>
 <p style="margin-bottom: 15px; color: #555;">Find your starting point and get immediate guidance</p>
 <a href="{{ '/00-orientation-support-tools/' | relative_url }}" style="display: inline-block; background: #20c997; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Start Here →</a>
 </div>

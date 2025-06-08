@@ -17,79 +17,78 @@ Drawing on multiple instructional design traditions, learning design methodologi
 
 <div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 30px 0;">
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #2c3e50;">📋 Hybrid Learning Activity Sequence Canvas</h3>
-<p style="margin-bottom: 15px; color: #555;">Large-format planning template for organizing learning segments with engagement progression. Aligns activities, assessments, and modality adaptations across session/module/course scales.</p>
-<a href="hybrid-activity-sequence-canvas" style="display: inline-block; background: #28a745; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Explore Tool →</a>
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-clipboard-list tool-icon"></i>Hybrid Learning Activity Sequence Canvas</h3>
+<p style="margin-bottom: auto; color: #555;">Large-format planning template for organizing learning segments with engagement progression. Aligns activities, assessments, and modality adaptations across session/module/course scales.</p>
+<a href="hybrid-activity-sequence-canvas" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #2c3e50;">Hybrid Learning Activity Strategy Cards</h3>
-<p style="margin-bottom: 15px; color: #555;">A collection of 26 research-based activity patterns color-coded by engagement level with hybrid implementation guidance, time estimates, and tech requirements.</p>
-<a href="hybrid-learning-activity-cards" style="display: inline-block; background: #28a745; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Explore Tool →</a>
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-layer-group tool-icon"></i>Hybrid Learning Activity Strategy Cards</h3>
+<p style="margin-bottom: auto; color: #555;">A collection of 26 research-based activity patterns color-coded by engagement level with hybrid implementation guidance, time estimates, and tech requirements.</p>
+<a href="hybrid-learning-activity-cards" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #2c3e50;">📊 Hybrid Learning Assessment Method Cards</h3>
-<p style="margin-bottom: 15px; color: #555;">A collection of 14 assessment strategies for hybrid contexts including formative and summative approaches with equity considerations and technology requirements.</p>
-<a href="hybrid-learning-assessment-cards" style="display: inline-block; background: #28a745; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Explore Tool →</a>
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-chart-bar tool-icon"></i>Hybrid Learning Assessment Method Cards</h3>
+<p style="margin-bottom: auto; color: #555;">A collection of 14 assessment strategies for hybrid contexts including formative and summative approaches with equity considerations and technology requirements.</p>
+<a href="hybrid-learning-assessment-cards" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #2c3e50;">🧭 Modality Companion for the Canvas</h3>
-<p style="margin-bottom: 15px; color: #555;">Quick decision helper for choosing the right modality approach for each Canvas activity. Use alongside the Canvas for fast, informed planning decisions.</p>
-<a href="modality-companion-for-canvas" style="display: inline-block; background: #28a745; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Explore Tool →</a>
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-compass tool-icon"></i>Modality Companion for the Canvas</h3>
+<p style="margin-bottom: auto; color: #555;">Quick decision helper for choosing the right modality approach for each Canvas activity. Use alongside the Canvas for fast, informed planning decisions.</p>
+<a href="modality-companion-for-canvas" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin-top: 0; color: #2c3e50;">⚖️ Learning Activity Adapter</h3>
-<p style="margin-bottom: 15px; color: #555;">Systematic analysis tools for redesigning activities to work equitably across participation modes. Side-by-side experience mapping and cognitive load analysis.</p>
-<a href="learning-activity-adapter" style="display: inline-block; background: #28a745; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Explore Tool →</a>
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-exchange-alt tool-icon"></i>Learning Activity Adapter</h3>
+<p style="margin-bottom: auto; color: #555;">Systematic analysis tools for redesigning activities to work equitably across participation modes. Side-by-side experience mapping and cognitive load analysis.</p>
+<a href="learning-activity-adapter" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
-
-
 
 </div>
 
 ## How These Tools Work Together
 
-These tools form a coordinated system for designing engaging hybrid learning experiences. Rather than working in isolation, they connect to create a comprehensive approach to pedagogical design and learning experience analysis:
+These tools form a coordinated system for designing learning activities and assessments that work equitably across modalities. Rather than working in isolation, they connect to create a comprehensive approach to hybrid learning experience design:
 
 ### The Tool Flow
 
 ```
-📋 Activity Sequence Canvas → 🎯 Activity Strategy Cards → 📊 Assessment Method Cards
-                                        ↓
-🧭 Modality Companion for Canvas ←─── ⚖️ Learning Activity Adapter
+<i class="fas fa-clipboard-list"></i> Activity Sequence Canvas → <i class="fas fa-layer-group"></i> Activity Strategy Cards → <i class="fas fa-chart-bar"></i> Assessment Method Cards
+
+<i class="fas fa-compass"></i> Modality Companion for Canvas ←─── <i class="fas fa-balance-scale"></i> Learning Activity Adapter
 
 ```
 {: .note }
 >#### Key Connections
->- **Sequence Canvas → Activity Cards**: The canvas provides structure for placing specific activity patterns from the cards
->- **Activity Cards → Assessment Cards**: Activity choices inform appropriate assessment strategies for each engagement level
->- **Learning Activity Adapter → Modality Companion**: Detailed activity adaptation informs quick modality decisions
->- **All Tools → Sequence Canvas**: Everything connects back to the central planning template
+>- **Canvas → Activity Cards**: Your sequence planning directly informs which activity types work best in each segment
+>- **Activity Cards → Assessment Cards**: Activity engagement levels guide appropriate assessment method selection
+>- **All Tools → Modality Companion**: Use alongside any tool for quick modality decision support
+>- **Activity Adapter → All Tools**: Systematic equity analysis can be applied to any tool's outputs
 
 ## Where to start
 
-This dimension offers multiple entry points depending on your pedagogical experience and immediate needs. Whether you're redesigning a course from scratch, adapting existing activities for hybrid delivery, or troubleshooting engagement issues, the tools can be combined strategically. Below are recommended **workflows for different scenarios** to help you navigate these resources effectively.
+This dimension offers multiple entry points depending on your context and needs. Whether you're planning a new course, redesigning existing activities, or responding to immediate assessment challenges, the tools can be combined strategically. Below are recommended **workflows for different scenarios** to help you navigate these resources effectively.
 
 {: .note }
->### **🎯 First-Time Hybrid Design Path**
->1. **Start with Activity Sequence Canvas** - Map one learning session with basic Receiving → Responding progression
->2. **Use Activity Strategy Cards** - Select 3-5 cards focusing on blue (Receiving) and green (Responding) levels
->3. **Add Assessment Method Cards** - Choose assessment cards for alignment
->4. **Use Modality Companion** - Make quick modality decisions for each Canvas activity
+>### **<i class="fas fa-bullseye"></i> First-Time Hybrid Design Path**
+>1. **Start with Activity Sequence Canvas** - Map your learning progression before selecting specific activities
+>2. **Use Activity Strategy Cards** - Choose research-based activity patterns that match your engagement goals
+>3. **Select Assessment Method Cards** - Align assessment strategies with your activity choices and learning objectives
+>4. **Apply Modality Companion** - Ensure each activity works equitably across participation modes
+>5. **Refine with Learning Activity Adapter** - Systematically analyze and improve equity outcomes
 
 {: .note }
->### **🚨 Emergency Hybrid Pivot Path** (when you need to adapt existing content immediately)
+>### **<i class="fas fa-exclamation-triangle"></i> Emergency Hybrid Pivot Path** (when you need to adapt existing content immediately)
 >1. **Modality Companion for Canvas** - Quick guidance for adapting your current activities
 >2. **Activity Sequence Canvas** - Map existing content into hybrid-friendly structure
 >3. **Activity Strategy Cards** - Find hybrid alternatives for activities that don't translate well
 >4. **Assessment Method Cards** - Identify equitable assessment options for your context
 
 {: .note }
->### **🔄 Engagement Improvement Path**
+>### **<i class="fas fa-sync-alt"></i> Engagement Improvement Path**
 >1. **Use Activity Strategy Cards** to identify more engaging alternatives to lecture-heavy sessions
 >2. **Apply Learning Activity Adapter** to redesign activities that aren't working well for remote students
 >3. **Redesign with Activity Sequence Canvas** incorporating more orange (Creating) level activities

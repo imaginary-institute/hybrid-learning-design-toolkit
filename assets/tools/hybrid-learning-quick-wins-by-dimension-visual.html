@@ -170,11 +170,12 @@ h4 {
 .enhanced-level .level-title { color: var(--enhanced-color); }
 
 .quick-win-item {
-    background: var(--light-gray);
+    background: white;
     border-radius: 8px;
     padding: 15px;
     margin: 10px 0;
-    border-left: 3px solid var(--primary-button);
+    border-left: 3px solid var(--essential-color);
+    border: 1px solid var(--border-color);
 }
 
 .quick-win-title {
@@ -189,15 +190,16 @@ h4 {
 }
 
 .implementation-tips {
-    background: linear-gradient(135deg, var(--essential-color), var(--enhanced-color));
-    color: white;
+    background: white;
+    color: var(--text-color);
     border-radius: 10px;
     padding: 25px;
     margin: 30px 0;
+    border: 2px solid var(--essential-color);
 }
 
 .implementation-tips h3 {
-    color: white;
+    color: var(--essential-color);
     margin-top: 0;
 }
 
@@ -209,10 +211,10 @@ h4 {
 }
 
 .tip-item {
-    background: rgba(255,255,255,0.1);
+    background: var(--light-gray);
     border-radius: 8px;
     padding: 15px;
-    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
 }
 
 .tip-number {
@@ -245,15 +247,11 @@ h4 {
     font-size: 14px;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.2s ease;
     font-weight: 500;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.btn-export:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
+
 
 .btn-export:nth-child(2) {
     background-color: var(--creating-color);
@@ -300,7 +298,7 @@ h4 {
 }
 
 hr {
-    background: linear-gradient(to right, var(--primary-button), var(--essential-color));
+    background: var(--essential-color);
     border: 0 none;
     color: transparent;
     height: 2px;
@@ -325,6 +323,22 @@ hr {
         background: white;
         margin: 0;
         padding: 20px;
+        color: black;
+    }
+    .dimension-section,
+    .implementation-level,
+    .quick-win-item,
+    .implementation-tips,
+    .tip-item {
+        background: white !important;
+        border: 1px solid black !important;
+        box-shadow: none !important;
+    }
+    .dimension-title,
+    .level-title,
+    .quick-win-title,
+    h1, h2, h3 {
+        color: black !important;
     }
 }
 
@@ -352,9 +366,6 @@ hr {
 <h1>QUICK WINS GUIDE</h1>
 <div class="subtitle">Based on Your Decision Tree Recommendation</div>
 
-<div class="intro-box">
-    <p>Once you've identified your starting dimension through the Decision Tree, these "quick wins" will help you gain momentum with manageable implementations that demonstrate immediate value.</p>
-</div>
 
 <div class="dimension-section dimension-1">
     <h2 class="dimension-title">🔧 Dimension 1: Learning Environment & Technology Quick Wins</h2>

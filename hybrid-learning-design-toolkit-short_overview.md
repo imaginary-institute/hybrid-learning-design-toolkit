@@ -17,7 +17,7 @@ has_toc: false
 ## What This Is
 The Hybrid Learning Design Toolkit is a **research-informed design project** created by learning experience designers to support educators in developing effective hybrid learning experiences. Is a **conceptual synthesis** that translates research findings into a collection of **practical and actionable** learning design **tools**.
 
-<div style="background-color: #f0f7ff; border-left: 4px solid #0366d6; padding: 20px; margin: 20px 0; border-radius: 4px;">
+<div style="background-color: #f0f7ff; border-left: 4px solid #7253ed; padding: 20px; margin: 20px 0; border-radius: 4px;">
 [Download the full Toolkit Overview with detailed bibliography - PDF coming soon]
 </div>
 
@@ -102,7 +102,7 @@ Beyond the hybrid learning literature, we've integrated insights from **user exp
 The **full theoretical background**, **detailed literature review**, and **complete bibliography** are available in the comprehensive toolkit overview document, providing transparency about the research base while maintaining the toolkit's focus on practical application.
 
 
-<div style="background-color: #f0f7ff; border-left: 4px solid #0366d6; padding: 20px; margin: 20px 0; border-radius: 4px;">
+<div style="background-color: #f0f7ff; border-left: 4px solid #7253ed; padding: 20px; margin: 20px 0; border-radius: 4px;">
 
 For the complete theoretical background, project rationale and detailed bibliography download the [Full Toolkit Overview - PDF coming soon]
 </div>

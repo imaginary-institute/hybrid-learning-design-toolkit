@@ -93,13 +93,14 @@ h4 {
 }
 
 .intro-box {
-    background: linear-gradient(135deg, var(--success-color), var(--responding-color));
-    color: white;
+    background: white;
+    color: var(--text-color);
     border-radius: 15px;
     padding: 25px;
     margin: 30px 0;
     text-align: center;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    border: 2px solid var(--success-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .intro-text {
@@ -163,13 +164,7 @@ h4 {
     padding: 20px;
     margin: 20px 0;
     border: 1px solid var(--border-color);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.quick-win-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .quick-win-header {
@@ -202,15 +197,16 @@ h4 {
 }
 
 .implementation-wisdom {
-    background: linear-gradient(135deg, var(--creating-color), var(--assessment-primary));
-    color: white;
+    background: white;
+    color: var(--text-color);
     border-radius: 15px;
     padding: 30px;
     margin: 40px 0;
+    border: 2px solid var(--essential-color);
 }
 
 .implementation-wisdom h3 {
-    color: white;
+    color: var(--essential-color);
     margin-top: 0;
     text-align: center;
     margin-bottom: 25px;
@@ -223,11 +219,10 @@ h4 {
 }
 
 .wisdom-item {
-    background: rgba(255,255,255,0.15);
+    background: var(--light-gray);
     border-radius: 10px;
     padding: 20px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid var(--border-color);
 }
 
 .wisdom-number {
@@ -265,15 +260,11 @@ h4 {
     font-size: 14px;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.2s ease;
     font-weight: 500;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.btn-export:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
+
 
 .btn-export:nth-child(2) {
     background-color: var(--creating-color);
@@ -320,7 +311,7 @@ h4 {
 }
 
 hr {
-    background: linear-gradient(to right, var(--primary-button), var(--essential-color));
+    background: var(--essential-color);
     border: 0 none;
     color: transparent;
     height: 2px;
@@ -345,6 +336,22 @@ hr {
         background: white;
         margin: 0;
         padding: 20px;
+        color: black;
+    }
+    .category-section,
+    .quick-win-card,
+    .implementation-wisdom,
+    .wisdom-item,
+    .intro-box,
+    .impact-note {
+        background: white !important;
+        border: 1px solid black !important;
+        box-shadow: none !important;
+    }
+    .category-title,
+    .quick-win-title,
+    h1, h2, h3 {
+        color: black !important;
     }
 }
 
@@ -381,7 +388,7 @@ hr {
 </div>
 
 <div class="category-section before-session">
-    <h2 class="category-title">🎯 Before Every Session</h2>
+    <h2 class="category-title"><i class="fas fa-bullseye"></i> Before Every Session</h2>
     
     <div class="quick-win-card">
         <div class="quick-win-header">
@@ -401,7 +408,7 @@ hr {
 </div>
 
 <div class="category-section tech-foundations">
-    <h2 class="category-title">🛠️ Basic Technology Foundations</h2>
+    <h2 class="category-title"><i class="fas fa-tools"></i> Basic Technology Foundations</h2>
     
     <div class="quick-win-card">
         <div class="quick-win-header">
@@ -436,7 +443,7 @@ hr {
 </div>
 
 <div class="category-section instructional-practices">
-    <h2 class="category-title">📚 Inclusive Instructional Practices</h2>
+    <h2 class="category-title"><i class="fas fa-book"></i> Inclusive Instructional Practices</h2>
     
     <div class="quick-win-card">
         <div class="quick-win-header">
@@ -471,7 +478,7 @@ hr {
 </div>
 
 <div class="category-section building-connection">
-    <h2 class="category-title">👥 Building Connection</h2>
+    <h2 class="category-title"><i class="fas fa-users"></i> Building Connection</h2>
     
     <div class="quick-win-card">
         <div class="quick-win-header">
@@ -507,7 +514,7 @@ hr {
 </div>
 
 <div class="category-section engagement-monitoring">
-    <h2 class="category-title">📊 Engagement Monitoring</h2>
+    <h2 class="category-title"><i class="fas fa-chart-bar"></i> Engagement Monitoring</h2>
     
     <div class="quick-win-card">
         <div class="quick-win-header">
@@ -527,7 +534,7 @@ hr {
 </div>
 
 <div class="implementation-wisdom">
-    <h3>💡 Implementation Wisdom</h3>
+    <h3><i class="fas fa-lightbulb"></i> Implementation Wisdom</h3>
     
     <div class="wisdom-grid">
         <div class="wisdom-item">

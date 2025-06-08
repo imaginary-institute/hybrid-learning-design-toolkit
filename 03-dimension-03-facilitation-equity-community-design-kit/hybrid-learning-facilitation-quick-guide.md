@@ -7,7 +7,6 @@ nav_order: 5
 
 # Facilitation Quick Guide
 
-<span style="background: #ffc107; color: #1a202c; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 24px;">Quick Reference</span>
 
 ## Overview
 When you're actively teaching a hybrid session, you need immediate, actionable guidance—not lengthy theory. The Hybrid Facilitation Quick Guide provides in-the-moment reference for essential routines, quick fixes for common challenges, and decision flows that help you respond effectively to hybrid facilitation issues as they arise.

@@ -1,83 +1,71 @@
 # Hybrid Learning Design Toolkit
 
-A comprehensive, research-based toolkit for designing effective hybrid learning experiences that work equitably across physical and virtual spaces.
+## <i class="fas fa-bullseye"></i> Overview
 
-## 🎯 Overview
+The Hybrid Learning Design Toolkit is a comprehensive resource for creating effective, inclusive, and engaging hybrid learning experiences. The toolkit is organized into three essential dimensions:
 
-The Hybrid Learning Design Toolkit provides educators with practical, evidence-based tools to create engaging hybrid learning environments. Drawing from learning design research, instructional design frameworks, and post-pandemic hybrid teaching insights, this toolkit addresses three essential dimensions of hybrid education:
+- **<i class="fas fa-cogs"></i> Dimension 1**: Environment & Technology - Creating integrated learning spaces
+- **<i class="fas fa-bullseye"></i> Dimension 2**: Learning Experience & Assessment - Designing engaging activities and assessments
+- **<i class="fas fa-handshake"></i> Dimension 3**: Facilitation, Equity & Community - Building human connection across modalities
 
-- **🔧 Dimension 1**: Environment & Technology - Creating integrated learning spaces
-- **🎯 Dimension 2**: Learning Experience & Assessment - Designing engaging activities and assessments  
-- **🤝 Dimension 3**: Facilitation, Equity & Community - Building human connection across modalities
+## <i class="fas fa-rocket"></i> Quick Start
 
-## 🚀 Quick Start
+1. **Begin with Self-Assessment**: Use the comprehensive assessment tool to map your current capabilities across all dimensions
+2. **Identify Your Starting Point**: Use the Decision Tree to find your optimal entry point based on immediate needs and available resources
+3. **Quick Wins**: Start implementing immediately effective strategies from the Quick Wins guides
+4. **Deep Dive**: Access dimension-specific toolkits for comprehensive planning and implementation
+5. **Continuous Improvement**: Use diagnostic tools and reflection frameworks for ongoing enhancement
 
-### Live Demo
-Visit the toolkit: **[https://imaginary-institute.github.io/hybrid-learning-design-toolkit/](https://imaginary-institute.github.io/hybrid-learning-design-toolkit/)**
+## Getting Started
 
-### Getting Started
-1. **Take the Self-Assessment** to identify your current readiness level
-2. **Use the Decision Tree** to find your best entry point
-3. **Explore the dimension** that matches your immediate needs
-4. **Try the interactive tools** to start designing better hybrid experiences
+All tools are accessible via the [live toolkit website](https://your-domain.github.io/hybrid-learning-design-toolkit) and work on any modern device without downloads or installations.
 
-## 📚 What's Included
+## <i class="fas fa-book"></i> What's Included
 
-### 🧭 Orientation & Support Tools
-- **Self-Assessment** - Comprehensive readiness mapping across all dimensions
-- **Decision Tree** - Strategic navigation for finding your best starting point  
-- **Implementation Level Cards** - Clear guidance for Essential, Enhanced, and Transformative levels
-- **Quick Wins Guides** - Immediate strategies that work in any context
+### <i class="fas fa-compass"></i> Orientation & Support Tools
 
-### 🔧 Dimension 1: Environment & Technology (5 Tools)
-- **Space Mapping Canvas** - Visual design tool for integrating physical, digital, and remote contexts
-- **Technology Selection Guide** - Choose tools based on pedagogical needs, not hype
-- **Resilience Guide** - Comprehensive strategies for handling technical challenges gracefully
-- **Quick Response Guide** - In-the-moment troubleshooting and 60-second readiness checks
-- **Participant Guide** - Resources to empower students with choice and agency
+- **Self-Assessment Tool**: Comprehensive readiness evaluation with personalized recommendations
+- **Decision Tree**: Strategic navigation for identifying optimal starting points
+- **Implementation Level Cards**: Framework for understanding Essential, Enhanced, and Transformative approaches
+- **Quick Wins Guides**: Evidence-based strategies for immediate implementation
 
-### 🎯 Dimension 2: Learning Experience & Assessment (5 Tools)
-- **Activity Sequence Canvas** - Large-format planning template with engagement progression
-- **Activity Strategy Cards** - 26 research-based activity patterns color-coded by engagement level
-- **Assessment Method Cards** - 14 assessment strategies for hybrid contexts
-- **Learning Activity Adapter** - Systematic analysis for redesigning activities equitably
-- **Modality Companion for Canvas** - Quick decision helper for modality choices
+### <i class="fas fa-cogs"></i> Dimension 1: Environment & Technology (5 Tools)
 
-### 🤝 Dimension 3: Facilitation, Equity & Community (4 Tools + 3 Coming Soon)
-- **Interaction Strategy Cards** - 25 research-based facilitation techniques
-- **Community Building Cards** - Structured activities organized by course timeline phases
-- **Presence Lens Introduction** - Research-based frameworks for understanding presence
-- **Facilitation Resilience Guide** - Diagnostic tools and research-based interventions
+- **Space Mapping Canvas**: Visual design tool for integrating physical/digital/remote contexts
+- **Technology Selection Guide**: Evidence-based tool selection with accessibility considerations
+- **Inclusive Environment Guide**: Comprehensive protocols for universal access
+- **Quick Response Guide**: In-the-moment troubleshooting and readiness checks
+- **Participant Guide**: Student resources for effective hybrid participation
 
-## Technical Details
+### <i class="fas fa-bullseye"></i> Dimension 2: Learning Experience & Assessment (5 Tools)
 
-### Built With
-- **Jekyll** - Static site generator
-- **Just the Docs** - Documentation theme
-- **HTML/CSS/JavaScript** - Interactive tools
-- **GitHub Pages** - Hosting and deployment
+- **Activity Sequence Canvas**: Large-format planning template for engagement progression
+- **Activity Strategy Cards**: 26 research-based activity patterns with hybrid guidance
+- **Assessment Method Cards**: 14 assessment strategies designed for hybrid contexts
+- **Modality Companion**: Quick decision helper for activity planning
+- **Learning Activity Adapter**: Structured frameworks for equity analysis and adaptation
 
-### Project Structure
+### <i class="fas fa-handshake"></i> Dimension 3: Facilitation, Equity & Community (4 Tools + 3 Coming Soon)
+
+- **Presence Lens**: Research-based frameworks for teaching, social, and cognitive presence
+- **Interaction Strategy Cards**: 25 facilitation techniques for simultaneous teaching
+- **Community Building Cards**: 25 activities for unified community across modalities
+- **Group Formation Guide**: Decision frameworks for effective cross-modal teams
+- **Facilitation Quick Guide**: In-the-moment reference for live teaching sessions
+
+## License
+
+This project is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. See the LICENSE file for details.
+
+## Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details on how to participate in improving the toolkit.
+
+## Citation
+
+If you use this toolkit in your work, please cite it as:
+
 ```
-├── 00-orientation-support-tools/        # Navigation and assessment tools
-├── 01-dimension-01-environment/         # Technology and environment design
-├── 02-dimension-02-learning-experience/ # Activity and assessment design  
-├── 03-dimension-03-facilitation/        # Community and facilitation tools
-├── assets/tools/                        # Interactive HTML tools
-├── _config.yml                          # Jekyll configuration
-└── index.md                            # Site homepage
+imaginary institute. (2025). Hybrid Learning Design Toolkit. 
+GitHub. https://github.com/your-username/hybrid-learning-design-toolkit
 ```
-
-## 📄 License
-
-This project is licensed under a **Modified Creative Commons Attribution-ShareAlike 4.0 International License** - see the [LICENSE](LICENSE) file for details.
-
-**What this means:**
-- ✅ **Use freely** for training, consulting, and educational services
-- ✅ **Adapt and modify** to fit your needs  
-- ✅ **Share and redistribute** with proper attribution
-- ❌ **Cannot resell** the toolkit itself as a standalone product
-
-Commercial use for training and consulting is welcome with attribution. However, redistribution or resale of this Toolkit or derivative versions as a standalone product is prohibited.
-
-**🌟 Found this helpful?** Star the repository and share with colleagues!

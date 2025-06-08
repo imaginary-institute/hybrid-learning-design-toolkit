@@ -7,7 +7,6 @@ nav_order: 4
 
 # Assessment Method Cards
 
-<span style="background: #6f42c1; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 24px;">Card Collection</span>
 
 ## Overview
 Assessment in hybrid learning environments presents unique challenges around equity, authenticity, and meaningful feedback across participation modes. The Hybrid Learning Assessment Method Cards provide a collection of 14 assessment strategies, both formative and summative, specifically designed for hybrid contexts, organized by purpose and aligned with activity engagement levels to ensure coherent learning design. Used in combination with the Activity Sequence canvas they allow for a seamless integration of formative and/or summative assessment in the design.
@@ -18,7 +17,7 @@ Assessment in hybrid learning environments presents unique challenges around equ
 > **Interactive Assessment Method Cards**  
 > *Digital card collection with 14 assessment strategies designed for hybrid learning contexts, with filtering and customization options*
 >
-> <a href="{{ '/assets/tools/hybrid-learning-assessment-cards.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> <a href="{{ '/assets/tools/hybrid-learning-assessment-cards.html' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
 > Explore Tool →
 > </a>
 >

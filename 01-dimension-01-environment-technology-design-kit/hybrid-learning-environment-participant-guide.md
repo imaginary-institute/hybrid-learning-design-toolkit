@@ -7,7 +7,6 @@ nav_order: 6
 
 # Participant Guide
 
-<span style="background: #007bff; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 24px;">Guide</span>
 
 ## Overview
 Students in hybrid environments often feel like passive recipients of whatever technology allows. The Participant Guide flips this dynamic, empowering learners to exercise agency in their hybrid learning experience by understanding their choices, customizing their participation, and advocating for their needs without requiring disclosure or justification.

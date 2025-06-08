@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>hybrid-learning-environment-teacher-quick-response-guidevisual</title>
+<title>hybrid-learning-environment-quick-response-guide-visual</title>
 
 <!-- Add html2canvas and jsPDF libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -702,12 +702,128 @@ footer {
     color: var(--hint-color);
     font-style: italic;
 }
+
+/* Table of Contents Sidebar */
+.toc-sidebar {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 250px;
+    max-height: 70vh;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    z-index: 500;
+    overflow-y: auto;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.toc-header {
+    background-color: var(--creating-color);
+    color: white;
+    padding: 14px 18px;
+    border-radius: 8px 8px 0 0;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+}
+
+.toc-content {
+    padding: 6px 0;
+}
+
+.toc-item {
+    display: block;
+    padding: 10px 18px;
+    color: var(--heading-color);
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.3;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.toc-item:hover {
+    background-color: rgba(249, 160, 63, 0.1);
+    border-left-color: var(--creating-color);
+    color: var(--creating-color);
+    text-decoration: none;
+}
+
+.toc-item.active {
+    background-color: rgba(249, 160, 63, 0.1);
+    border-left-color: var(--creating-color);
+    color: var(--creating-color);
+    font-weight: 600;
+}
+
+/* Remove bottom border from last item */
+.toc-item:last-child {
+    border-bottom: none;
+}
+
+/* Adjust main content to make room for TOC */
+body {
+    margin-left: 290px;
+}
+
+/* Hide TOC on print and export */
+@media print {
+    .toc-sidebar {
+        display: none !important;
+    }
+    body {
+        margin-left: 0 !important;
+    }
+}
+
+/* Responsive design - hide TOC on smaller screens */
+@media (max-width: 1400px) {
+    .toc-sidebar {
+        display: none;
+    }
+    body {
+        margin-left: 0;
+    }
+}
+
+/* Smooth scrolling for TOC links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Offset for fixed header navigation */
+h1, h2, h3 {
+    scroll-margin-top: 20px;
+}
 </style>
 
 
 </head>
 
 <body>
+
+<!-- Table of Contents Sidebar -->
+<nav class="toc-sidebar">
+    <div class="toc-header">
+        Quick Navigation
+    </div>
+    <div class="toc-content">
+        <a href="#toc_1" class="toc-item">Pre-Session Check</a>
+        <a href="#toc_2" class="toc-item">Critical Response</a>
+        <a href="#toc_3" class="toc-item">Top 5 Critical Scenarios</a>
+        <a href="#toc_9" class="toc-item">Rapid Activity Pivots</a>
+        <a href="#toc_13" class="toc-item">Emergency Communications</a>
+        <a href="#toc_16" class="toc-item">30-Second Recovery</a>
+        <a href="#toc_17" class="toc-item">Activity Transitions</a>
+        <a href="#toc_20" class="toc-item">Core Principles</a>
+    </div>
+</nav>
 
 <!-- Export Controls -->
 <div class="export-controls">
@@ -719,7 +835,7 @@ footer {
 <!-- Main content wrapper for export -->
 <div id="contentToExport">
 
-<h1 id="toc_0">HYBRID TEACHING QUICK RESPONSE GUIDE</h1>
+<h1 id="toc_0">HYBRID IN-SESSION QUICK RESPONSE GUIDE</h1>
 
 <blockquote>
 <p><strong>📱 Keep this guide accessible during all hybrid sessions</strong><br>
@@ -814,7 +930,7 @@ Print, display on second screen, or access on mobile device</p>
 
 <hr>
 
-<h2 id="toc_3">🎯 TOP 5 SCENARIOS &amp; INCLUSIVE SOLUTIONS</h2>
+<h2 id="toc_3">🚨 TOP 5 CRITICAL SCENARIOS &amp; INCLUSIVE SOLUTIONS</h2>
 
 <h3 id="toc_4">🔇 Audio Participation Varies</h3>
 
@@ -1377,6 +1493,57 @@ document.addEventListener('keydown', function(event) {
         event.preventDefault();
         exportPDF();
     }
+});
+
+// Table of Contents functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const tocItems = document.querySelectorAll('.toc-item, .toc-subitem');
+    const sections = document.querySelectorAll('h1[id], h2[id], h3[id]');
+    
+    // Highlight active section in TOC
+    function highlightActiveSection() {
+        let current = '';
+        const scrollPosition = window.scrollY + 100; // Offset for better UX
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        tocItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('href') === `#${current}`) {
+                item.classList.add('active');
+            }
+        });
+    }
+    
+    // Update active section on scroll
+    window.addEventListener('scroll', highlightActiveSection);
+    
+    // Initial highlight
+    highlightActiveSection();
+    
+    // Smooth scroll with offset for TOC clicks
+    tocItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                const offsetTop = targetSection.offsetTop - 20;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 });
 </script>
 

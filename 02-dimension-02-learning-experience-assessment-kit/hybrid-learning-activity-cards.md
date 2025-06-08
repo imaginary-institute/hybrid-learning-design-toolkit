@@ -7,7 +7,6 @@ nav_order: 3
 
 # Learning Activity Strategy Cards
 
-<span style="background: #6f42c1; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 24px;">Card Collection</span>
 
 ## Overview
 Choosing the right learning activity for hybrid contexts requires understanding both pedagogical purpose and technical feasibility across participation modes. The Hybrid Learning Activity Strategy Cards provide a curated collection of 26 research-based activity patterns organized by cognitive engagement level, each with specific guidance for hybrid implementation, technology requirements, and equity considerations. Used in combination with the Activity Sequence canvas they allow for flexible approach to Hybrid Learning Experience Design.
@@ -18,7 +17,7 @@ Choosing the right learning activity for hybrid contexts requires understanding 
 > **Interactive Activity Strategy Cards**  
 > *Digital card deck with 26 activity strategies, filtering by modality, group size, and learning objectives*
 >
-> <a href="{{ '/assets/tools/hybrid-learning-activity-cards.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> <a href="{{ '/assets/tools/hybrid-learning-activity-cards.html' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
 > Explore Tool →
 > </a>
 >

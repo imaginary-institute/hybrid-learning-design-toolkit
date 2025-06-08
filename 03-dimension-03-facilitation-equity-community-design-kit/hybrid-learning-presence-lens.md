@@ -7,7 +7,6 @@ nav_order: 1
 
 # Presence Lens
 
-<span style="background: #007bff; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 24px;">Guide</span>
 
 ## Overview
 Understanding "presence" is fundamental to effective hybrid facilitation, yet it's often the most misunderstood aspect of hybrid learning. The Hybrid Learning Presence Lens provides research-based frameworks for diagnosing presence gaps and targeted solutions for building teaching, social, and cognitive presence across physical and virtual spaces.

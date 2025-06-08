@@ -85,7 +85,7 @@ h2 {
 
 h3 {
     font-size: 1.4em;
-    color: var(--essential-color);
+
     margin-top: 30px;
     font-weight: 600;
 }
@@ -127,9 +127,9 @@ h4 {
 }
 
 .challenge-card {
-    background: linear-gradient(135deg, var(--creating-bg), white);
-    border: 2px solid var(--creating-color);
-    border-radius: 10px;
+    background: white;
+    border: 1px solid var(--creating-color);
+    border-radius: 6px;
     padding: 20px;
     margin: 15px 0;
 }
@@ -159,15 +159,8 @@ h4 {
     margin: 15px 0;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
     padding: 10px;
-    border-radius: 5px;
-}
-
-.arrow-path:hover {
-    background: var(--light-essential);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
 }
 
 .arrow-path a {
@@ -176,6 +169,219 @@ h4 {
     display: block;
     width: 100%;
     height: 100%;
+}
+
+/* Visual Decision Tree Styles */
+.tree-container {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 40px 20px;
+    margin: 30px 0;
+    position: relative;
+}
+
+.tree-level {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+    position: relative;
+}
+
+.tree-node {
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+    margin: 0 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid;
+    position: relative;
+    cursor: pointer;
+    max-width: 280px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 350px;
+}
+
+.root-node {
+    border-color: var(--primary-button);
+    background: white;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.branch-nodes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tech-node {
+    border-color: var(--receiving-color);
+    background: white;
+}
+
+.design-node {
+    border-color: var(--responding-color);
+    background: white;
+}
+
+.engagement-node {
+    border-color: var(--creating-color);
+    background: white;
+}
+
+.interest-node {
+    border-color: var(--assessment-primary);
+    background: white;
+}
+
+.node-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.node-title {
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    color: var(--heading-color);
+}
+
+.node-examples {
+    font-size: 0.9em;
+    color: var(--medium-gray);
+    margin: 10px 0;
+    text-align: left;
+}
+
+.node-examples li {
+    margin: 5px 0;
+    font-style: italic;
+}
+
+.explore-button {
+    margin-top: 15px;
+    padding: 8px 16px;
+    background: var(--primary-button);
+    color: white;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: 500;
+    text-align: center;
+    border: none;
+    font-style: normal;
+}
+
+/* Visual connecting lines */
+.tree-connections {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.connection-line {
+    position: absolute;
+    background: var(--primary-button);
+    opacity: 0.6;
+}
+
+.vertical-line {
+    width: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.horizontal-line {
+    height: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Sub-decision nodes */
+.sub-tree {
+    margin: 50px 0;
+    padding: 30px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.tech-subtree {
+    border-color: var(--receiving-color);
+}
+
+.design-subtree {
+    border-color: var(--responding-color);
+}
+
+.engagement-subtree {
+    border-color: var(--creating-color);
+}
+
+.interest-subtree {
+    border-color: var(--assessment-primary);
+}
+
+.sub-nodes {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.sub-node {
+    background: white;
+    border-radius: 6px;
+    padding: 20px;
+    flex: 1;
+    max-width: 400px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 280px;
+}
+
+.tech-subnode {
+    border-color: var(--receiving-color);
+}
+
+.design-subnode {
+    border-color: var(--responding-color);
+}
+
+.engagement-subnode {
+    border-color: var(--creating-color);
+}
+
+.interest-subnode {
+    border-color: var(--assessment-primary);
+}
+
+.result-box {
+    background: var(--essential-color);
+    color: white;
+    border-radius: 6px;
+    padding: 15px;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+.result-title {
+    font-weight: 600;
+    margin-bottom: 8px;
 }
 
 .tech-path {
@@ -199,9 +405,9 @@ h4 {
 }
 
 .recommendation-box {
-    background: linear-gradient(135deg, var(--essential-color), var(--enhanced-color));
+    background: var(--essential-color);
     color: white;
-    border-radius: 10px;
+    border-radius: 6px;
     padding: 20px;
     margin: 15px 0;
 }
@@ -318,12 +524,11 @@ h4 {
 }
 
 hr {
-    background: linear-gradient(to right, var(--primary-button), var(--essential-color));
+    background: var(--border-color);
     border: 0 none;
     color: transparent;
-    height: 2px;
+    height: 1px;
     margin: 30px 0;
-    border-radius: 1px;
 }
 
 .footer {
@@ -354,6 +559,73 @@ hr {
     .connection-grid {
         grid-template-columns: 1fr;
     }
+    
+    .branch-nodes {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+    
+    .tree-container {
+        padding: 20px 5px;
+    }
+    
+    .tree-node {
+        margin: 0;
+        padding: 15px;
+        max-width: none;
+    }
+    
+    .node-title {
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+    
+    .node-examples {
+        font-size: 0.8em;
+    }
+    
+    .node-examples li {
+        margin: 3px 0;
+    }
+    
+    .sub-nodes {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .node-icon {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+    
+    .sub-tree {
+        margin: 30px 0;
+        padding: 20px;
+    }
+}
+
+/* Extra small screens - stack only if really necessary */
+@media (max-width: 480px) {
+    .branch-nodes {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .tree-node {
+        padding: 12px;
+    }
+    
+    .node-title {
+        font-size: 0.9em;
+    }
+    
+    .node-examples {
+        font-size: 0.75em;
+    }
+    
+    .node-icon {
+        font-size: 1.8em;
+    }
 }
 </style>
 
@@ -377,264 +649,258 @@ hr {
     <h3>🎯 Introduction</h3>
     <p>The Decision Tree for Starting Dimension is a practical navigation tool designed to help educators identify the most strategic entry point into hybrid teaching implementation. Based on research showing that attempting to transform all aspects of teaching simultaneously can lead to cognitive overload and implementation failure, this tool guides you to focus on one dimension initially, building confidence and competence before expanding to others.</p>
     
-    <p><strong>This decision support tool helps you:</strong></p>
-    <ul>
-        <li>Identify your most pressing hybrid teaching challenge</li>
-        <li>Connect urgent needs to specific toolkit dimensions</li>
-        <li>Determine an appropriate implementation level based on your context</li>
-        <li>Access targeted quick wins for immediate progress</li>
-        <li>Create a sustainable development pathway</li>
-    </ul>
-</div>
-
-<h2>📊 Visual Decision Tree</h2>
-
-<div class="decision-tree-diagram">┌─────────────────────────────────────────┐
-│   What's your PRIMARY hybrid challenge? │
-└──────────────┬──────────────────────────┘
-               │
-    ┌──────────┴───────────┬─────────────┬──────────────┐
-    ▼                      ▼             ▼              ▼
-┌─────────┐         ┌─────────────┐  ┌──────────┐  ┌──────────┐
-│Technical│         │  Learning   │  │Engagement│  │No Urgent │
-│ Issues  │         │   Design    │  │Community │  │  Issues  │
-└────┬────┘         └──────┬──────┘  └────┬─────┘  └────┬─────┘
-     │                     │               │              │
-     ▼                     ▼               ▼              ▼
-  Q2: Tech            Q3: Design      Q4: Engage    Q5: Interest
-     │                     │               │              │
-┌────┴────┐           ┌────┴────┐     ┌────┴────┐    ┌────┼────┬─────┐
-▼         ▼           ▼         ▼       ▼        ▼    ▼    ▼    ▼    ▼
-Basic  Advanced    Quick    Full   Basic  Connect  Tech Pedagogy Community
-Tech    Tech      Adapt   Redesign Include Build  Focus Focus   Focus
-│         │          │         │       │        │     │     │       │
-▼         ▼          ▼         ▼       ▼        ▼     ▼     ▼       ▼
-DIM 1   DIM 1      DIM 2    DIM 2   DIM 3   DIM 3  DIM 1 DIM 2   DIM 3
-Essential Enhanced Essential Enhanced Essential Enhanced  (Your readiness level)</div>
-
-<h2>🚀 How to Use This Tool</h2>
-
-<div class="usage-tips">
-    <ol>
-        <li><strong>Start with honest reflection</strong> about your current hybrid teaching challenges</li>
-        <li><strong>Follow the decision path</strong> that best matches your situation</li>
-        <li><strong>Note your recommended starting dimension</strong> and implementation level</li>
-        <li><strong>Access the corresponding Quick Wins Guide</strong> for immediate actions</li>
-        <li><strong>Use your chosen dimension's toolkit components</strong> to begin implementation</li>
-    </ol>
     
-    <p><strong>Remember:</strong> There's no "wrong" starting point. The best dimension to begin with is the one that addresses your most immediate needs or strongest interests.</p>
 </div>
 
-<h2>🚦 START HERE: Initial Assessment</h2>
 
-<p><strong>What describes your PRIMARY challenge with hybrid teaching?</strong></p>
 
-<div class="challenge-card">
-    <div class="challenge-title">A) Technical/Environmental Issues</div>
-    <ul class="challenge-examples">
-        <li>"Remote students struggle to see/hear clearly"</li>
-        <li>"Technology keeps failing during sessions"</li>
-        <li>"The classroom setup doesn't work for hybrid"</li>
-        <li>"I don't know which tools to use"</li>
-    </ul>
-    <div class="arrow-path"><a href="#q2-technology-path" style="color: inherit; text-decoration: none;">→ Go to Technology Path (Q2)</a></div>
-</div>
 
-<div class="challenge-card">
-    <div class="challenge-title">B) Learning Design Challenges</div>
-    <ul class="challenge-examples">
-        <li>"Activities that work in-person fail online"</li>
-        <li>"I'm basically just lecturing to both groups"</li>
-        <li>"Assessment doesn't seem fair across modes"</li>
-        <li>"I can't create engaging hybrid activities"</li>
-    </ul>
-    <div class="arrow-path"><a href="#q3-learning-design-path" style="color: inherit; text-decoration: none;">→ Go to Learning Design Path (Q3)</a></div>
-</div>
 
-<div class="challenge-card">
-    <div class="challenge-title">C) Engagement/Community Issues</div>
-    <ul class="challenge-examples">
-        <li>"Remote students are silent participants"</li>
-        <li>"I can't pay attention to both groups"</li>
-        <li>"There's no sense of class community"</li>
-        <li>"Groups don't interact with each other"</li>
-    </ul>
-    <div class="arrow-path"><a href="#q4-engagement-path" style="color: inherit; text-decoration: none;">→ Go to Engagement Path (Q4)</a></div>
-</div>
 
-<div class="challenge-card">
-    <div class="challenge-title">D) No Urgent Issues</div>
-    <ul class="challenge-examples">
-        <li>"Things work okay but could be better"</li>
-        <li>"I want to enhance my hybrid teaching"</li>
-        <li>"I'm ready to try something new"</li>
-    </ul>
-    <div class="arrow-path"><a href="#q5-interest-based-path" style="color: inherit; text-decoration: none;">→ Go to Interest-Based Path (Q5)</a></div>
-</div>
 
-<h2 id="q2-technology-path">🔧 Q2: Technology Path</h2>
+<h2 id="tree-start">🌳 VISUAL DECISION TREE</h2>
 
-<div class="path-section tech-path">
-    <h3>What's your technology comfort level?</h3>
-    
-    <div class="recommendation-box">
-        <div class="recommendation-title">A) "I struggle with basic technology"</div>
-        <div class="recommendation-details">
-            <ul>
-                <li>Need help with fundamental setup</li>
-                <li>Often experience technical problems</li>
-                <li>Limited technology available</li>
-            </ul>
-        </div>
-        <p><strong>→ START WITH: Dimension 1 (Learning Environment & Technology) - ESSENTIAL Level</strong></p>
-        <ul>
-            <li>Focus: Basic reliable setup</li>
-            <li>Priority: Audio quality and simple tools</li>
-            <li>Next: Quick Wins Guide for Technology (Essential)</li>
-        </ul>
+<div class="tree-container" id="tree-start">
+    <!-- Root Question -->
+    <div style="text-align: center; margin: 30px 0;">
+        <div style="font-size: 2.5em; margin-bottom: 15px;">🎯</div>
+        <h3 style="font-size: 1.5em; color: var(--heading-color); margin-bottom: 10px;">What's your PRIMARY hybrid teaching challenge?</h3>
+        <p style="color: var(--medium-gray); font-size: 1em;">Start here and follow the path that best matches your situation</p>
     </div>
     
-    <div class="recommendation-box">
-        <div class="recommendation-title">B) "I can use technology but not optimally for hybrid"</div>
-        <div class="recommendation-details">
-            <ul>
-                <li>Comfortable with basic tools</li>
-                <li>Want to use technology more effectively</li>
-                <li>Have standard hybrid classroom resources</li>
-            </ul>
+    <!-- Main Branches -->
+    <div class="tree-level">
+        <div class="branch-nodes">
+            <div class="tree-node tech-node" onclick="scrollToSection('q2-technology-path')">
+                <div>
+                    <div class="node-icon">🔧</div>
+                    <div class="node-title">Technical/Environment Issues</div>
+                    <ul class="node-examples">
+                        <li>"Remote students can't see/hear clearly"</li>
+                        <li>"Technology keeps failing"</li>
+                        <li>"Setup doesn't work for hybrid"</li>
+                        <li>"Don't know which tools to use"</li>
+                    </ul>
+                </div>
+                <div class="explore-button">Explore this path →</div>
+            </div>
+            
+            <div class="tree-node design-node" onclick="scrollToSection('q3-learning-design-path')">
+                <div>
+                    <div class="node-icon">📚</div>
+                    <div class="node-title">Learning Design Challenges</div>
+                    <ul class="node-examples">
+                        <li>"In-person activities fail online"</li>
+                        <li>"Just lecturing to both groups"</li>
+                        <li>"Assessment isn't fair across modes"</li>
+                        <li>"Can't create engaging activities"</li>
+                    </ul>
+                </div>
+                <div class="explore-button">Explore this path →</div>
+            </div>
+            
+            <div class="tree-node engagement-node" onclick="scrollToSection('q4-engagement-path')">
+                <div>
+                    <div class="node-icon">👥</div>
+                    <div class="node-title">Engagement/Community Issues</div>
+                    <ul class="node-examples">
+                        <li>"Remote students are silent"</li>
+                        <li>"Can't attend to both groups"</li>
+                        <li>"No sense of class community"</li>
+                        <li>"Groups don't interact"</li>
+                    </ul>
+                </div>
+                <div class="explore-button">Explore this path →</div>
+            </div>
+            
+            <div class="tree-node interest-node" onclick="scrollToSection('q5-interest-based-path')">
+                <div>
+                    <div class="node-icon">🌟</div>
+                    <div class="node-title">No Urgent Issues</div>
+                    <ul class="node-examples">
+                        <li>"Things work okay but could improve"</li>
+                        <li>"Want to enhance hybrid teaching"</li>
+                        <li>"Ready to try something new"</li>
+                    </ul>
+                </div>
+                <div class="explore-button">Explore this path →</div>
+            </div>
         </div>
-        <p><strong>→ START WITH: Dimension 1 (Learning Environment & Technology) - ENHANCED Level</strong></p>
-        <ul>
-            <li>Focus: Optimizing your setup</li>
-            <li>Priority: Dual attention tools and integration</li>
-            <li>Next: Quick Wins Guide for Technology (Enhanced)</li>
-        </ul>
     </div>
 </div>
 
-<h2 id="q3-learning-design-path">📚 Q3: Learning Design Path</h2>
-
-<div class="path-section design-path">
-    <h3>How much redesign are you ready for?</h3>
+<div class="sub-tree tech-subtree" id="q2-technology-path">
+    <h2>🔧 Technology Path</h2>
+    <h3 style="text-align: center;">What's your technology comfort level?</h3>
     
-    <div class="recommendation-box">
-        <div class="recommendation-title">A) "I need to adapt what I have quickly"</div>
-        <div class="recommendation-details">
-            <ul>
-                <li>Limited time for course redesign</li>
-                <li>Want to modify existing materials</li>
-                <li>Need simple solutions that work</li>
-            </ul>
+    <div class="sub-nodes">
+        <div class="sub-node tech-subnode">
+            <div>
+                <div class="node-title">A) "I struggle with basic technology"</div>
+                <ul class="node-examples">
+                    <li>Need help with fundamental setup</li>
+                    <li>Often experience technical problems</li>
+                    <li>Limited technology available</li>
+                </ul>
+            </div>
+            <div class="result-box" style="background: var(--receiving-color);">
+                <div class="result-title">→ START WITH: Dimension 1 - ESSENTIAL Level</div>
+                <p><strong>Focus:</strong> Basic reliable setup<br>
+                <strong>Priority:</strong> Audio quality and simple tools<br>
+                <strong>Next:</strong> Quick Wins Guide for Technology (Essential)</p>
+            </div>
         </div>
-        <p><strong>→ START WITH: Dimension 2 (Learning Experience & Assessment Design) - ESSENTIAL Level</strong></p>
-        <ul>
-            <li>Focus: Adapting existing activities</li>
-            <li>Priority: Clear instructions and basic equity</li>
-            <li>Next: Quick Wins Guide for Learning Design (Essential)</li>
-        </ul>
-    </div>
-    
-    <div class="recommendation-box">
-        <div class="recommendation-title">B) "I'm ready to redesign for hybrid specifically"</div>
-        <div class="recommendation-details">
-            <ul>
-                <li>Can invest time in redesign</li>
-                <li>Want to create hybrid-optimized experiences</li>
-                <li>Interested in innovative approaches</li>
-            </ul>
+        
+        <div class="sub-node tech-subnode">
+            <div>
+                <div class="node-title">B) "I can use technology but not optimally"</div>
+                <ul class="node-examples">
+                    <li>Comfortable with basic tools</li>
+                    <li>Want to use technology more effectively</li>
+                    <li>Have standard hybrid classroom resources</li>
+                </ul>
+            </div>
+            <div class="result-box" style="background: var(--receiving-color);">
+                <div class="result-title">→ START WITH: Dimension 1 - ENHANCED Level</div>
+                <p><strong>Focus:</strong> Optimizing your setup<br>
+                <strong>Priority:</strong> Dual attention tools and integration<br>
+                <strong>Next:</strong> Quick Wins Guide for Technology (Enhanced)</p>
+            </div>
         </div>
-        <p><strong>→ START WITH: Dimension 2 (Learning Experience & Assessment Design) - ENHANCED Level</strong></p>
-        <ul>
-            <li>Focus: Purpose-built hybrid activities</li>
-            <li>Priority: Leveraging hybrid affordances</li>
-            <li>Next: Quick Wins Guide for Learning Design (Enhanced)</li>
-        </ul>
-    </div>
-</div>
-
-<h2 id="q4-engagement-path">👥 Q4: Engagement Path</h2>
-
-<div class="path-section engagement-path">
-    <h3>What's the nature of the engagement problem?</h3>
-    
-    <div class="recommendation-box">
-        <div class="recommendation-title">A) "I can't manage basic participation across groups"</div>
-        <div class="recommendation-details">
-            <ul>
-                <li>Struggle to include remote students</li>
-                <li>Difficulty tracking who's engaged</li>
-                <li>Need basic facilitation strategies</li>
-            </ul>
-        </div>
-        <p><strong>→ START WITH: Dimension 3 (Facilitation, Equity & Community Design) - ESSENTIAL Level</strong></p>
-        <ul>
-            <li>Focus: Basic inclusion strategies</li>
-            <li>Priority: Attention management protocols</li>
-            <li>Next: Quick Wins Guide for Engagement (Essential)</li>
-        </ul>
-    </div>
-    
-    <div class="recommendation-box">
-        <div class="recommendation-title">B) "Participation happens but lacks connection"</div>
-        <div class="recommendation-details">
-            <ul>
-                <li>Both groups engage separately</li>
-                <li>Missing sense of unified community</li>
-                <li>Want deeper interaction across modes</li>
-            </ul>
-        </div>
-        <p><strong>→ START WITH: Dimension 3 (Facilitation, Equity & Community Design) - ENHANCED Level</strong></p>
-        <ul>
-            <li>Focus: Cross-modal community building</li>
-            <li>Priority: Integrated engagement strategies</li>
-            <li>Next: Quick Wins Guide for Engagement (Enhanced)</li>
-        </ul>
     </div>
 </div>
 
-<h2 id="q5-interest-based-path">🌟 Q5: Interest-Based Path (No Urgent Issues)</h2>
+<div class="sub-tree design-subtree" id="q3-learning-design-path">
+    <h2>📚 Learning Design Path</h2>
+    <h3 style="text-align: center;">How much redesign are you ready for?</h3>
+    
+    <div class="sub-nodes">
+        <div class="sub-node design-subnode">
+            <div>
+                <div class="node-title">A) "I need to adapt what I have quickly"</div>
+                <ul class="node-examples">
+                    <li>Limited time for course redesign</li>
+                    <li>Want to modify existing materials</li>
+                    <li>Need simple solutions that work</li>
+                </ul>
+            </div>
+            <div class="result-box" style="background: var(--responding-color);">
+                <div class="result-title">→ START WITH: Dimension 2 - ESSENTIAL Level</div>
+                <p><strong>Focus:</strong> Adapting existing activities<br>
+                <strong>Priority:</strong> Clear instructions and basic equity<br>
+                <strong>Next:</strong> Quick Wins Guide for Learning Design (Essential)</p>
+            </div>
+        </div>
+        
+        <div class="sub-node design-subnode">
+            <div>
+                <div class="node-title">B) "I'm ready to redesign for hybrid specifically"</div>
+                <ul class="node-examples">
+                    <li>Can invest time in redesign</li>
+                    <li>Want to create hybrid-optimized experiences</li>
+                    <li>Interested in innovative approaches</li>
+                </ul>
+            </div>
+            <div class="result-box" style="background: var(--responding-color);">
+                <div class="result-title">→ START WITH: Dimension 2 - ENHANCED Level</div>
+                <p><strong>Focus:</strong> Purpose-built hybrid activities<br>
+                <strong>Priority:</strong> Leveraging hybrid affordances<br>
+                <strong>Next:</strong> Quick Wins Guide for Learning Design (Enhanced)</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-<div class="path-section interest-path">
-    <h3>What aspect of hybrid teaching most interests you?</h3>
+<div class="sub-tree engagement-subtree" id="q4-engagement-path">
+    <h2>👥 Engagement Path</h2>
+    <h3 style="text-align: center;">What's the nature of the engagement problem?</h3>
     
-    <div class="recommendation-box">
-        <div class="recommendation-title">A) "The technology possibilities excite me"</div>
-        <div class="recommendation-details">
-            <ul>
-                <li>Interested in new tools and platforms</li>
-                <li>Want to explore innovative setups</li>
-                <li>Enjoy technical experimentation</li>
-            </ul>
+    <div class="sub-nodes">
+        <div class="sub-node engagement-subnode">
+            <div>
+                <div class="node-title">A) "I can't manage basic participation"</div>
+                <ul class="node-examples">
+                    <li>Struggle to include remote students</li>
+                    <li>Difficulty tracking who's engaged</li>
+                    <li>Need basic facilitation strategies</li>
+                </ul>
+            </div>
+            <div class="result-box" style="background: var(--creating-color);">
+                <div class="result-title">→ START WITH: Dimension 3 - ESSENTIAL Level</div>
+                <p><strong>Focus:</strong> Basic inclusion strategies<br>
+                <strong>Priority:</strong> Attention management protocols<br>
+                <strong>Next:</strong> Quick Wins Guide for Engagement (Essential)</p>
+            </div>
         </div>
-        <p><strong>→ START WITH: Dimension 1</strong> at your Compass-assessed readiness level</p>
-        <p>Let your Hybrid Teaching Compass results guide Essential/Enhanced/Transformative choice</p>
+        
+        <div class="sub-node engagement-subnode">
+            <div>
+                <div class="node-title">B) "Participation happens but lacks connection"</div>
+                <ul class="node-examples">
+                    <li>Both groups engage separately</li>
+                    <li>Missing sense of unified community</li>
+                    <li>Want deeper interaction across modes</li>
+                </ul>
+            </div>
+            <div class="result-box" style="background: var(--creating-color);">
+                <div class="result-title">→ START WITH: Dimension 3 - ENHANCED Level</div>
+                <p><strong>Focus:</strong> Cross-modal community building<br>
+                <strong>Priority:</strong> Integrated engagement strategies<br>
+                <strong>Next:</strong> Quick Wins Guide for Engagement (Enhanced)</p>
+            </div>
+        </div>
     </div>
+</div>
+
+<div class="sub-tree interest-subtree" id="q5-interest-based-path">
+    <h2>🌟 Interest-Based Path</h2>
+    <h3 style="text-align: center;">What aspect of hybrid teaching most interests you?</h3>
     
-    <div class="recommendation-box">
-        <div class="recommendation-title">B) "I want to innovate pedagogically"</div>
-        <div class="recommendation-details">
-            <ul>
-                <li>Interested in new teaching methods</li>
-                <li>Want to design unique learning experiences</li>
-                <li>Focused on learning outcomes</li>
-            </ul>
+    <div class="sub-nodes" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+        <div class="sub-node interest-subnode">
+            <div>
+                <div class="node-title">A) "Technology possibilities excite me"</div>
+                <ul class="node-examples">
+                    <li>Interested in new tools and platforms</li>
+                    <li>Want to explore innovative setups</li>
+                    <li>Enjoy technical experimentation</li>
+                </ul>
+            </div>
+            <div class="result-box" style="background: var(--receiving-color);">
+                <div class="result-title">→ START WITH: Dimension 1</div>
+                <p>Use your <strong>Hybrid Teaching Compass</strong> results to guide Essential/Enhanced/Transformative choice</p>
+            </div>
         </div>
-        <p><strong>→ START WITH: Dimension 2</strong> at your Compass-assessed readiness level</p>
-        <p>Let your Hybrid Teaching Compass results guide Essential/Enhanced/Transformative choice</p>
-    </div>
-    
-    <div class="recommendation-box">
-        <div class="recommendation-title">C) "Building community matters most to me"</div>
-        <div class="recommendation-details">
-            <ul>
-                <li>Passionate about student connection</li>
-                <li>Want to foster belonging for all</li>
-                <li>Focused on social learning</li>
-            </ul>
+        
+        <div class="sub-node interest-subnode">
+            <div>
+                <div class="node-title">B) "I want to innovate pedagogically"</div>
+                <ul class="node-examples">
+                    <li>Interested in new teaching methods</li>
+                    <li>Want to design unique learning experiences</li>
+                    <li>Focused on learning outcomes</li>
+                </ul>
+            </div>
+            <div class="result-box" style="background: var(--responding-color);">
+                <div class="result-title">→ START WITH: Dimension 2</div>
+                <p>Use your <strong>Hybrid Teaching Compass</strong> results to guide Essential/Enhanced/Transformative choice</p>
+            </div>
         </div>
-        <p><strong>→ START WITH: Dimension 3</strong> at your Compass-assessed readiness level</p>
-        <p>Let your Hybrid Teaching Compass results guide Essential/Enhanced/Transformative choice</p>
+        
+        <div class="sub-node interest-subnode">
+            <div>
+                <div class="node-title">C) "Building community matters most"</div>
+                <ul class="node-examples">
+                    <li>Passionate about student connection</li>
+                    <li>Want to foster belonging for all</li>
+                    <li>Focused on social learning</li>
+                </ul>
+            </div>
+            <div class="result-box" style="background: var(--creating-color);">
+                <div class="result-title">→ START WITH: Dimension 3</div>
+                <p>Use your <strong>Hybrid Teaching Compass</strong> results to guide Essential/Enhanced/Transformative choice</p>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -651,7 +917,7 @@ Essential Enhanced Essential Enhanced Essential Enhanced  (Your readiness level)
         <li><strong>Plan to reassess</strong> after 3-4 sessions to consider expanding</li>
     </ol>
     
-    <div style="background: var(--creating-bg); padding: 15px; border-radius: 8px; margin: 15px 0;">
+    <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0;">
         <strong>Remember:</strong>
         <ul>
             <li>Starting with one dimension doesn't mean ignoring others entirely</li>
@@ -684,6 +950,21 @@ Essential Enhanced Essential Enhanced Essential Enhanced  (Your readiness level)
         <h4>🛠️ Dimension-Specific Toolkits</h4>
         <p>For comprehensive implementation support</p>
     </div>
+</div>
+
+<div style="text-align: center; margin: 40px 0;">
+    <button onclick="scrollToSection('tree-start')" style="
+        background: var(--primary-button);
+        color: white;
+        border: 1px solid var(--primary-button);
+        padding: 12px 24px;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+    ">
+        🌳 ↑ Back to Decision Tree
+    </button>
 </div>
 
 <div class="footer">
@@ -782,6 +1063,18 @@ function exportPDF() {
         exportControls.style.display = 'flex';
         loadingOverlay.style.display = 'none';
     });
+}
+
+// Smooth scrolling function for tree navigation
+function scrollToSection(sectionId) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+        element.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start',
+            inline: 'nearest'
+        });
+    }
 }
 
 // Add keyboard shortcuts

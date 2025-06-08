@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hybrid Learning and Teaching - Self-Assessment Tool</title>
+    <!-- Add html2canvas and jsPDF libraries for export functionality -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         :root {
             --receiving-color: #5B9BD5;
@@ -626,6 +629,37 @@
             background-color: #7A4F85;
         }
 
+        /* Loading overlay for export operations */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+        }
+
+        .spinner {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary-button);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         footer {
             text-align: center;
             margin-top: 40px;
@@ -719,13 +753,13 @@
                     <h2>Welcome to the Hybrid Hybrid Learning and Teaching Self-Assessment Tool</h2>
                     
                     <div class="intro-text">
-                        <p>This interactive tool helps you assess your capabilities across the three dimensions of the Hybrid Learning Framework and determine appropriate implementation levels based on your institutional context.</p>
+                        <p>This interactive tool helps you assess your experience and practice across the three dimensions of the Hybrid Learning Framework and determine appropriate implementation levels based on your institutional context.</p>
                         
                         <p>The assessment process involves four main steps:</p>
                         <ol>
-                            <li>Evaluate your capability in <strong>Learning Environment & Technology</strong></li>
-                            <li>Evaluate your capability in <strong>Learning Experience Design & Assessment</strong></li>
-                            <li>Evaluate your capability in <strong>Facilitation, Equity & Community</strong></li>
+                            <li>Assess your current experience and practice in <strong>Learning Environment & Technology</strong></li>
+                            <li>Assess your current experience and practice in <strong>Learning Experience Design & Assessment</strong></li>
+                            <li>Assess your current experience and practice in <strong>Facilitation, Equity & Community</strong></li>
                             <li>Assess your <strong>Institutional Support</strong> level</li>
                         </ol>
                         <br>
@@ -748,7 +782,7 @@
                             <h3 class="dimension-title">Learning Environment & Technology</h3>
                         </div>
                         
-                        <p>This dimension focuses on creating unified spaces that seamlessly integrate physical and virtual elements to support effective hybrid learning. Reflect on your capabilities in developing technological infrastructure, configuring physical spaces, and ensuring equitable access across participation modes.</p>
+                        <p>This dimension focuses on creating unified spaces that seamlessly integrate physical and virtual elements to support effective hybrid learning. Reflect on your experience and practice in developing technological infrastructure, configuring physical spaces, and ensuring equitable access across participation modes.</p>
                         
                         <button class="reflection-toggle" onclick="toggleReflection('reflection-1')">
                             <span>Show Reflection Prompts</span> <span id="reflection-1-icon">▼</span>
@@ -770,7 +804,7 @@
                             </div>
                         </div>
                         
-                        <p>Based on your reflections, select the level that best describes your current capability:</p>
+                        <p>Based on your reflections, select the level that best describes where you are now:</p>
                         
                         <table class="capability-matrix">
                             <tr>
@@ -844,7 +878,7 @@
                             </div>
                         </div>
                         
-                        <p>Based on your reflections, select the level that best describes your current capability:</p>
+                        <p>Based on your reflections, select the level that best describes where you are now:</p>
                         
                         <table class="capability-matrix">
                             <tr>
@@ -916,7 +950,7 @@
                             </div>
                         </div>
                         
-                        <p>Based on your reflections, select the level that best describes your current capability:</p>
+                        <p>Based on your reflections, select the level that best describes where you are now:</p>
                         
                         <table class="capability-matrix">
                             <tr>
@@ -964,7 +998,7 @@
                 <div class="step-content">
                     <h2>Institutional Support Assessment</h2>
                     
-                    <p>Assess the level of support and resources available in your institutional context. This will help determine how your capability levels translate into realistic implementation approaches.</p>
+                    <p>Assess the level of support and resources available in your institutional context. This will help determine how your experience levels translate into realistic implementation approaches.</p>
                     
                     <div class="slider-container">
                         <div class="context-reflection">
@@ -1066,9 +1100,9 @@
                             <path d="M300,300 L179,230 A140,140 0 0,1 300,160 Z" fill="rgba(45, 114, 165, 0.15)" stroke="none" />
                             
                             <!-- Zone labels -->
-                            <text x="300" y="150" text-anchor="end" fill="#37946E" font-size="14" font-weight="bold">TRANSFORMATIVE</text>
-                            <text x="300" y="200" text-anchor="end" fill="#6464B4" font-size="14" font-weight="bold">ENHANCED</text>
-                            <text x="300" y="250" text-anchor="end" fill="#2D72A5" font-size="14" font-weight="bold">ESSENTIAL</text>
+                            <text x="300" y="90" text-anchor="end" fill="#37946E" font-size="14" font-weight="bold">TRANSFORMATIVE</text>
+                            <text x="300" y="140" text-anchor="end" fill="#6464B4" font-size="14" font-weight="bold">ENHANCED</text>
+                            <text x="300" y="210" text-anchor="end" fill="#2D72A5" font-size="14" font-weight="bold">ESSENTIAL</text>
                             
                             <!-- Axes -->
                             <line x1="300" y1="300" x2="300" y2="40" stroke="#333" stroke-width="2" />
@@ -1095,7 +1129,7 @@
                             <!-- User's readiness shape and points will be added dynamically via JavaScript -->
                         </svg>
                         
-                        <p><small>The compass visualizes your capabilities across the three dimensions and maps them to implementation levels (Essential, Enhanced, Transformative).</small></p>
+                        <p><small>The compass visualizes your experience and practice across the three dimensions and maps them to implementation levels (Essential, Enhanced, Transformative).</small></p>
                     </div>
                     
                     <div class="profile-analysis">
@@ -1126,14 +1160,14 @@
                     
                     <div class="implementation-matrix">
                         <h3>Implementation Recommendations</h3>
-                        <p>Based on your capability levels and institutional support context, here are the recommended implementation levels for each dimension:</p>
+                        <p>Based on your experience levels and institutional support context, here are the recommended implementation levels for each dimension:</p>
                         
                         <table class="implementation-table">
                             <thead>
                                 <tr>
                                     <th>Dimension</th>
-                                    <th>Capability Level</th>
-                                    <th>Capability-Based Implementation</th>
+                                    <th>Experience Level</th>
+                                    <th>Experience-Based Implementation</th>
                                     <th>Support Impact</th>
                                     <th>Final Recommended Implementation</th>
                                 </tr>
@@ -1146,7 +1180,8 @@
                     
                     <div class="export-options">
                         <button class="btn btn-export-print" onclick="window.print()">Print Results</button>
-                        <button class="btn btn-export-pdf" onclick="exportToPDF()">Save as PDF</button>
+                        <button class="btn btn-export-pdf" onclick="exportToPDF()">Export PDF</button>
+                        <button class="btn btn-export" onclick="exportToPNG()">Export PNG</button>
                     </div>
                 </div>
                 
@@ -1159,6 +1194,12 @@
 
         <footer>
         </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Generating export... This may take a moment.</p>
     </div>
 
     <script>
@@ -1402,7 +1443,7 @@
             svg.appendChild(label3);
         }
 
-        // Determine profile type based on capability levels
+        // Determine profile type based on experience levels
         function determineProfileType() {
             const dim1 = appState.dimension1;
             const dim2 = appState.dimension2;
@@ -1471,7 +1512,7 @@
             
             switch(appState.profileType) {
                 case "Technology-Forward":
-                    description = `You demonstrate strongest capabilities in creating effective learning environments and integrating technology for hybrid teaching. This provides a solid technical foundation on which to build your pedagogical and facilitation skills.`;
+                    description = `You demonstrate strongest experience and practice in creating effective learning environments and integrating technology for hybrid teaching. This provides a solid technical foundation on which to build your pedagogical and facilitation skills.`;
                     
                     characteristics = `
                         <h4>Key Characteristics:</h4>
@@ -1489,7 +1530,7 @@
                     break;
                     
                 case "Pedagogy-Centered":
-                    description = `You demonstrate strongest capabilities in learning design, activity development, and assessment approaches for hybrid contexts. This provides a solid pedagogical foundation on which to build your technological and facilitation skills.`;
+                    description = `You demonstrate strongest experience and practice in learning design, activity development, and assessment approaches for hybrid contexts. This provides a solid pedagogical foundation on which to build your technological and facilitation skills.`;
                     
                     characteristics = `
                         <h4>Key Characteristics:</h4>
@@ -1507,7 +1548,7 @@
                     break;
                     
                 case "Community-Focused":
-                    description = `You demonstrate strongest capabilities in facilitation, equity maintenance, and community development across physical-virtual boundaries. This provides a solid engagement foundation on which to build your technological and design skills.`;
+                    description = `You demonstrate strongest experience and practice in facilitation, equity maintenance, and community development across physical-virtual boundaries. This provides a solid engagement foundation on which to build your technological and design skills.`;
                     
                     characteristics = `
                         <h4>Key Characteristics:</h4>
@@ -1525,7 +1566,7 @@
                     break;
                     
                 case "Balanced Beginner":
-                    description = `You demonstrate similar capabilities at an early developmental stage across all three dimensions of the Hybrid Learning Framework. This provides an opportunity to build a consistent foundation across all aspects of hybrid teaching.`;
+                    description = `You demonstrate similar experience and practice at an early developmental stage across all three dimensions of the Hybrid Learning Framework. This provides an opportunity to build a consistent foundation across all aspects of hybrid teaching.`;
                     
                     characteristics = `
                         <h4>Key Characteristics:</h4>
@@ -1543,13 +1584,13 @@
                     break;
                     
                 case "Balanced Intermediate":
-                    description = `You demonstrate similar capabilities at a moderate developmental stage across all three dimensions of the Hybrid Learning Framework. This balanced approach provides a solid foundation for more sophisticated hybrid teaching implementation.`;
+                    description = `You demonstrate similar experience and practice at a moderate developmental stage across all three dimensions of the Hybrid Learning Framework. This balanced approach provides a solid foundation for more sophisticated hybrid teaching implementation.`;
                     
                     characteristics = `
                         <h4>Key Characteristics:</h4>
                         <ul>
                             <li>Functional skills in technology, learning design, and facilitation</li>
-                            <li>Balanced capabilities that enable cohesive implementation</li>
+                            <li>Balanced experience and practice that enable cohesive implementation</li>
                             <li>Ready for more advanced approaches in highest-rated dimension</li>
                         </ul>
                     `;
@@ -1561,7 +1602,7 @@
                     break;
                     
                 case "Balanced Advanced":
-                    description = `You demonstrate similar capabilities at an advanced developmental stage across all three dimensions of the Hybrid Learning Framework. This integrated mastery enables sophisticated and innovative hybrid teaching approaches.`;
+                    description = `You demonstrate similar experience and practice at an advanced developmental stage across all three dimensions of the Hybrid Learning Framework. This integrated mastery enables sophisticated and innovative hybrid teaching approaches.`;
                     
                     characteristics = `
                         <h4>Key Characteristics:</h4>
@@ -1579,12 +1620,12 @@
                     break;
                     
                 case "Resource-Constrained":
-                    description = `Your capabilities exceed the level of institutional support available for hybrid teaching implementation. This mismatch requires strategic approaches that focus on sustainable, high-impact practices within resource limitations.`;
+                    description = `Your experience level exceeds the level of institutional support available for hybrid teaching implementation. This mismatch requires strategic approaches that focus on sustainable, high-impact practices within resource limitations.`;
                     
                     characteristics = `
                         <h4>Key Characteristics:</h4>
                         <ul>
-                            <li>Personal capabilities that exceed available institutional resources</li>
+                            <li>Personal experience level that exceeds available institutional resources</li>
                             <li>Need for pragmatic implementation within constraints</li>
                             <li>Potential for advocacy to enhance institutional support</li>
                         </ul>
@@ -1597,12 +1638,12 @@
                     break;
                     
                 case "Resource-Advantaged":
-                    description = `The level of institutional support available exceeds your current capability levels. This presents an opportunity for accelerated development through leveraging available resources to enhance your skills across all dimensions.`;
+                    description = `The level of institutional support available exceeds your current experience levels. This presents an opportunity for accelerated development through leveraging available resources to enhance your skills across all dimensions.`;
                     
                     characteristics = `
                         <h4>Key Characteristics:</h4>
                         <ul>
-                            <li>Institutional resources that exceed current personal capabilities</li>
+                            <li>Institutional resources that exceed current experience levels</li>
                             <li>Opportunity for rapid skill development and experimentation</li>
                             <li>Access to support that can accelerate implementation progress</li>
                         </ul>
@@ -1700,10 +1741,172 @@
             return levelNames[level];
         }
 
-        // Export to PDF function (simplified - in a real implementation, would use a library like jsPDF)
+        // Get reference to jsPDF and loading overlay
+        const { jsPDF } = window.jspdf;
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        
+        // Export results as PNG
+        function exportToPNG() {
+            // Show loading overlay
+            loadingOverlay.style.display = 'flex';
+            
+            // Hide controls and non-results content for export
+            const controls = document.querySelector('.progress-indicator');
+            const btnContainer = document.querySelector('#step-6 .btn-container');
+            const exportOptions = document.querySelector('.export-options');
+            
+            // Store original display values
+            const originalDisplays = {
+                controls: controls ? controls.style.display : '',
+                btnContainer: btnContainer ? btnContainer.style.display : '',
+                exportOptions: exportOptions ? exportOptions.style.display : ''
+            };
+            
+            // Hide elements during export
+            if (controls) controls.style.display = 'none';
+            if (btnContainer) btnContainer.style.display = 'none';
+            if (exportOptions) exportOptions.style.display = 'none';
+            
+            // Get the results section (step-6)
+            const resultsSection = document.getElementById('step-6');
+            
+            if (!resultsSection) {
+                alert('No results found to export. Please complete the assessment first.');
+                loadingOverlay.style.display = 'none';
+                return;
+            }
+            
+            // Generate filename with timestamp
+            const timestamp = new Date().toISOString().slice(0, 19).replace(/[:-]/g, '');
+            const filename = `hybrid-learning-assessment-results-${timestamp}.png`;
+            
+            // Use html2canvas to capture the results section
+            html2canvas(resultsSection, {
+                scale: 1.5, // Good quality without being too large
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#ffffff',
+                scrollX: 0,
+                scrollY: 0
+            }).then(function(canvas) {
+                // Convert canvas to PNG data URL
+                const imgData = canvas.toDataURL('image/png', 0.8); // Slight compression
+                
+                // Create a download link
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = imgData;
+                
+                // Trigger download
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Restore original displays
+                if (controls) controls.style.display = originalDisplays.controls;
+                if (btnContainer) btnContainer.style.display = originalDisplays.btnContainer;
+                if (exportOptions) exportOptions.style.display = originalDisplays.exportOptions;
+                
+                // Hide loading overlay
+                loadingOverlay.style.display = 'none';
+            }).catch(function(error) {
+                console.error('Error generating PNG:', error);
+                alert('Error generating PNG. Please try again.');
+                
+                // Restore displays and hide loading
+                if (controls) controls.style.display = originalDisplays.controls;
+                if (btnContainer) btnContainer.style.display = originalDisplays.btnContainer;
+                if (exportOptions) exportOptions.style.display = originalDisplays.exportOptions;
+                loadingOverlay.style.display = 'none';
+            });
+        }
+        
+        // Export results as PDF
         function exportToPDF() {
-            alert("In a full implementation, this would save the results as a PDF file using a library like jsPDF.\n\nFor now, please use the browser's print function (File > Print) and select 'Save as PDF' as the printer option.");
-            window.print();
+            // Show loading overlay
+            loadingOverlay.style.display = 'flex';
+            
+            // Hide controls and non-results content for export
+            const controls = document.querySelector('.progress-indicator');
+            const btnContainer = document.querySelector('#step-6 .btn-container');
+            const exportOptions = document.querySelector('.export-options');
+            
+            // Store original display values
+            const originalDisplays = {
+                controls: controls ? controls.style.display : '',
+                btnContainer: btnContainer ? btnContainer.style.display : '',
+                exportOptions: exportOptions ? exportOptions.style.display : ''
+            };
+            
+            // Hide elements during export
+            if (controls) controls.style.display = 'none';
+            if (btnContainer) btnContainer.style.display = 'none';
+            if (exportOptions) exportOptions.style.display = 'none';
+            
+            // Get the results section (step-6)
+            const resultsSection = document.getElementById('step-6');
+            
+            if (!resultsSection) {
+                alert('No results found to export. Please complete the assessment first.');
+                loadingOverlay.style.display = 'none';
+                return;
+            }
+            
+            // Generate filename with timestamp
+            const timestamp = new Date().toISOString().slice(0, 19).replace(/[:-]/g, '');
+            const filename = `hybrid-learning-assessment-results-${timestamp}.pdf`;
+            
+            // Use html2canvas to capture the results section
+            html2canvas(resultsSection, {
+                scale: 1.5, // Good quality for PDF
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#ffffff',
+                scrollX: 0,
+                scrollY: 0
+            }).then(function(canvas) {
+                // Get canvas dimensions in pixels
+                const canvasWidth = canvas.width;
+                const canvasHeight = canvas.height;
+                
+                // Convert pixels to points (1 pixel = 0.75 points for 96 DPI)
+                const pdfWidth = canvasWidth * 0.75;
+                const pdfHeight = canvasHeight * 0.75;
+                
+                // Determine orientation based on aspect ratio
+                const orientation = pdfWidth > pdfHeight ? 'landscape' : 'portrait';
+                
+                // Create PDF with exact content dimensions
+                const pdf = new jsPDF({
+                    orientation: orientation,
+                    unit: 'pt',
+                    format: [pdfWidth, pdfHeight]
+                });
+                
+                // Add canvas image to PDF with JPEG compression to reduce file size
+                const imgData = canvas.toDataURL('image/jpeg', 0.8); // 80% quality
+                pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+                
+                // Save PDF
+                pdf.save(filename);
+                
+                // Restore original displays
+                if (controls) controls.style.display = originalDisplays.controls;
+                if (btnContainer) btnContainer.style.display = originalDisplays.btnContainer;
+                if (exportOptions) exportOptions.style.display = originalDisplays.exportOptions;
+                
+                // Hide loading overlay
+                loadingOverlay.style.display = 'none';
+            }).catch(function(error) {
+                console.error('Error generating PDF:', error);
+                alert('Error generating PDF. Please try again.');
+                
+                // Restore displays and hide loading
+                if (controls) controls.style.display = originalDisplays.controls;
+                if (btnContainer) btnContainer.style.display = originalDisplays.btnContainer;
+                if (exportOptions) exportOptions.style.display = originalDisplays.exportOptions;
+                loadingOverlay.style.display = 'none';
+            });
         }
 
         // Reset assessment

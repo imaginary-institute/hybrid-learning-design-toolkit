@@ -7,7 +7,6 @@ nav_order: 3
 
 # Community Building Cards
 
-<span style="background: #6f42c1; color: white; padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500; white-space: nowrap; display: inline-block; margin-bottom: 24px;">Card Collection</span>
 
 ## Overview
 Building cohesive learning communities across hybrid environments requires intentional activities designed to connect students regardless of their participation mode. The Community Building Cards provide 25 structured activities organized by course timeline phases, addressing the unique challenge of creating unified community identity when learners participate from both physical and virtual spaces throughout the semester.
@@ -18,7 +17,7 @@ Building cohesive learning communities across hybrid environments requires inten
 > **Interactive Community Building Cards**  
 > *Digital card collection with community-building strategies specifically designed for hybrid learning contexts*
 >
-> <a href="{{ '/assets/tools/hybrid-learning-community-building-cards.html' | relative_url }}" style="display: inline-block; background: #0366d6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> <a href="{{ '/assets/tools/hybrid-learning-community-building-cards.html' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
 > Explore Tool →
 > </a>
 >
