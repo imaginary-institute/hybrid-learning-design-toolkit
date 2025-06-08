@@ -7,6 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Hybrid Learning Decision Tree for Starting Dimension - Visual Guide</title>
 
+<!-- Add Font Awesome and external libraries -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Add Font Awesome and external libraries -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Add html2canvas and jsPDF libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -55,12 +59,12 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 14px;
-    line-height: 1.4;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
     color: var(--text-color);
     background-color: #f9f9f9;
-    padding: 30px;
+    padding: 20px;
     margin: 0;
     max-width: 1200px;
     margin: 0 auto;
@@ -192,12 +196,12 @@ h4 {
     background: white;
     border-radius: 8px;
     padding: 25px;
-    margin: 0 15px;
+    margin: 0 0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border: 2px solid;
     position: relative;
     cursor: pointer;
-    max-width: 280px;
+    
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -216,8 +220,8 @@ h4 {
 .branch-nodes {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    max-width: 1200px;
+    gap: 15px;
+    
     margin: 0 auto;
 }
 
@@ -268,15 +272,16 @@ h4 {
 
 .explore-button {
     margin-top: 15px;
-    padding: 8px 16px;
+    padding: 12px 20px;
     background: var(--primary-button);
     color: white;
-    border-radius: 4px;
-    font-size: 0.9em;
-    font-weight: 500;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
     text-align: center;
     border: none;
     font-style: normal;
+    transition: all 0.2s ease;
 }
 
 /* Visual connecting lines */
@@ -371,17 +376,52 @@ h4 {
 }
 
 .result-box {
-    background: var(--essential-color);
-    color: white;
-    border-radius: 6px;
-    padding: 15px;
+    background: white;
+    border: 2px solid var(--essential-color);
+    border-radius: 8px;
+    padding: 20px;
     margin-top: 15px;
-    font-weight: 500;
+    position: relative;
 }
 
-.result-title {
+.result-label {
+    position: absolute;
+    top: -12px;
+    left: 15px;
+    background: white;
+    padding: 0 8px;
+    font-size: 0.85em;
     font-weight: 600;
+    color: var(--essential-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.result-dimension {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--heading-color);
     margin-bottom: 8px;
+}
+
+.result-level-badge {
+    display: inline-block;
+    background: var(--essential-color);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 8px;
+}
+
+.result-details {
+    margin-top: 12px;
+    color: var(--text-color);
+    font-size: 0.95em;
+    line-height: 1.5;
 }
 
 .tech-path {
@@ -465,13 +505,13 @@ h4 {
     background-color: var(--success-color);
     color: white;
     border: none;
-    padding: 8px 16px;
-    font-size: 14px;
-    border-radius: 5px;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
-    font-weight: 500;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
 .btn-export:hover {
@@ -646,7 +686,7 @@ hr {
 <h1>DECISION TREE FOR STARTING DIMENSION</h1>
 
 <div class="intro-box">
-    <h3>🎯 Introduction</h3>
+    <h3><i class="fas fa-bullseye"></i> Introduction</h3>
     <p>The Decision Tree for Starting Dimension is a practical navigation tool designed to help educators identify the most strategic entry point into hybrid teaching implementation. Based on research showing that attempting to transform all aspects of teaching simultaneously can lead to cognitive overload and implementation failure, this tool guides you to focus on one dimension initially, building confidence and competence before expanding to others.</p>
     
     
@@ -658,12 +698,12 @@ hr {
 
 
 
-<h2 id="tree-start">🌳 VISUAL DECISION TREE</h2>
+<h2 id="tree-start"><i class="fas fa-sitemap"></i> VISUAL DECISION TREE</h2>
 
 <div class="tree-container" id="tree-start">
     <!-- Root Question -->
     <div style="text-align: center; margin: 30px 0;">
-        <div style="font-size: 2.5em; margin-bottom: 15px;">🎯</div>
+        <div style="font-size: 2.5em; margin-bottom: 15px;"><i class="fas fa-bullseye"></i></div>
         <h3 style="font-size: 1.5em; color: var(--heading-color); margin-bottom: 10px;">What's your PRIMARY hybrid teaching challenge?</h3>
         <p style="color: var(--medium-gray); font-size: 1em;">Start here and follow the path that best matches your situation</p>
     </div>
@@ -673,7 +713,7 @@ hr {
         <div class="branch-nodes">
             <div class="tree-node tech-node" onclick="scrollToSection('q2-technology-path')">
                 <div>
-                    <div class="node-icon">🔧</div>
+                    <div class="node-icon"><i class="fas fa-cogs"></i></div>
                     <div class="node-title">Technical/Environment Issues</div>
                     <ul class="node-examples">
                         <li>"Remote students can't see/hear clearly"</li>
@@ -687,7 +727,7 @@ hr {
             
             <div class="tree-node design-node" onclick="scrollToSection('q3-learning-design-path')">
                 <div>
-                    <div class="node-icon">📚</div>
+                    <div class="node-icon"><i class="fas fa-graduation-cap"></i></div>
                     <div class="node-title">Learning Design Challenges</div>
                     <ul class="node-examples">
                         <li>"In-person activities fail online"</li>
@@ -701,7 +741,7 @@ hr {
             
             <div class="tree-node engagement-node" onclick="scrollToSection('q4-engagement-path')">
                 <div>
-                    <div class="node-icon">👥</div>
+                    <div class="node-icon"><i class="fas fa-users"></i></div>
                     <div class="node-title">Engagement/Community Issues</div>
                     <ul class="node-examples">
                         <li>"Remote students are silent"</li>
@@ -715,7 +755,7 @@ hr {
             
             <div class="tree-node interest-node" onclick="scrollToSection('q5-interest-based-path')">
                 <div>
-                    <div class="node-icon">🌟</div>
+                    <div class="node-icon"><i class="fas fa-star"></i></div>
                     <div class="node-title">No Urgent Issues</div>
                     <ul class="node-examples">
                         <li>"Things work okay but could improve"</li>
@@ -730,7 +770,7 @@ hr {
 </div>
 
 <div class="sub-tree tech-subtree" id="q2-technology-path">
-    <h2>🔧 Technology Path</h2>
+    <h2><i class="fas fa-cogs"></i> Technology Path</h2>
     <h3 style="text-align: center;">What's your technology comfort level?</h3>
     
     <div class="sub-nodes">
@@ -743,11 +783,14 @@ hr {
                     <li>Limited technology available</li>
                 </ul>
             </div>
-            <div class="result-box" style="background: var(--receiving-color);">
-                <div class="result-title">→ START WITH: Dimension 1 - ESSENTIAL Level</div>
-                <p><strong>Focus:</strong> Basic reliable setup<br>
-                <strong>Priority:</strong> Audio quality and simple tools<br>
-                <strong>Next:</strong> Quick Wins Guide for Technology (Essential)</p>
+            <div class="result-box" style="border-color: var(--receiving-color);">
+                <div class="result-label" style="color: var(--receiving-color);">Start Here</div>
+                <div class="result-dimension">Dimension 1<span class="result-level-badge" style="background: var(--receiving-color);">Essential</span></div>
+                <div class="result-details">
+                    <strong>Focus:</strong> Basic reliable setup<br>
+                    <strong>Priority:</strong> Audio quality and simple tools<br>
+                    <strong>Next:</strong> Quick Wins Guide for Technology (Essential)
+                </div>
             </div>
         </div>
         
@@ -760,18 +803,21 @@ hr {
                     <li>Have standard hybrid classroom resources</li>
                 </ul>
             </div>
-            <div class="result-box" style="background: var(--receiving-color);">
-                <div class="result-title">→ START WITH: Dimension 1 - ENHANCED Level</div>
-                <p><strong>Focus:</strong> Optimizing your setup<br>
-                <strong>Priority:</strong> Dual attention tools and integration<br>
-                <strong>Next:</strong> Quick Wins Guide for Technology (Enhanced)</p>
+            <div class="result-box" style="border-color: var(--receiving-color);">
+                <div class="result-label" style="color: var(--receiving-color);">Start Here</div>
+                <div class="result-dimension">Dimension 1<span class="result-level-badge" style="background: var(--receiving-color);">Enhanced</span></div>
+                <div class="result-details">
+                    <strong>Focus:</strong> Optimizing your setup<br>
+                    <strong>Priority:</strong> Dual attention tools and integration<br>
+                    <strong>Next:</strong> Quick Wins Guide for Technology (Enhanced)
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <div class="sub-tree design-subtree" id="q3-learning-design-path">
-    <h2>📚 Learning Design Path</h2>
+    <h2><i class="fas fa-graduation-cap"></i> Learning Design Path</h2>
     <h3 style="text-align: center;">How much redesign are you ready for?</h3>
     
     <div class="sub-nodes">
@@ -784,11 +830,14 @@ hr {
                     <li>Need simple solutions that work</li>
                 </ul>
             </div>
-            <div class="result-box" style="background: var(--responding-color);">
-                <div class="result-title">→ START WITH: Dimension 2 - ESSENTIAL Level</div>
-                <p><strong>Focus:</strong> Adapting existing activities<br>
-                <strong>Priority:</strong> Clear instructions and basic equity<br>
-                <strong>Next:</strong> Quick Wins Guide for Learning Design (Essential)</p>
+            <div class="result-box" style="border-color: var(--responding-color);">
+                <div class="result-label" style="color: var(--responding-color);">Start Here</div>
+                <div class="result-dimension">Dimension 2<span class="result-level-badge" style="background: var(--responding-color);">Essential</span></div>
+                <div class="result-details">
+                    <strong>Focus:</strong> Adapting existing activities<br>
+                    <strong>Priority:</strong> Clear instructions and basic equity<br>
+                    <strong>Next:</strong> Quick Wins Guide for Learning Design (Essential)
+                </div>
             </div>
         </div>
         
@@ -801,18 +850,21 @@ hr {
                     <li>Interested in innovative approaches</li>
                 </ul>
             </div>
-            <div class="result-box" style="background: var(--responding-color);">
-                <div class="result-title">→ START WITH: Dimension 2 - ENHANCED Level</div>
-                <p><strong>Focus:</strong> Purpose-built hybrid activities<br>
-                <strong>Priority:</strong> Leveraging hybrid affordances<br>
-                <strong>Next:</strong> Quick Wins Guide for Learning Design (Enhanced)</p>
+            <div class="result-box" style="border-color: var(--responding-color);">
+                <div class="result-label" style="color: var(--responding-color);">Start Here</div>
+                <div class="result-dimension">Dimension 2<span class="result-level-badge" style="background: var(--responding-color);">Enhanced</span></div>
+                <div class="result-details">
+                    <strong>Focus:</strong> Purpose-built hybrid activities<br>
+                    <strong>Priority:</strong> Leveraging hybrid affordances<br>
+                    <strong>Next:</strong> Quick Wins Guide for Learning Design (Enhanced)
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <div class="sub-tree engagement-subtree" id="q4-engagement-path">
-    <h2>👥 Engagement Path</h2>
+    <h2><i class="fas fa-users"></i> Engagement Path</h2>
     <h3 style="text-align: center;">What's the nature of the engagement problem?</h3>
     
     <div class="sub-nodes">
@@ -825,11 +877,14 @@ hr {
                     <li>Need basic facilitation strategies</li>
                 </ul>
             </div>
-            <div class="result-box" style="background: var(--creating-color);">
-                <div class="result-title">→ START WITH: Dimension 3 - ESSENTIAL Level</div>
-                <p><strong>Focus:</strong> Basic inclusion strategies<br>
-                <strong>Priority:</strong> Attention management protocols<br>
-                <strong>Next:</strong> Quick Wins Guide for Engagement (Essential)</p>
+            <div class="result-box" style="border-color: var(--creating-color);">
+                <div class="result-label" style="color: var(--creating-color);">Start Here</div>
+                <div class="result-dimension">Dimension 3<span class="result-level-badge" style="background: var(--creating-color);">Essential</span></div>
+                <div class="result-details">
+                    <strong>Focus:</strong> Basic inclusion strategies<br>
+                    <strong>Priority:</strong> Attention management protocols<br>
+                    <strong>Next:</strong> Quick Wins Guide for Engagement (Essential)
+                </div>
             </div>
         </div>
         
@@ -842,18 +897,21 @@ hr {
                     <li>Want deeper interaction across modes</li>
                 </ul>
             </div>
-            <div class="result-box" style="background: var(--creating-color);">
-                <div class="result-title">→ START WITH: Dimension 3 - ENHANCED Level</div>
-                <p><strong>Focus:</strong> Cross-modal community building<br>
-                <strong>Priority:</strong> Integrated engagement strategies<br>
-                <strong>Next:</strong> Quick Wins Guide for Engagement (Enhanced)</p>
+            <div class="result-box" style="border-color: var(--creating-color);">
+                <div class="result-label" style="color: var(--creating-color);">Start Here</div>
+                <div class="result-dimension">Dimension 3<span class="result-level-badge" style="background: var(--creating-color);">Enhanced</span></div>
+                <div class="result-details">
+                    <strong>Focus:</strong> Cross-modal community building<br>
+                    <strong>Priority:</strong> Integrated engagement strategies<br>
+                    <strong>Next:</strong> Quick Wins Guide for Engagement (Enhanced)
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <div class="sub-tree interest-subtree" id="q5-interest-based-path">
-    <h2>🌟 Interest-Based Path</h2>
+    <h2><i class="fas fa-star"></i> Interest-Based Path</h2>
     <h3 style="text-align: center;">What aspect of hybrid teaching most interests you?</h3>
     
     <div class="sub-nodes" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
@@ -866,9 +924,12 @@ hr {
                     <li>Enjoy technical experimentation</li>
                 </ul>
             </div>
-            <div class="result-box" style="background: var(--receiving-color);">
-                <div class="result-title">→ START WITH: Dimension 1</div>
-                <p>Use your <strong>Hybrid Teaching Compass</strong> results to guide Essential/Enhanced/Transformative choice</p>
+            <div class="result-box" style="border-color: var(--receiving-color);">
+                <div class="result-label" style="color: var(--receiving-color);">Start Here</div>
+                <div class="result-dimension">Dimension 1</div>
+                <div class="result-details">
+                    Use your <strong>Hybrid Teaching Compass</strong> results to guide Essential/Enhanced/Transformative choice
+                </div>
             </div>
         </div>
         
@@ -881,9 +942,12 @@ hr {
                     <li>Focused on learning outcomes</li>
                 </ul>
             </div>
-            <div class="result-box" style="background: var(--responding-color);">
-                <div class="result-title">→ START WITH: Dimension 2</div>
-                <p>Use your <strong>Hybrid Teaching Compass</strong> results to guide Essential/Enhanced/Transformative choice</p>
+            <div class="result-box" style="border-color: var(--responding-color);">
+                <div class="result-label" style="color: var(--responding-color);">Start Here</div>
+                <div class="result-dimension">Dimension 2</div>
+                <div class="result-details">
+                    Use your <strong>Hybrid Teaching Compass</strong> results to guide Essential/Enhanced/Transformative choice
+                </div>
             </div>
         </div>
         
@@ -896,15 +960,18 @@ hr {
                     <li>Focused on social learning</li>
                 </ul>
             </div>
-            <div class="result-box" style="background: var(--creating-color);">
-                <div class="result-title">→ START WITH: Dimension 3</div>
-                <p>Use your <strong>Hybrid Teaching Compass</strong> results to guide Essential/Enhanced/Transformative choice</p>
+            <div class="result-box" style="border-color: var(--creating-color);">
+                <div class="result-label" style="color: var(--creating-color);">Start Here</div>
+                <div class="result-dimension">Dimension 3</div>
+                <div class="result-details">
+                    Use your <strong>Hybrid Teaching Compass</strong> results to guide Essential/Enhanced/Transformative choice
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<h2>🔄 Using Your Results</h2>
+<h2><i class="fas fa-sync-alt"></i> Using Your Results</h2>
 
 <div class="usage-tips">
     <p><strong>Once you've identified your starting dimension:</strong></p>
@@ -928,26 +995,26 @@ hr {
     </div>
 </div>
 
-<h2>🔗 Connection to Other Tools</h2>
+<h2><i class="fas fa-link"></i> Connection to Other Tools</h2>
 
 <div class="connection-grid">
     <div class="connection-item">
-        <h4>🧭 Hybrid Learning Self-Assessment</h4>
+        <h4><i class="fas fa-compass"></i> Hybrid Learning Self-Assessment</h4>
         <p>For detailed readiness assessment before making decisions</p>
     </div>
     
     <div class="connection-item">
-        <h4>📋 Implementation Level Cards</h4>
+        <h4><i class="fas fa-clipboard-list"></i> Implementation Level Cards</h4>
         <p>For understanding what each level entails</p>
     </div>
     
     <div class="connection-item">
-        <h4>⚡ Quick Wins Guides</h4>
+        <h4><i class="fas fa-bolt"></i> Quick Wins Guides</h4>
         <p>For immediate actions based on your decision</p>
     </div>
     
     <div class="connection-item">
-        <h4>🛠️ Dimension-Specific Toolkits</h4>
+        <h4><i class="fas fa-tools"></i> Dimension-Specific Toolkits</h4>
         <p>For comprehensive implementation support</p>
     </div>
 </div>
@@ -963,7 +1030,7 @@ hr {
         font-weight: 600;
         cursor: pointer;
     ">
-        🌳 ↑ Back to Decision Tree
+        <i class="fas fa-sitemap"></i> ↑ Back to Decision Tree
     </button>
 </div>
 

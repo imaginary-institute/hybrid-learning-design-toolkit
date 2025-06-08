@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hybrid Learning Activity Cards</title>
+    <!-- Add Font Awesome and external libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Add html2canvas and jsPDF libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
@@ -721,8 +724,8 @@
                 implementation: [
                     "Select text/media short enough for deep engagement (3-5 pages/min)",
                     {
-                        step: "Provide annotation codes: 💡insight ❓question 🔗connection ⚡reaction",
-                        example: "Example: \"Mark key claims with 💡 and counterarguments with ❓\"",
+                                        step: "Provide annotation codes: <i class=\"fas fa-lightbulb\"></i> insight <i class=\"fas fa-question\"></i> question <i class=\"fas fa-link\"></i> connection <i class=\"fas fa-bolt\"></i> reaction",
+                example: "Example: \"Mark key claims with <i class=\"fas fa-lightbulb\"></i> and counterarguments with <i class=\"fas fa-question\"></i>\"",
                         priority: true
                     },
                     "Model quality annotations showing depth over quantity",
@@ -1676,7 +1679,7 @@
                                 if (typeof item === 'string') {
                                     return `<li>${item}</li>`;
                                 } else {
-                                    const priorityStr = item.priority ? '<span class="priority-star">⭐</span>' : '';
+                                    const priorityStr = item.priority ? '<span class="priority-star"><i class="fas fa-star"></i></span>' : '';
                                     const exampleStr = item.example ? `<div class="example-text"><em>${item.example}</em></div>` : '';
                                     return `<li>${priorityStr}${item.step}${exampleStr}</li>`;
                                 }
@@ -1696,7 +1699,7 @@
                                 <span class="consideration-text">${card.considerations.onsite}</span>
                             </div>
                             <div class="consideration-item">
-                                <span class="consideration-label">• ${card.considerations.crossmodal.priority ? '<span class="consideration-star">⭐</span>' : ''}Cross-modal:</span>
+                                <span class="consideration-label">• ${card.considerations.crossmodal.priority ? '<span class="consideration-star"><i class="fas fa-star"></i></span>' : ''}Cross-modal:</span>
                                 <span class="consideration-text">${card.considerations.crossmodal.text}</span>
                             </div>
                         </div>
