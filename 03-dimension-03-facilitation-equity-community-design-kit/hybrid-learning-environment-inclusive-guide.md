@@ -1,7 +1,7 @@
 ---
 title: "Inclusive Environment Guide"
 layout: default
-parent: "Dimension 1: Environment & Technology"
+parent: "Dimension 3: Facilitation, Equity & Community"
 nav_order: 3
 ---
 
@@ -34,4 +34,4 @@ The Inclusive Environment Guide serves as a comprehensive accessibility resource
 
 ---
 
-*The Inclusive Environment Guide is part of Dimension 1 tools focused on creating accessible and equitable hybrid learning environments.*
+*The Inclusive Environment Guide is part of Dimension 3 tools focused on facilitation, equity, and community design for hybrid learning environments.*

@@ -267,10 +267,10 @@ dl dd > :last-child {
 }
 
 blockquote {
-    border-left: 4px solid var(--primary-button);
+    border-left: 4px solid;
     padding: 15px 20px;
     color: var(--text-color);
-    background-color: var(--receiving-bg);
+    background-color: rgba(114, 83, 237, 0.1);
     border-radius: 5px;
     margin: 20px 0;
 }
@@ -306,7 +306,7 @@ table tr:nth-child(2n) {
 }
 
 table tr:hover {
-    background-color: var(--receiving-bg);
+    background-color: rgba(114, 83, 237, 0.1);
 }
 
 table tr th {
@@ -565,7 +565,7 @@ kbd {
 
 /* New PDF button style to match our design language */
 .btn-export:nth-child(2) {
-    background-color: var(--creating-color);
+    background-color: #7553e6;
 }
 
 .btn-export:nth-child(2):hover {
@@ -799,6 +799,39 @@ html {
 h1, h2, h3 {
     scroll-margin-top: 20px;
 }
+
+/* Special styling for contact input fields */
+.contact-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    background-color: white;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
+
+.contact-input:focus {
+    outline: none;
+    border-color: #7253ed;
+    box-shadow: 0 0 0 3px rgba(114, 83, 237, 0.1);
+}
+
+.contact-input::placeholder {
+    color: var(--hint-color);
+    font-style: italic;
+}
+
+/* Ensure input fields look good in print */
+@media print {
+    .contact-input {
+        border: 1px solid #333;
+        background-color: white;
+        -webkit-print-color-adjust: exact;
+    }
+}
 </style>
 
 
@@ -812,14 +845,13 @@ h1, h2, h3 {
         Quick Navigation
     </div>
     <div class="toc-content">
-        <a href="#toc_1" class="toc-item">Pre-Session Check</a>
-        <a href="#toc_2" class="toc-item">Critical Response</a>
-        <a href="#toc_3" class="toc-item">Top 5 Critical Scenarios</a>
-        <a href="#toc_9" class="toc-item">Rapid Activity Pivots</a>
-        <a href="#toc_13" class="toc-item">Emergency Communications</a>
-        <a href="#toc_16" class="toc-item">30-Second Recovery</a>
-        <a href="#toc_17" class="toc-item">Activity Transitions</a>
-        <a href="#toc_20" class="toc-item">Core Principles</a>
+        <a href="#emergency-contacts" class="toc-item">Emergency Contacts</a>
+        <a href="#before-you-start" class="toc-item">Before You Start</a>
+        <a href="#when-something-goes-wrong" class="toc-item">When Something Goes Wrong</a>
+        <a href="#common-problems" class="toc-item">Common Problems & Quick Fixes</a>
+        <a href="#managing-activities" class="toc-item">Managing Activities</a>
+        <a href="#helpful-scripts" class="toc-item">Helpful Scripts</a>
+        <a href="#guiding-principles" class="toc-item">Guiding Principles</a>
     </div>
 </nav>
 
@@ -833,339 +865,15 @@ h1, h2, h3 {
 <!-- Main content wrapper for export -->
 <div id="contentToExport">
 
-<h1 id="toc_0">HYBRID IN-SESSION QUICK RESPONSE GUIDE</h1>
+<h1>HYBRID TEACHING: QUICK FIXES</h1>
 
 <blockquote>
 <p><strong><i class="fas fa-mobile-alt"></i> Keep this guide accessible during all hybrid sessions</strong><br>
 Print, display on second screen, or access on mobile device</p>
 </blockquote>
 
-<hr>
-
-<h2 id="toc_1"><i class="fas fa-stopwatch"></i> PRE-SESSION INCLUSIVE READINESS CHECK (60-SECONDS)</h2>
-
-<table>
-<thead>
-<tr>
-            <th style="text-align: center"><i class="fas fa-check"></i></th>
-<th style="text-align: left"><strong>Check Point</strong></th>
-<th style="text-align: left"><strong>Your Action</strong></th>
-<th style="text-align: left"><strong>Look For</strong></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td style="text-align: center"><i class="fas fa-eye"></i></td>
-<td style="text-align: left"><strong>VISIBILITY</strong></td>
-<td style="text-align: left"><em>&quot;Can everyone access visual content in a way that works for you? Cameras are optional.&quot;</em></td>
-<td style="text-align: left">• Varied access methods<br>• No camera pressure</td>
-</tr>
-<tr>
-<td style="text-align: center"><i class="fas fa-volume-up"></i></td>
-<td style="text-align: left"><strong>AUDIBILITY</strong></td>
-<td style="text-align: left"><em>&quot;If you can hear me, give a thumbs up, type YES in chat, or signal however works for you&quot;</em></td>
-<td style="text-align: left">• Multiple response types<br>• All responses valid</td>
-</tr>
-<tr>
-<td style="text-align: center"><i class="fas fa-handshake"></i></td>
-<td style="text-align: left"><strong>PARTICIPATION</strong></td>
-<td style="text-align: left"><em>&quot;Let&#39;s test our response options - respond using any method: voice, chat, reactions, or gestures&quot;</em></td>
-<td style="text-align: left">• All channels working<br>• Choice validated</td>
-</tr>
-<tr>
-<td style="text-align: center"><i class="fas fa-video"></i></td>
-<td style="text-align: left"><strong>ROOM VIEW</strong></td>
-<td style="text-align: left"><em>&quot;Remote participants, can you see/sense what&#39;s happening in the room?&quot;</em></td>
-<td style="text-align: left">• Multi-modal room info<br>• Descriptions available</td>
-</tr>
-<tr>
-            <td style="text-align: center"><i class="fas fa-microphone"></i></td>
-<td style="text-align: left"><strong>ROOM AUDIO</strong></td>
-<td style="text-align: left"><em>&quot;I&#39;ll have someone speak from different positions - signal if you need alternatives&quot;</em></td>
-<td style="text-align: left">• Audio + captions<br>• Text summaries ready</td>
-</tr>
-<tr>
-<td style="text-align: center"><i class="fas fa-sync-alt"></i></td>
-<td style="text-align: left"><strong>FLEXIBILITY</strong></td>
-<td style="text-align: left"><em>&quot;Remember you can switch between video/audio/text participation anytime&quot;</em></td>
-<td style="text-align: left">• Mode-switching normal<br>• No justification needed</td>
-</tr>
-</tbody>
-</table>
-
-<hr>
-
-<h2 id="toc_2"><i class="fas fa-exclamation-triangle"></i> CRITICAL RESPONSE FLOWCHART</h2>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: left"><strong>Issue Type</strong></th>
-<th style="text-align: left"><strong>What's Blocked?</strong></th>
-<th style="text-align: left"><strong>Immediate Response</strong></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td style="text-align: left"><strong><i class="fas fa-eye"></i> VISIBILITY BARRIER</strong></td>
-<td style="text-align: left">• Content Access<br>• People/Presence<br>• Any visual element</td>
-<td style="text-align: left">→ Share in multiple formats<br>→ Describe + alternatives<br>→ Provide text description</td>
-</tr>
-<tr>
-<td style="text-align: left"><strong><i class="fas fa-volume-up"></i> AUDIBILITY BARRIER</strong></td>
-<td style="text-align: left">• Some can't hear<br>• Some can't speak<br>• Tech audio issue</td>
-<td style="text-align: left">→ Type key points + captions<br>→ Open chat + reactions<br>→ Multiple input methods</td>
-</tr>
-<tr>
-<td style="text-align: left"><strong><i class="fas fa-handshake"></i> PARTICIPATION BARRIER</strong></td>
-<td style="text-align: left">• Tool requirement<br>• Comfort level<br>• Tech/ability limits</td>
-<td style="text-align: left">→ Provide alternatives<br>→ Normalize all modes<br>→ Flexible pathways</td>
-</tr>
-</tbody>
-</table>
-
-<hr>
-
-<h2 id="toc_3"><i class="fas fa-exclamation-triangle"></i> TOP 5 CRITICAL SCENARIOS &amp; INCLUSIVE SOLUTIONS</h2>
-
-<h3 id="toc_4"><i class="fas fa-volume-mute"></i> Audio Participation Varies</h3>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: left"><strong>Quick Solution</strong></th>
-<th style="text-align: left"><strong>Prevention</strong></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td style="text-align: left"><i class="fas fa-comments"></i> <em>&quot;Audio is one option - chat and reactions equally valued&quot;</em></td>
-<td style="text-align: left">Start with multi-modal as norm</td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-eye"></i> Monitor all channels simultaneously</td>
-<td style="text-align: left">Set up dashboard view</td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-bullhorn"></i> Read chat contributions aloud</td>
-<td style="text-align: left">Establish this practice early</td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-pause"></i> Pause for text responses</td>
-<td style="text-align: left">Build in response time</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="toc_5"><i class="fas fa-signal"></i> Varied Connection Quality</h3>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: left"><strong>Quick Solution</strong></th>
-<th style="text-align: left"><strong>Prevention</strong></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td style="text-align: left"><i class="fas fa-heart"></i> <em>&quot;If you&#39;re frozen/disconnected, you&#39;re still with us&quot;</em></td>
-<td style="text-align: left">Design for lowest bandwidth</td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-save"></i> Share key points in persistent chat</td>
-<td style="text-align: left">Create running notes</td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-film"></i> Record for async access</td>
-<td style="text-align: left">Set recording as default</td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-users"></i> Assign note-taking buddies</td>
-<td style="text-align: left">Partner system from start</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="toc_6"><i class="fas fa-desktop"></i> Screen Sharing Access</h3>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: left"><strong>Quick Solution</strong></th>
-<th style="text-align: left"><strong>Prevention</strong></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td style="text-align: left"><i class="fas fa-comment"></i> Verbally describe all visual content</td>
-<td style="text-align: left">Practice narration skills</td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-file-alt"></i> Share materials in advance</td>
-<td style="text-align: left">Pre-session distribution</td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-comments"></i> Provide text summaries in chat</td>
-<td style="text-align: left">Prepare key point summaries</td>
-</tr>
-<td style="text-align: left"><i class="fas fa-sync-alt"></i> Use multiple formats simultaneously</td>
-<td style="text-align: left">Multi-modal from start</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="toc_7"><i class="fas fa-eye"></i> Camera Preferences</h3>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: left"><strong>Quick Solution</strong></th>
-<th style="text-align: left"><strong>Prevention</strong></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td style="text-align: left"><i class="fas fa-smile"></i> <em>&quot;Cameras optional - your comfort matters&quot;</em></td>
-<td style="text-align: left">Camera-optional culture</td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-tag"></i> Use names/avatars for presence</td>
-<td style="text-align: left">Normalize alternatives</td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-microphone"></i> Focus on voice/text participation</td>
-<td style="text-align: left">Value all contributions</td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-check"></i> Validate all presence modes</td>
-<td style="text-align: left">Celebrate diversity</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="toc_8"><i class="fas fa-handshake"></i> Engagement Tool Barriers</h3>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: left"><strong>Quick Solution</strong></th>
-<th style="text-align: left"><strong>Prevention</strong></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td style="text-align: left"><i class="fas fa-palette"></i> <em>&quot;Multiple ways to participate - choose what works&quot;</em></td>
-<td style="text-align: left">Built-in choice design</td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-random"></i> Always have multiple response options</td>
-<td style="text-align: left">Plan A, B, C methods</td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-gem"></i> Value all contribution types equally</td>
-<td style="text-align: left">Consistent messaging</td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-clock"></i> Time flexibility for responses</td>
-<td style="text-align: left">Async options ready</td>
-</tr>
-</tbody>
-</table>
-
-<hr>
-
-<h2 id="toc_9"><i class="fas fa-sync-alt"></i> RAPID ACTIVITY PIVOTS</h2>
-
-<h3 id="toc_10"><i class="fas fa-eye"></i> When VISIBILITY is a Barrier</h3>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: left"><strong>Strategy</strong></th>
-<th style="text-align: left"><strong>Implementation</strong></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td style="text-align: left"><i class="fas fa-eye"></i> <strong>Multi-Sensory</strong></td>
-<td style="text-align: left">Describe + Type + Share + Caption simultaneously</td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-handshake"></i> <strong>Peer Support</strong></td>
-<td style="text-align: left"><em>&quot;If you can see clearly, help describe in chat&quot;</em></td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-book"></i> <strong>Format Flex</strong></td>
-<td style="text-align: left">Video → Slides → Text → Audio descriptions</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="toc_11"><i class="fas fa-volume-up"></i> When AUDIBILITY is a Barrier</h3>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: left"><strong>Strategy</strong></th>
-<th style="text-align: left"><strong>Implementation</strong></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td style="text-align: left"><i class="fas fa-redo"></i> <strong>Redundancy</strong></td>
-<td style="text-align: left">Speak + Type + Visual cues + Summaries</td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-chart-bar"></i> <strong>Multi-Channel</strong></td>
-<td style="text-align: left"><em>&quot;Contributing via chat/reactions/voice all equal&quot;</em></td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-hourglass-half"></i> <strong>Time Flex</strong></td>
-<td style="text-align: left"><em>&quot;Take time to type if speaking isn't working&quot;</em></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="toc_12"><i class="fas fa-handshake"></i> When PARTICIPATION is a Barrier</h3>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: left"><strong>Strategy</strong></th>
-<th style="text-align: left"><strong>Implementation</strong></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td style="text-align: left"><i class="fas fa-bullseye"></i> <strong>Choices</strong></td>
-<td style="text-align: left">Speak → Type → React → Draw → Show later</td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-shield-alt"></i> <strong>Comfort</strong></td>
-<td style="text-align: left"><em>&quot;Participate from your comfort zone&quot;</em></td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-users"></i> <strong>Buddies</strong></td>
-<td style="text-align: left">Partner across different modes</td>
-</tr>
-</tbody>
-</table>
-
-<hr>
-
-<h2 id="toc_13"><i class="fas fa-life-ring"></i> EMERGENCY COMMUNICATIONS</h2>
-
-<h3 id="toc_14"><i class="fas fa-phone"></i> Quick Contacts</h3>
+<h2 id="emergency-contacts"><i class="fas fa-life-ring"></i> EMERGENCY CONTACTS</h2>
+<p><em>Keep visible at all times</em></p>
 
 <table>
 <thead>
@@ -1178,56 +886,74 @@ Print, display on second screen, or access on mobile device</p>
 <tbody>
 <tr>
 <td style="text-align: left"><i class="fas fa-wrench"></i> <strong>IT Support</strong></td>
-<td style="text-align: left">_______________________</td>
+<td style="text-align: left"><input type="text" class="contact-input" placeholder="Enter contact information"></td>
 </tr>
 <tr>
 <td style="text-align: left"><i class="fas fa-users"></i> <strong>Co-host/TA</strong></td>
-<td style="text-align: left">_______________________</td>
+<td style="text-align: left"><input type="text" class="contact-input" placeholder="Enter contact information"></td>
 </tr>
 <tr>
 <td style="text-align: left"><i class="fas fa-universal-access"></i> <strong>Accessibility</strong></td>
-<td style="text-align: left">_______________________</td>
+<td style="text-align: left"><input type="text" class="contact-input" placeholder="Enter contact information"></td>
 </tr>
 </tbody>
 </table>
 
-<h3 id="toc_15"><i class="fas fa-comments"></i> Inclusive Response Scripts</h3>
+<h2 id="before-you-start"><i class="fas fa-stopwatch"></i> BEFORE YOU START (60-Second Check)</h2>
+<p><em>Quick pre-session verification</em></p>
 
 <table>
 <thead>
 <tr>
-<th style="text-align: left"><strong>Situation</strong></th>
-<th style="text-align: left"><strong>Script</strong></th>
+<th style="text-align: center"><i class="fas fa-check"></i></th>
+<th style="text-align: left"><strong>Check Point</strong></th>
+<th style="text-align: left"><strong>Your Action</strong></th>
+<th style="text-align: left"><strong>Look For</strong></th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td style="text-align: left"><i class="fas fa-exclamation-triangle"></i> <strong>Any Barrier</strong></td>
-<td style="text-align: left"><em>&quot;We're experiencing a challenge. Let's solve this together with flexibility."</em></td>
+<td style="text-align: center"><i class="fas fa-eye"></i></td>
+<td style="text-align: left"><strong>VISIBILITY</strong></td>
+<td style="text-align: left"><em>"Can everyone access visual content in a way that works for you? Cameras are optional."</em></td>
+<td style="text-align: left">• Varied access methods<br>• No camera pressure</td>
 </tr>
 <tr>
-<td style="text-align: left"><i class="fas fa-ban"></i> <strong>Access Issue</strong></td>
-<td style="text-align: left"><em>&quot;If you can't [see/hear/participate] the usual way, please [alternative]."</em></td>
+<td style="text-align: center"><i class="fas fa-volume-up"></i></td>
+<td style="text-align: left"><strong>AUDIBILITY</strong></td>
+<td style="text-align: left"><em>"If you can hear me, give a thumbs up, type YES in chat, or signal however works for you"</em></td>
+<td style="text-align: left">• Multiple response types<br>• All responses valid</td>
 </tr>
 <tr>
-<td style="text-align: left"><i class="fas fa-cog"></i> <strong>Tech Problem</strong></td>
-<td style="text-align: left"><em>&quot;Tech issues = creative solutions. Here are three ways to continue..."</em></td>
+<td style="text-align: center"><i class="fas fa-handshake"></i></td>
+<td style="text-align: left"><strong>PARTICIPATION</strong></td>
+<td style="text-align: left"><em>"Let's test our response options - respond using any method: voice, chat, reactions, or gestures"</em></td>
+<td style="text-align: left">• All channels working<br>• Choice validated</td>
 </tr>
 <tr>
-<td style="text-align: left"><i class="fas fa-heart"></i> <strong>Comfort</strong></td>
-<td style="text-align: left"><em>&quot;Your learning matters more than perfect tech. Engage however feels right."</em></td>
+<td style="text-align: center"><i class="fas fa-video"></i></td>
+<td style="text-align: left"><strong>ROOM VIEW</strong></td>
+<td style="text-align: left"><em>"Remote participants, can you see/sense what's happening in the room?"</em></td>
+<td style="text-align: left">• Multi-modal room info<br>• Descriptions available</td>
 </tr>
 <tr>
-<td style="text-align: left"><i class="fas fa-sync-alt"></i> <strong>Continuity</strong></td>
-<td style="text-align: left"><em>&quot;Everything available in multiple formats on LMS - no one misses out."</em></td>
+<td style="text-align: center"><i class="fas fa-microphone"></i></td>
+<td style="text-align: left"><strong>ROOM AUDIO</strong></td>
+<td style="text-align: left"><em>"I'll have someone speak from different positions - signal if you need alternatives"</em></td>
+<td style="text-align: left">• Audio + captions<br>• Text summaries ready</td>
+</tr>
+<tr>
+<td style="text-align: center"><i class="fas fa-sync-alt"></i></td>
+<td style="text-align: left"><strong>FLEXIBILITY</strong></td>
+<td style="text-align: left"><em>"Remember you can switch between video/audio/text participation anytime"</em></td>
+<td style="text-align: left">• Mode-switching normal<br>• No justification needed</td>
 </tr>
 </tbody>
 </table>
 
-<hr>
-
-<h2 id="toc_16"><i class="fas fa-bolt"></i> 30-SECOND RECOVERY PROTOCOL</h2>
+<h2 id="when-something-goes-wrong"><i class="fas fa-bolt"></i> WHEN SOMETHING GOES WRONG (30-Second Fix)</h2>
+<p><em>Universal recovery protocol - Works for any situation</em></p>
 
 <table>
 <thead>
@@ -1257,11 +983,162 @@ Print, display on second screen, or access on mobile device</p>
 </tbody>
 </table>
 
-<hr>
+<h2 id="common-problems"><i class="fas fa-exclamation-triangle"></i> COMMON PROBLEMS & QUICK FIXES</h2>
+<p><em>Each with immediate fix + alternative</em></p>
 
-<h2 id="toc_17"><i class="fas fa-exchange-alt"></i> ACTIVITY TRANSITIONS</h2>
+<h3><i class="fas fa-volume-mute"></i> Can't Hear</h3>
 
-<h3 id="toc_18"><i class="fas fa-users"></i> Group Work Transitions</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left"><strong>Quick Fix</strong></th>
+<th style="text-align: left"><strong>Alternative</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left"><i class="fas fa-comments"></i> <em>"Audio is one option - chat and reactions equally valued"</em></td>
+<td style="text-align: left">Start with multi-modal as norm</td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-eye"></i> Monitor all channels simultaneously</td>
+<td style="text-align: left">Set up dashboard view</td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-bullhorn"></i> Read chat contributions aloud</td>
+<td style="text-align: left">Establish this practice early</td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-pause"></i> Pause for text responses</td>
+<td style="text-align: left">Build in response time</td>
+</tr>
+</tbody>
+</table>
+
+<h3><i class="fas fa-eye"></i> Can't See </h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left"><strong>Quick Fix</strong></th>
+<th style="text-align: left"><strong>Alternative</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left"><i class="fas fa-comment"></i> Verbally describe all visual content</td>
+<td style="text-align: left">Practice narration skills</td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-file-alt"></i> Share materials in advance</td>
+<td style="text-align: left">Pre-session distribution</td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-comments"></i> Provide text summaries in chat</td>
+<td style="text-align: left">Prepare key point summaries</td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-sync-alt"></i> Use multiple formats simultaneously</td>
+<td style="text-align: left">Multi-modal from start</td>
+</tr>
+</tbody>
+</table>
+
+<h3><i class="fas fa-signal"></i> Can't Connect </h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left"><strong>Quick Fix</strong></th>
+<th style="text-align: left"><strong>Alternative</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left"><i class="fas fa-heart"></i> <em>"If you're frozen/disconnected, you're still with us"</em></td>
+<td style="text-align: left">Design for lowest bandwidth</td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-save"></i> Share key points in persistent chat</td>
+<td style="text-align: left">Create running notes</td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-film"></i> Record for async access</td>
+<td style="text-align: left">Set recording as default</td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-users"></i> Assign note-taking buddies</td>
+<td style="text-align: left">Partner system from start</td>
+</tr>
+</tbody>
+</table>
+
+<h3><i class="fas fa-desktop"></i> Can't Participate</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left"><strong>Quick Fix</strong></th>
+<th style="text-align: left"><strong>Alternative</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left"><i class="fas fa-smile"></i> <em>"Cameras optional - your comfort matters"</em></td>
+<td style="text-align: left">Camera-optional culture</td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-tag"></i> Use names/avatars for presence</td>
+<td style="text-align: left">Normalize alternatives</td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-microphone"></i> Focus on voice/text participation</td>
+<td style="text-align: left">Value all contributions</td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-check"></i> Validate all presence modes</td>
+<td style="text-align: left">Celebrate diversity</td>
+</tr>
+</tbody>
+</table>
+
+<h3><i class="fas fa-handshake"></i> Can't Use Tools</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left"><strong>Quick Fix</strong></th>
+<th style="text-align: left"><strong>Alternative</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left"><i class="fas fa-palette"></i> <em>"Multiple ways to participate - choose what works"</em></td>
+<td style="text-align: left">Built-in choice design</td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-random"></i> Always have multiple response options</td>
+<td style="text-align: left">Plan A, B, C methods</td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-gem"></i> Value all contribution types equally</td>
+<td style="text-align: left">Consistent messaging</td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-clock"></i> Time flexibility for responses</td>
+<td style="text-align: left">Async options ready</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="managing-activities"><i class="fas fa-sync-alt"></i> MANAGING ACTIVITIES</h2>
+
+<h3><i class="fas fa-users"></i> Starting Breakout Rooms</h3>
 
 <table>
 <thead>
@@ -1275,23 +1152,49 @@ Print, display on second screen, or access on mobile device</p>
 <tbody>
 <tr>
 <td style="text-align: left"><i class="fas fa-door-open"></i> <strong>Entry</strong></td>
-<td style="text-align: left"><em>&quot;Join groups via video, audio, or chat only&quot;</em></td>
+<td style="text-align: left"><em>"Join groups via video, audio, or chat only"</em></td>
 <td style="text-align: left">• Video groups<br>• Audio only<br>• Chat only<br>• Physical + digital mix</td>
 </tr>
 <tr>
 <td style="text-align: left"><i class="fas fa-sync-alt"></i> <strong>During</strong></td>
-<td style="text-align: left"><em>&quot;Contribute through any mode&quot;</em></td>
+<td style="text-align: left"><em>"Contribute through any mode"</em></td>
 <td style="text-align: left">• Speaking<br>• Typing<br>• Drawing<br>• Gesturing</td>
 </tr>
 <tr>
 <td style="text-align: left"><i class="fas fa-bullseye"></i> <strong>Exit</strong></td>
-<td style="text-align: left"><em>&quot;Share work in any format&quot;</em></td>
+<td style="text-align: left"><em>"Share work in any format"</em></td>
 <td style="text-align: left">• Live present<br>• Chat summary<br>• Visual share<br>• Async post</td>
 </tr>
 </tbody>
 </table>
 
-<h3 id="toc_19"><i class="fas fa-tools"></i> Tool Use Flexibility</h3>
+<h3><i class="fas fa-exchange-alt"></i> Switching Between Activities</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left"><strong>When Issue</strong></th>
+<th style="text-align: left"><strong>Quick Pivot Strategy</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left"><i class="fas fa-eye"></i> <strong>Visual Barrier</strong></td>
+<td style="text-align: left">Describe + Type + Share + Caption simultaneously</td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-volume-up"></i> <strong>Audio Barrier</strong></td>
+<td style="text-align: left">Speak + Type + Visual cues + Summaries</td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-handshake"></i> <strong>Participation Barrier</strong></td>
+<td style="text-align: left">Speak → Type → React → Draw → Show later</td>
+</tr>
+</tbody>
+</table>
+
+<h3><i class="fas fa-tools"></i> When Tools Don't Work</h3>
 
 <table>
 <thead>
@@ -1304,22 +1207,82 @@ Print, display on second screen, or access on mobile device</p>
 <tbody>
 <tr>
 <td style="text-align: left"><i class="fas fa-bullhorn"></i> <strong>Intro</strong></td>
-<td style="text-align: left"><em>&quot;We'll use [tool], but here are alternatives if needed..."</em></td>
+<td style="text-align: left"><em>"We'll use [tool], but here are alternatives if needed..."</em></td>
 </tr>
 <tr>
 <td style="text-align: left"><i class="fas fa-bolt"></i> <strong>During</strong></td>
-<td style="text-align: left"><em>&quot;Trouble? No problem - try these alternatives..."</em></td>
+<td style="text-align: left"><em>"Trouble? No problem - try these alternatives..."</em></td>
 </tr>
 <tr>
 <td style="text-align: left"><i class="fas fa-clipboard"></i> <strong>Follow-up</strong></td>
-<td style="text-align: left"><em>&quot;Summary coming for anyone who couldn't access fully"</em></td>
+<td style="text-align: left"><em>"Summary coming for anyone who couldn't access fully"</em></td>
 </tr>
 </tbody>
 </table>
 
-<hr>
+<h2 id="helpful-scripts"><i class="fas fa-comments"></i> HELPFUL SCRIPTS</h2>
+<p><em>What to say when things break - How to keep everyone included</em></p>
 
-<h2 id="toc_20"><i class="fas fa-star"></i> CORE PRINCIPLES</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left"><strong>Situation</strong></th>
+<th style="text-align: left"><strong>Comfort Script</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left"><i class="fas fa-exclamation-triangle"></i> <strong>Any Barrier</strong></td>
+<td style="text-align: left"><em>"We're experiencing a challenge. Let's solve this together with flexibility."</em></td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-ban"></i> <strong>Access Issue</strong></td>
+<td style="text-align: left"><em>"If you can't [see/hear/participate] the usual way, please [alternative]."</em></td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-cog"></i> <strong>Tech Problem</strong></td>
+<td style="text-align: left"><em>"Tech issues = creative solutions. Here are three ways to continue..."</em></td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-heart"></i> <strong>Comfort</strong></td>
+<td style="text-align: left"><em>"Your learning matters more than perfect tech. Engage however feels right."</em></td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-sync-alt"></i> <strong>Continuity</strong></td>
+<td style="text-align: left"><em>"Everything available in multiple formats on LMS - no one misses out."</em></td>
+</tr>
+</tbody>
+</table>
+
+<h3><i class="fas fa-lightbulb"></i> Regular Check-In Messages</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left"><strong>Timing</strong></th>
+<th style="text-align: left"><strong>Message</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left"><i class="fas fa-bullhorn"></i> <strong>Regular Check-in</strong></td>
+<td style="text-align: left"><em>"Switch modes anytime based on your needs"</em></td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-celebration"></i> <strong>Celebrate Diversity</strong></td>
+<td style="text-align: left"><em>"I love seeing different participation styles!"</em></td>
+</tr>
+<tr>
+<td style="text-align: left"><i class="fas fa-check"></i> <strong>No Justification</strong></td>
+<td style="text-align: left"><em>"Use what works - no explanation needed"</em></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="helpful-scripts"><i class="fas fa-star"></i> GUIDING PRINCIPLES </h2>
+<p><em>Core reminders for inclusive approach</em></p>
 
 <table>
 <thead>
@@ -1348,38 +1311,10 @@ Print, display on second screen, or access on mobile device</p>
 </tr>
 <tr>
 <td style="text-align: center"><i class="fas fa-heart"></i></td>
-<td style="text-align: left"><strong>Comfort &amp; access</strong> &gt; compliance</td>
+<td style="text-align: left"><strong>Comfort & access</strong> > compliance</td>
 </tr>
 </tbody>
 </table>
-
-<h3 id="toc_21"><i class="fas fa-lightbulb"></i> Flexibility Reminders</h3>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: left"><strong>Timing</strong></th>
-<th style="text-align: left"><strong>Message</strong></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td style="text-align: left"><i class="fas fa-bullhorn"></i> <strong>Regular Check-in</strong></td>
-<td style="text-align: left"><em>"Switch modes anytime based on your needs"</em></td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-celebration"></i> <strong>Celebrate Diversity</strong></td>
-<td style="text-align: left"><em>"I love seeing different participation styles!"</em></td>
-</tr>
-<tr>
-<td style="text-align: left"><i class="fas fa-check"></i> <strong>No Justification</strong></td>
-<td style="text-align: left"><em>"Use what works - no explanation needed"</em></td>
-</tr>
-</tbody>
-</table>
-
-<hr>
 
 <p><em>Hybrid Learning Design Toolkit | 2025 Imaginary Institute | Modified CC BY-SA 4.0</em></p>
 

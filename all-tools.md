@@ -85,17 +85,6 @@ Access all hybrid learning design tools in one place. Each tool links to its int
 </div>
 
 <div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-universal-access"></i> Inclusive Environment Guide</h3>
-<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">Comprehensive inclusive protocols for visibility, audibility, and participation challenges. Universal design principles and backup activities.</p>
-<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Implementation guide</p>
-<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 20-40 minutes</p>
-
-<div style="display: flex; gap: 8px;">
-<a href="01-dimension-01-environment-technology-design-kit/hybrid-learning-environment-inclusive-guide" style="flex: 1; text-align: center; background: #7253ed; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 500;">Use Tool</a>
-</div>
-</div>
-
-<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
 <h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-bolt"></i> Quick Response Guide</h3>
 <p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">In-the-moment troubleshooting and 60-second readiness checks for active teaching sessions.</p>
 <p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Quick reference</p>
@@ -183,6 +172,17 @@ Access all hybrid learning design tools in one place. Each tool links to its int
 ## <i class="fas fa-users"></i> Dimension 3: Facilitation, Equity & Community
 
 <div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 30px 0;">
+
+<div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-universal-access"></i> Inclusive Environment Guide</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">Comprehensive inclusive protocols for visibility, audibility, and participation challenges. Universal design principles and backup activities.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Implementation guide</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 20-40 minutes</p>
+
+<div style="display: flex; gap: 8px;">
+<a href="03-dimension-03-facilitation-equity-community-design-kit/hybrid-learning-environment-inclusive-guide" style="flex: 1; text-align: center; background: #7253ed; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 500;">Use Tool</a>
+</div>
+</div>
 
 <div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
 <h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-eye"></i> Presence Lens</h3>

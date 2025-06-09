@@ -18,6 +18,12 @@ Drawing on research about "presence" in online environments, studies documenting
 <div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 30px 0;">
 
 <div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-universal-access tool-icon"></i>Inclusive Environment Guide</h3>
+<p style="margin-bottom: auto; color: #555;">Comprehensive inclusive protocols for visibility, audibility, and participation challenges. Universal design principles and backup activities.</p>
+<a href="hybrid-learning-environment-inclusive-guide" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
+</div>
+
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
 <h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-eye tool-icon"></i>Presence Lens</h3>
 <p style="margin-bottom: auto; color: #555;">Research-based frameworks for understanding teaching, social, and cognitive presence in hybrid learning environments with diagnostic tools.</p>
 <a href="hybrid-learning-presence-lens" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
