@@ -8,7 +8,7 @@ has_toc: false
 <!-- Add Font Awesome CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-# <i class="fas fa-graduation-cap"></i> Hybrid Learning Design Toolkit
+#  Hybrid Learning Design Toolkit
 
 The Hybrid Learning Design Toolkit is a research-informed design project created by learning experience designers to support educators in developing effective hybrid learning experiences. The Toolkit is a conceptual synthesis that translates a wide-range of research findings and theoretical frameworks into practical, actionable tools and handy resources.
 
@@ -22,25 +22,25 @@ The toolkit is structured around three interconnected dimensions, each offering 
 <div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
 <h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-cogs"></i> 1 - Environment & Technology</h3>
 <p style="margin-bottom: auto; color: #555;">Set up spaces and tools that actually work together</p>
-<a href="{{ '/01-dimension-01-environment-technology-design-kit/' | relative_url }}" style="display: inline-block; background: #007bff; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tools →</a>
+<a href="{{ '/01-dimension-01-environment-technology-design-kit/' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tools →</a>
 </div>
 
 <div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
 <h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-brain"></i> 2 - Learning Experience & Assessment</h3>
 <p style="margin-bottom: auto; color: #555;">Design activities that engage students anywhere</p>
-<a href="{{ '/02-dimension-02-learning-experience-assessment-kit/' | relative_url }}" style="display: inline-block; background: #28a745; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tools →</a>
+<a href="{{ '/02-dimension-02-learning-experience-assessment-kit/' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tools →</a>
 </div>
 
 <div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
 <h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-users"></i> 3 - Facilitation, Equity & Community</h3>
 <p style="margin-bottom: auto; color: #555;">Build connection across physical and digital spaces</p>
-<a href="{{ '/03-dimension-03-facilitation-equity-community-design-kit/' | relative_url }}" style="display: inline-block; background: #6f42c1; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tools →</a>
+<a href="{{ '/03-dimension-03-facilitation-equity-community-design-kit/' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tools →</a>
 </div>
 
 <div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
 <h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-book-open"></i> Understand the Framework</h3>
 <p style="margin-bottom: auto; color: #555;">Explore the research foundation and theoretical background</p>
-<a href="{{ '/hybrid-learning-design-toolkit-short_overview' | relative_url }}" style="display: inline-block; background: #24292e; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Read Overview →</a>
+<a href="{{ '/hybrid-learning-design-toolkit-short_overview' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Read Overview →</a>
 </div>
 
 </div>
