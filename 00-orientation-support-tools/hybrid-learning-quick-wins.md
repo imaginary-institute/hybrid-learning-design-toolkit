@@ -15,9 +15,9 @@ Evidence-based strategies that can be implemented immediately with minimal prepa
 > **Universal Quick Wins Guide**  
 > *Immediate strategies that work in any hybrid context, regardless of technology setup or teaching experience*
 >
-> <a href="{{ '/assets/tools/hybrid-learning-quick-wins-universal-visual.html' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> <i class="fas fa-rocket"></i> Open Universal Quick Wins
-> </a>
+> <span style="display: inline-block; background: #6c757d; color: #ffffff; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px; cursor: not-allowed;">
+> <i class="fas fa-clock"></i> Coming Soon
+> </span>
 >
 > **Tip:** Start here for strategies that can be implemented today and will improve your hybrid teaching immediately.
 
@@ -25,9 +25,9 @@ Evidence-based strategies that can be implemented immediately with minimal prepa
 > **Dimension-Specific Quick Wins**  
 > *Targeted strategies organized by the three dimensions and tailored to your identified starting point*
 >
-> <a href="{{ '/assets/tools/hybrid-learning-quick-wins-by-dimension-visual.html' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> <i class="fas fa-bullseye"></i> Open Dimension-Specific Quick Wins
-> </a>
+> <span style="display: inline-block; background: #6c757d; color: #ffffff; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px; cursor: not-allowed;">
+> <i class="fas fa-clock"></i> Coming Soon
+> </span>
 >
 > **Tip:** Use these once you've identified your starting dimension via Decision Tree or Self-Assessment for maximum impact in your specific context.
 

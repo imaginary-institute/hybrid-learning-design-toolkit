@@ -15,11 +15,10 @@ The Implementation Levels Cards helps you understand the three levels of hybrid 
 
 {: .note }
 > **Implementation Level Cards**  
-> *12 interactive cards helping you understand and navigate the Essential-Enhanced-Transformative progression*
 >
-> <span style="display: inline-block; background: #9ca3af; color: #6b7280; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px; cursor: not-allowed;">
-> Coming Soon
-> </span>
+> <a href="{{ '/assets/tools/hybrid-learning-implementation-level-cards.html' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> <i class="fas fa-layer-group"></i> Open Implementation Level Cards
+> </a>
 >
 > **Tip:** Use these cards to understand the thinking behind implementation levels and make strategic choices about your hybrid teaching approach.
 

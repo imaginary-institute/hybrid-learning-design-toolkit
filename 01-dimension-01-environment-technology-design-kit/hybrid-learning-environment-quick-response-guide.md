@@ -16,9 +16,9 @@ In-the-moment troubleshooting and 60-second readiness checks designed for immedi
 > **Interactive Quick Response Guide**  
 > *60-second readiness checks, immediate response protocols, and 30-second recovery procedures*
 >
-> <a href="{{ '/assets/tools/hybrid-learning-environment-quick-response-guide-visual.html' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> <i class="fas fa-bolt"></i> Open Quick Response Guide
-> </a>
+> <span style="display: inline-block; background: #6c757d; color: #ffffff; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px; cursor: not-allowed;">
+> <i class="fas fa-clock"></i> Coming Soon
+> </span>
 >
 > **Tip:** Keep this guide open during live hybrid sessions for immediate access to troubleshooting protocols when challenges arise.
 

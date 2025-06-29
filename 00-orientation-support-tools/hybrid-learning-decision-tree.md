@@ -18,9 +18,9 @@ Choosing which dimension to focus on first can feel overwhelming when everything
 > **Decision Tree Tool**  
 > *Step-by-step visual guide to identify your ideal starting dimension based on readiness, interests, and constraints*
 >
-> <a href="{{ site.baseurl }}/assets/tools/hybrid-learning-decision-tree-starting-dimension-visual.html" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
-> <i class="fas fa-sitemap"></i> Open Interactive Decision Tree
-> </a>
+> <span style="display: inline-block; background: #6c757d; color: #ffffff; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px; cursor: not-allowed;">
+> <i class="fas fa-clock"></i> Coming Soon
+> </span>
 >
 > **Tip:** Use this if you're unsure where to begin—the tool will guide you to your optimal starting point based on your specific context and readiness.
 
