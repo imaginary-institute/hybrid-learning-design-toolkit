@@ -30,7 +30,7 @@ Access all hybrid learning design tools in one place. Each tool links to its int
 <p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 5-10 minutes</p>
 
 <div style="display: flex; gap: 8px;">
-<a href="00-orientation-support-tools/hybrid-learning-decision-tree" style="flex: 1; text-align: center; background: #7253ed; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 500;">Use Tool</a>
+<span style="flex: 1; text-align: center; background: #6c757d; color: white; padding: 8px 12px; border-radius: 4px; font-size: 12px; font-weight: 500; opacity: 0.7;">Coming Soon</span>
 </div>
 </div>
 
@@ -52,7 +52,7 @@ Access all hybrid learning design tools in one place. Each tool links to its int
 <p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 5-15 minutes</p>
 
 <div style="display: flex; gap: 8px;">
-<a href="00-orientation-support-tools/hybrid-learning-quick-wins" style="flex: 1; text-align: center; background: #7253ed; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 500;">Use Tool</a>
+<span style="flex: 1; text-align: center; background: #6c757d; color: white; padding: 8px 12px; border-radius: 4px; font-size: 12px; font-weight: 500; opacity: 0.7;">Coming Soon</span>
 </div>
 </div>
 
@@ -91,7 +91,7 @@ Access all hybrid learning design tools in one place. Each tool links to its int
 <p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 1-5 minutes (in-session)</p>
 
 <div style="display: flex; gap: 8px;">
-<a href="01-dimension-01-environment-technology-design-kit/hybrid-learning-environment-quick-response-guide" style="flex: 1; text-align: center; background: #7253ed; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: 500;">Use Tool</a>
+<span style="flex: 1; text-align: center; background: #6c757d; color: white; padding: 8px 12px; border-radius: 4px; font-size: 12px; font-weight: 500; opacity: 0.7;">Coming Soon</span>
 </div>
 </div>
 

@@ -35,67 +35,10 @@ Building on the concept of "triple presence" across physical, digital, and remot
 <a href="hybrid-learning-environment-quick-response-guide" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
-<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-users tool-icon"></i>Participant Guide</h3>
-<p style="margin-bottom: auto; color: #555;">Resources to empower students with choice and agency in their hybrid learning participation.</p>
-<a href="hybrid-learning-environment-participant-guide" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
-</div>
 
 </div>
 
-## How These Tools Work Together
 
-These tools form a coordinated system for building effective hybrid environments. Rather than working in isolation, they connect to create a comprehensive approach to technology and learning environment design and analysis:
-
-### The Tool Flow
-
-```
-Space Mapping Canvas → Technology Selection → Inclusive Environment Guide
-                                        ↓
-Participant Guide ←─────────────── Quick Response Guide
-
-```
-{: .note }
->#### Key Connections
->- **Space Canvas → Technology Selection**: Your space analysis directly informs which technologies will work in your context
->- **Technology Selection → Inclusive Environment Guide**: Knowing your tech setup helps you plan for inclusive protocols
->- **Inclusive Environment Guide → Quick Response**: Your inclusive protocols become your quick response scripts
->- **All Tools → Participant Guide**: Everything you learn helps you better support student choice and agency
-
-## Where to start
-
-This dimension offers multiple entry points depending on your context and needs. Whether you're planning ahead for hybrid implementation, responding to an immediate need, or looking to improve an existing setup, the tools can be combined strategically. Below are recommended **workflows for different scenarios** to help you navigate these resources effectively.
-
-{: .note }
->### **<i class="fas fa-bullseye"></i> First-Time Implementation Path**
->1. **Start with Space Mapping Canvas** - Map your physical and digital spaces before making technology decisions
->2. **Use Technology Selection Guide** - Choose tools based on your space analysis and pedagogical needs
->3. **Build Inclusivity with Inclusive Environment Guide** - Develop protocols for universal accessibility and participation
->4. **Prepare Quick Response Guide** - Create your emergency toolkit for live sessions
->5. **Empower Students with Participant Guide** - Give students agency in their participation
-
-{: .note }
->### **<i class="fas fa-exclamation-triangle"></i> Crisis Mode Path** (when you need to start teaching hybrid immediately)
->1. **Quick Response Guide** - Get immediate solutions for common problems
->2. **Space Mapping Canvas** - Quickly assess your current setup's strengths and gaps
->3. **Technology Selection** - Identify critical improvements you can make right away
->4. **Inclusive Environment Guide** - Develop inclusive protocols for your specific context
-
-{: .note }
->### **<i class="fas fa-sync-alt"></i> Ongoing Improvement Path**
->1. **Use insights from Quick Response** experiences to refine your **Inclusive Environment planning**
->2. **Update Technology Selection** based on what works (and doesn't) in practice
->3. **Iterate on Space Mapping** as you discover new arrangements that work better
->4. **Expand Participant Guide** resources based on student feedback
-
-
-## Research Foundation
-
-This dimension's approach emerges from converging research streams that fundamentally reshape how we think about hybrid learning spaces. Rather than treating technology as an add-on to traditional classrooms, contemporary studies reveal that effective hybrid environments require intentional integration across what Bülow (2022) identifies as "triple presence"—the simultaneous realities of physical classrooms, digital platforms, and remote learners' diverse contexts.
-
-The research consistently points to surprising priorities. While institutions often focus on video quality and visual elements, Wagner et al. (2023) and Raes et al. (2020) demonstrate that audio quality stands as the single most critical factor determining remote student engagement. Poor audio creates immediate and insurmountable barriers, while visual limitations can often be worked around. This insight alone redirects how we allocate resources and attention.
-
-Our framework draws particularly from Activity-Centered Analysis and Design (ACAD), which examines how physical and digital environments shape learning activities rather than simply house them. This perspective, combined with Universal Design for Learning principles, shifts the focus from accommodating differences after the fact to designing for variability from the start. The progressive implementation levels reflect established technology adoption research, recognizing that sustainable change happens through manageable steps rather than revolutionary leaps.
 
 ---
 
