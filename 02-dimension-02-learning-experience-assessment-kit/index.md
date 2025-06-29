@@ -36,8 +36,8 @@ Drawing on multiple instructional design traditions, learning design methodologi
 </div>
 
 <div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
-<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-compass tool-icon"></i>Modality Companion for the Canvas</h3>
-<p style="margin-bottom: auto; color: #555;">Quick decision helper for choosing the right modality approach for each Canvas activity. Use alongside the Canvas for fast, informed planning decisions.</p>
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-compass tool-icon"></i>Activity Design Across Spaces: Canvas Companion</h3>
+<p style="margin-bottom: auto; color: #555;">Comprehensive design prompts for the "Design Across Spaces" row of the Activity Sequence Canvas. Helps you design activities that leverage the unique affordances of physical, digital, and remote environments.</p>
 <a href="modality-companion-for-canvas" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
@@ -58,14 +58,14 @@ These tools form a coordinated system for designing learning activities and asse
 ```
 <i class="fas fa-clipboard-list"></i> Activity Sequence Canvas → <i class="fas fa-layer-group"></i> Activity Strategy Cards → <i class="fas fa-chart-bar"></i> Assessment Method Cards
 
-<i class="fas fa-compass"></i> Modality Companion for Canvas ←─── <i class="fas fa-balance-scale"></i> Learning Activity Adapter
+<i class="fas fa-compass"></i> Design Across Spaces Companion ←─── <i class="fas fa-balance-scale"></i> Learning Activity Adapter
 
 ```
 {: .note }
 >#### Key Connections
 >- **Canvas → Activity Cards**: Your sequence planning directly informs which activity types work best in each segment
 >- **Activity Cards → Assessment Cards**: Activity engagement levels guide appropriate assessment method selection
->- **All Tools → Modality Companion**: Use alongside any tool for quick modality decision support
+>- **All Tools → Design Across Spaces Companion**: Use alongside any tool for guidance on designing across three spaces
 >- **Activity Adapter → All Tools**: Systematic equity analysis can be applied to any tool's outputs
 
 ## Where to start
@@ -77,12 +77,12 @@ This dimension offers multiple entry points depending on your context and needs.
 >1. **Start with Activity Sequence Canvas** - Map your learning progression before selecting specific activities
 >2. **Use Activity Strategy Cards** - Choose research-based activity patterns that match your engagement goals
 >3. **Select Assessment Method Cards** - Align assessment strategies with your activity choices and learning objectives
->4. **Apply Modality Companion** - Ensure each activity works equitably across participation modes
+>4. **Apply Design Across Spaces Companion** - Ensure each activity works holistically across physical, digital, and remote spaces
 >5. **Refine with Learning Activity Adapter** - Systematically analyze and improve equity outcomes
 
 {: .note }
 >### **<i class="fas fa-exclamation-triangle"></i> Emergency Hybrid Pivot Path** (when you need to adapt existing content immediately)
->1. **Modality Companion for Canvas** - Quick guidance for adapting your current activities
+>1. **Design Across Spaces Companion** - Quick guidance for adapting your current activities across three spaces
 >2. **Activity Sequence Canvas** - Map existing content into hybrid-friendly structure
 >3. **Activity Strategy Cards** - Find hybrid alternatives for activities that don't translate well
 >4. **Assessment Method Cards** - Identify equitable assessment options for your context

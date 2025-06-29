@@ -47,7 +47,7 @@ Generated: December 2024
 | Activity Strategy Cards | `hybrid-learning-activity-cards` | `hybrid-learning-activity-cards.html` | ✅ | Card Collection |
 | Assessment Method Cards | `hybrid-learning-assessment-cards` | `hybrid-learning-assessment-cards.html` | ✅ | Card Collection |
 | Learning Activity Adapter | `learning-activity-adapter` | `hybrid-learning-adaptation-planning-worksheet-visual.html` | ✅ | Worksheet |
-| Modality Companion for the Canvas | `modality-companion-for-canvas` | `hybrid-learning-modality-planning-reference-guide-visual.html` | ✅ | Quick Reference |
+| Activity Design Across Spaces: Canvas Companion | `modality-companion-for-canvas` | `hybrid-learning-activity-canvas-spaces-companion-tool.html` | ✅ | Design Companion |
 
 ### **Dimension 3: Facilitation, Equity & Community** (5 tools - All Complete)
 
@@ -89,11 +89,17 @@ Generated: December 2024
 | Quick Wins Guides | Orientation | Immediate improvements | Multiple HTML files |
 | Technology Selection | 1 | Choose appropriate tools | `hybrid-learning-technology-selection-guide-visual.html` |
 | Quick Response Guide | 1 | Troubleshoot in active sessions | `hybrid-learning-environment-teacher-quick-response-guide-visual.html` |
-| Modality Companion | 2 | Quick modality decisions for canvas | `hybrid-learning-modality-planning-reference-guide-visual.html` |
 | Group Formation Guide | 3 | Create effective cross-modal teams | `hybrid-learning-group-formation-guide-visual.html` |
 | Facilitation Quick Guide | 3 | In-session facilitation support | `hybrid-facilitation-quick-guide-visual.html` |
 
-**Total Quick Reference Tools: 7**
+**Total Quick Reference Tools: 6**
+
+### **<i class="fas fa-compass"></i> Design Companions** (Comprehensive design guidance for specific tools)
+| Tool | Dimension | Purpose | HTML Tool |
+|------|-----------|---------|-----------|
+| Activity Design Across Spaces: Canvas Companion | 2 | Design prompts for the "Design Across Spaces" row | `hybrid-learning-activity-canvas-spaces-companion-tool.html` |
+
+**Total Design Companions: 1**
 
 ### **<i class="fas fa-chart-bar"></i> Assessment Tools** (Evaluation and self-reflection)
 | Tool | Dimension | Purpose | HTML Tool |

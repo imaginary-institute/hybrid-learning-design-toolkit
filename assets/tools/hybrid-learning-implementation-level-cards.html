@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Learning Implementation Level Cards</title>
+    <!-- Add html2canvas and jsPDF libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        :root {
+            --essential-color: #4DB6AC;
+            --enhanced-color: #26A69A;
+            --transformative-color: #00695C;
+            --border-color: #ddd;
+            --separator-color: #999;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --medium-gray: #666;
+        
+            --card-width: 900px;
+            --side-width: calc(var(--card-width) / 2);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+
+        .card-selector {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background: white;
+            min-width: 300px;
+        }
+
+        .nav-button {
+            padding: 10px 20px;
+            background-color: var(--enhanced-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .nav-button:hover {
+            background-color: #1976D2;
+        }
+
+        .nav-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .batch-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            border-left: 2px solid #ddd;
+            padding-left: 20px;
+            margin-left: 20px;
+        }
+
+        .batch-label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .btn-batch {
+            background-color: var(--transformative-color);
+        }
+
+        .btn-batch:hover:not(:disabled) {
+            background-color: #004D40;
+        }
+
+        .progress-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f0f4f8;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--enhanced-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .card-display {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .card-container {
+            width: var(--card-width);
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--border-color);
+            min-height: 650px;
+        }
+        
+        .card-side {
+            width: var(--side-width);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-side-right {
+            border-left: 1px dotted var(--separator-color);
+        }
+
+        .card-side-left {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-header {
+            height: 60px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        .level-badge {
+            background-color: white;
+            color: var(--dark-gray);
+            padding: 10px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .card-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+        }
+        
+        .section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .content-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .content-list li {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 6px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .content-list li:before {
+            content: "•";
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .activity-guide {
+            background-color: #f8f9fa;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .activity-guide-item {
+            margin-bottom: 8px;
+        }
+        
+        .activity-guide-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .activity-guide-label {
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+        
+        .mindsets-box {
+            background-color: #e8f5e9;
+            border: 1px solid var(--essential-color);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        
+        .mindsets-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .mindsets-list li {
+            font-size: 14px;
+            line-height: 1.4;
+            margin-bottom: 5px;
+            font-style: italic;
+        }
+        
+        .mindsets-list li:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Specific colors for each level */
+        .essential .content-list li:before {
+            color: var(--essential-color);
+        }
+        
+        .enhanced .content-list li:before {
+            color: var(--enhanced-color);
+        }
+        
+        .transformative .content-list li:before {
+            color: var(--transformative-color);
+        }
+        
+        /* Loading overlay for export operations */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+        }
+
+        .spinner {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--enhanced-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Print styles for clean PDF export */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            
+            .controls {
+                display: none;
+            }
+            
+            .card-display {
+                margin: 0;
+            }
+            
+            .card-container {
+                box-shadow: none;
+                border: 2px solid var(--border-color);
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button class="nav-button" onclick="previousCard()">← Previous</button>
+        
+        <select class="card-selector" id="cardSelector" onchange="selectCard()">
+            <option value="0">Essential Implementation Level</option>
+            <option value="1">Enhanced Implementation Level</option>
+            <option value="2">Transformative Implementation Level</option>
+        </select>
+        
+        <button class="nav-button" onclick="nextCard()">Next →</button>
+        
+        <button class="nav-button" onclick="exportPNG()" style="background-color: #2196F3;">Export PNG</button>
+        <button class="nav-button" onclick="exportPDF()" style="background-color: #FF9800;">Export PDF</button>
+        
+        <div class="batch-controls">
+            <span class="batch-label">Batch Export:</span>
+            <button class="nav-button btn-batch" onclick="batchExportPNG()">All PNG</button>
+            <button class="nav-button btn-batch" onclick="batchExportPDF()">All PDF</button>
+            <button class="nav-button btn-batch" onclick="batchExportBoth()">All PNG + PDF</button>
+        </div>
+    </div>
+
+    <div class="progress-container" id="progressContainer">
+        <div class="progress-text" id="progressText">Preparing export...</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div style="font-size: 12px; color: #666;" id="progressDetails">This may take a few moments...</div>
+    </div>
+
+    <div class="card-display">
+        <div class="card-container" id="cardContainer">
+            <!-- Card content will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Generating export... This may take a moment.</p>
+    </div>
+
+    <script>
+        // Card data - Only 3 General Implementation Level Cards
+        const cardData = [
+            // Card 1: Essential Implementation Level
+            {
+                id: "general-essential",
+                title: "Essential Implementation Level",
+                level: "essential",
+                levelBadge: "ESSENTIAL",
+                color: "essential",
+                left: {
+                    characteristics: [
+                        "Foundation-building approach to hybrid learning",
+                        "Basic adaptation of existing teaching approaches",
+                        "Straightforward use of reliable technology",
+                        "Focus on ensuring fundamental functionality"
+                    ],
+                    whenToChoose: [
+                        "New to hybrid teaching (less than 1 year)",
+                        "Limited preparation time available",
+                        "Basic technology infrastructure",
+                        "Need reliable, low-risk approaches",
+                        "Building confidence with hybrid format"
+                    ],
+                    coreCapabilities: [
+                        "Deliver content to both audiences simultaneously",
+                        "Facilitate basic discussions across modalities",
+                        "Manage simple group activities",
+                        "Ensure all students can participate"
+                    ],
+                    activityGuide: {
+                        activities: "Direct Instruction, Think-Pair-Share, Basic Polls, KWL Cycles, Simple Peer Review",
+                        assessment: "Digital quizzes, Discussion participation, Submitted assignments, Basic rubrics",
+                        avoid: "Complex breakouts, Multi-stage projects, Cross-modal collaborations"
+                    }
+                },
+                right: {
+                    spacePresenceTech: [
+                        "Single camera showing instructor",
+                        "Basic audio (external mic recommended)",
+                        "Screen sharing for content",
+                        "Simple room setup with clear sightlines",
+                        "Chat monitoring for remote presence"
+                    ],
+                    planningTime: [
+                        "1-3 hours preparation per session",
+                        "30 min tech setup for new activities",
+                        "Focus on adapting existing materials",
+                        "Test technology 15 min before class"
+                    ],
+                    facilitation: [
+                        "Clear verbal descriptions of all actions",
+                        "Explicit attention to both groups",
+                        "Structured turn-taking",
+                        "Regular check-ins with remote students",
+                        "Simple interaction protocols"
+                    ],
+                    mindsets: [
+                        "\"Progress over perfection\"",
+                        "Technology serves pedagogy",
+                        "Start simple, build systematically",
+                        "Every student should feel included",
+                        "Reliability beats innovation"
+                    ]
+                }
+            },
+            
+            // Card 2: Enhanced Implementation Level
+            {
+                id: "general-enhanced",
+                title: "Enhanced Implementation Level",
+                level: "enhanced",
+                levelBadge: "ENHANCED",
+                color: "enhanced",
+                left: {
+                    characteristics: [
+                        "Intentional integration of modalities",
+                        "Purposeful redesign of learning experiences",
+                        "Strategic use of hybrid affordances",
+                        "Balanced attention across all spaces"
+                    ],
+                    whenToChoose: [
+                        "Some hybrid teaching experience (1-2 years)",
+                        "Moderate preparation time available",
+                        "Reliable technology infrastructure",
+                        "Ready to optimize hybrid potential",
+                        "Seeking deeper engagement strategies"
+                    ],
+                    coreCapabilities: [
+                        "Design activities leveraging both modalities",
+                        "Facilitate cross-modal collaboration",
+                        "Manage multiple interaction channels",
+                        "Create equivalent experiences for all",
+                        "Adapt dynamically during sessions"
+                    ],
+                    activityGuide: {
+                        activities: "Gallery Walks, Jigsaw Learning, Socratic Dialogue, Case Studies, Interactive Explorations, Concept Mapping",
+                        assessment: "Peer assessments, Multimodal submissions, Collaborative projects, Authentic tasks, Choice-based options",
+                        avoid: "Activities requiring advanced tech skills, Highly complex facilitation patterns"
+                    }
+                },
+                right: {
+                    spacePresenceTech: [
+                        "Multiple cameras for different views",
+                        "Quality audio coverage of all spaces",
+                        "Digital whiteboard or collaboration tools",
+                        "Intentional room arrangement for hybridity",
+                        "Active use of breakout rooms"
+                    ],
+                    planningTime: [
+                        "5-10 hours preparation per activity",
+                        "Time for redesigning not just adapting",
+                        "Testing new tools and workflows",
+                        "Creating resources for both modalities"
+                    ],
+                    facilitation: [
+                        "Seamless attention switching protocols",
+                        "Mixed-modality group management",
+                        "Using students as co-facilitators",
+                        "Multiple participation channels active",
+                        "Recovery strategies for engagement dips"
+                    ],
+                    mindsets: [
+                        "\"Hybrid as opportunity, not obstacle\"",
+                        "Design for interaction, not transmission",
+                        "Leverage unique affordances of each mode",
+                        "Student agency in participation choices",
+                        "Continuous experimentation and refinement"
+                    ]
+                }
+            },
+            
+            // Card 3: Transformative Implementation Level
+            {
+                id: "general-transformative",
+                title: "Transformative Implementation Level",
+                level: "transformative",
+                levelBadge: "TRANSFORMATIVE",
+                color: "transformative",
+                left: {
+                    characteristics: [
+                        "Complete reimagining of learning experiences",
+                        "Innovation beyond single-mode possibilities",
+                        "Seamless integration across all spaces",
+                        "Student-driven learning design"
+                    ],
+                    whenToChoose: [
+                        "Extensive hybrid experience (2+ years)",
+                        "Significant design time available",
+                        "Advanced technology infrastructure",
+                        "Desire to push boundaries",
+                        "Creating new hybrid pedagogies"
+                    ],
+                    coreCapabilities: [
+                        "Create experiences impossible in single mode",
+                        "Enable student-led hybrid facilitation",
+                        "Orchestrate complex multi-space activities",
+                        "Blur boundaries between modalities",
+                        "Generate emergent learning opportunities"
+                    ],
+                    activityGuide: {
+                        activities: "Open Inquiry, Digital-Physical Prototypes, Global Collaborations, Immersive Simulations, Student-Designed Activities",
+                        assessment: "Co-created rubrics, Authentic audiences, Portfolio-based, Real-world applications, Peer review systems",
+                        avoid: "Nothing off-limits - push boundaries while maintaining inclusion"
+                    }
+                },
+                right: {
+                    spacePresenceTech: [
+                        "Multiple integrated technology systems",
+                        "Advanced audio-visual capabilities",
+                        "Immersive or mixed reality options",
+                        "Flexible, reconfigurable spaces",
+                        "Student-controlled technology elements"
+                    ],
+                    planningTime: [
+                        "10+ hours for major innovations",
+                        "Iterative design with student input",
+                        "Documentation of new approaches",
+                        "Building reusable frameworks",
+                        "Time for failure and iteration"
+                    ],
+                    facilitation: [
+                        "Distributed facilitation models",
+                        "Real-time adaptation to emergence",
+                        "Students as co-designers and leaders",
+                        "Multiple simultaneous activity streams",
+                        "Community extending beyond class"
+                    ],
+                    mindsets: [
+                        "\"Hybrid as a unique modality\"",
+                        "Learning happens everywhere",
+                        "Technology amplifies human connection",
+                        "Students as partners in innovation",
+                        "Share and scale what works"
+                    ]
+                }
+            }
+        ];
+
+        let currentCardIndex = 0;
+
+        function renderCard(cardIndex) {
+            const card = cardData[cardIndex];
+            const container = document.getElementById('cardContainer');
+            const colorVar = `--${card.color}-color`;
+            
+            container.innerHTML = `
+                <!-- Left Side -->
+                <div class="card-side card-side-left ${card.level}">
+                    <div class="card-header" style="background-color: var(${colorVar});">
+                        <div class="level-badge">${card.levelBadge}</div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <h2 class="card-title">${card.title}</h2>
+                        
+                        <div class="section">
+                            <h3 class="section-title">Characteristics</h3>
+                            <ul class="content-list">
+                                ${card.left.characteristics.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div class="section">
+                            <h3 class="section-title">When to Choose</h3>
+                            <ul class="content-list">
+                                ${card.left.whenToChoose.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div class="section">
+                            <h3 class="section-title">Core Capabilities at This Level</h3>
+                            <ul class="content-list">
+                                ${card.left.coreCapabilities.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div class="section">
+                            <h3 class="section-title">Activity & Assessment Guide</h3>
+                            <div class="activity-guide">
+                                <div class="activity-guide-item">
+                                    <span class="activity-guide-label">Activities:</span> ${card.left.activityGuide.activities}
+                                </div>
+                                <div class="activity-guide-item">
+                                    <span class="activity-guide-label">Assessment:</span> ${card.left.activityGuide.assessment}
+                                </div>
+                                <div class="activity-guide-item">
+                                    <span class="activity-guide-label">Avoid:</span> ${card.left.activityGuide.avoid}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Side -->
+                <div class="card-side card-side-right ${card.level}">
+                    <div class="card-content">
+                        <div class="section">
+                            <h3 class="section-title">Space, Presence & Technology</h3>
+                            <ul class="content-list">
+                                ${card.right.spacePresenceTech.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div class="section">
+                            <h3 class="section-title">Planning & Time Requirements</h3>
+                            <ul class="content-list">
+                                ${card.right.planningTime.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div class="section">
+                            <h3 class="section-title">Facilitation Approach</h3>
+                            <ul class="content-list">
+                                ${card.right.facilitation.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div class="mindsets-box">
+                            <h3 class="section-title" style="margin-bottom: 10px;">Key Mindsets & Principles</h3>
+                            <ul class="mindsets-list">
+                                ${card.right.mindsets.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectCard() {
+            const selector = document.getElementById('cardSelector');
+            currentCardIndex = parseInt(selector.value);
+            renderCard(currentCardIndex);
+            updateNavButtons();
+        }
+
+        function previousCard() {
+            if (currentCardIndex > 0) {
+                currentCardIndex--;
+                document.getElementById('cardSelector').value = currentCardIndex;
+                renderCard(currentCardIndex);
+                updateNavButtons();
+            }
+        }
+
+        function nextCard() {
+            if (currentCardIndex < cardData.length - 1) {
+                currentCardIndex++;
+                document.getElementById('cardSelector').value = currentCardIndex;
+                renderCard(currentCardIndex);
+                updateNavButtons();
+            }
+        }
+
+        function updateNavButtons() {
+            const prevBtn = document.querySelector('.nav-button');
+            const nextBtn = document.querySelectorAll('.nav-button')[2];
+            
+            prevBtn.disabled = currentCardIndex === 0;
+            nextBtn.disabled = currentCardIndex === cardData.length - 1;
+        }
+
+        // Export functions
+        const { jsPDF } = window.jspdf;
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        
+        function renderCardTemporary(cardIndex) {
+            const originalIndex = currentCardIndex;
+            currentCardIndex = cardIndex;
+            renderCard(cardIndex);
+            return originalIndex;
+        }
+        
+        function restoreCard(originalIndex) {
+            currentCardIndex = originalIndex;
+            renderCard(originalIndex);
+            document.getElementById('cardSelector').value = originalIndex;
+            updateNavButtons();
+        }
+        
+        function exportSingleCardPNG(cardIndex) {
+            return new Promise((resolve, reject) => {
+                const card = cardData[cardIndex];
+                const filename = `${card.id}-implementation-card.png`;
+                const cardContainer = document.getElementById('cardContainer');
+                
+                html2canvas(cardContainer, {
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: '#ffffff'
+                }).then(function(canvas) {
+                    const imgData = canvas.toDataURL('image/png');
+                    const link = document.createElement('a');
+                    link.download = filename;
+                    link.href = imgData;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    resolve(filename);
+                }).catch(reject);
+            });
+        }
+        
+        function exportSingleCardPDF(cardIndex) {
+            return new Promise((resolve, reject) => {
+                const card = cardData[cardIndex];
+                const filename = `${card.id}-implementation-card.pdf`;
+                const cardContainer = document.getElementById('cardContainer');
+                
+                html2canvas(cardContainer, {
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: '#ffffff'
+                }).then(function(canvas) {
+                    const canvasWidth = canvas.width;
+                    const canvasHeight = canvas.height;
+                    const pdfWidth = canvasWidth * 0.75;
+                    const pdfHeight = canvasHeight * 0.75;
+                    const orientation = pdfWidth > pdfHeight ? 'landscape' : 'portrait';
+                    
+                    const pdf = new jsPDF({
+                        orientation: orientation,
+                        unit: 'pt',
+                        format: [pdfWidth, pdfHeight]
+                    });
+                    
+                    const imgData = canvas.toDataURL('image/png');
+                    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                    pdf.save(filename);
+                    resolve(filename);
+                }).catch(reject);
+            });
+        }
+        
+        function updateProgress(current, total, currentCard, action) {
+            const progressContainer = document.getElementById('progressContainer');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            const progressDetails = document.getElementById('progressDetails');
+            
+            const percentage = (current / total) * 100;
+            progressFill.style.width = percentage + '%';
+            progressText.textContent = `Exporting ${current} of ${total} cards...`;
+            progressDetails.textContent = `Currently processing: ${currentCard} (${action})`;
+        }
+        
+        function showProgress() {
+            document.getElementById('progressContainer').style.display = 'flex';
+            const buttons = document.querySelectorAll('.nav-button');
+            buttons.forEach(btn => btn.disabled = true);
+        }
+        
+        function hideProgress() {
+            document.getElementById('progressContainer').style.display = 'none';
+            const buttons = document.querySelectorAll('.nav-button');
+            buttons.forEach(btn => btn.disabled = false);
+            updateNavButtons();
+        }
+        
+        async function batchExportPNG() {
+            showProgress();
+            const originalIndex = currentCardIndex;
+            const totalCards = cardData.length;
+            let successCount = 0;
+            let failCount = 0;
+            
+            try {
+                for (let i = 0; i < totalCards; i++) {
+                    const card = cardData[i];
+                    updateProgress(i + 1, totalCards, card.title, 'PNG');
+                    
+                    renderCardTemporary(i);
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    
+                    try {
+                        await exportSingleCardPNG(i);
+                        successCount++;
+                    } catch (error) {
+                        console.error(`Failed to export ${card.title} as PNG:`, error);
+                        failCount++;
+                    }
+                }
+                
+                restoreCard(originalIndex);
+                alert(`Batch PNG export complete!\nSuccess: ${successCount}\nFailed: ${failCount}`);
+                
+            } catch (error) {
+                console.error('Batch PNG export error:', error);
+                alert('Batch export encountered an error. Check console for details.');
+                restoreCard(originalIndex);
+            } finally {
+                hideProgress();
+            }
+        }
+        
+        async function batchExportPDF() {
+            showProgress();
+            const originalIndex = currentCardIndex;
+            const totalCards = cardData.length;
+            let successCount = 0;
+            let failCount = 0;
+            
+            try {
+                for (let i = 0; i < totalCards; i++) {
+                    const card = cardData[i];
+                    updateProgress(i + 1, totalCards, card.title, 'PDF');
+                    
+                    renderCardTemporary(i);
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    
+                    try {
+                        await exportSingleCardPDF(i);
+                        successCount++;
+                    } catch (error) {
+                        console.error(`Failed to export ${card.title} as PDF:`, error);
+                        failCount++;
+                    }
+                }
+                
+                restoreCard(originalIndex);
+                alert(`Batch PDF export complete!\nSuccess: ${successCount}\nFailed: ${failCount}`);
+                
+            } catch (error) {
+                console.error('Batch PDF export error:', error);
+                alert('Batch export encountered an error. Check console for details.');
+                restoreCard(originalIndex);
+            } finally {
+                hideProgress();
+            }
+        }
+        
+        async function batchExportBoth() {
+            showProgress();
+            const originalIndex = currentCardIndex;
+            const totalCards = cardData.length;
+            const totalExports = totalCards * 2;
+            let successCount = 0;
+            let failCount = 0;
+            let currentExport = 0;
+            
+            try {
+                for (let i = 0; i < totalCards; i++) {
+                    const card = cardData[i];
+                    renderCardTemporary(i);
+                    
+                    currentExport++;
+                    updateProgress(currentExport, totalExports, card.title, 'PNG');
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    
+                    try {
+                        await exportSingleCardPNG(i);
+                        successCount++;
+                    } catch (error) {
+                        console.error(`Failed to export ${card.title} as PNG:`, error);
+                        failCount++;
+                    }
+                    
+                    currentExport++;
+                    updateProgress(currentExport, totalExports, card.title, 'PDF');
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    
+                    try {
+                        await exportSingleCardPDF(i);
+                        successCount++;
+                    } catch (error) {
+                        console.error(`Failed to export ${card.title} as PDF:`, error);
+                        failCount++;
+                    }
+                }
+                
+                restoreCard(originalIndex);
+                alert(`Batch PNG + PDF export complete!\nSuccess: ${successCount}\nFailed: ${failCount}`);
+                
+            } catch (error) {
+                console.error('Batch export error:', error);
+                alert('Batch export encountered an error. Check console for details.');
+                restoreCard(originalIndex);
+            } finally {
+                hideProgress();
+            }
+        }
+        
+        function exportPNG() {
+            loadingOverlay.style.display = 'flex';
+            const controls = document.querySelector('.controls');
+            controls.style.display = 'none';
+            
+            const currentCard = cardData[currentCardIndex];
+            const filename = `${currentCard.id}-implementation-card.png`;
+            const cardContainer = document.getElementById('cardContainer');
+            
+            html2canvas(cardContainer, {
+                scale: 2,
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#ffffff'
+            }).then(function(canvas) {
+                const imgData = canvas.toDataURL('image/png');
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = imgData;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                controls.style.display = 'flex';
+                loadingOverlay.style.display = 'none';
+            }).catch(function(error) {
+                console.error('Error generating PNG:', error);
+                alert('Error generating PNG. Please try again.');
+                controls.style.display = 'flex';
+                loadingOverlay.style.display = 'none';
+            });
+        }
+        
+        function exportPDF() {
+            loadingOverlay.style.display = 'flex';
+            const controls = document.querySelector('.controls');
+            controls.style.display = 'none';
+            
+            const currentCard = cardData[currentCardIndex];
+            const filename = `${currentCard.id}-implementation-card.pdf`;
+            const cardContainer = document.getElementById('cardContainer');
+            
+            html2canvas(cardContainer, {
+                scale: 2,
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#ffffff'
+            }).then(function(canvas) {
+                const canvasWidth = canvas.width;
+                const canvasHeight = canvas.height;
+                const pdfWidth = canvasWidth * 0.75;
+                const pdfHeight = canvasHeight * 0.75;
+                const orientation = pdfWidth > pdfHeight ? 'landscape' : 'portrait';
+                
+                const pdf = new jsPDF({
+                    orientation: orientation,
+                    unit: 'pt',
+                    format: [pdfWidth, pdfHeight]
+                });
+                
+                const imgData = canvas.toDataURL('image/png');
+                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                pdf.save(filename);
+                
+                controls.style.display = 'flex';
+                loadingOverlay.style.display = 'none';
+            }).catch(function(error) {
+                console.error('Error generating PDF:', error);
+                alert('Error generating PDF. Please try again.');
+                controls.style.display = 'flex';
+                loadingOverlay.style.display = 'none';
+            });
+        }
+
+        // Initialize
+        renderCard(0);
+        updateNavButtons();
+    </script>
+</body>
+</html>

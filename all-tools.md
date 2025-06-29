@@ -146,10 +146,10 @@ Access all hybrid learning design tools in one place. Each tool links to its int
 </div>
 
 <div style="flex: 0 1 300px; max-width: 400px; background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-compass"></i> Modality Companion for the Canvas</h3>
-<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">Quick decision helper for choosing the right modality approach for each Canvas activity. Use alongside the Canvas for fast, informed planning decisions.</p>
-<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Decision aid</p>
-<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 5-10 minutes</p>
+<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #1a202c;"><i class="fas fa-compass"></i> Activity Design Across Spaces: Canvas Companion</h3>
+<p style="margin: 0 0 15px 0; color: #4a5568; font-size: 14px; line-height: 1.4;">Comprehensive design prompts for the "Design Across Spaces" row of the Activity Sequence Canvas. Helps you design activities that leverage the unique affordances of physical, digital, and remote environments.</p>
+<p style="margin: 0 0 10px 0; color: #2d3748; font-size: 13px;"><strong>Type:</strong> Design companion</p>
+<p style="margin: 0 0 15px 0; color: #2d3748; font-size: 13px;"><strong>Time:</strong> 10-20 minutes</p>
 
 <div style="display: flex; gap: 8px;">
 <span style="flex: 1; text-align: center; background: #6c757d; color: white; padding: 8px 12px; border-radius: 4px; font-size: 12px; font-weight: 500; opacity: 0.7;">Coming Soon</span>

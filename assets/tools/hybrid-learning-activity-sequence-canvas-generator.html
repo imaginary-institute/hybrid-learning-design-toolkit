@@ -353,6 +353,10 @@
             border-bottom: 1px solid var(--border-color);
         }
 
+        .content-row {
+            height: 300px;
+        }
+
         .grid-row:last-child {
             border-bottom: none;
         }
@@ -364,6 +368,7 @@
             position: relative;
             vertical-align: top;
             min-width: 150px;
+            height: 100%;
         }
 
         .grid-cell:last-child {
@@ -374,6 +379,7 @@
             width: 120px;
             min-width: 120px;
             max-width: 120px;
+            height: 100%;
         }
 
         .grid-header {
@@ -422,6 +428,7 @@
             font-weight: bold;
             text-align: center;
             height: 100%;
+            min-height: 100%;
         }
 
         .receiving-cell {
@@ -443,7 +450,8 @@
         .activity-container {
             display: flex;
             flex-direction: column;
-            height: 100%;
+            height: 300px;
+            min-height: 300px;
         }
 
         .card-area {
@@ -494,7 +502,8 @@
         .modality-container {
             display: flex;
             flex-direction: column;
-            height: 100%;
+            height: 300px;
+            min-height: 300px;
         }
 
         .modality-section {
@@ -681,7 +690,7 @@
             
             <!-- Learning Goals Section -->
             <div class="learning-goals">
-                <div class="section-title">LEARNING GOALS:</div>
+                <div class="section-title">LEARNING FOCUS (Goals, Outcomes, Questions, Themes, etc.) </div>
                 <div class="goals-area" contenteditable="true" data-placeholder="Space for adding learning goals (using sticky notes or writing directly)..."></div>
             </div>
             
@@ -728,7 +737,7 @@
                 </div>
                 
                 <!-- Receiving Row -->
-                <div class="grid-row" id="receivingRow">
+                <div class="grid-row content-row" id="receivingRow">
                     <div class="grid-cell first-column">
                         <div class="engagement-cell receiving-cell">
                             RECEIVING<br>(Passive)
@@ -767,7 +776,7 @@
                 </div>
                 
                 <!-- Responding Row -->
-                <div class="grid-row" id="respondingRow">
+                <div class="grid-row content-row" id="respondingRow">
                     <div class="grid-cell first-column">
                         <div class="engagement-cell responding-cell">
                             RESPONDING<br>(Active)
@@ -806,7 +815,7 @@
                 </div>
                 
                 <!-- Creating Row -->
-                <div class="grid-row" id="creatingRow">
+                <div class="grid-row content-row" id="creatingRow">
                     <div class="grid-cell first-column">
                         <div class="engagement-cell creating-cell">
                             CREATING<br>(Constructive)
@@ -844,22 +853,26 @@
                     </div>
                 </div>
                 
-                <!-- Modality Row -->
-                <div class="grid-row" id="modalityRow">
+                <!-- Design Across Spaces row -->
+                <div class="grid-row content-row" id="modalityRow">
                     <div class="grid-cell first-column">
                         <div class="engagement-cell modality-cell">
-                            MODALITY<br>ADJUSTMENTS
+                            DESIGN ACROSS<br>SPACES
                         </div>
                     </div>
                     <div class="grid-cell">
                         <div class="activity-container modality-area">
                             <div class="modality-container">
                                 <div class="modality-section">
-                                    <div class="modality-label">For remote students:</div>
+                                    <div class="modality-label">In-Person Space:</div>
                                     <div class="modality-space"></div>
                                 </div>
                                 <div class="modality-section">
-                                    <div class="modality-label">For on-site students:</div>
+                                    <div class="modality-label">Digital Environment:</div>
+                                    <div class="modality-space"></div>
+                                </div>
+                                <div class="modality-section">
+                                    <div class="modality-label">Remote Space:</div>
                                     <div class="modality-space"></div>
                                 </div>
                             </div>
@@ -869,11 +882,15 @@
                         <div class="activity-container modality-area">
                             <div class="modality-container">
                                 <div class="modality-section">
-                                    <div class="modality-label">For remote students:</div>
+                                    <div class="modality-label">In-Person Space:</div>
                                     <div class="modality-space"></div>
                                 </div>
                                 <div class="modality-section">
-                                    <div class="modality-label">For on-site students:</div>
+                                    <div class="modality-label">Digital Environment:</div>
+                                    <div class="modality-space"></div>
+                                </div>
+                                <div class="modality-section">
+                                    <div class="modality-label">Remote Space:</div>
                                     <div class="modality-space"></div>
                                 </div>
                             </div>
@@ -883,11 +900,15 @@
                         <div class="activity-container modality-area">
                             <div class="modality-container">
                                 <div class="modality-section">
-                                    <div class="modality-label">For remote students:</div>
+                                    <div class="modality-label">In-Person Space:</div>
                                     <div class="modality-space"></div>
                                 </div>
                                 <div class="modality-section">
-                                    <div class="modality-label">For on-site students:</div>
+                                    <div class="modality-label">Digital Environment:</div>
+                                    <div class="modality-space"></div>
+                                </div>
+                                <div class="modality-section">
+                                    <div class="modality-label">Remote Space:</div>
                                     <div class="modality-space"></div>
                                 </div>
                             </div>
@@ -981,7 +1002,13 @@
             cells.forEach(cell => {
                 // Get computed style if no inline style is set
                 const computedStyle = window.getComputedStyle(cell);
-                const width = cell.style.width || computedStyle.width;
+                let width = cell.style.width || computedStyle.width;
+                
+                // Ensure we get a numeric value, default to 150px if unable to parse
+                if (!width || width === 'auto' || !width.includes('px')) {
+                    width = '150px';
+                }
+                
                 widths.push(width);
             });
             
@@ -1115,6 +1142,11 @@
             const existingWidths = getColumnWidths();
             const columnWidth = existingWidths.length > 0 ? existingWidths[0] : '150px';
             
+            // Before adding new segment, ensure all existing columns have consistent width
+            if (existingWidths.length > 0) {
+                setConsistentColumnWidth(columnWidth);
+            }
+            
             // Get existing row heights for consistency
             const rowHeights = getRowHeights();
             
@@ -1198,16 +1230,20 @@
                         </div>
                     `;
                 }
-                else if (rowIndex === 4) { // Modality row
+                else if (rowIndex === 4) { // Design Across Spaces row
                     newSegment.innerHTML = `
                         <div class="activity-container modality-area">
                             <div class="modality-container">
                                 <div class="modality-section">
-                                    <div class="modality-label">For remote students:</div>
+                                    <div class="modality-label">In-Person Space:</div>
                                     <div class="modality-space"></div>
                                 </div>
                                 <div class="modality-section">
-                                    <div class="modality-label">For on-site students:</div>
+                                    <div class="modality-label">Digital Environment:</div>
+                                    <div class="modality-space"></div>
+                                </div>
+                                <div class="modality-section">
+                                    <div class="modality-label">Remote Space:</div>
                                     <div class="modality-space"></div>
                                 </div>
                             </div>
@@ -1302,8 +1338,8 @@
                             ? parseInt(container.style.height) 
                             : parseInt(computedStyle.height);
                             
-                        // Don't go below 150px to maintain usability
-                        if (currentHeight >= 180) {
+                        // Don't go below 300px to maintain usability
+                        if (currentHeight >= 330) {
                             container.style.height = (currentHeight - 30) + 'px';
                         }
                     });
@@ -1491,8 +1527,16 @@
             });
         });
         
-        // Check for horizontal scroll on initial load
+        // Initialize consistent column widths and check for horizontal scroll on initial load
         window.addEventListener('load', function() {
+            // Set consistent width for initial columns
+            setConsistentColumnWidth('150px');
+            
+            // Update segment count to match initial segments
+            const headerRow = document.getElementById('headerRow');
+            const initialSegments = headerRow.querySelectorAll('.grid-cell:not(.first-column)');
+            segmentCountElement.textContent = initialSegments.length;
+            
             checkHorizontalScroll();
         });
         

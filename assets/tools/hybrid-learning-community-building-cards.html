@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hybrid Learning Community Building Activity Cards</title>
+    <title>Hybrid Learning Community Building Cards - 19 Cards</title>
     <!-- Add html2canvas and jsPDF libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         :root {
-            --beginning-color: #FF9800;
-            --early-weeks-color: #FF9800;
-            --midpoint-color: #FF9800;
-            --final-weeks-color: #FF9800;
-            --anytime-color: #757575;
+            --community-primary: #FF9800;
+            --connection-color: #FF9800;
+            --purpose-color: #FF9800;
+            --reflection-color: #FF9800;
+            --collaboration-color: #FF9800;
+            --celebration-color: #FF9800;
+            --essential-color: #4DB6AC;
+            --enhanced-color: #26A69A;
+            --transformative-color: #00695C;
             --border-color: #ddd;
             --separator-color: #999;
             --light-gray: #f5f5f5;
@@ -58,7 +62,7 @@
 
         .nav-button {
             padding: 10px 20px;
-            background-color: var(--midpoint-color);
+            background-color: var(--community-primary);
             color: white;
             border: none;
             border-radius: 5px;
@@ -67,7 +71,7 @@
         }
 
         .nav-button:hover {
-            background-color: #1976D2;
+            background-color: #F57C00;
         }
 
         .nav-button:disabled {
@@ -90,11 +94,11 @@
         }
 
         .btn-batch {
-            background-color: var(--beginning-color);
+            background-color: var(--community-primary);
         }
 
         .btn-batch:hover:not(:disabled) {
-            background-color: #C2185B;
+            background-color: #F57C00;
         }
 
         .progress-container {
@@ -119,7 +123,7 @@
 
         .progress-fill {
             height: 100%;
-            background-color: var(--midpoint-color);
+            background-color: var(--community-primary);
             width: 0%;
             transition: width 0.3s ease;
         }
@@ -129,224 +133,6 @@
             color: #555;
         }
 
-        .card-display {
-            display: flex;
-            justify-content: center;
-        }
-        
-        .card-container {
-            width: var(--card-width);
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            display: flex;
-            overflow: hidden;
-            position: relative;
-            border: 1px solid var(--border-color);
-            min-height: 650px;
-        }
-        
-        .card-side {
-            width: var(--side-width);
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .card-side-right {
-            border-left: 1px dotted var(--separator-color);
-        }
-
-        .card-side-left {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .card-header {
-            height: 70px;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            position: relative;
-        }
-        
-        .activity-icon {
-            background-color: white;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            font-size: 18px;
-            margin: 0 5px;
-        }
-        
-        .phase-label {
-            background-color: white;
-            color: var(--dark-gray);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .card-content {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-        
-        .card-title {
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--dark-gray);
-            margin-bottom: 8px;
-            line-height: 1.2;
-        }
-        
-        .activity-meta {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 12px;
-            color: var(--medium-gray);
-        }
-        
-        .quick-indicator {
-            color: #FFC107;
-            font-weight: bold;
-        }
-        
-        .description {
-            font-size: 14px;
-            line-height: 1.5;
-            color: var(--dark-gray);
-            margin-bottom: 15px;
-        }
-        
-        .participants {
-            font-size: 13px;
-            color: var(--medium-gray);
-            margin-bottom: 15px;
-        }
-        
-        .card-side-right {
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-        }
-        
-        .section {
-            margin-bottom: 20px;
-        }
-        
-        .section-title {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--dark-gray);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .steps-list {
-            list-style: none;
-            padding: 0;
-            counter-reset: step-counter;
-        }
-        
-        .steps-list li {
-            font-size: 13px;
-            line-height: 1.4;
-            margin-bottom: 8px;
-            padding-left: 25px;
-            position: relative;
-            counter-increment: step-counter;
-        }
-        
-        .steps-list li:before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background-color: var(--midpoint-color);
-            color: white;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: bold;
-        }
-        
-        .adaptations-section {
-            margin-bottom: 15px;
-        }
-        
-        .materials-section {
-            background-color: #f8f9fa;
-            border-left: 4px solid var(--anytime-color);
-            padding: 12px;
-            border-radius: 0 5px 5px 0;
-            margin: 12px 0;
-        }
-        
-        .materials-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .materials-list li {
-            font-size: 12px;
-            line-height: 1.4;
-            margin-bottom: 4px;
-            padding-left: 15px;
-            position: relative;
-        }
-        
-        .materials-list li:before {
-            content: "🛠";
-            position: absolute;
-            left: 0;
-        }
-        
-        .variations-section {
-            background-color: #fff3e0;
-            border-radius: 5px;
-            padding: 12px;
-            margin-top: auto;
-        }
-        
-        .variations-title {
-            font-weight: 600;
-            color: var(--final-weeks-color);
-            margin-bottom: 6px;
-            font-size: 12px;
-            text-transform: uppercase;
-        }
-        
-        .variation-item {
-            font-size: 12px;
-            line-height: 1.3;
-            margin-bottom: 4px;
-        }
-        
         /* Loading overlay for export operations */
         .loading-overlay {
             display: none;
@@ -365,7 +151,7 @@
 
         .spinner {
             border: 5px solid #f3f3f3;
-            border-top: 5px solid var(--midpoint-color);
+            border-top: 5px solid var(--community-primary);
             border-radius: 50%;
             width: 50px;
             height: 50px;
@@ -399,6 +185,273 @@
                 page-break-inside: avoid;
             }
         }
+
+        .card-display {
+            display: flex;
+            justify-content: center;
+        }
+
+        .card-container {
+            width: var(--card-width);
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--border-color);
+            min-height: 700px;
+        }
+        
+        .card-side {
+            width: var(--side-width);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-side-right {
+            border-left: 1px dotted var(--separator-color);
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .card-side-left {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-header {
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .activity-icon {
+            background-color: white;
+            width: 70px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .category-label {
+            background-color: white;
+            color: var(--dark-gray);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .category-subtitle {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--dark-gray);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 10px;
+            font-style: italic;
+            margin-top: 4px;
+        }
+        
+        .card-content {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .card-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--dark-gray);
+            margin-bottom: 8px;
+        }
+        
+        .activity-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            color: var(--medium-gray);
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .quick-indicator {
+            color: #FFC107;
+            font-weight: bold;
+        }
+        
+        .description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+        }
+        
+        .benefits {
+            margin-bottom: 20px;
+        }
+        
+        .benefits-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .benefits-list {
+            padding-left: 20px;
+        }
+        
+        .benefits-list li {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .participants {
+            font-size: 13px;
+            color: var(--medium-gray);
+            margin-bottom: 15px;
+        }
+
+        .materials-section {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--throughout-color);
+            padding: 12px;
+            border-radius: 0 5px 5px 0;
+            margin: 12px 0;
+        }
+        
+        .materials-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .materials-list li {
+            font-size: 12px;
+            line-height: 1.4;
+            margin-bottom: 4px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .materials-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            font-size: 12px;
+            font-style: italic;
+            color: var(--medium-gray);
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }
+        
+        .implementation-tips {
+            list-style-type: decimal;
+            padding-left: 25px;
+        }
+        
+        .implementation-tips li {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .example-text {
+            font-style: italic;
+            font-size: 13px;
+            color: var(--medium-gray);
+            margin-top: 3px;
+            display: block;
+        }
+        
+        .priority-star {
+            margin-right: 5px;
+            font-weight: bold;
+        }
+        
+        .implementation-adaptations {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .adaptation-level {
+            margin-bottom: 15px;
+        }
+        
+        .adaptation-level:last-child {
+            margin-bottom: 0;
+        }
+        
+        .adaptation-level-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .adaptation-level-title.essential {
+            color: var(--essential-color);
+        }
+        
+        .adaptation-level-title.enhanced {
+            color: var(--enhanced-color);
+        }
+        
+        .adaptation-level-title.transformative {
+            color: var(--transformative-color);
+        }
+        
+        .adaptation-list {
+            list-style: none;
+            padding-left: 15px;
+            font-size: 13px;
+        }
+        
+        .adaptation-list li {
+            margin-bottom: 5px;
+            position: relative;
+        }
+        
+        .adaptation-list li:before {
+            content: "•";
+            position: absolute;
+            left: -15px;
+        }
+
+        .connections-box {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: var(--light-gray);
+            border-radius: 5px;
+            font-size: 13px;
+        }
     </style>
 </head>
 <body>
@@ -406,36 +459,30 @@
         <button class="nav-button" onclick="previousCard()">← Previous</button>
         
         <select class="card-selector" id="cardSelector" onchange="selectCard()">
-            <!-- Course Beginning (Pink) -->
-            <option value="0">CB1: Digital Identity Tiles</option>
-            <option value="1">CB2: Two Truths and a Fabrication</option>
-            <option value="2">CB3: Shared Expectations Web</option>
-            <option value="3">CB4: Three-Word Introduction ⚡</option>
-            <option value="4">CB5: Course Connection Mapping</option>
-            <!-- Early Weeks (Light Green) -->
-            <option value="5">EW1: Expertise Directory</option>
-            <option value="6">EW2: Skills Mapping</option>
-            <option value="7">EW3: Group Identity Builder</option>
-            <option value="8">EW4: Study Buddy Matching</option>
-            <option value="9">EW5: Chain Reaction Formation</option>
-            <!-- Midpoint (Light Blue) -->
-            <option value="10">MP1: Midpoint Reflection Graffiti</option>
-            <option value="11">MP2: Appreciation Notes</option>
-            <option value="12">MP3: Rose/Thorn/Bud</option>
-            <option value="13">MP4: Cross-Modal Compliments ⚡</option>
-            <option value="14">MP5: Learning Journey Maps</option>
-            <!-- Final Weeks (Light Orange) -->
-            <option value="15">FW1: Knowledge Exchange Fair</option>
-            <option value="16">FW2: Course Superlatives</option>
-            <option value="17">FW3: Collaborative Wisdom Wall</option>
-            <option value="18">FW4: Digital Time Capsule</option>
-            <option value="19">FW5: Connection Continuation Planning</option>
-            <!-- Anytime Activities (Gray) -->
-            <option value="20">AA1: Remote/On-site Partner Check-ins ⚡</option>
-            <option value="21">AA2: Show & Tell Flash ⚡</option>
-            <option value="22">AA3: Digital-Physical Mirror ⚡</option>
-            <option value="23">AA4: One-Word Pulse Check ⚡</option>
-            <option value="24">AA5: Shared Geography ⚡</option>
+            <!-- CONNECTION & IDENTITY -->
+            <option value="0">Identity & Connection Mapping</option>
+            <option value="1">Two Truths and a Fabrication</option>
+            <option value="3">Three-Word Introduction ⚡</option>
+            <option value="4">Course Connection Mapping</option>
+            <!-- SHARED PURPOSE & EXPECTATIONS -->
+            <option value="2">Shared Expectations Web</option>
+            <option value="6">Skills Mapping</option>
+            <option value="7">Group Identity Builder</option>
+            <!-- COLLABORATION & SUPPORT -->
+            <option value="5">Expertise Directory</option>
+            <option value="8">Study Buddy Matching</option>
+            <option value="9">Chain Reaction Formation</option>
+            <!-- REFLECTION & FEEDBACK -->
+            <option value="10">Midpoint Reflection Graffiti</option>
+            <option value="11">Appreciation Notes</option>
+            <option value="12">Rose/Thorn/Bud</option>
+            <option value="13">Cross-Modal Compliments ⚡</option>
+            <option value="14">Learning Journey Maps</option>
+            <!-- CELEBRATION & CONTINUATION -->
+            <option value="15">Knowledge Exchange Fair</option>
+            <option value="16">Course Superlatives</option>
+            <option value="17">Collaborative Wisdom Wall</option>
+            <option value="18">Digital Time Capsule</option>
         </select>
         
         <button class="nav-button" onclick="nextCard()">Next →</button>
@@ -451,18 +498,18 @@
         </div>
     </div>
 
+    <div class="card-display">
+        <div class="card-container" id="cardContainer">
+            <!-- Card content will be populated by JavaScript -->
+        </div>
+    </div>
+
     <div class="progress-container" id="progressContainer">
         <div class="progress-text" id="progressText">Preparing export...</div>
         <div class="progress-bar">
             <div class="progress-fill" id="progressFill"></div>
         </div>
         <div style="font-size: 12px; color: #666;" id="progressDetails">This may take a few moments...</div>
-    </div>
-
-    <div class="card-display">
-        <div class="card-container" id="cardContainer">
-            <!-- Card content will be populated by JavaScript -->
-        </div>
     </div>
 
     <!-- Loading Overlay -->
@@ -472,818 +519,1521 @@
     </div>
 
     <script>
-        // Card data - All 25 Community Building Activity Cards
-        const cardData = [
-            // COURSE BEGINNING (Pink) - 5 cards
+        const allCardData = [
+            // CONNECTION & IDENTITY - 6 cards
             {
-                id: "cb1-digital-identity-tiles",
-                code: "CB1",
-                title: "Digital Identity Tiles",
-                phase: "Course Beginning",
-                color: "beginning",
-                phaseIcon: "CB1",
-                timeRequired: "15 minutes",
+                id: "identity-connection-mapping",
+                code: "CON-1",
+                title: "Identity & Connection Mapping",
+                category: "CONNECTION & IDENTITY",
+                categoryColor: "connection",
+                categoryIcon: "CON-1",
+                categorySubtitle: "Best for early course, but revisit regularly",
+                timeRequired: "20 minutes",
                 energyLevel: "Connecting",
                 isQuick: false,
-                description: "Students create personalized visual tiles featuring their name, photo or avatar, key interests, and learning goals. These tiles form a collaborative class mosaic displayed in both physical and virtual spaces, creating immediate visual community presence.",
-                participantSuitability: "👥👥👥 Ideal for: 10-30 participants",
-                implementationSteps: [
-                    "Provide template with sections for name, image, 3 interests, and 1 learning goal",
-                    "Give students 10 minutes to create their tile using digital tool",
-                    "Compile tiles into unified mosaic display",
-                    "Allow 5 minutes for viewing and commenting on others' tiles",
+                description: "Students create visual identity profiles featuring personal information, interests, and specific connections to course content, building a collaborative mosaic that establishes both individual presence and learning motivations across modalities.",
+                benefits: [
+                    "Creates immediate visual representation of community",
+                    "Surfaces hidden motivations and concerns early",
+                    "Establishes presence equity across modalities"
+                ],
+                participantSuitability: "👥 Scalable: 10-40 participants",
+                materialsNeeded: [
+                    "Digital collaboration platform (Padlet, Jamboard)",
+                    "Identity template with course connection section",
+                    "Breakout room capability for sharing"
+                ],
+                tips: [
+                    "Provide template with clear sections (name, image, interests, goal)",
+                    {
+                        step: "Set tone by sharing your own tile first",
+                        example: "Example: Show vulnerability by sharing a real learning goal",
+                        priority: true
+                    },
+                    "Give adequate time (10 min) for thoughtful creation",
+                    "Schedule viewing time where students explore others' tiles",
                     "Reference tiles throughout course to reinforce connections"
                 ],
-                hybridAdaptations: "Use collaborative tool (Padlet, Jamboard) accessible to all; Print physical copies for classroom wall display; Ensure remote students' tiles are equally prominent",
-                materialsNeeded: [
-                    "Digital collaboration platform",
-                    "Tile template",
-                    "Optional: Printer for physical display"
-                ],
-                variations: {
-                    small: "Small groups (<10): Include additional sharing about each tile",
-                    large: "Large groups (30+): Create sub-group mosaics by interest area",
-                    timeConstrained: "Time-constrained: Use pre-made templates with dropdown options"
+                adaptations: {
+                    essential: [
+                        "Use simple shared document with basic formatting",
+                        "Focus on text-based tiles if tech is limited",
+                        "Instructor reads some tiles aloud to ensure visibility",
+                        "Print physical copies to bridge digital divide"
+                    ],
+                    enhanced: [
+                        "Use interactive platforms where students can comment on tiles",
+                        "Create thematic groupings (by interest, goal, location)",
+                        "Implement \"tile tours\" where students present in small groups",
+                        "Link tiles to later activities (find someone who...)"
+                    ],
+                    transformative: [
+                        "Students co-design tile categories based on class needs",
+                        "Dynamic tiles that update throughout course journey",
+                        "AR/VR gallery where remote students \"walk\" through tiles",
+                        "Tiles become launching point for student-initiated connections"
+                    ]
                 },
-                pairsWellWith: "A1 (Presence Signaling), C1 (Cross-Modal Introductions)"
+                hybridConsiderations: {
+                    remote: "Ensure platform works on all devices; provide alternatives to photo sharing; celebrate geographic diversity",
+                    onsite: "Display digital mosaic prominently; print tiles for physical board; photograph on-site additions",
+                    crossmodal: "Create unified display visible to all; highlight connections across modalities; ensure equal tile sizes/prominence"
+                },
+                connections: "Works well with: Direct Instruction (as opening), Structured Discussions (reference tiles), Any group formation activity"
             },
             {
-                id: "cb2-two-truths-and-a-fabrication",
-                code: "CB2",
+                id: "two-truths-and-a-fabrication",
+                code: "CON-2",
                 title: "Two Truths and a Fabrication",
-                phase: "Course Beginning",
-                color: "beginning",
-                phaseIcon: "CB2",
+                phase: "OPENING",
+                phaseColor: "opening",
+                phaseIcon: "CON-2",
                 timeRequired: "10-15 minutes",
                 energyLevel: "Energizing",
                 isQuick: false,
-                description: "Classic icebreaker adapted for hybrid environments where students share three statements about themselves—two true, one false. Peers guess the fabrication using digital polling, creating playful interaction across physical and virtual spaces.",
-                participantSuitability: "👥👥 Ideal for: 6-15 participants",
-                implementationSteps: [
-                    "Each student prepares three statements (2 true, 1 false)",
-                    "Students share statements verbally, alternating between modes",
-                    "Use polling tool for all to guess the false statement",
-                    "Reveal correct answer with brief explanation",
-                    "Track interesting connections discovered"
+                description: "Classic icebreaker adapted for hybrid environments where students share three statements about themselves—two true, one false. Peers guess the fabrication using digital polling, creating playful interaction across physical and virtual spaces while revealing surprising connections.",
+                benefits: [
+                    "Sparks curiosity about classmates across modalities",
+                    "Creates shared moments of surprise and laughter",
+                    "Levels playing field through digital participation"
                 ],
-                hybridAdaptations: "Use digital polling for all guesses to ensure equity; Alternate strictly between remote and on-site presenters; Display statements visually while sharing verbally",
+                participantSuitability: "👥 Ideal for: 6-20 participants",
                 materialsNeeded: [
                     "Polling platform (Mentimeter, Poll Everywhere)",
                     "Timer for pacing",
                     "Shared document for interesting facts"
                 ],
-                variations: {
-                    small: "Small groups (<10): Allow follow-up questions about truths",
-                    large: "Large groups (30+): Use breakout rooms for parallel sessions",
-                    quick: "Quick version: Reduce to two statements (1 true, 1 false)"
+                tips: [
+                    {
+                        step: "Model vulnerability with your own surprising truths",
+                        example: "Example: \"I've lived in 5 countries\" or \"I'm afraid of butterflies\"",
+                        priority: true
+                    },
+                    "Strictly alternate between remote and on-site presenters",
+                    "Display statements visually while sharing verbally",
+                    "Celebrate unexpected connections discovered",
+                    "Keep a \"fascinating facts\" document for later reference"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple verbal sharing with chat-based guessing",
+                        "Basic alternation between modalities",
+                        "Manual tracking of correct guesses",
+                        "Focus on inclusion over competition"
+                    ],
+                    enhanced: [
+                        "Real-time polling with visual results display",
+                        "Themed rounds (academic, personal, aspirational)",
+                        "Follow-up questions about interesting truths",
+                        "Create class \"fun facts\" compilation"
+                    ],
+                    transformative: [
+                        "Students create multimedia statements (images, sounds)",
+                        "AI-generated \"believability scores\" for statements",
+                        "Connections mapping based on shared truths",
+                        "Student-led variations throughout course"
+                    ]
                 },
-                pairsWellWith: "D1 (Structured Turn-Taking), P2 (Response Mode Variety)"
+                hybridConsiderations: {
+                    remote: "Test polling platform in advance; ensure clear audio for storytelling; use reaction features for engagement",
+                    onsite: "Project polling results visibly; ensure remote students appear on screen when sharing; capture reactions",
+                    crossmodal: "Enforce strict modality alternation; highlight cross-modal correct guesses; celebrate diverse perspectives"
+                },
+                connections: "Pairs with: Structured Turn-Taking activities, Think-Pair-Share (for follow-up), Response Mode Variety"
             },
             {
-                id: "cb3-shared-expectations-web",
-                code: "CB3",
+                id: "shared-expectations-web",
+                code: "PUR-1",
                 title: "Shared Expectations Web",
-                phase: "Course Beginning",
-                color: "beginning",
-                phaseIcon: "CB3",
+                phase: "OPENING",
+                phaseColor: "opening",
+                phaseIcon: "PUR-1",
                 timeRequired: "20 minutes",
                 energyLevel: "Reflecting",
                 isQuick: false,
-                description: "Students collaboratively build a visual web of course expectations, connecting related ideas to form shared understanding. This co-created artifact becomes a reference point for community norms, displayed both physically and digitally throughout the course.",
-                participantSuitability: "👥👥👥 Ideal for: 10-30 participants",
-                implementationSteps: [
-                    "Prompt: \"What do you expect from this course/community?\"",
-                    "Students add expectations to shared digital mind map",
-                    "Identify connections between related expectations",
-                    "Discuss patterns and negotiate shared commitments",
-                    "Save web as community reference document"
+                description: "Students collaboratively build a visual web of course expectations, connecting related ideas to form shared understanding. This co-created artifact becomes a living reference for community norms, displayed both physically and digitally throughout the course journey.",
+                benefits: [
+                    "Establishes collective ownership of learning environment",
+                    "Makes implicit expectations explicit and negotiable",
+                    "Creates accountability through public commitments"
                 ],
-                hybridAdaptations: "Use digital mind-mapping tool visible to all; Verbally describe connections being made; Print physical copy for classroom display",
+                participantSuitability: "👥 Ideal for: 10-40 participants",
                 materialsNeeded: [
                     "Mind mapping platform (Miro, MindMeister)",
                     "Display screen for real-time viewing",
                     "LMS space for archived version"
                 ],
-                variations: {
-                    small: "Small groups (<10): Include verbal elaboration of each expectation",
-                    large: "Large groups (30+): Use themes to organize expectations",
-                    timeConstrained: "Time-constrained: Pre-populate common expectations to build upon"
+                tips: [
+                    "Start with broad prompt: \"What will make this a great learning experience?\"",
+                    {
+                        step: "Add your own expectation early to model vulnerability",
+                        example: "Example: \"I expect us to be patient with technical glitches\"",
+                        priority: true
+                    },
+                    "Actively draw connections between related expectations",
+                    "Negotiate any conflicting expectations openly",
+                    "Return to the web at midpoint to assess progress"
+                ],
+                adaptations: {
+                    essential: [
+                        "Use simple collaborative document with bullets",
+                        "Verbally identify connections between ideas",
+                        "Screenshot final web for distribution",
+                        "Focus on 5-7 core shared expectations"
+                    ],
+                    enhanced: [
+                        "Visual mind-mapping with color-coded themes",
+                        "Small group synthesis before whole class",
+                        "Priority voting on most important expectations",
+                        "Create \"community agreement\" from top items"
+                    ],
+                    transformative: [
+                        "Students facilitate the web-building process",
+                        "Dynamic web that updates based on experience",
+                        "Link expectations to specific support structures",
+                        "Student-designed accountability mechanisms"
+                    ]
                 },
-                pairsWellWith: "C5 (Community Visualization), D3 (Cross-Modal Discussion Parsing)"
+                hybridConsiderations: {
+                    remote: "Ensure mind-mapping tool works on all devices; provide tutorial if needed; use verbal description of connections",
+                    onsite: "Display evolving web on classroom screen; photograph for remote viewing; use pointing tools for clarity",
+                    crossmodal: "Alternate who adds connections; ensure both groups' expectations are central; celebrate diverse needs"
+                },
+                connections: "Links to: Community Agreements, Midpoint Reflection activities, Group charter development"
             },
             {
-                id: "cb4-three-word-introduction",
-                code: "CB4",
+                id: "three-word-introduction",
+                code: "CON-3",
                 title: "Three-Word Introduction",
-                phase: "Course Beginning",
-                color: "beginning",
-                phaseIcon: "CB4",
+                phase: "OPENING",
+                phaseColor: "opening",
+                phaseIcon: "CON-3",
                 timeRequired: "3 minutes",
                 energyLevel: "Energizing",
                 isQuick: true,
                 description: "Lightning-fast introductions where each person shares exactly three words that represent them. The constraint sparks creativity while the rapid pace maintains energy, perfect for quickly establishing individual presence in the community.",
-                participantSuitability: "♾️ Scalable (works for any size)",
-                implementationSteps: [
-                    "Explain format: \"Three words that represent you\"",
-                    "Model with your own three words",
-                    "Rapid-fire sharing (10 seconds per person)",
-                    "Note patterns or surprising combinations",
-                    "Optional: Return to interesting words later"
+                benefits: [
+                    "Removes introduction anxiety through clear constraints",
+                    "Creates memorable first impressions",
+                    "Energizes group through rapid pace"
                 ],
-                hybridAdaptations: "Collect words in shared document for visibility; Strictly alternate between remote and on-site; Use chat for remote students if audio challenging",
+                participantSuitability: "♾️ Scalable (works for any size)",
                 materialsNeeded: [
                     "Timer with audio alert",
                     "Shared document or chat",
                     "Optional: Word cloud generator"
                 ],
-                variations: {
-                    small: "Small groups (<10): Allow one follow-up question per person",
-                    large: "Large groups (30+): Collect in chat, create word cloud",
-                    extended: "Extended version: Three words + one-sentence explanation"
+                tips: [
+                    {
+                        step: "Model with unexpected or playful words",
+                        example: "Example: \"Coffee, curiosity, chaos\" or \"Parent, painter, procrastinator\"",
+                        priority: true
+                    },
+                    "Keep strict 10-second pace per person",
+                    "Capture all words in visible document",
+                    "Note surprising patterns or repeated words",
+                    "Return to interesting combinations later"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple round-robin verbal sharing",
+                        "Chat submission for large groups",
+                        "No explanation—just three words",
+                        "Basic acknowledgment of each person"
+                    ],
+                    enhanced: [
+                        "Create instant word cloud visualization",
+                        "Identify \"word twins\" who shared same words",
+                        "Optional one-sentence elaboration time",
+                        "Thematic analysis of word patterns"
+                    ],
+                    transformative: [
+                        "Students create visual representations of their words",
+                        "AI-generated connections between word sets",
+                        "Evolution tracking: three words at start vs. end",
+                        "Student-curated \"class essence\" from all words"
+                    ]
                 },
-                pairsWellWith: "A2 (Attention Cycling), P3 (Synchronized Engagement Moments)"
+                hybridConsiderations: {
+                    remote: "Use chat for simultaneous submission; ensure names are visible; celebrate geographic diversity in words",
+                    onsite: "Combine verbal with visual capture; ensure remote students are heard; use gesture for emphasis",
+                    crossmodal: "Alternate strictly between modalities; highlight cross-modal word connections; equal visual prominence"
+                },
+                connections: "Perfect opener for: Any content-heavy session, Energy dips, Quick community temperature checks"
             },
             {
-                id: "cb5-course-connection-mapping",
-                code: "CB5",
+                id: "course-connection-mapping",
+                code: "CON-4",
                 title: "Course Connection Mapping",
-                phase: "Course Beginning",
-                color: "beginning",
-                phaseIcon: "CB5",
+                phase: "OPENING",
+                phaseColor: "opening",
+                phaseIcon: "CON-4",
                 timeRequired: "15 minutes",
                 energyLevel: "Reflecting",
                 isQuick: false,
-                description: "Students identify and share their personal connections to the course content, creating a collective map of motivations and concerns. Small group discussions surface themes that inform community development and instructor understanding of student needs.",
-                participantSuitability: "👥👥👥 Ideal for: 16-30 participants",
-                implementationSteps: [
-                    "Prompt: \"Why are you here? What concerns do you have?\"",
-                    "Individual reflection and documentation (3 minutes)",
-                    "Share in mixed-modality small groups (5 minutes)",
-                    "Groups identify common themes (4 minutes)",
-                    "Report themes to create class connection map (3 minutes)"
+                description: "Students identify and share personal connections to course content, creating a collective map of motivations and concerns. Small group discussions surface themes that inform community development and help instructors understand diverse student needs and contexts.",
+                benefits: [
+                    "Surfaces hidden motivations and concerns early",
+                    "Creates empathy through shared vulnerabilities",
+                    "Informs instructor's approach to content"
                 ],
-                hybridAdaptations: "Ensure mixed on-site/remote small groups; Use breakout rooms with shared documents; Compile themes in visible collaborative space",
+                participantSuitability: "👥 Ideal for: 16-40 participants",
                 materialsNeeded: [
                     "Breakout room capability",
                     "Collaborative documents",
                     "Theme compilation tool"
                 ],
-                variations: {
-                    small: "Small groups (<10): Whole group sharing instead of breakouts",
-                    large: "Large groups (30+): Use survey tool for initial collection",
-                    quick: "Quick version: Focus only on motivations, not concerns"
+                tips: [
+                    "Use prompts that invite both hopes and concerns",
+                    {
+                        step: "Share your own authentic connection first",
+                        example: "Example: \"I'm here because I struggled with this in my own teaching\"",
+                        priority: true
+                    },
+                    "Create mixed-modality small groups intentionally",
+                    "Look for patterns across different group reports",
+                    "Address common concerns explicitly in course design"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple think-pair-share structure",
+                        "Basic theme identification in groups",
+                        "Verbal report-outs from each group",
+                        "Document main themes for reference"
+                    ],
+                    enhanced: [
+                        "Pre-activity reflection form for depth",
+                        "Visual theme mapping with connections",
+                        "Anonymous concern submission option",
+                        "Link themes to course resources"
+                    ],
+                    transformative: [
+                        "Students co-design course elements based on mapping",
+                        "Dynamic tracking of evolving connections",
+                        "Peer mentorship based on experience matches",
+                        "Student-led response to identified needs"
+                    ]
                 },
-                pairsWellWith: "C3 (Mixed-Mode Grouping), D4 (Distributed Facilitation)"
+                hybridConsiderations: {
+                    remote: "Test breakout room audio; provide clear group task cards; ensure equal speaking time",
+                    onsite: "Include remote students in physical group discussions; use shared documents; photograph any physical artifacts",
+                    crossmodal: "Mix modalities in each group; rotate spokesperson role; celebrate diverse contexts"
+                },
+                connections: "Flows into: Learning objective discussions, Group formation activities, Midpoint check-ins"
             },
 
-            // EARLY WEEKS (Light Green) - 5 cards
+            // BUILDING - 5 cards
             {
-                id: "ew1-expertise-directory",
-                code: "EW1",
+                id: "expertise-directory",
+                code: "COL-1",
                 title: "Expertise Directory",
-                phase: "Early Weeks",
-                color: "early-weeks",
-                phaseIcon: "EW1",
+                phase: "BUILDING",
+                phaseColor: "building",
+                phaseIcon: "COL-1",
                 timeRequired: "15-20 minutes",
                 energyLevel: "Connecting",
                 isQuick: false,
-                description: "Class creates a searchable directory of skills, knowledge areas, and resources that students can offer peers. This living document facilitates peer learning and positions all students as contributors, building community through reciprocal support.",
-                participantSuitability: "👥👥👥 Ideal for: 10-30 participants | [group formation + community]",
-                implementationSteps: [
-                    "Brainstorm categories relevant to course (skills, experiences, resources)",
-                    "Students self-identify 2-3 areas they can support peers",
-                    "Include preferred contact method and availability",
-                    "Compile into searchable digital directory",
-                    "Demonstrate how to use directory for peer support"
+                description: "Class creates a searchable directory of skills, knowledge areas, and resources that students can offer peers. This living document facilitates peer learning and positions all students as contributors with valuable expertise to share.",
+                benefits: [
+                    "Positions every student as a valuable contributor",
+                    "Facilitates peer learning and support networks",
+                    "Builds confidence through expertise recognition"
                 ],
-                hybridAdaptations: "Ensure contact methods work across modalities; Include notation of remote/on-site status; Create both digital and physical reference versions",
+                participantSuitability: "👥 Ideal for: 10-40 participants",
                 materialsNeeded: [
                     "Spreadsheet or database platform",
                     "Form tool for data collection",
                     "Sharing platform accessible to all"
                 ],
-                variations: {
-                    small: "Small groups (<10): Include verbal sharing of each expertise",
-                    large: "Large groups (30+): Organize by expertise categories",
-                    enhanced: "Enhanced version: Include \"seeking to learn\" column"
+                tips: [
+                    {
+                        step: "Brainstorm expertise categories relevant to your course",
+                        example: "Example: Technical skills, life experiences, study strategies, languages",
+                        priority: true
+                    },
+                    "Model by sharing unexpected expertise you have",
+                    "Encourage \"everyday expertise\" not just academic",
+                    "Include preferred contact methods and availability",
+                    "Actively reference directory when challenges arise"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple spreadsheet with name, expertise, contact",
+                        "Basic categorization of skill types",
+                        "Manual updates as needed",
+                        "Instructor highlights connections"
+                    ],
+                    enhanced: [
+                        "Searchable database with tags",
+                        "Include \"seeking to learn\" column",
+                        "Automated matching suggestions",
+                        "Usage tracking to show active exchanges"
+                    ],
+                    transformative: [
+                        "Student-maintained expertise exchange platform",
+                        "Gamified peer teaching opportunities",
+                        "Credit system for expertise sharing",
+                        "Integration with course assessment"
+                    ]
                 },
-                pairsWellWith: "P5 (Engagement Role Rotation), C4 (Parallel Social Spaces)"
+                hybridConsiderations: {
+                    remote: "Include time zone availability; offer asynchronous exchange options; highlight digital collaboration skills",
+                    onsite: "Note on-campus availability; include physical meetup options; capture in-person expertise demos",
+                    crossmodal: "Encourage cross-modal expertise pairs; highlight unique advantages of each modality; facilitate both sync/async exchanges"
+                },
+                connections: "Enhances: Peer review activities, Group project formation, Study buddy matching, Problem-solving sessions"
             },
             {
-                id: "ew2-skills-mapping",
-                code: "EW2",
+                id: "skills-mapping",
+                code: "PUR-2",
                 title: "Skills Mapping",
-                phase: "Early Weeks",
-                color: "early-weeks",
-                phaseIcon: "EW2",
+                phase: "BUILDING",
+                phaseColor: "building",
+                phaseIcon: "PUR-2",
                 timeRequired: "15 minutes",
                 energyLevel: "Reflecting",
                 isQuick: false,
-                description: "Students assess themselves on key course-relevant skills, creating a visual class skills map. This data drives balanced group formation while helping students identify peers for skill development, fostering interdependence across modalities.",
-                participantSuitability: "👥👥👥 Ideal for: 16-30 participants | [group formation + community]",
-                implementationSteps: [
-                    "Identify 4-6 key skills relevant to course projects",
-                    "Students self-rate on 1-5 scale for each skill",
-                    "Create visual heat map of class skills distribution",
-                    "Discuss complementary skill partnerships",
-                    "Form groups ensuring skill balance across modalities"
+                description: "Students self-assess on key course-relevant skills, creating a visual class skills heat map. This data drives balanced group formation while helping students identify peers for skill development partnerships across modalities.",
+                benefits: [
+                    "Creates balanced, complementary teams",
+                    "Identifies skill development opportunities",
+                    "Promotes growth mindset through visibility"
                 ],
-                hybridAdaptations: "Use collaborative spreadsheet for real-time mapping; Ensure skill balance includes remote/on-site distribution; Display map visible to both physical and virtual spaces",
+                participantSuitability: "👥 Ideal for: 16-50 participants",
                 materialsNeeded: [
                     "Digital survey or spreadsheet",
                     "Visualization tool (conditional formatting)",
                     "Group formation algorithm/method"
                 ],
-                variations: {
-                    small: "Small groups (<10): Manual skill balancing in real-time",
-                    large: "Large groups (30+): Use automated group formation tools",
-                    quick: "Quick version: Focus on 2-3 most critical skills"
+                tips: [
+                    "Focus on 4-6 most relevant course skills",
+                    {
+                        step: "Frame as current comfort level, not fixed ability",
+                        example: "Example: \"Rate your current comfort with data analysis (1-5)\"",
+                        priority: true
+                    },
+                    "Create visual heat map for pattern recognition",
+                    "Discuss how diverse skills strengthen teams",
+                    "Revisit mid-course to celebrate growth"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple 1-5 self-rating on key skills",
+                        "Basic visual display of results",
+                        "Manual group balancing",
+                        "Focus on complementary partnerships"
+                    ],
+                    enhanced: [
+                        "Include confidence levels with skills",
+                        "Automated group formation algorithms",
+                        "Skill development goal setting",
+                        "Peer mentorship matching"
+                    ],
+                    transformative: [
+                        "Dynamic skill tracking throughout course",
+                        "Student-led skill development workshops",
+                        "Competency-based badge system",
+                        "Portfolio evidence of skill growth"
+                    ]
                 },
-                pairsWellWith: "C3 (Mixed-Mode Grouping), P4 (Participation Dashboard)"
+                hybridConsiderations: {
+                    remote: "Include digital collaboration as assessed skill; highlight distributed team experience; note technical strengths",
+                    onsite: "Assess in-person collaboration skills; include hands-on abilities; note lab/equipment experience",
+                    crossmodal: "Ensure groups balance skills AND modalities; highlight how location diversity strengthens teams; plan skill-sharing across modes"
+                },
+                connections: "Feeds into: Project team formation, Peer teaching pairs, Study group creation, Expertise directory"
             },
             {
-                id: "ew3-group-identity-builder",
-                code: "EW3",
+                id: "group-identity-builder",
+                code: "PUR-3",
                 title: "Group Identity Builder",
-                phase: "Early Weeks",
-                color: "early-weeks",
-                phaseIcon: "EW3",
-                timeRequired: "15 minutes",
+                phase: "BUILDING",
+                phaseColor: "building",
+                phaseIcon: "PUR-3",
+                timeRequired: "20 minutes",
                 energyLevel: "Connecting",
                 isQuick: false,
-                description: "Newly formed groups create shared identity through collaborative development of team name, visual symbol, and motto. This creative process bonds members across modalities while establishing group culture and communication norms early.",
-                participantSuitability: "👥👥 Ideal for: 6-15 participants per group | [group formation + community]",
-                implementationSteps: [
-                    "Groups brainstorm potential names reflecting shared values",
-                    "Collaborate on simple visual symbol/logo design",
-                    "Create motto capturing group's approach or goal",
-                    "Identify group strengths and potential challenges",
-                    "Present identity elements to full class"
+                description: "Newly formed groups create shared identity through collaborative development of team name, visual symbol, and motto. This creative process bonds members across modalities while establishing group culture and working agreements.",
+                benefits: [
+                    "Accelerates team bonding across distances",
+                    "Creates shared ownership and accountability",
+                    "Establishes positive team culture early"
                 ],
-                hybridAdaptations: "Use collaborative design tools accessible to all; Ensure both remote and on-site members contribute visually; Create digital and physical versions of group identity",
+                participantSuitability: "👥 Works with: 4-8 people per group",
                 materialsNeeded: [
                     "Collaborative whiteboard or design tool",
                     "Template for identity elements",
                     "Presentation platform"
                 ],
-                variations: {
-                    small: "Small groups (<5): Add individual role identification",
-                    large: "Large groups (8+): Assign specific identity elements to subgroups",
-                    extended: "Extended version: Include group charter development"
+                tips: [
+                    "Provide creative constraints to spark innovation",
+                    {
+                        step: "Start with values before visual elements",
+                        example: "Example: \"What three values will guide our work together?\"",
+                        priority: true
+                    },
+                    "Ensure all members contribute to each element",
+                    "Time-box each component to maintain energy",
+                    "Celebrate each team's unique identity publicly"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple name and motto creation",
+                        "Basic visual using text/emoji",
+                        "Shared document for collaboration",
+                        "Brief team presentations"
+                    ],
+                    enhanced: [
+                        "Designed logos using templates",
+                        "Team charter development",
+                        "Role identification within teams",
+                        "Cross-team identity sharing session"
+                    ],
+                    transformative: [
+                        "Professional identity artifacts (websites, videos)",
+                        "Evolution of identity throughout project",
+                        "Inter-team collaboration based on identities",
+                        "Student-designed team assessment criteria"
+                    ]
                 },
-                pairsWellWith: "C2 (Shared Experience Creation), T2 (Technology Buddy System)"
+                hybridConsiderations: {
+                    remote: "Use collaborative design tools; ensure equal input methods; celebrate geographic diversity in identity",
+                    onsite: "Photograph physical sketches for remote members; include digital elements; stream creative process",
+                    crossmodal: "Alternate leadership between modalities; highlight how hybrid nature strengthens team; create both digital/physical artifacts"
+                },
+                connections: "Strengthens: All team-based activities, Peer assessment, Conflict resolution, Project presentations"
             },
             {
-                id: "ew4-study-buddy-matching",
-                code: "EW4",
+                id: "study-buddy-matching",
+                code: "COL-2",
                 title: "Study Buddy Matching",
-                phase: "Early Weeks",
-                color: "early-weeks",
-                phaseIcon: "EW4",
+                phase: "BUILDING",
+                phaseColor: "building",
+                phaseIcon: "COL-2",
                 timeRequired: "10 minutes",
                 energyLevel: "Connecting",
                 isQuick: false,
                 description: "Facilitate formation of cross-modal study partnerships through structured matching process. Pairs combine complementary strengths, schedules, and modalities, creating support networks that bridge physical and virtual classroom boundaries.",
-                participantSuitability: "👥👥 Ideal for: 8-20 participants | [group formation + community]",
-                implementationSteps: [
-                    "Students complete brief matching survey (availability, strengths, preferences)",
-                    "Intentionally pair remote with on-site students when possible",
-                    "Provide structured first meeting agenda",
-                    "Establish regular check-in schedule",
-                    "Create backup buddy system for absences"
+                benefits: [
+                    "Creates accountability partnerships across modes",
+                    "Reduces isolation for remote learners",
+                    "Builds sustained peer support systems"
                 ],
-                hybridAdaptations: "Prioritize cross-modal matching for richer perspectives; Establish multiple communication channels for pairs; Include hybrid collaboration tips in meeting agenda",
+                participantSuitability: "👥 Ideal for: 8-30 participants",
                 materialsNeeded: [
                     "Matching survey tool",
                     "Communication platform options",
                     "Meeting agenda template"
                 ],
-                variations: {
-                    small: "Small groups (<10): Manual matching with group input",
-                    large: "Large groups (30+): Algorithm-based matching",
-                    enhanced: "Enhanced version: Rotating buddies throughout course"
+                tips: [
+                    {
+                        step: "Prioritize cross-modal matching when possible",
+                        example: "Example: Pair remote student in Tokyo with on-site student in Naples",
+                        priority: true
+                    },
+                    "Include study preferences in matching (time, style, goals)",
+                    "Provide structured first meeting agenda",
+                    "Check in on partnerships after two weeks",
+                    "Have backup system for mismatched pairs"
+                ],
+                adaptations: {
+                    essential: [
+                        "Basic preference survey (availability, strengths)",
+                        "Manual matching by instructor",
+                        "Simple contact information exchange",
+                        "Suggested meeting frequency"
+                    ],
+                    enhanced: [
+                        "Algorithm-based compatibility matching",
+                        "Multiple study partner options",
+                        "Progress tracking tools",
+                        "Mid-term partner feedback process"
+                    ],
+                    transformative: [
+                        "Student-designed matching criteria",
+                        "Rotating study partnerships",
+                        "Peer mentorship evolution",
+                        "Integration with course outcomes"
+                    ]
                 },
-                pairsWellWith: "T2 (Technology Buddy System), A4 (Remote Spotlight Rotation)"
+                hybridConsiderations: {
+                    remote: "Include time zone compatibility; suggest async collaboration tools; provide digital study templates",
+                    onsite: "Note campus meeting spaces; include virtual backup options; share effective hybrid study strategies",
+                    crossmodal: "Emphasize unique benefits of cross-modal pairs; provide communication tool options; celebrate successful collaborations"
+                },
+                connections: "Supports: Peer review processes, Accountability for assignments, Exam preparation, Skill development goals"
             },
             {
-                id: "ew5-chain-reaction-formation",
-                code: "EW5",
+                id: "chain-reaction-formation",
+                code: "COL-3",
                 title: "Chain Reaction Formation",
-                phase: "Early Weeks",
-                color: "early-weeks",
-                phaseIcon: "EW5",
+                phase: "BUILDING",
+                phaseColor: "building",
+                phaseIcon: "COL-3",
                 timeRequired: "15 minutes",
                 energyLevel: "Energizing",
                 isQuick: false,
                 description: "Dynamic group formation where students connect based on shared qualities, building human chains that must include both remote and on-site members. Creates organic, connection-based groups while ensuring modality mixing through playful constraints.",
-                participantSuitability: "👥👥👥 Ideal for: 12-24 participants | [group formation + community]",
-                implementationSteps: [
-                    "First student states a quality/interest/skill they possess",
-                    "Next student must share that quality AND add a new one",
-                    "Continue chain, strictly alternating between modalities",
-                    "When chain reaches 4-5 people, start new chain",
-                    "Chains become working groups for upcoming project"
+                benefits: [
+                    "Forms naturally connected groups",
+                    "Ensures modality mixing organically",
+                    "Energizes through movement and discovery"
                 ],
-                hybridAdaptations: "Use both verbal and chat to state connections; Visual diagram shows growing chains in real-time; Enforce remote/on-site alternation rule",
+                participantSuitability: "👥 Ideal for: 12-30 participants",
                 materialsNeeded: [
                     "Digital whiteboard for chain visualization",
                     "Clear audio for quality sharing",
                     "Timer for pacing"
                 ],
-                variations: {
-                    small: "Small groups (<12): Create just 2-3 chains",
-                    large: "Large groups (30+): Run parallel chain formations",
-                    structured: "Structured version: Provide quality categories to choose from"
+                tips: [
+                    "Demonstrate with example chain to start",
+                    {
+                        step: "Enforce strict modality alternation rule",
+                        example: "Example: Remote → On-site → Remote → On-site",
+                        priority: true
+                    },
+                    "Encourage creative connections beyond obvious",
+                    "Visualize growing chains in real-time",
+                    "Celebrate longest and most creative chains"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple verbal connection statements",
+                        "Basic visualization of chains forming",
+                        "Groups of 4-5 people per chain",
+                        "Focus on participation over speed"
+                    ],
+                    enhanced: [
+                        "Multiple simultaneous chains",
+                        "Themed connection categories",
+                        "Visual chain mapping with avatars",
+                        "Competition element for engagement"
+                    ],
+                    transformative: [
+                        "Student-designed connection criteria",
+                        "AI-suggested unexpected connections",
+                        "Chain evolution throughout course",
+                        "Network analysis of class connections"
+                    ]
                 },
-                pairsWellWith: "D1 (Structured Turn-Taking), C1 (Cross-Modal Introductions)"
+                hybridConsiderations: {
+                    remote: "Use raised hands or reactions to indicate connections; ensure clear audio; provide visual participation cues",
+                    onsite: "Include remote students prominently in chain visualization; verbalize all connections; avoid physical-only gestures",
+                    crossmodal: "Strictly enforce alternation; highlight unique connections across modes; celebrate geographic/cultural diversity"
+                },
+                connections: "Leads to: Project team formation, Breakout room groups, Peer feedback circles, Collaborative activities"
             },
 
-            // MIDPOINT (Light Blue) - 5 cards
+            // MIDPOINT - 5 cards
             {
-                id: "mp1-midpoint-reflection-graffiti",
-                code: "MP1",
+                id: "midpoint-reflection-graffiti",
+                code: "M1",
                 title: "Midpoint Reflection Graffiti",
-                phase: "Midpoint",
-                color: "midpoint",
-                phaseIcon: "MP1",
+                phase: "MIDPOINT",
+                phaseColor: "midpoint",
+                phaseIcon: "REF-1",
                 timeRequired: "15 minutes",
                 energyLevel: "Reflecting",
                 isQuick: false,
-                description: "Anonymous digital graffiti wall where students express honest reflections about their hybrid learning experience. Visual, creative format encourages authentic sharing while collective viewing reveals shared experiences across modalities.",
-                participantSuitability: "♾️ Scalable (works for any size)",
-                implementationSteps: [
-                    "Create digital \"wall\" with reflection prompts",
-                    "Students add anonymous text, drawings, emojis",
-                    "Allow organic building on others' contributions",
-                    "Instructor highlights patterns without judgment",
-                    "Use insights to adjust course approach"
+                description: "Anonymous digital graffiti wall where students express honest reflections about their hybrid learning experience. Visual, creative format encourages authentic sharing while collective viewing reveals shared experiences and challenges across modalities.",
+                benefits: [
+                    "Surfaces hidden challenges and successes",
+                    "Validates diverse experiences anonymously",
+                    "Informs course adjustments based on feedback"
                 ],
-                hybridAdaptations: "Provide prompts specific to remote and on-site experiences; Ensure anonymity tools work across platforms; Display wall visible in physical classroom",
+                participantSuitability: "♾️ Scalable (works for any size)",
                 materialsNeeded: [
                     "Digital whiteboard platform",
                     "Anonymous contribution option",
                     "Visual display capability"
                 ],
-                variations: {
-                    small: "Small groups (<10): Include optional verbal debrief",
-                    large: "Large groups (30+): Create themed wall sections",
-                    extended: "Extended version: Return to wall at course end for comparison"
+                tips: [
+                    "Create inviting prompts across the wall space",
+                    {
+                        step: "Model vulnerability by adding first anonymous comment",
+                        example: "Example: \"Sometimes I feel invisible in breakout rooms\"",
+                        priority: true
+                    },
+                    "Allow organic building on others' contributions",
+                    "Look for patterns without identifying individuals",
+                    "Address major themes in next session"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple anonymous text additions",
+                        "Basic prompt areas on digital wall",
+                        "Instructor highlights patterns",
+                        "General response to themes"
+                    ],
+                    enhanced: [
+                        "Multimedia contributions (drawings, emojis)",
+                        "Themed wall sections by topic",
+                        "Real-time pattern identification",
+                        "Specific action plans from feedback"
+                    ],
+                    transformative: [
+                        "Student-facilitated reflection analysis",
+                        "AI-assisted theme identification",
+                        "Co-created solutions to challenges",
+                        "Ongoing reflection wall evolution"
+                    ]
                 },
-                pairsWellWith: "A5 (Dual-Track Monitoring), P1 (Digital Backchanneling)"
+                hybridConsiderations: {
+                    remote: "Ensure anonymous tools work on all devices; provide multiple expression modes; acknowledge unique remote challenges",
+                    onsite: "Display wall visibly in classroom; photograph for documentation; acknowledge on-site specific experiences",
+                    crossmodal: "Look for modality-specific patterns; celebrate shared experiences; address disparities explicitly"
+                },
+                connections: "Pairs with: Course expectation reviews, Problem-solving sessions, Community agreement updates"
             },
             {
-                id: "mp2-appreciation-notes",
-                code: "MP2",
+                id: "appreciation-notes",
+                code: "M2",
                 title: "Appreciation Notes",
-                phase: "Midpoint",
-                color: "midpoint",
-                phaseIcon: "MP2",
+                phase: "MIDPOINT",
+                phaseColor: "midpoint",
+                phaseIcon: "REF-2",
                 timeRequired: "10 minutes",
                 energyLevel: "Connecting",
                 isQuick: false,
                 description: "Students write brief, specific appreciation notes to peers who have enhanced their learning experience. Digital delivery ensures cross-modal recognition, building social presence through positive acknowledgment of contributions.",
-                participantSuitability: "👥👥 Ideal for: 10-20 participants",
-                implementationSteps: [
-                    "Prompt: \"Who has helped your learning? How specifically?\"",
-                    "Write 2-3 brief appreciation notes (1-2 sentences each)",
-                    "Encourage cross-modal appreciation",
-                    "Deliver through digital platform ensuring privacy",
-                    "Optional: Share themes without identifying individuals"
+                benefits: [
+                    "Strengthens social bonds across distance",
+                    "Recognizes often invisible contributions",
+                    "Creates positive community momentum"
                 ],
-                hybridAdaptations: "Use platform allowing private message delivery; Specifically encourage remote-to-onsite appreciation; Track to ensure all receive at least one note",
+                participantSuitability: "👥 Ideal for: 10-30 participants",
                 materialsNeeded: [
                     "Private messaging platform",
                     "Appreciation prompt templates",
                     "Delivery tracking method"
                 ],
-                variations: {
-                    small: "Small groups (<10): Include public appreciation circle",
-                    large: "Large groups (30+): Use automated distribution system",
-                    quick: "Quick version: One appreciation per person"
+                tips: [
+                    {
+                        step: "Encourage specific appreciation over generic praise",
+                        example: "Example: \"Thanks for always checking if remote students can see the board\"",
+                        priority: true
+                    },
+                    "Suggest appreciating someone from opposite modality",
+                    "Provide sentence starters for those struggling",
+                    "Track to ensure everyone receives at least one",
+                    "Share general themes without identifying individuals"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple private message system",
+                        "Basic appreciation prompts",
+                        "Manual delivery tracking",
+                        "Focus on participation"
+                    ],
+                    enhanced: [
+                        "Designed appreciation cards/templates",
+                        "Option for public appreciation wall",
+                        "Reciprocal appreciation suggestions",
+                        "Appreciation themes analysis"
+                    ],
+                    transformative: [
+                        "Student-designed appreciation systems",
+                        "Appreciation impact tracking",
+                        "Community gratitude practices",
+                        "Integration with course culture"
+                    ]
                 },
-                pairsWellWith: "C4 (Parallel Social Spaces), P5 (Engagement Role Rotation)"
+                hybridConsiderations: {
+                    remote: "Ensure platform allows easy private messaging; encourage appreciation for in-class advocates; recognize technical support",
+                    onsite: "Appreciate remote students' flexible participation; recognize those who include distant peers; value diverse contributions",
+                    crossmodal: "Specifically encourage cross-modal appreciation; highlight bridge-building behaviors; celebrate inclusive actions"
+                },
+                connections: "Enhances: Team cohesion, Peer feedback quality, Community resilience, Future collaboration willingness"
             },
             {
-                id: "mp3-rose-thorn-bud",
-                code: "MP3",
+                id: "rose-thorn-bud",
+                code: "M3",
                 title: "Rose/Thorn/Bud",
-                phase: "Midpoint",
-                color: "midpoint",
-                phaseIcon: "MP3",
+                phase: "MIDPOINT",
+                phaseColor: "midpoint",
+                phaseIcon: "REF-3",
                 timeRequired: "15 minutes",
                 energyLevel: "Reflecting",
                 isQuick: false,
-                description: "Structured reflection using metaphorical framework: roses (positives), thorns (challenges), and buds (potential). Visual categorization helps identify patterns across modalities while validating diverse experiences in hybrid learning.",
-                participantSuitability: "👥👥👥 Ideal for: 10-30 participants",
-                implementationSteps: [
-                    "Explain metaphor: Rose=positive, Thorn=challenge, Bud=potential",
-                    "Individual reflection and notation (3 minutes)",
-                    "Share in collaborative document with three columns",
-                    "Group similar items to identify patterns",
-                    "Discuss how to nurture buds and address thorns"
+                description: "Structured reflection using metaphorical framework: roses (positives), thorns (challenges), and buds (potential). Visual categorization helps identify patterns across modalities while validating diverse experiences in the hybrid learning journey.",
+                benefits: [
+                    "Acknowledges both struggles and successes",
+                    "Creates shared understanding of collective experience",
+                    "Identifies opportunities for course adjustment"
                 ],
-                hybridAdaptations: "Use color-coding to show modality patterns; Ensure both groups contribute equally to each category; Address modality-specific thorns explicitly",
+                participantSuitability: "👥 Ideal for: 10-40 participants",
                 materialsNeeded: [
                     "Three-column collaborative document",
                     "Color-coding capability",
                     "Synthesis visualization tool"
                 ],
-                variations: {
-                    small: "Small groups (<10): Verbal sharing with visual capture",
-                    large: "Large groups (30+): Use word clouds for each category",
-                    quick: "Quick version: Choose just one item per category"
+                tips: [
+                    "Explain metaphor clearly with examples",
+                    {
+                        step: "Share your own thorn to model honesty",
+                        example: "Example: \"My thorn: struggling to read the room virtually\"",
+                        priority: true
+                    },
+                    "Give individual reflection time before sharing",
+                    "Look for patterns across modalities",
+                    "Act on feedback—convert buds to reality"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple three-column format",
+                        "Text-based contributions",
+                        "Basic pattern identification",
+                        "Verbal discussion of themes"
+                    ],
+                    enhanced: [
+                        "Color-coded by modality or theme",
+                        "Small group synthesis first",
+                        "Priority voting on buds to nurture",
+                        "Action planning from insights"
+                    ],
+                    transformative: [
+                        "Student-led reflection facilitation",
+                        "Data visualization of patterns",
+                        "Co-designed improvements from buds",
+                        "Longitudinal tracking of roses/thorns"
+                    ]
                 },
-                pairsWellWith: "D3 (Cross-Modal Discussion Parsing), A1 (Presence Signaling)"
+                hybridConsiderations: {
+                    remote: "Use colors to show remote-specific items; ensure platform works smoothly; validate unique challenges",
+                    onsite: "Include on-site specific experiences; photograph physical contributions; acknowledge in-person dynamics",
+                    crossmodal: "Compare/contrast modality experiences; find universal themes; address equity issues revealed"
+                },
+                connections: "Informs: Course adjustments, Expectation reviews, Problem-solving sessions, Final reflections"
             },
             {
-                id: "mp4-cross-modal-compliments",
-                code: "MP4",
+                id: "cross-modal-compliments",
+                code: "M4",
                 title: "Cross-Modal Compliments",
-                phase: "Midpoint",
-                color: "midpoint",
-                phaseIcon: "MP4",
+                phase: "MIDPOINT",
+                phaseColor: "midpoint",
+                phaseIcon: "REF-4",
                 timeRequired: "3 minutes",
                 energyLevel: "Energizing",
                 isQuick: true,
                 description: "Rapid exchange where each person compliments someone from the opposite modality about their course contributions. Creates positive cross-boundary connections while reinforcing value of diverse participation modes.",
-                participantSuitability: "👥👥 Ideal for: 8-16 participants",
-                implementationSteps: [
-                    "Remote students prepare compliment for on-site peer",
-                    "On-site students prepare compliment for remote peer",
-                    "Rapid sharing alternating between modalities",
-                    "Focus on learning contributions, not appearance",
-                    "Ensure everyone receives one compliment"
+                benefits: [
+                    "Quickly bridges modality divides",
+                    "Recognizes diverse contribution styles",
+                    "Energizes through positive exchange"
                 ],
-                hybridAdaptations: "Track to ensure cross-modal pairing; Model appropriate academic compliments; Use names to personalize connections",
+                participantSuitability: "👥 Ideal for: 8-20 participants",
                 materialsNeeded: [
                     "Participant list by modality",
                     "Timer for pacing",
                     "Tracking method"
                 ],
-                variations: {
-                    small: "Small groups (<8): Allow brief responses",
-                    large: "Large groups (20+): Use written format in chat",
-                    extended: "Extended version: Include specific example of contribution"
+                tips: [
+                    {
+                        step: "Model academic compliments focused on learning",
+                        example: "Example: \"Sarah's questions always push our thinking deeper\"",
+                        priority: true
+                    },
+                    "Keep strict 10-second pace",
+                    "Ensure everyone receives one compliment",
+                    "Alternate between modalities systematically",
+                    "End with collective appreciation moment"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple verbal exchanges",
+                        "Basic modality alternation",
+                        "Focus on participation",
+                        "Time-boxed sharing"
+                    ],
+                    enhanced: [
+                        "Written compliments in chat too",
+                        "Themed compliment rounds",
+                        "Compliment word clouds",
+                        "Follow-up connection opportunities"
+                    ],
+                    transformative: [
+                        "Student-designed compliment formats",
+                        "Compliment impact tracking",
+                        "Recognition integrated into course",
+                        "Peer nomination systems"
+                    ]
                 },
-                pairsWellWith: "A2 (Attention Cycling), C1 (Cross-Modal Introductions)"
+                hybridConsiderations: {
+                    remote: "Ensure names are visible; use chat for backup; highlight unique remote contributions like flexibility",
+                    onsite: "Make eye contact with camera; speak clearly; recognize remote students' persistence and adaptability",
+                    crossmodal: "Strictly alternate; highlight how each modality enriches learning; celebrate collaborative moments"
+                },
+                connections: "Energizes before: Challenging content, Long sessions, Group work, Assessment activities"
             },
             {
-                id: "mp5-learning-journey-maps",
-                code: "MP5",
+                id: "learning-journey-maps",
+                code: "M5",
                 title: "Learning Journey Maps",
-                phase: "Midpoint",
-                color: "midpoint",
-                phaseIcon: "MP5",
+                phase: "MIDPOINT",
+                phaseColor: "midpoint",
+                phaseIcon: "REF-5",
                 timeRequired: "25 minutes",
                 energyLevel: "Reflecting",
                 isQuick: false,
-                description: "Students create visual representations of their learning journey, highlighting key insights, challenges, and transformation points. Sharing in mixed groups reveals diverse paths while building empathy across different hybrid experiences.",
-                participantSuitability: "👥👥 Ideal for: 10-20 participants",
-                implementationSteps: [
-                    "Provide journey map template with waypoints",
-                    "Individual creation of visual journey (10 minutes)",
-                    "Share in mixed-modality groups of 4 (10 minutes)",
-                    "Groups identify common themes and unique paths",
-                    "Gallery walk of all journey maps (5 minutes)"
+                description: "Students create visual representations of their learning journey so far, highlighting key moments, challenges overcome, and transformations experienced. Sharing in mixed groups reveals diverse paths while building empathy across different hybrid experiences.",
+                benefits: [
+                    "Makes learning progress visible and celebrated",
+                    "Builds empathy through diverse journey sharing",
+                    "Identifies successful strategies to share"
                 ],
-                hybridAdaptations: "Use digital drawing tools accessible to all; Ensure sharing groups mix modalities; Create virtual gallery visible in both spaces",
+                participantSuitability: "👥 Ideal for: 10-25 participants",
                 materialsNeeded: [
                     "Digital drawing/mapping tool",
                     "Journey template",
                     "Gallery display platform"
                 ],
-                variations: {
-                    small: "Small groups (<10): Extended individual sharing time",
-                    large: "Large groups (30+): Sample sharing rather than all",
-                    creative: "Creative version: Use metaphorical landscapes"
+                tips: [
+                    "Provide simple template with key waypoints",
+                    {
+                        step: "Share your own journey map as vulnerable example",
+                        example: "Example: Include a real struggle and breakthrough moment",
+                        priority: true
+                    },
+                    "Mix modalities in sharing groups",
+                    "Look for common patterns and unique paths",
+                    "Create gallery for ongoing viewing"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple linear journey template",
+                        "Basic drawing tools or text",
+                        "Small group sharing only",
+                        "Verbal pattern identification"
+                    ],
+                    enhanced: [
+                        "Metaphorical journey options (mountain, river)",
+                        "Multimedia elements allowed",
+                        "Gallery walk with comments",
+                        "Strategy extraction from journeys"
+                    ],
+                    transformative: [
+                        "Student-designed journey frameworks",
+                        "Interactive digital galleries",
+                        "Peer mentoring from journeys",
+                        "Journey evolution tracking"
+                    ]
                 },
-                pairsWellWith: "C5 (Community Visualization), D5 (Digital Dialogue Extensions)"
+                hybridConsiderations: {
+                    remote: "Ensure drawing tools work on all devices; provide alternatives to drawing; celebrate resilience in remote learning",
+                    onsite: "Share physical drawings digitally; include remote students in gallery; acknowledge in-person journey elements",
+                    crossmodal: "Mix modalities in sharing groups; compare different journey challenges; find universal growth moments"
+                },
+                connections: "Deepens: Self-assessment, Goal setting, Peer mentoring, Portfolio development"
             },
 
-            // FINAL WEEKS (Light Orange) - 5 cards
+            // CLOSING - 5 cards
             {
-                id: "fw1-knowledge-exchange-fair",
-                code: "FW1",
+                id: "knowledge-exchange-fair",
+                code: "C1",
                 title: "Knowledge Exchange Fair",
-                phase: "Final Weeks",
-                color: "final-weeks",
-                phaseIcon: "FW1",
+                phase: "CLOSING",
+                phaseColor: "closing",
+                phaseIcon: "CEL-1",
                 timeRequired: "30 minutes",
                 energyLevel: "Energizing",
                 isQuick: false,
-                description: "Students create mini-exhibits showcasing key learning to teach peers. Station rotation format includes both physical and digital stations, enabling cross-modal knowledge sharing while celebrating diverse expertise developed throughout course.",
-                participantSuitability: "👥👥👥 Ideal for: 15-30 participants",
-                implementationSteps: [
-                    "Students prepare 5-minute teaching exhibit on key learning",
-                    "Set up rotation schedule with physical and digital stations",
-                    "Small groups rotate through stations (3 minutes each)",
-                    "Presenters teach key concept using prepared materials",
-                    "Conclude with synthesis of learning across exhibits"
+                description: "Students create mini-exhibits showcasing key learning to teach peers. Station rotation includes both physical and digital stations, enabling cross-modal knowledge sharing while celebrating diverse expertise developed throughout the course.",
+                benefits: [
+                    "Consolidates learning through teaching others",
+                    "Celebrates diverse knowledge and perspectives",
+                    "Creates active, energizing closure experience"
                 ],
-                hybridAdaptations: "Create equivalent digital stations for remote presenters; Use breakout rooms as virtual exhibit halls; Ensure rotation includes both modality types",
+                participantSuitability: "👥 Ideal for: 15-40 participants",
                 materialsNeeded: [
                     "Station setup (physical and digital)",
                     "Rotation timer and schedule",
                     "Exhibit templates"
                 ],
-                variations: {
-                    small: "Small groups (<15): Sequential presentations instead of simultaneous",
-                    large: "Large groups (30+): Create themed exhibit areas",
-                    quick: "Quick version: 2-minute lightning exhibits"
+                tips: [
+                    "Limit presentations to one key concept/skill",
+                    {
+                        step: "Create equal digital and physical stations",
+                        example: "Example: Breakout rooms as virtual exhibit halls",
+                        priority: true
+                    },
+                    "Use timer to keep rotations moving",
+                    "Mix modalities in rotation groups",
+                    "End with synthesis of key learnings"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple 5-minute presentations",
+                        "Basic rotation between stations",
+                        "Focus on sharing one key insight",
+                        "Verbal synthesis at end"
+                    ],
+                    enhanced: [
+                        "Interactive exhibit elements",
+                        "Peer feedback forms at stations",
+                        "Themed exhibit areas",
+                        "Documented key learnings"
+                    ],
+                    transformative: [
+                        "Student-curated exhibit themes",
+                        "Multi-modal presentation options",
+                        "Public showcase beyond class",
+                        "Knowledge archive creation"
+                    ]
                 },
-                pairsWellWith: "A4 (Remote Spotlight Rotation), P3 (Synchronized Engagement Moments)"
+                hybridConsiderations: {
+                    remote: "Use breakout rooms as exhibit spaces; ensure screen sharing works; provide virtual interaction tools",
+                    onsite: "Live-stream physical exhibits; create digital artifacts; ensure remote access to materials",
+                    crossmodal: "Balance digital and physical stations; ensure rotation includes both types; celebrate format diversity"
+                },
+                connections: "Showcases: Course projects, Skill development, Collaborative work, Individual growth"
             },
             {
-                id: "fw2-course-superlatives",
-                code: "FW2",
+                id: "course-superlatives",
+                code: "C2",
                 title: "Course Superlatives",
-                phase: "Final Weeks",
-                color: "final-weeks",
-                phaseIcon: "FW2",
+                phase: "CLOSING",
+                phaseColor: "closing",
+                phaseIcon: "CEL-2",
                 timeRequired: "15 minutes",
                 energyLevel: "Energizing",
                 isQuick: false,
                 description: "Playful recognition using creative superlative categories that celebrate diverse contributions across modalities. Digital certificates ensure permanent recognition while the lighthearted format strengthens community bonds at course conclusion.",
-                participantSuitability: "👥👥 Ideal for: 10-20 participants",
-                implementationSteps: [
-                    "Generate creative, contribution-focused categories",
-                    "Include modality-specific recognitions",
-                    "Nominations through anonymous form",
-                    "Create digital certificates for winners",
-                    "Celebration ceremony with explanations"
+                benefits: [
+                    "Recognizes diverse contribution styles",
+                    "Creates positive lasting memories",
+                    "Celebrates unique community character"
                 ],
-                hybridAdaptations: "Categories recognize both remote and on-site contributions; Digital certificates shareable across platforms; Virtual drumroll for announcements",
+                participantSuitability: "👥 Ideal for: 10-30 participants",
                 materialsNeeded: [
                     "Nomination form platform",
                     "Digital certificate templates",
                     "Presentation tools"
                 ],
-                variations: {
-                    small: "Small groups (<10): Everyone receives a superlative",
-                    large: "Large groups (30+): Voting system for finalists",
-                    collaborative: "Collaborative version: Groups create categories together"
+                tips: [
+                    {
+                        step: "Create contribution-focused categories",
+                        example: "Example: \"Bridge Builder\" for cross-modal connection",
+                        priority: true
+                    },
+                    "Include modality-specific recognitions",
+                    "Keep tone celebratory not competitive",
+                    "Ensure everyone receives recognition",
+                    "Create shareable digital certificates"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple nomination process",
+                        "Basic categories (5-7)",
+                        "Verbal announcements only",
+                        "Focus on participation"
+                    ],
+                    enhanced: [
+                        "Creative custom categories",
+                        "Anonymous voting system",
+                        "Designed certificates",
+                        "Multiple recognition options"
+                    ],
+                    transformative: [
+                        "Student-generated categories",
+                        "Multimedia presentations",
+                        "Legacy recognition systems",
+                        "Integration with portfolios"
+                    ]
                 },
-                pairsWellWith: "C2 (Shared Experience Creation), P4 (Participation Dashboard)"
+                hybridConsiderations: {
+                    remote: "Include \"Digital Dynamo\" type awards; ensure ceremony is engaging virtually; provide download links",
+                    onsite: "Recognize in-person community builders; stream ceremony clearly; create physical/digital certificates",
+                    crossmodal: "Balance awards between modalities; highlight cross-modal achievements; celebrate hybrid successes"
+                },
+                connections: "Celebrates: Participation patterns, Community contributions, Growth journeys, Unique perspectives"
             },
             {
-                id: "fw3-collaborative-wisdom-wall",
-                code: "FW3",
+                id: "collaborative-wisdom-wall",
+                code: "C3",
                 title: "Collaborative Wisdom Wall",
-                phase: "Final Weeks",
-                color: "final-weeks",
-                phaseIcon: "FW3",
+                phase: "CLOSING",
+                phaseColor: "closing",
+                phaseIcon: "CEL-3",
                 timeRequired: "20 minutes",
                 energyLevel: "Reflecting",
                 isQuick: false,
                 description: "Students collectively build a wisdom wall featuring key insights, practical advice, and essential resources for future learners. This co-created artifact bridges current and future cohorts while validating collective knowledge construction.",
-                participantSuitability: "♾️ Scalable (works for any size)",
-                implementationSteps: [
-                    "Prompt: \"What do future students need to know?\"",
-                    "Categories: Key insights, Practical tips, Essential resources",
-                    "Collaborative addition of wisdom items",
-                    "Organize and theme contributions",
-                    "Archive for future course access"
+                benefits: [
+                    "Validates collective knowledge creation",
+                    "Provides legacy for future students",
+                    "Synthesizes diverse learning experiences"
                 ],
-                hybridAdaptations: "Include tips specific to hybrid success; Ensure both modalities contribute equally; Create downloadable version for all",
+                participantSuitability: "♾️ Scalable (works for any size)",
                 materialsNeeded: [
                     "Collaborative wall platform (Padlet)",
                     "Categorization system",
                     "Archive storage location"
                 ],
-                variations: {
-                    small: "Small groups (<10): Include personal messages to future students",
-                    large: "Large groups (30+): Curate top insights through voting",
-                    creative: "Creative version: Video wisdom messages"
+                tips: [
+                    "Provide clear categories (insights, tips, resources)",
+                    {
+                        step: "Model with honest advice you wish you'd known",
+                        example: "Example: \"Join study groups early—hybrid is less lonely together\"",
+                        priority: true
+                    },
+                    "Encourage specific, actionable wisdom",
+                    "Include hybrid-specific success tips",
+                    "Plan how future students will access"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple shared document format",
+                        "Basic categories for organization",
+                        "Text-based contributions",
+                        "Manual curation of top items"
+                    ],
+                    enhanced: [
+                        "Visual wall with multimedia",
+                        "Voting on most valuable wisdom",
+                        "Themed wisdom sections",
+                        "Downloadable wisdom guide"
+                    ],
+                    transformative: [
+                        "Student-curated wisdom anthology",
+                        "Video wisdom messages",
+                        "Interactive wisdom database",
+                        "Evolving cross-cohort platform"
+                    ]
                 },
-                pairsWellWith: "D5 (Digital Dialogue Extensions), C5 (Community Visualization)"
+                hybridConsiderations: {
+                    remote: "Include remote learning success tips; ensure platform works globally; add timezone management wisdom",
+                    onsite: "Share campus navigation wisdom; include hybrid participation tips; photograph physical contributions",
+                    crossmodal: "Explicitly request hybrid-specific wisdom; balance modality perspectives; celebrate diverse strategies"
+                },
+                connections: "Preserves: Best practices, Community knowledge, Success strategies, Resource recommendations"
             },
             {
-                id: "fw4-digital-time-capsule",
-                code: "FW4",
+                id: "digital-time-capsule",
+                code: "C4",
                 title: "Digital Time Capsule",
-                phase: "Final Weeks",
-                color: "final-weeks",
-                phaseIcon: "FW4",
+                phase: "CLOSING",
+                phaseColor: "closing",
+                phaseIcon: "CEL-4",
                 timeRequired: "15 minutes",
                 energyLevel: "Connecting",
                 isQuick: false,
                 description: "Class creates digital time capsule containing artifacts, reflections, and messages representing their shared journey. Scheduled future opening creates anticipation while preserving community memory across time and space.",
-                participantSuitability: "👥👥👥 Ideal for: 10-30 participants",
-                implementationSteps: [
-                    "Each student contributes one artifact/reflection",
-                    "Include group photos, quotes, inside jokes",
-                    "Add predictions or goals for future",
-                    "Compile in password-protected digital folder",
-                    "Schedule opening date with calendar reminders"
+                benefits: [
+                    "Creates lasting community connection",
+                    "Preserves shared memories and growth",
+                    "Provides future reflection opportunity"
                 ],
-                hybridAdaptations: "Include screenshots showing hybrid setup; Capture artifacts from both modalities equally; Ensure future access for all participants",
+                participantSuitability: "👥 Ideal for: 10-40 participants",
                 materialsNeeded: [
                     "Cloud storage platform",
                     "Collection submission form",
                     "Calendar scheduling system"
                 ],
-                variations: {
-                    small: "Small groups (<10): Include video messages",
-                    large: "Large groups (30+): Curate representative samples",
-                    extended: "Extended version: Multiple opening dates"
+                tips: [
+                    "Set opening date 6-12 months future",
+                    {
+                        step: "Include artifacts showing hybrid experience",
+                        example: "Example: Screenshot of full class in hybrid mode",
+                        priority: true
+                    },
+                    "Add predictions about future learning",
+                    "Include messages to future selves",
+                    "Create anticipation about opening"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple file collection system",
+                        "Basic password protection",
+                        "Email reminder for opening",
+                        "Focus on participation"
+                    ],
+                    enhanced: [
+                        "Curated multimedia artifacts",
+                        "Themed capsule sections",
+                        "Opening ceremony planning",
+                        "Reflection prompts included"
+                    ],
+                    transformative: [
+                        "Student-designed capsule format",
+                        "Multiple opening milestones",
+                        "Cross-cohort capsule sharing",
+                        "Living archive additions"
+                    ]
                 },
-                pairsWellWith: "C4 (Parallel Social Spaces), T3 (Platform Transition Smoothing)"
+                hybridConsiderations: {
+                    remote: "Include screenshots of home learning spaces; add timezone artifacts; ensure global access to storage",
+                    onsite: "Photograph classroom moments; include physical space artifacts; scan handwritten items",
+                    crossmodal: "Capture hybrid setup images; include both modality perspectives; celebrate distance-defying connections"
+                },
+                connections: "Complements: Reflection activities, Community agreements, Learning journeys, Future goals"
             },
             {
-                id: "fw5-connection-continuation-planning",
-                code: "FW5",
+                id: "connection-continuation-planning",
+                code: "C5",
                 title: "Connection Continuation Planning",
-                phase: "Final Weeks",
-                color: "final-weeks",
-                phaseIcon: "FW5",
+                phase: "CLOSING",
+                phaseColor: "closing",
+                phaseIcon: "THR-1",
                 timeRequired: "15 minutes",
                 energyLevel: "Connecting",
                 isQuick: false,
-                description: "Structured planning session for maintaining community connections beyond course boundaries. Students explicitly choose continuation levels and methods, creating sustainable networks that honor relationships built across modalities.",
-                participantSuitability: "👥👥 Ideal for: 10-20 participants",
-                implementationSteps: [
-                    "Present connection continuation options (study groups, social, professional)",
-                    "Students indicate interest levels and preferences",
-                    "Form opt-in groups based on shared interests",
-                    "Establish communication platforms and norms",
-                    "Schedule first post-course connection"
+                description: "Structured planning for maintaining community connections beyond course boundaries. Students explicitly choose continuation levels and methods, creating sustainable networks that honor relationships built across modalities.",
+                benefits: [
+                    "Transforms temporary class into lasting network",
+                    "Honors valuable connections made",
+                    "Provides structure for ongoing support"
                 ],
-                hybridAdaptations: "Plan for both virtual and possible in-person connections; Ensure platforms work for geographically distributed members; Create backup contact methods",
+                participantSuitability: "👥 Ideal for: 10-30 participants",
                 materialsNeeded: [
                     "Interest survey form",
                     "Platform setup guides",
                     "Contact information system"
                 ],
-                variations: {
-                    small: "Small groups (<10): Whole group continuation planning",
-                    large: "Large groups (30+): Interest-based subgroups only",
-                    structured: "Structured version: Formal alumni network creation"
+                tips: [
+                    "Present multiple connection options (study, social, professional)",
+                    {
+                        step: "Respect different comfort levels with ongoing connection",
+                        example: "Example: Options from LinkedIn only to weekly study groups",
+                        priority: true
+                    },
+                    "Form interest-based subgroups",
+                    "Establish communication norms upfront",
+                    "Schedule first post-course meeting"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple opt-in contact sharing",
+                        "Basic platform selection",
+                        "Informal continuation groups",
+                        "Open-ended structure"
+                    ],
+                    enhanced: [
+                        "Structured group formation",
+                        "Multiple platform options",
+                        "Regular meeting schedules",
+                        "Defined group purposes"
+                    ],
+                    transformative: [
+                        "Formal alumni network creation",
+                        "Mentorship programs",
+                        "Cross-cohort connections",
+                        "Professional development groups"
+                    ]
                 },
-                pairsWellWith: "C4 (Parallel Social Spaces), T5 (Technology Role Distribution)"
+                hybridConsiderations: {
+                    remote: "Plan for timezone-friendly meetings; emphasize virtual connection benefits; maintain global network",
+                    onsite: "Include virtual options for all groups; plan hybrid reunions; document local chapters",
+                    crossmodal: "Celebrate hybrid friendships; plan both virtual and potential in-person meetups; maintain inclusive practices"
+                },
+                connections: "Extends: Study partnerships, Project teams, Learning communities, Professional networks"
             },
 
-            // ANYTIME ACTIVITIES (Gray) - 5 cards
+            // THROUGHOUT - 5 cards
             {
-                id: "aa1-remote-onsite-partner-checkins",
-                code: "AA1",
+                id: "remote-onsite-partner-checkins",
+                code: "T1",
                 title: "Remote/On-site Partner Check-ins",
-                phase: "Anytime Activities",
-                color: "anytime",
-                phaseIcon: "AA1",
+                phase: "THROUGHOUT",
+                phaseColor: "throughout",
+                phaseIcon: "THR-2",
                 timeRequired: "5 minutes",
                 energyLevel: "Connecting",
                 isQuick: true,
-                description: "Brief, structured check-ins between cross-modal partners that maintain human connection throughout the course. Regular rotation ensures multiple connections form while the brief format fits easily into any session.",
-                participantSuitability: "👥👥 Ideal for: 8-20 participants",
-                implementationSteps: [
-                    "Pair each remote student with on-site partner",
-                    "Provide simple check-in protocol (How are you? Need anything?)",
-                    "2-minute partner exchange at session start",
-                    "Rotate pairings every 2-3 weeks",
-                    "Track to ensure coverage"
+                description: "Brief structured check-ins between cross-modal partners that maintain human connection throughout. Regular rotation ensures multiple connections form while the brief format fits easily into any session.",
+                benefits: [
+                    "Maintains consistent cross-modal connection",
+                    "Prevents isolation through regular contact",
+                    "Builds multiple relationships over time"
                 ],
-                hybridAdaptations: "Always pair across modalities; Provide multiple contact options; Include academic and social check-in prompts",
+                participantSuitability: "👥 Ideal for: 8-30 participants",
                 materialsNeeded: [
                     "Pairing roster",
                     "Check-in protocol card",
                     "Rotation schedule"
                 ],
-                variations: {
-                    small: "Small groups (<10): Include brief share-out",
-                    large: "Large groups (30+): Subset implementation",
-                    extended: "Extended version: Include collaborative task"
+                tips: [
+                    {
+                        step: "Always pair across modalities",
+                        example: "Example: Remote student with on-site advocate",
+                        priority: true
+                    },
+                    "Provide simple check-in protocol",
+                    "Keep to 2-minute exchanges",
+                    "Rotate pairings every 2-3 weeks",
+                    "Include both academic and wellbeing check"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple pairing list",
+                        "Basic check-in questions",
+                        "Manual rotation tracking",
+                        "Focus on connection"
+                    ],
+                    enhanced: [
+                        "Automated pairing system",
+                        "Varied check-in prompts",
+                        "Partnership feedback loop",
+                        "Connection quality tracking"
+                    ],
+                    transformative: [
+                        "Student-designed check-in systems",
+                        "Evolving partnership depth",
+                        "Peer support networks",
+                        "Integrated wellness program"
+                    ]
                 },
-                pairsWellWith: "T2 (Technology Buddy System), A2 (Attention Cycling)"
+                hybridConsiderations: {
+                    remote: "Provide multiple contact options; respect timezone differences; include async alternatives",
+                    onsite: "Encourage camera use during check-ins; model inclusive behavior; share hybrid tips",
+                    crossmodal: "Celebrate modality differences as learning opportunities; track successful partnerships; share strategies"
+                },
+                connections: "Maintains: Community bonds, Inclusion practices, Peer support, Cross-modal understanding"
             },
             {
-                id: "aa2-show-and-tell-flash",
-                code: "AA2",
+                id: "show-and-tell-flash",
+                code: "T2",
                 title: "Show & Tell Flash",
-                phase: "Anytime Activities",
-                color: "anytime",
-                phaseIcon: "AA2",
+                phase: "THROUGHOUT",
+                phaseColor: "throughout",
+                phaseIcon: "THR-3",
                 timeRequired: "3 minutes",
                 energyLevel: "Energizing",
                 isQuick: true,
-                description: "Lightning-fast show and tell where participants display and briefly explain an object within reach that connects to course content or represents them. Visual sharing creates immediate engagement across modalities.",
-                participantSuitability: "👥👥 Ideal for: 6-15 participants",
-                implementationSteps: [
-                    "Announce prompt 30 seconds before activity",
-                    "\"Find something within reach that...\"",
-                    "Rapid sharing - 10 seconds per person",
-                    "Alternate between modalities",
-                    "Note interesting connections"
+                description: "Lightning-fast show and tell where participants display and briefly explain an object within reach. Visual sharing creates immediate engagement across modalities while revealing personality and context.",
+                benefits: [
+                    "Energizes through quick physical engagement",
+                    "Reveals personality and context",
+                    "Creates memorable micro-connections"
                 ],
-                hybridAdaptations: "Ensure good camera positioning for objects; Remote students can use virtual backgrounds; Clear audio for brief explanations",
+                participantSuitability: "👥 Ideal for: 6-20 participants",
                 materialsNeeded: [
                     "Timer with audio alert",
                     "Good lighting/camera setup",
                     "Optional: Screenshot capture"
                 ],
-                variations: {
-                    small: "Small groups (<8): Allow follow-up questions",
-                    large: "Large groups (20+): Volunteer basis only",
-                    themed: "Themed version: Connect to current topic"
+                tips: [
+                    "Give 30-second warning to find object",
+                    {
+                        step: "Model with unexpected or meaningful object",
+                        example: "Example: \"This coffee mug survived three moves and two degrees\"",
+                        priority: true
+                    },
+                    "Strictly enforce 10-second sharing time",
+                    "Alternate between modalities",
+                    "Connect objects to course themes when possible"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple object sharing",
+                        "Basic verbal description",
+                        "Timer enforcement",
+                        "Voluntary participation"
+                    ],
+                    enhanced: [
+                        "Themed object prompts",
+                        "Screenshot gallery creation",
+                        "Story behind object option",
+                        "Connection to course content"
+                    ],
+                    transformative: [
+                        "Student-generated prompts",
+                        "Object-based storytelling",
+                        "Cultural artifact exchanges",
+                        "Evolving class museum"
+                    ]
                 },
-                pairsWellWith: "A3 (Full-Group Refocusing), P2 (Response Mode Variety)"
+                hybridConsiderations: {
+                    remote: "Check camera/lighting beforehand; have backup if object not visible; celebrate home contexts",
+                    onsite: "Hold objects clearly for camera; describe for remote viewers; avoid inside jokes",
+                    crossmodal: "Appreciate different environments revealed; note cultural objects; build on diversity"
+                },
+                connections: "Energizes: Long sessions, Post-break transitions, Pre-activity warmups, Energy dips"
             },
             {
-                id: "aa3-digital-physical-mirror",
-                code: "AA3",
+                id: "digital-physical-mirror",
+                code: "T3",
                 title: "Digital-Physical Mirror",
-                phase: "Anytime Activities",
-                color: "anytime",
-                phaseIcon: "AA3",
+                phase: "THROUGHOUT",
+                phaseColor: "throughout",
+                phaseIcon: "THR-4",
                 timeRequired: "3 minutes",
                 energyLevel: "Energizing",
                 isQuick: true,
-                description: "Paired movement activity where remote and on-site partners mirror each other's simple motions. Creates embodied connection across modalities while providing energizing break that reinforces presence and attention.",
-                participantSuitability: "👥👥 Ideal for: 8-16 participants",
-                implementationSteps: [
-                    "Pair remote with on-site participants",
-                    "Leader makes slow, simple movements",
-                    "Partner mirrors as exactly as possible",
-                    "Switch leader after 45 seconds",
-                    "Debrief on connection experience"
+                description: "Paired movement activity where remote and on-site partners mirror simple motions. Creates embodied connection across modalities while providing energizing break that reinforces presence and attention.",
+                benefits: [
+                    "Creates embodied connection across space",
+                    "Provides movement-based energy boost",
+                    "Reinforces mutual presence and attention"
                 ],
-                hybridAdaptations: "Ensure cameras show upper body; Start with very simple movements; Account for video delay in timing",
+                participantSuitability: "👥 Ideal for: 8-20 participants",
                 materialsNeeded: [
                     "Cameras with good field of view",
                     "Space for movement",
                     "Timer for role switches"
                 ],
-                variations: {
-                    small: "Small groups (<8): Whole group mirrors instructor",
-                    large: "Large groups (20+): Breakout room implementation",
-                    seated: "Seated version: Upper body movements only"
+                tips: [
+                    "Start with very simple movements",
+                    {
+                        step: "Account for video delay in movement speed",
+                        example: "Example: Move as if in slow motion",
+                        priority: true
+                    },
+                    "Focus on upper body if space limited",
+                    "Switch leader role after 45 seconds",
+                    "End with synchronized gesture"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple arm movements only",
+                        "Clear leader/follower roles",
+                        "Seated modifications available",
+                        "Focus on participation"
+                    ],
+                    enhanced: [
+                        "More complex movement patterns",
+                        "Music-synchronized options",
+                        "Small group mirroring",
+                        "Movement creativity encouraged"
+                    ],
+                    transformative: [
+                        "Student-choreographed sequences",
+                        "Cultural movement exchanges",
+                        "Movement-based storytelling",
+                        "Wellness integration"
+                    ]
                 },
-                pairsWellWith: "C3 (Mixed-Mode Grouping), A3 (Full-Group Refocusing)"
+                hybridConsiderations: {
+                    remote: "Ensure adequate space visible; offer seated alternatives; check camera angle beforehand",
+                    onsite: "Face camera during movements; avoid turning away; include remote partner in view",
+                    crossmodal: "Celebrate successful synchronization; acknowledge delay challenges; focus on connection not perfection"
+                },
+                connections: "Re-energizes: After heavy content, Long sitting periods, Afternoon sessions, Focus restoration"
             },
             {
-                id: "aa4-one-word-pulse-check",
-                code: "AA4",
+                id: "one-word-pulse-check",
+                code: "T4",
                 title: "One-Word Pulse Check",
-                phase: "Anytime Activities",
-                color: "anytime",
-                phaseIcon: "AA4",
+                phase: "THROUGHOUT",
+                phaseColor: "throughout",
+                phaseIcon: "THR-5",
                 timeRequired: "2 minutes",
                 energyLevel: "Reflecting",
                 isQuick: true,
                 description: "Rapid emotional temperature check where each participant shares one word describing their current state. Creates space for authentic expression while the constraint maintains focus and pace across modalities.",
-                participantSuitability: "♾️ Scalable (works for any size)",
-                implementationSteps: [
-                    "Prompt: \"One word for how you're feeling right now\"",
-                    "Rapid sharing - no explanations",
-                    "Alternate between modalities or use chat",
-                    "Acknowledge range without judgment",
-                    "Adjust session energy if needed"
+                benefits: [
+                    "Provides immediate community snapshot",
+                    "Validates diverse emotional states",
+                    "Takes minimal time while maintaining connection"
                 ],
-                hybridAdaptations: "Large groups use chat simultaneously; Small groups use verbal round-robin; Display word cloud if time permits",
+                participantSuitability: "♾️ Scalable (works for any size)",
                 materialsNeeded: [
-                    "Chat or verbal sharing method",
+                    "Chat function or verbal sharing",
                     "Optional: Word cloud generator",
                     "Timer for large groups"
                 ],
-                variations: {
-                    small: "Small groups (<10): Verbal with brief eye contact",
-                    large: "Large groups (30+): Chat only with word cloud",
-                    focused: "Focused version: One word about specific topic"
+                tips: [
+                    "Model by going first with honest word",
+                    {
+                        step: "Create psychological safety: \"All words welcome\"",
+                        example: "Example: \"Overwhelmed, energized, confused - all valid\"",
+                        priority: true
+                    },
+                    "No explanations needed - just the word",
+                    "Acknowledge patterns without judgment",
+                    "Use insights to adjust session energy"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple verbal round-robin or chat",
+                        "No analysis - just acknowledgment",
+                        "Focus on inclusion over depth",
+                        "Basic \"thank you for sharing\""
+                    ],
+                    enhanced: [
+                        "Create instant word cloud",
+                        "Track emotional journey over time",
+                        "Use as transition ritual",
+                        "Pair with brief partner check-ins"
+                    ],
+                    transformative: [
+                        "Students analyze patterns",
+                        "Emotional data informs teaching",
+                        "Responsive environment based on pulse",
+                        "Community-generated support"
+                    ]
                 },
-                pairsWellWith: "P1 (Digital Backchanneling), A5 (Dual-Track Monitoring)"
+                hybridConsiderations: {
+                    remote: "Use chat for simultaneous sharing; emoji alternatives offered; ensure visibility of contributions",
+                    onsite: "Include remote words prominently; speak words aloud; avoid side conversations",
+                    crossmodal: "Look for modality patterns; celebrate emotional diversity; adjust based on collective pulse"
+                },
+                connections: "Universal connector: Use before challenging content, after intense discussions, as transitions, when energy shifts"
             },
             {
-                id: "aa5-shared-geography",
-                code: "AA5",
+                id: "shared-geography",
+                code: "T5",
                 title: "Shared Geography",
-                phase: "Anytime Activities",
-                color: "anytime",
-                phaseIcon: "AA5",
+                phase: "THROUGHOUT",
+                phaseColor: "throughout",
+                phaseIcon: "THR-6",
                 timeRequired: "5 minutes",
                 energyLevel: "Connecting",
                 isQuick: true,
-                description: "Quick collaborative mapping where participants mark their current location on a shared digital map. Visual representation of geographic diversity sparks conversations about place, culture, and the global nature of hybrid learning.",
-                participantSuitability: "♾️ Scalable (works for any size)",
-                implementationSteps: [
-                    "Share collaborative map link",
-                    "Each person adds pin with name",
-                    "Optional: Add favorite place pin in different color",
-                    "Note interesting patterns or connections",
-                    "Brief discussion of geographic diversity"
+                description: "Quick collaborative mapping where participants mark their current location on a shared digital map. Visual representation of geographic diversity sparks conversations about place, culture, and the global nature of hybrid learning communities.",
+                benefits: [
+                    "Visualizes geographic diversity instantly",
+                    "Sparks cultural exchange conversations",
+                    "Celebrates global classroom connections"
                 ],
-                hybridAdaptations: "Use platform accessible on all devices; Include time zone awareness; Celebrate geographic diversity",
+                participantSuitability: "♾️ Scalable (works for any size)",
                 materialsNeeded: [
                     "Collaborative mapping tool",
                     "Pin/marker functionality",
                     "Display capability"
                 ],
-                variations: {
-                    small: "Small groups (<10): Include brief place description",
-                    large: "Large groups (30+): Heat map visualization",
-                    extended: "Extended version: Cultural artifact sharing"
+                tips: [
+                    "Use simple, accessible mapping tool",
+                    {
+                        step: "Add your pin first with a fun fact about location",
+                        example: "Example: \"Seoul - where coffee shops outnumber convenience stores\"",
+                        priority: true
+                    },
+                    "Note interesting geographic patterns",
+                    "Calculate collective timezone span",
+                    "Reference locations in future examples"
+                ],
+                adaptations: {
+                    essential: [
+                        "Simple pin dropping on map",
+                        "Basic location identification",
+                        "Note geographic spread",
+                        "Brief discussion of diversity"
+                    ],
+                    enhanced: [
+                        "Add favorite local spot pins",
+                        "Include timezone information",
+                        "Create location-based groups",
+                        "Cultural sharing opportunities"
+                    ],
+                    transformative: [
+                        "Student-created location tours",
+                        "Cultural artifact exchanges",
+                        "Global perspective projects",
+                        "Location-based learning"
+                    ]
                 },
-                pairsWellWith: "C5 (Community Visualization), P3 (Synchronized Engagement Moments)"
+                hybridConsiderations: {
+                    remote: "Celebrate home locations; discuss workspace glimpses; acknowledge timezone efforts",
+                    onsite: "Mark campus location; share local features; connect to remote perspectives",
+                    crossmodal: "Calculate distance spanned; celebrate \"classroom without walls\"; use in examples"
+                },
+                connections: "Enriches: Cultural discussions, Global perspectives, Time management planning, Diversity appreciation"
             }
         ];
+
+        // Limit to first 19 cards according to new structure
+        const cardData = allCardData.slice(0, 19);
 
         let currentCardIndex = 0;
 
@@ -1291,33 +2041,29 @@
             const card = cardData[cardIndex];
             const container = document.getElementById('cardContainer');
             
-            // Set color variables  
-            const colorVar = `--${card.color}-color`;
+            // Map old phase properties to new category structure
+            const categoryMap = {
+                'OPENING': { category: 'CONNECTION & IDENTITY', subtitle: 'Best for early course, but revisit regularly', color: 'connection' },
+                'BUILDING': { category: 'SHARED PURPOSE & EXPECTATIONS', subtitle: 'Establish early, revisit at midpoint', color: 'purpose' },
+                'MIDPOINT': { category: 'REFLECTION & FEEDBACK', subtitle: 'Use throughout, essential at midpoint', color: 'reflection' },
+                'CLOSING': { category: 'CELEBRATION & CONTINUATION', subtitle: 'Closing activities that create lasting impact', color: 'celebration' },
+                'THROUGHOUT': { category: 'CONNECTION & IDENTITY', subtitle: 'Best for early course, but revisit regularly', color: 'connection' }
+            };
             
-            // Build meta information
-            const quickIndicator = card.isQuick ? '<span class="quick-indicator">⚡</span>' : '';
-            
-            // Build variations
-            const variationItems = Object.entries(card.variations).map(([key, value]) => 
-                `<div class="variation-item"><strong>${value.split(':')[0]}:</strong> ${value.split(':')[1]}</div>`
-            ).join('');
-            
-            // Build implementation steps
-            const stepsList = card.implementationSteps.map(step => `<li>${step}</li>`).join('');
-            
-            // Build materials list
-            const materialsList = card.materialsNeeded.map(material => `<li>${material}</li>`).join('');
+            const categoryInfo = categoryMap[card.phase] || { category: 'CONNECTION & IDENTITY', subtitle: 'Best for early course, but revisit regularly', color: 'connection' };
+            const colorVar = `--${categoryInfo.color}-color`;
             
             container.innerHTML = `
                 <!-- Left Side -->
                 <div class="card-side card-side-left">
                     <div class="card-header" style="background-color: var(${colorVar});">
-                        <div class="activity-icon" style="color: var(${colorVar});">${card.phaseIcon}</div>
-                        <div class="phase-label">${card.phase}</div>
+                        <div>
+                            <div class="category-label">${categoryInfo.category}</div>
+                        </div>
                     </div>
                     
                     <div class="card-content">
-                        <h2 class="card-title">${card.title} ${quickIndicator}</h2>
+                        <h2 class="card-title">${card.title} ${card.isQuick ? '<span class="quick-indicator">⚡</span>' : ''}</h2>
                         
                         <div class="activity-meta">
                             <div class="meta-item">
@@ -1328,40 +2074,82 @@
                                 <span>⚡</span>
                                 <span>${card.energyLevel}</span>
                             </div>
+                            <div class="meta-item" style="font-style: italic; color: var(--medium-gray);">
+                                <span>${categoryInfo.subtitle}</span>
+                            </div>
                         </div>
                         
-                        <div class="description">${card.description}</div>
+                        <p class="description">${card.description}</p>
                         
-                        <div class="participants">${card.participantSuitability}</div>
+                        <div class="benefits">
+                            <h3 class="benefits-title">Key Benefits:</h3>
+                            <ul class="benefits-list">
+                                ${card.benefits.map(b => `<li>${b}</li>`).join('')}
+                            </ul>
+                        </div>
                         
-                        <div class="section" style="margin-top: 20px;">
-                            <h3 class="section-title">Implementation Steps</h3>
-                            <ol class="steps-list">
-                                ${stepsList}
-                            </ol>
+                        <p class="participants">${card.participantSuitability}</p>
+                        
+                        <div class="materials-section">
+                            <h4 style="margin-bottom: 8px; font-size: 12px; color: var(--throughout-color); font-weight: 600;">MATERIALS/TECHNOLOGY NEEDED</h4>
+                            <ul class="materials-list">
+                                ${card.materialsNeeded.map(m => `<li>${m}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div class="section">
+                            <h3 class="section-title" style="color: var(${colorVar});">HYBRID CONSIDERATIONS</h3>
+                            <div style="font-size: 14px;">
+                                <p style="margin-bottom: 8px;"><strong>• Remote:</strong> ${card.hybridConsiderations.remote}</p>
+                                <p style="margin-bottom: 8px;"><strong>• On-site:</strong> ${card.hybridConsiderations.onsite}</p>
+                                <p><strong>• Cross-modal:</strong> ${card.hybridConsiderations.crossmodal}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Right Side -->
                 <div class="card-side card-side-right">
-                    <div class="adaptations-section">
-                        <h3 class="section-title">Hybrid Adaptations</h3>
-                        <div style="font-size: 13px; line-height: 1.4;">${card.hybridAdaptations}</div>
+                    <div class="section">
+                        <h3 class="section-title" style="color: var(${colorVar});">IMPLEMENTATION TIPS</h3>
+                        <ol class="implementation-tips">
+                            ${card.tips.map(item => {
+                                if (typeof item === 'string') {
+                                    return `<li>${item}</li>`;
+                                } else {
+                                    const star = item.priority ? `<span class="priority-star" style="color: var(${colorVar});">★</span>` : '';
+                                    const example = item.example ? `<span class="example-text">${item.example}</span>` : '';
+                                    return `<li>${star}${item.step}${example}</li>`;
+                                }
+                            }).join('')}
+                        </ol>
                     </div>
                     
-                    <div class="materials-section">
-                        <h4 style="margin-bottom: 8px; font-size: 12px; color: var(--anytime-color); font-weight: 600;">MATERIALS/TECHNOLOGY NEEDED</h4>
-                        <ul class="materials-list">
-                            ${materialsList}
-                        </ul>
-                    </div>
-                    
-                    <div class="variations-section">
-                        <div class="variations-title">Variations</div>
-                        ${variationItems}
-                        <div style="margin-top: 8px; font-size: 11px; color: var(--medium-gray);">
-                            <strong>Pairs well with:</strong> ${card.pairsWellWith}
+                    <div class="section">
+                        <h3 class="section-title" style="color: var(${colorVar});">IMPLEMENTATION ADAPTATIONS</h3>
+                        <p class="section-subtitle">Building community at different levels of hybrid sophistication</p>
+                        
+                        <div class="implementation-adaptations">
+                            <div class="adaptation-level">
+                                <div class="adaptation-level-title essential">Essential Level:</div>
+                                <ul class="adaptation-list">
+                                    ${card.adaptations.essential.map(item => `<li>${item}</li>`).join('')}
+                                </ul>
+                            </div>
+                            
+                            <div class="adaptation-level">
+                                <div class="adaptation-level-title enhanced">Enhanced Level:</div>
+                                <ul class="adaptation-list">
+                                    ${card.adaptations.enhanced.map(item => `<li>${item}</li>`).join('')}
+                                </ul>
+                            </div>
+                            
+                            <div class="adaptation-level">
+                                <div class="adaptation-level-title transformative">Transformative Level:</div>
+                                <ul class="adaptation-list">
+                                    ${card.adaptations.transformative.map(item => `<li>${item}</li>`).join('')}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1395,13 +2183,13 @@
 
         function updateNavButtons() {
             const prevBtn = document.querySelector('.nav-button');
-            const nextBtn = document.querySelector('.nav-button:nth-child(3)');
+            const nextBtn = document.querySelectorAll('.nav-button')[1];
             
             prevBtn.disabled = currentCardIndex === 0;
             nextBtn.disabled = currentCardIndex === cardData.length - 1;
         }
 
-        // Export functions - identical to previous card tools
+        // Export functions
         const { jsPDF } = window.jspdf;
         const loadingOverlay = document.getElementById('loadingOverlay');
         
@@ -1702,4 +2490,4 @@
         updateNavButtons();
     </script>
 </body>
-</html> 
+</html>

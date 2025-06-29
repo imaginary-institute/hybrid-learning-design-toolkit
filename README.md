@@ -42,7 +42,7 @@ All tools are accessible via the [live toolkit website](https://your-domain.gith
 - **Activity Sequence Canvas**: Large-format planning template for engagement progression
 - **Activity Strategy Cards**: 26 research-based activity patterns with hybrid guidance
 - **Assessment Method Cards**: 14 assessment strategies designed for hybrid contexts
-- **Modality Companion**: Quick decision helper for activity planning
+- **Activity Design Across Spaces: Canvas Companion**: Comprehensive design prompts for the "Design Across Spaces" row of the Activity Sequence Canvas
 - **Learning Activity Adapter**: Structured frameworks for equity analysis and adaptation
 
 ### <i class="fas fa-handshake"></i> Dimension 3: Facilitation, Equity & Community (4 Tools + 3 Coming Soon)
