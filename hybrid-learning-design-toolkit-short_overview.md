@@ -104,5 +104,10 @@ The **full theoretical background**, **detailed literature review**, and **compl
 
 <div style="background-color: #f0f7ff; border-left: 4px solid #7253ed; padding: 20px; margin: 20px 0; border-radius: 4px;">
 
+For a comprehensive literature review behind this toolkit download the <a href="{{ '/assets/downloads/hybrid-learning-design-toolkit-lit-summary.pdf' | relative_url }}" style="font-weight: bold; color: #7253ed; text-decoration: underline;"><strong>Literature Summary PDF</strong></a>
+</div>
+
+<div style="background-color: #f0f7ff; border-left: 4px solid #7253ed; padding: 20px; margin: 20px 0; border-radius: 4px;">
+
 For the complete theoretical background, project rationale and detailed bibliography download the [Full Toolkit Overview - PDF coming soon]
 </div>
