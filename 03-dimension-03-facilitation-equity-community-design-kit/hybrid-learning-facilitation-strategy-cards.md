@@ -1,11 +1,11 @@
 ---
-title: "Interaction Strategy Cards"
+title: "Facilitation Strategy Cards"
 layout: default
 parent: "Dimension 3: Facilitation, Equity & Community"
 nav_order: 2
 ---
 
-# Interaction Strategy Cards Guide
+# Facilitation Strategy Cards Guide
 
 
 ## Overview
@@ -14,10 +14,10 @@ Effective hybrid facilitation requires systematic strategies for managing discus
 
 
 {: .note }
-> **Interactive Interaction Strategy Cards**  
+> **Facilitation Strategy Cards**  
 > *Digital card collection with interaction strategies and engagement techniques for hybrid learning facilitation*
 >
-> <a href="{{ '/assets/tools/hybrid-learning-interaction-strategy-cards.html' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> <a href="{{ '/assets/tools/hybrid-learning-facilitation-strategy-cards.html' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
 > Explore Tool →
 > </a>
 >
@@ -27,7 +27,7 @@ Effective hybrid facilitation requires systematic strategies for managing discus
 
 
 ## Purpose
-The Interaction Strategy Cards serve as practical facilitation support, enabling educators to:
+The Facilitation Strategy Cards serve as practical facilitation support, enabling educators to:
 
 - Manage discussion equity through structured participation protocols
 - Distribute attention systematically across physical and virtual spaces

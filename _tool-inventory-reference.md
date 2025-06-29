@@ -54,7 +54,7 @@ Generated: December 2024
 | Tool Name | Page Link | HTML Tool | Status | Category |
 |-----------|-----------|-----------|---------|----------|
 | Presence Lens | `hybrid-learning-presence-lens` | `hybrid-presence-lens-visual.html` | ✅ | Comprehensive Guide |
-| Interaction Strategy Cards | `hybrid-learning-interaction-strategy-cards` | `hybrid-learning-interaction-strategy-cards.html` | ✅ | Card Collection |
+| Facilitation Strategy Cards | `hybrid-learning-facilitation-strategy-cards` | `hybrid-learning-facilitation-strategy-cards.html` | ✅ | Card Collection |
 | Community Building Cards | `hybrid-learning-community-building-cards` | `hybrid-learning-community-building-cards.html` | ✅ | Card Collection |
 | Group Formation Guide | `hybrid-learning-group-formation-guide` | `hybrid-learning-group-formation-guide-visual.html` | ✅ | Quick Reference |
 | Facilitation Quick Guide | `hybrid-learning-facilitation-quick-guide` | `hybrid-facilitation-quick-guide-visual.html` | ✅ | Quick Reference |
@@ -77,7 +77,7 @@ Generated: December 2024
 | Implementation Level Cards | Orientation | 12 cards | `hybrid-learning-implementation-cards.html` |
 | Activity Strategy Cards | 2 | 26 cards | `hybrid-learning-activity-cards.html` |
 | Assessment Method Cards | 2 | 14 cards | `hybrid-learning-assessment-cards.html` |
-| Interaction Strategy Cards | 3 | 25 cards | `hybrid-learning-interaction-strategy-cards.html` |
+| Facilitation Strategy Cards | 3 | 25 cards | `hybrid-learning-facilitation-strategy-cards.html` |
 | Community Building Cards | 3 | 25 cards | `hybrid-learning-community-building-cards.html` |
 
 **Total Card Collections: 5 collections, 102 individual cards**
