@@ -14,9 +14,9 @@ When building your Activity Sequence Canvas, you need guidance for designing act
 > **Interactive Design Across Spaces Companion**  
 > *Comprehensive design prompts for the "Design Across Spaces" row of the Activity Sequence Canvas*
 >
-> <span style="display: inline-block; background: #9ca3af; color: #6b7280; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px; cursor: not-allowed;">
-> Coming Soon
-> </span>
+> <a href="{{ '/assets/tools/hybrid-learning-activity-canvas-spaces-companion-tool.html' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> <i class="fas fa-compass"></i> Open Activity Canvas Spaces Companion
+> </a>
 >
 > **Tip:** Keep this open alongside the Activity Sequence Canvas for guidance on designing across In-Person Space, Digital Environment, and Remote Space.
 

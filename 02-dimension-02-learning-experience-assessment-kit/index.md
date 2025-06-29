@@ -41,11 +41,7 @@ Drawing on multiple instructional design traditions, learning design methodologi
 <a href="modality-companion-for-canvas" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
-<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-exchange-alt tool-icon"></i>Learning Activity Adapter</h3>
-<p style="margin-bottom: auto; color: #555;">Systematic analysis tools for redesigning activities to work equitably across participation modes. Side-by-side experience mapping and cognitive load analysis.</p>
-<a href="learning-activity-adapter" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
-</div>
+
 
 </div>
 
