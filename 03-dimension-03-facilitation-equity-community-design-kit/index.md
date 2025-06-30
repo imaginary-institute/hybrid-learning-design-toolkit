@@ -24,13 +24,13 @@ Drawing on research about "presence" in online environments, studies documenting
 <div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
 <h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-bullseye tool-icon"></i>Facilitation Strategy Cards</h3>
 <p style="margin-bottom: auto; color: #555;">Facilitation techniques organized by color-coded categories to address common challenges when teaching simultaneously to on-site and remote students.</p>
-<a href="hybrid-learning-facilitation-strategy-cards.md" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
+<a href="hybrid-learning-facilitation-strategy-cards" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
 <div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
 <h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-handshake tool-icon"></i>Community Building Cards</h3>
 <p style="margin-bottom: auto; color: #555;">Structured activities organized by course timeline phases to create unified community identity across physical and virtual participation modes.</p>
-<a href="hybrid-learning-community-building-cards.md" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
+<a href="hybrid-learning-community-building-cards" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
 
