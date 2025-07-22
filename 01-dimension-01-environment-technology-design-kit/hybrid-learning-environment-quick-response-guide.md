@@ -1,11 +1,11 @@
 ---
-title: "Quick Response Guide"
+title: "Hybrid Teaching: Quick Fixes"
 layout: default
 parent: "Dimension 1: Environment & Technology"
 nav_order: 4
 ---
 
-# Quick Response Guide
+# Hybrid Teaching: Quick Fixes
 
 
 ## Overview
@@ -13,18 +13,18 @@ nav_order: 4
 In-the-moment troubleshooting and 60-second readiness checks designed for immediate use during live hybrid teaching sessions. This guide provides instant solutions for common hybrid environment challenges that occur during active teaching, ensuring you can maintain inclusive teaching flow when technology or access issues arise.
 
 {: .note }
-> **Interactive Quick Response Guide**  
+> **Interactive Quick Fixes Guide**  
 > *60-second readiness checks, immediate response protocols, and 30-second recovery procedures*
 >
-> <span style="display: inline-block; background: #6c757d; color: #ffffff; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px; cursor: not-allowed;">
-> <i class="fas fa-clock"></i> Coming Soon
-> </span>
+> <a href="{{ '/assets/tools/hybrid-learning-environment-quick-response-guide-visual.html' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Explore Tool →
+> </a>
 >
 > **Tip:** Keep this guide open during live hybrid sessions for immediate access to troubleshooting protocols when challenges arise.
 
 ## Purpose
 
-The Quick Response Guide serves as an emergency reference tool that enables educators to:
+The Hybrid Teaching: Quick Fixes guide serves as an emergency reference tool that enables educators to:
 
 - **Conduct quick pre-session readiness checks** with comprehensive 60-second inclusive protocols
 - **Respond immediately** to visibility, audibility, and participation barriers during live sessions
@@ -34,4 +34,4 @@ The Quick Response Guide serves as an emergency reference tool that enables educ
 
 ---
 
-*The Quick Response Guide is part of Dimension 1 tools focused on maintaining equitable access during live hybrid teaching sessions.*
+*Hybrid Teaching: Quick Fixes is part of Dimension 1 tools focused on maintaining equitable access during live hybrid teaching sessions.*

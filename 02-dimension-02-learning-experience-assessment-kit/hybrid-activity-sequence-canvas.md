@@ -24,6 +24,16 @@ Effective hybrid learning requires systematic sequencing of activities that enga
 >
 > **Tip:** Use this to map your entire session or learning sequence visually. The export feature lets you keep the canvas handy during teaching.
 
+{: .important }
+> **NEW: Activity Sequence Canvas v2**  
+> *Redesigned canvas with unified learning sequence and dedicated space-specific rows*
+>
+> <a href="{{ '/assets/tools/hybrid-learning-activity-sequence-canvas-generator-v2.html' | relative_url }}" style="display: inline-block; background: #8B5A96; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">
+> Try Version 2 →
+> </a>
+>
+> **What's new:** Simplified learning sequence row combining all activity types, dedicated rows for Facilitation & Community, In-Person Space, Digital Environment, and Remote Space. Features a cleaner, neutral color scheme to avoid confusion with activity cards.
+
 ## Purpose
 The Activity Sequence Canvas serves as the central planning tool for Dimension 2, enabling educators to:
 

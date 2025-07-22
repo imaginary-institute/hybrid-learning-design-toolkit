@@ -14,7 +14,7 @@ Building cohesive learning communities across hybrid environments requires inten
 
 
 {: .note }
-> **Interactive Community Building Cards**  
+> **Community Building Cards**  
 > *Digital card collection with community-building strategies specifically designed for hybrid learning contexts*
 >
 > <a href="{{ '/assets/tools/hybrid-learning-community-building-cards.html' | relative_url }}" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 500; margin: 8px 0; font-size: 14px;">

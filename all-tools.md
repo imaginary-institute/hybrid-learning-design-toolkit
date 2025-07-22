@@ -126,6 +126,16 @@ Access all hybrid learning design tools in one place. Each tool links to its int
 </div>
 </div>
 
+### Interactive Tools
+
+- **[Activity Sequence Canvas Generator]({{ '/assets/tools/hybrid-learning-activity-sequence-canvas-generator.html' | relative_url }})**  
+  *Interactive digital canvas for planning hybrid learning sequences*
+
+- **[Activity Sequence Canvas Generator v2]({{ '/assets/tools/hybrid-learning-activity-sequence-canvas-generator-v2.html' | relative_url }})** <span style="background-color: #8B5A96; color: white; padding: 2px 6px; border-radius: 10px; font-size: 0.8em;">NEW</span>  
+  *Redesigned canvas with unified learning sequence and dedicated space rows*
+
+- **[Activity Cards]({{ '/assets/tools/hybrid-learning-activity-cards.html' | relative_url }})**  
+  *Color-coded cards representing activities across three engagement levels*
 
 
 </div>

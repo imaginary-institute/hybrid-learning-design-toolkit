@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Activity Sequence Canvas Generator</title>
+    <title>Activity Sequence Canvas Generator v2</title>
     <!-- Add Font Awesome and external libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Add html2canvas and jsPDF libraries -->
@@ -11,16 +11,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         :root {
-            --receiving-color: #5B9BD5;
-            --responding-color: #4CAF50;
-            --creating-color: #F9A03F;
-            --assessment-primary: #8B5A96;
-            --modality-color: #9C27B0;
+            /* Updated color scheme - neutral grays */
+            --row-dark-gray: #4a5568;
+            --row-medium-gray: #718096;
+            --row-light-gray: #e2e8f0;
+            --row-white: #ffffff;
             
-            --receiving-bg: rgba(91, 155, 213, 0.1);
-            --responding-bg: rgba(76, 175, 80, 0.1);
-            --creating-bg: rgba(249, 160, 63, 0.1);
-            --modality-bg: rgba(156, 39, 176, 0.1);
+            /* Very subtle background colors for content areas */
+            --content-bg-1: rgba(0, 0, 0, 0.02);
+            --content-bg-2: rgba(0, 0, 0, 0.04);
+            
+            /* Keep the old colors for other UI elements */
+            --primary-accent: #5B9BD5;
+            --secondary-accent: #8B5A96;
             
             --border-color: #ddd;
             --separator-color: #999;
@@ -82,7 +85,7 @@
 
         .nav-button {
             padding: 8px 16px;
-            background-color: var(--responding-color);
+            background-color: var(--in-person-color);
             color: white;
             border: none;
             border-radius: 5px;
@@ -102,7 +105,7 @@
         }
 
         .btn-primary {
-            background-color: var(--receiving-color);
+            background-color: var(--primary-accent);
         }
 
         .btn-primary:hover:not(:disabled) {
@@ -134,7 +137,7 @@
         }
 
         .btn-export-print {
-            background-color: var(--assessment-primary);
+            background-color: var(--secondary-accent);
         }
 
         .btn-export-print:hover:not(:disabled) {
@@ -143,7 +146,7 @@
 
         .segment-count {
             background-color: white;
-            color: var(--receiving-color);
+            color: var(--primary-accent);
             width: 28px;
             height: 28px;
             border-radius: 50%;
@@ -222,6 +225,17 @@
             font-size: 24px;
             font-weight: 600;
             color: var(--dark-gray);
+        }
+
+        .header .version-badge {
+            display: inline-block;
+            background-color: var(--secondary-accent);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-left: 10px;
+            vertical-align: super;
         }
 
         .control-panel {
@@ -354,7 +368,7 @@
         }
 
         .content-row {
-            height: 300px;
+            height: 200px;
         }
 
         .grid-row:last-child {
@@ -376,9 +390,9 @@
         }
 
         .first-column {
-            width: 120px;
-            min-width: 120px;
-            max-width: 120px;
+            width: 160px;
+            min-width: 160px;
+            max-width: 160px;
             height: 100%;
         }
 
@@ -419,116 +433,103 @@
             color: var(--medium-gray);
         }
 
-        .engagement-cell {
+        .row-label-cell {
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 10px 5px;
-            color: white;
             font-weight: bold;
             text-align: center;
             height: 100%;
             min-height: 100%;
         }
 
-        .receiving-cell {
-            background-color: var(--receiving-color);
+        /* Alternating row header colors */
+        .row-style-1 {
+            background-color: var(--row-dark-gray);
+            color: white;
         }
         
-        .responding-cell {
-            background-color: var(--responding-color);
+        .row-style-2 {
+            background-color: var(--row-white);
+            color: var(--row-dark-gray);
+            border: 1px solid var(--border-color);
         }
         
-        .creating-cell {
-            background-color: var(--creating-color);
+        .row-style-3 {
+            background-color: var(--row-medium-gray);
+            color: white;
         }
-
-        .modality-cell {
-            background-color: var(--modality-color);
+        
+        .row-style-4 {
+            background-color: var(--row-light-gray);
+            color: var(--row-dark-gray);
+        }
+        
+        .row-style-5 {
+            background-color: var(--row-dark-gray);
+            color: white;
         }
 
         .activity-container {
             display: flex;
             flex-direction: column;
-            height: 300px;
-            min-height: 300px;
+            height: 200px;
+            min-height: 200px;
         }
 
-        .card-area {
+        /* Subtle backgrounds for content areas */
+        .content-area {
             flex: 1;
-            min-height: 80px;
-            border-bottom: 1px dashed #ccc;
             padding: 10px;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
         }
 
-        .notes-area {
-            flex: 1;
-            min-height: 70px;
-            padding: 10px;
+        .content-area-light {
+            background-color: var(--content-bg-1);
         }
 
-        .receiving-area .card-area {
-            background-color: var(--receiving-bg);
-        }
-        
-        .responding-area .card-area {
-            background-color: var(--responding-bg);
-        }
-        
-        .creating-area .card-area {
-            background-color: var(--creating-bg);
+        .content-area-medium {
+            background-color: var(--content-bg-2);
         }
 
-        .modality-area .card-area {
-            background-color: var(--modality-bg);
-        }
-
-        .card-placeholder {
+        .activity-placeholder {
             font-style: italic;
             color: #999;
             text-align: center;
             font-size: 13px;
+            margin: auto;
         }
 
-        .notes-guide {
-            color: #999;
-            font-style: italic;
-            font-size: 12px;
-        }
-
-        .modality-container {
-            display: flex;
-            flex-direction: column;
-            height: 300px;
-            min-height: 300px;
-        }
-
-        .modality-section {
+        .facilitation-area {
             flex: 1;
-            padding: 8px;
+            padding: 10px;
+            background-color: var(--facilitation-bg);
             display: flex;
-            flex-direction: column;
-            border-bottom: 1px dashed #ccc;
+            align-items: center;
+            justify-content: center;
         }
 
-        .modality-section:last-child {
-            border-bottom: none;
-        }
-
-        .modality-label {
-            font-weight: bold;
-            font-size: 12px;
-            color: var(--dark-gray);
-            margin-bottom: 5px;
-        }
-
-        .modality-space {
+        .space-area {
             flex: 1;
-            background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 4px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .in-person-area {
+            background-color: var(--in-person-bg);
+        }
+
+        .digital-area {
+            background-color: var(--digital-bg);
+        }
+
+        .remote-area {
+            background-color: var(--remote-bg);
         }
 
         .note {
@@ -555,7 +556,7 @@
 
         .spinner {
             border: 5px solid #f3f3f3;
-            border-top: 5px solid var(--responding-color);
+            border-top: 5px solid var(--primary-accent);
             border-radius: 50%;
             width: 50px;
             height: 50px;
@@ -653,7 +654,7 @@
     <div class="canvas-container" id="canvasContainer">
         <div class="canvas" id="canvasToExport">
             <div class="header">
-                <h1>HYBRID LEARNING ACTIVITY SEQUENCE CANVAS</h1>
+                <h1>HYBRID LEARNING ACTIVITY SEQUENCE CANVAS <span class="version-badge">v2</span></h1>
             </div>
             
             <!-- Course Info and Implementation Section -->
@@ -699,7 +700,7 @@
                 <!-- Headers Row -->
                 <div class="grid-row" id="headerRow">
                     <div class="grid-cell first-column">
-                        <div class="grid-header">ENGAGEMENT LEVEL</div>
+                        <div class="grid-header">LEARNING DESIGN</div>
                     </div>
                     <div class="grid-cell">
                         <div class="grid-header">
@@ -736,181 +737,151 @@
                     </div>
                 </div>
                 
-                <!-- Receiving Row -->
-                <div class="grid-row content-row" id="receivingRow">
+                <!-- Learning Sequence & Assessment Row -->
+                <div class="grid-row content-row" id="learningSequenceRow">
                     <div class="grid-cell first-column">
-                        <div class="engagement-cell receiving-cell">
-                            RECEIVING<br>(Passive)
+                        <div class="row-label-cell row-style-1">
+                            LEARNING SEQUENCE<br>& ASSESSMENT
                         </div>
                     </div>
                     <div class="grid-cell">
-                        <div class="activity-container receiving-area">
-                            <div class="card-area">
-                                <div class="card-placeholder">Place activity card here</div>
-                            </div>
-                            <div class="notes-area">
-                                <div class="notes-guide">Space for activity details</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid-cell">
-                        <div class="activity-container receiving-area">
-                            <div class="card-area">
-                                <div class="card-placeholder">Place activity card here</div>
-                            </div>
-                            <div class="notes-area">
-                                <div class="notes-guide">Space for activity details</div>
+                        <div class="activity-container">
+                            <div class="content-area content-area-light">
+                                <div class="activity-placeholder">Place activity & assessment cards here</div>
                             </div>
                         </div>
                     </div>
                     <div class="grid-cell">
-                        <div class="activity-container receiving-area">
-                            <div class="card-area">
-                                <div class="card-placeholder">Place activity card here</div>
+                        <div class="activity-container">
+                            <div class="content-area content-area-light">
+                                <div class="activity-placeholder">Place activity & assessment cards here</div>
                             </div>
-                            <div class="notes-area">
-                                <div class="notes-guide">Space for activity details</div>
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="activity-container">
+                            <div class="content-area content-area-light">
+                                <div class="activity-placeholder">Place activity & assessment cards here</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Responding Row -->
-                <div class="grid-row content-row" id="respondingRow">
+                <!-- Facilitation & Community Row -->
+                <div class="grid-row content-row" id="facilitationRow">
                     <div class="grid-cell first-column">
-                        <div class="engagement-cell responding-cell">
-                            RESPONDING<br>(Active)
+                        <div class="row-label-cell row-style-2">
+                            FACILITATION &<br>COMMUNITY
                         </div>
                     </div>
                     <div class="grid-cell">
-                        <div class="activity-container responding-area">
-                            <div class="card-area">
-                                <div class="card-placeholder">Place activity card here</div>
-                            </div>
-                            <div class="notes-area">
-                                <div class="notes-guide">Space for activity details</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid-cell">
-                        <div class="activity-container responding-area">
-                            <div class="card-area">
-                                <div class="card-placeholder">Place activity card here</div>
-                            </div>
-                            <div class="notes-area">
-                                <div class="notes-guide">Space for activity details</div>
+                        <div class="activity-container">
+                            <div class="content-area">
+                                <div class="activity-placeholder">Place facilitation & community cards here</div>
                             </div>
                         </div>
                     </div>
                     <div class="grid-cell">
-                        <div class="activity-container responding-area">
-                            <div class="card-area">
-                                <div class="card-placeholder">Place activity card here</div>
+                        <div class="activity-container">
+                            <div class="content-area">
+                                <div class="activity-placeholder">Place facilitation & community cards here</div>
                             </div>
-                            <div class="notes-area">
-                                <div class="notes-guide">Space for activity details</div>
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="activity-container">
+                            <div class="content-area">
+                                <div class="activity-placeholder">Place facilitation & community cards here</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Creating Row -->
-                <div class="grid-row content-row" id="creatingRow">
+                <!-- In-Person Space Row -->
+                <div class="grid-row content-row" id="inPersonRow">
                     <div class="grid-cell first-column">
-                        <div class="engagement-cell creating-cell">
-                            CREATING<br>(Constructive)
+                        <div class="row-label-cell row-style-3">
+                            IN-PERSON<br>SPACE
                         </div>
                     </div>
                     <div class="grid-cell">
-                        <div class="activity-container creating-area">
-                            <div class="card-area">
-                                <div class="card-placeholder">Place activity card here</div>
-                            </div>
-                            <div class="notes-area">
-                                <div class="notes-guide">Space for activity details</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid-cell">
-                        <div class="activity-container creating-area">
-                            <div class="card-area">
-                                <div class="card-placeholder">Place activity card here</div>
-                            </div>
-                            <div class="notes-area">
-                                <div class="notes-guide">Space for activity details</div>
+                        <div class="activity-container">
+                            <div class="content-area content-area-medium">
+                                <div class="activity-placeholder">Physical classroom activities & setup</div>
                             </div>
                         </div>
                     </div>
                     <div class="grid-cell">
-                        <div class="activity-container creating-area">
-                            <div class="card-area">
-                                <div class="card-placeholder">Place activity card here</div>
+                        <div class="activity-container">
+                            <div class="content-area content-area-medium">
+                                <div class="activity-placeholder">Physical classroom activities & setup</div>
                             </div>
-                            <div class="notes-area">
-                                <div class="notes-guide">Space for activity details</div>
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="activity-container">
+                            <div class="content-area content-area-medium">
+                                <div class="activity-placeholder">Physical classroom activities & setup</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Design Across Spaces row -->
-                <div class="grid-row content-row" id="modalityRow">
+                <!-- Digital Environment Row -->
+                <div class="grid-row content-row" id="digitalRow">
                     <div class="grid-cell first-column">
-                        <div class="engagement-cell modality-cell">
-                            DESIGN ACROSS<br>SPACES
+                        <div class="row-label-cell row-style-4">
+                            DIGITAL<br>ENVIRONMENT
                         </div>
                     </div>
                     <div class="grid-cell">
-                        <div class="activity-container modality-area">
-                            <div class="modality-container">
-                                <div class="modality-section">
-                                    <div class="modality-label">In-Person Space:</div>
-                                    <div class="modality-space"></div>
-                                </div>
-                                <div class="modality-section">
-                                    <div class="modality-label">Digital Environment:</div>
-                                    <div class="modality-space"></div>
-                                </div>
-                                <div class="modality-section">
-                                    <div class="modality-label">Remote Space:</div>
-                                    <div class="modality-space"></div>
-                                </div>
+                        <div class="activity-container">
+                            <div class="content-area content-area-light">
+                                <div class="activity-placeholder">Online platforms & digital tools</div>
                             </div>
                         </div>
                     </div>
                     <div class="grid-cell">
-                        <div class="activity-container modality-area">
-                            <div class="modality-container">
-                                <div class="modality-section">
-                                    <div class="modality-label">In-Person Space:</div>
-                                    <div class="modality-space"></div>
-                                </div>
-                                <div class="modality-section">
-                                    <div class="modality-label">Digital Environment:</div>
-                                    <div class="modality-space"></div>
-                                </div>
-                                <div class="modality-section">
-                                    <div class="modality-label">Remote Space:</div>
-                                    <div class="modality-space"></div>
-                                </div>
+                        <div class="activity-container">
+                            <div class="content-area content-area-light">
+                                <div class="activity-placeholder">Online platforms & digital tools</div>
                             </div>
                         </div>
                     </div>
                     <div class="grid-cell">
-                        <div class="activity-container modality-area">
-                            <div class="modality-container">
-                                <div class="modality-section">
-                                    <div class="modality-label">In-Person Space:</div>
-                                    <div class="modality-space"></div>
-                                </div>
-                                <div class="modality-section">
-                                    <div class="modality-label">Digital Environment:</div>
-                                    <div class="modality-space"></div>
-                                </div>
-                                <div class="modality-section">
-                                    <div class="modality-label">Remote Space:</div>
-                                    <div class="modality-space"></div>
-                                </div>
+                        <div class="activity-container">
+                            <div class="content-area content-area-light">
+                                <div class="activity-placeholder">Online platforms & digital tools</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Remote Space Row -->
+                <div class="grid-row content-row" id="remoteRow">
+                    <div class="grid-cell first-column">
+                        <div class="row-label-cell row-style-5">
+                            REMOTE<br>SPACE
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="activity-container">
+                            <div class="content-area">
+                                <div class="activity-placeholder">Remote learner considerations</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="activity-container">
+                            <div class="content-area">
+                                <div class="activity-placeholder">Remote learner considerations</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-cell">
+                        <div class="activity-container">
+                            <div class="content-area">
+                                <div class="activity-placeholder">Remote learner considerations</div>
                             </div>
                         </div>
                     </div>
@@ -1044,7 +1015,7 @@
 
         // Get heights for all rows in the grid
         function getRowHeights() {
-            const rowIds = ['receivingRow', 'respondingRow', 'creatingRow', 'modalityRow'];
+            const rowIds = ['learningSequenceRow', 'facilitationRow', 'inPersonRow', 'digitalRow', 'remoteRow'];
             const heights = {};
             
             rowIds.forEach(rowId => {
@@ -1080,7 +1051,7 @@
 
         // Set consistent row height for all activity containers
         function setConsistentRowHeight(height) {
-            const rowIds = ['receivingRow', 'respondingRow', 'creatingRow', 'modalityRow'];
+            const rowIds = ['learningSequenceRow', 'facilitationRow', 'inPersonRow', 'digitalRow', 'remoteRow'];
             
             rowIds.forEach(rowId => {
                 const row = document.getElementById(rowId);
@@ -1194,58 +1165,47 @@
                         </div>
                     `;
                 } 
-                else if (rowIndex === 1) { // Receiving row
+                else if (rowIndex === 1) { // Learning Sequence row
                     newSegment.innerHTML = `
-                        <div class="activity-container receiving-area">
-                            <div class="card-area">
-                                <div class="card-placeholder">Place activity card here</div>
-                            </div>
-                            <div class="notes-area">
-                                <div class="notes-guide">Space for activity details</div>
+                        <div class="activity-container">
+                            <div class="content-area content-area-light">
+                                <div class="activity-placeholder">Place activity & assessment cards here</div>
                             </div>
                         </div>
                     `;
                 }
-                else if (rowIndex === 2) { // Responding row
+                else if (rowIndex === 2) { // Facilitation row
                     newSegment.innerHTML = `
-                        <div class="activity-container responding-area">
-                            <div class="card-area">
-                                <div class="card-placeholder">Place activity card here</div>
-                            </div>
-                            <div class="notes-area">
-                                <div class="notes-guide">Space for activity details</div>
+                        <div class="activity-container">
+                            <div class="content-area">
+                                <div class="activity-placeholder">Place facilitation & community cards here</div>
                             </div>
                         </div>
                     `;
                 }
-                else if (rowIndex === 3) { // Creating row
+                else if (rowIndex === 3) { // In-Person row
                     newSegment.innerHTML = `
-                        <div class="activity-container creating-area">
-                            <div class="card-area">
-                                <div class="card-placeholder">Place activity card here</div>
-                            </div>
-                            <div class="notes-area">
-                                <div class="notes-guide">Space for activity details</div>
+                        <div class="activity-container">
+                            <div class="content-area content-area-medium">
+                                <div class="activity-placeholder">Physical classroom activities & setup</div>
                             </div>
                         </div>
                     `;
                 }
-                else if (rowIndex === 4) { // Design Across Spaces row
+                else if (rowIndex === 4) { // Digital row
                     newSegment.innerHTML = `
-                        <div class="activity-container modality-area">
-                            <div class="modality-container">
-                                <div class="modality-section">
-                                    <div class="modality-label">In-Person Space:</div>
-                                    <div class="modality-space"></div>
-                                </div>
-                                <div class="modality-section">
-                                    <div class="modality-label">Digital Environment:</div>
-                                    <div class="modality-space"></div>
-                                </div>
-                                <div class="modality-section">
-                                    <div class="modality-label">Remote Space:</div>
-                                    <div class="modality-space"></div>
-                                </div>
+                        <div class="activity-container">
+                            <div class="content-area content-area-light">
+                                <div class="activity-placeholder">Online platforms & digital tools</div>
+                            </div>
+                        </div>
+                    `;
+                }
+                else if (rowIndex === 5) { // Remote row
+                    newSegment.innerHTML = `
+                        <div class="activity-container">
+                            <div class="content-area">
+                                <div class="activity-placeholder">Remote learner considerations</div>
                             </div>
                         </div>
                     `;
@@ -1303,7 +1263,7 @@
         const decreaseRowsBtn = document.getElementById('decreaseRowsBtn');
         
         increaseRowsBtn.addEventListener('click', function() {
-            const contentRows = ['receivingRow', 'respondingRow', 'creatingRow', 'modalityRow'];
+            const contentRows = ['learningSequenceRow', 'facilitationRow', 'inPersonRow', 'digitalRow', 'remoteRow'];
             
             contentRows.forEach(rowId => {
                 const row = document.getElementById(rowId);
@@ -1324,7 +1284,7 @@
         });
         
         decreaseRowsBtn.addEventListener('click', function() {
-            const contentRows = ['receivingRow', 'respondingRow', 'creatingRow', 'modalityRow'];
+            const contentRows = ['learningSequenceRow', 'facilitationRow', 'inPersonRow', 'digitalRow', 'remoteRow'];
             
             contentRows.forEach(rowId => {
                 const row = document.getElementById(rowId);
@@ -1338,8 +1298,8 @@
                             ? parseInt(container.style.height) 
                             : parseInt(computedStyle.height);
                             
-                        // Don't go below 300px to maintain usability
-                        if (currentHeight >= 330) {
+                        // Don't go below 200px to maintain usability
+                        if (currentHeight >= 230) {
                             container.style.height = (currentHeight - 30) + 'px';
                         }
                     });
@@ -1426,7 +1386,7 @@
                 
                 // Create a download link
                 const link = document.createElement('a');
-                link.download = 'hybrid-learning-canvas.png';
+                link.download = 'hybrid-learning-canvas-v2.png';
                 link.href = imgData;
                 
                 // Trigger download
@@ -1508,7 +1468,7 @@
                 pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
                 
                 // Save PDF
-                pdf.save('hybrid-learning-canvas.pdf');
+                pdf.save('hybrid-learning-canvas-v2.pdf');
                 
                 // Restore controls and check scroll indicator
                 if (controlsSection) controlsSection.style.display = 'flex';
@@ -1546,4 +1506,4 @@
         });
     </script>
 </body>
-</html>
+</html> 

@@ -24,13 +24,7 @@ Building on the concept of "triple presence" across physical, digital, and remot
 </div>
 
 <div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
-<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-cogs tool-icon"></i>Technology Selection</h3>
-<p style="margin-bottom: auto; color: #555;">Choose tools based on pedagogical needs, not hype. Includes budget-conscious alternatives and accessibility considerations.</p>
-<a href="hybrid-learning-technology-selection" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
-</div>
-
-<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
-<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-bolt tool-icon"></i>Quick Response Guide</h3>
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-bolt tool-icon"></i>Hybrid Teaching: Quick Fixes</h3>
 <p style="margin-bottom: auto; color: #555;">In-the-moment troubleshooting and 60-second readiness checks for active teaching sessions.</p>
 <a href="hybrid-learning-environment-quick-response-guide" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>

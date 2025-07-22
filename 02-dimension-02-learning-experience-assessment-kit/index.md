@@ -18,9 +18,15 @@ Drawing on multiple instructional design traditions, learning design methodologi
 <div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 30px 0;">
 
 <div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
-<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-clipboard-list tool-icon"></i>Hybrid Learning Activity Sequence Canvas</h3>
-<p style="margin-bottom: auto; color: #555;">Large-format planning template for organizing learning segments with engagement progression. Aligns activities, assessments, and modality adaptations across session/module/course scales.</p>
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-table tool-icon"></i>Activity Sequence Canvas</h3>
+<p style="margin-bottom: auto; color: #555;">Visual framework connecting learning activities to physical and digital spaces across time segments for effective hybrid design.</p>
 <a href="hybrid-activity-sequence-canvas" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
+</div>
+
+<div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+<h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-cards tool-icon"></i>Activity Cards</h3>
+<p style="margin-bottom: auto; color: #555;">Color-coded cards representing activities across three engagement levels (Receiving, Responding, Creating) for use with the canvas.</p>
+<a href="hybrid-learning-activity-cards" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
 <div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
