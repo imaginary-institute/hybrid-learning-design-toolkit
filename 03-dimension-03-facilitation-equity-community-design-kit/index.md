@@ -35,7 +35,7 @@ Drawing on research about "presence" in online environments, studies documenting
 
 <div style="flex: 0 1 300px; max-width: 400px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
 <h3 style="margin-top: 0; color: #2c3e50;"><i class="fas fa-universal-access tool-icon"></i>Making Hybrid Work for Everyone</h3>
-<p style="margin-bottom: auto; color: #555;">Comprehensive guide for inclusive hybrid teaching with quick fixes for common barriers, ensuring equitable participation for all learners regardless of location or abilities.</p>
+<p style="margin-bottom: auto; color: #555;">Reference guide for inclusive hybrid teaching with a set of guidelines and suggestions, ensuring equitable participation for all learners regardless of location or abilities.</p>
 <a href="making-hybrid-work-for-everyone" style="display: inline-block; background: #7253ed; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; margin-top: 15px;">Explore Tool →</a>
 </div>
 
@@ -44,4 +44,7 @@ Drawing on research about "presence" in online environments, studies documenting
 
 ---
 
-Read the [comprehensive toolkit overview] for full theoretical background and detailed refernces.
+<div style="background-color: #f0f7ff; border-left: 4px solid #7253ed; padding: 20px; margin: 20px 0; border-radius: 4px;">
+
+Read the <a href="{{ '/assets/downloads/hybrid-learning-design-toolkit-overview.pdf' | relative_url }}" style="font-weight: bold; color: #7253ed; text-decoration: underline;"><strong>comprehensive toolkit overview</strong></a> for full theoretical background and detailed references.
+</div>
