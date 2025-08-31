@@ -35,7 +35,79 @@ Building on change management theory, technology adoption frameworks, stages of 
 
 </div>
 
+---
 
+# Start Here: Quick Guide to the Toolkit
+
+## What Challenge Are You Facing Right Now?
+
+### 🔴 "I'm teaching hybrid tomorrow and need immediate help"
+**Your path:** Quick fixes and in-session support
+- Start with [Hybrid Teaching: Quick Fixes](/01-dimension-01-environment-technology-design-kit/hybrid-learning-environment-quick-response-guide) - 60-second readiness checks
+- Grab [Facilitation Strategy Cards](/03-dimension-03-facilitation-equity-community-design-kit/hybrid-learning-facilitation-strategy-cards) - manage attention across spaces
+- Bookmark [Making Hybrid Work for Everyone](/03-dimension-03-facilitation-equity-community-design-kit/making-hybrid-work-for-everyone) - handle access issues as they arise
+
+**Time needed:** 10 minutes to review, use during class
+
+---
+
+### 🟡 "I have a few days to improve my hybrid sessions"
+**Your path:** Design better activities and engagement
+- Map your environment with [Space Mapping Canvas](/01-dimension-01-environment-technology-design-kit/hybrid-learning-space-mapping-canvas) - understand your three spaces
+- Browse [Activity Cards](/02-dimension-02-learning-experience-assessment-kit/hybrid-learning-activity-cards) - find 2-3 activities that fit your content
+- Add [Community Building Cards](/03-dimension-03-facilitation-equity-community-design-kit/hybrid-learning-community-building-cards) - pick one icebreaker and one closing activity
+
+**Time needed:** 1-2 hours planning
+
+---
+
+### 🟢 "I'm redesigning my course for hybrid delivery"
+**Your path:** Systematic course transformation
+1. Take the [Self-Assessment](/00-orientation-support-tools/hybrid-learning-self-assessment) - identify your readiness level
+2. Review [Implementation Levels](/00-orientation-support-tools/hybrid-learning-implementation-level-cards) - understand the progression
+3. Design with [Activity Sequence Canvas](/02-dimension-02-learning-experience-assessment-kit/hybrid-activity-sequence-canvas) and [Activity Cards](/02-dimension-02-learning-experience-assessment-kit/hybrid-learning-activity-cards) - plan full sessions
+4. Integrate [Assessment Method Cards](/02-dimension-02-learning-experience-assessment-kit/hybrid-learning-assessment-cards) - align evaluation
+
+**Time needed:** 4-6 hours initial design, ongoing refinement
+
+---
+
+## Not Sure Where You Fit?
+
+### Answer Three Quick Questions:
+
+**1. How much hybrid teaching experience do you have?**
+- None → See "Essential Implementation" on any tool
+- Some → See "Enhanced Implementation" options  
+- Extensive → Explore "Transformative Implementation"
+
+**2. What's your biggest pain point?**
+- Technology not working → Start with Dimension 1 tools
+- Students not engaging → Start with Dimension 2 tools
+- Remote students feel isolated → Start with Dimension 3 tools
+
+**3. How much time can you invest right now?**
+- 5 minutes → Read one [Facilitation Strategy Card](/03-dimension-03-facilitation-equity-community-design-kit/hybrid-learning-facilitation-strategy-cards)
+- 30 minutes → Complete [Self-Assessment](/00-orientation-support-tools/hybrid-learning-self-assessment) 
+- 2+ hours → Work through [Activity Sequence Canvas](/02-dimension-02-learning-experience-assessment-kit/hybrid-activity-sequence-canvas)
+
+---
+
+## The Toolkit at a Glance
+
+**Three Dimensions, One Goal:** Effective hybrid learning that works for everyone
+
+| Dimension | Focus | Start With |
+|-----------|-------|------------|
+| [1: Environment & Technology](/01-dimension-01-environment-technology-design-kit/) | Can everyone see, hear, participate? | Space Mapping Canvas |
+| [2: Learning Experience](/02-dimension-02-learning-experience-assessment-kit/) | Are activities engaging everyone? | Activity Strategy Cards |
+| [3: Facilitation & Community](/03-dimension-03-facilitation-equity-community-design-kit/) | Is anyone feeling left out? | Facilitation Strategy Cards |
+
+---
+
+## One Simple Rule
+
+**Start small, build confidence, expand gradually.** Pick one tool that addresses your most pressing challenge. Use it. Then add another. The toolkit is modular—each piece works alone but connects to create comprehensive hybrid learning experiences.
 
 ---
 <div style="background-color: #f0f7ff; border-left: 4px solid #7253ed; padding: 20px; margin: 20px 0; border-radius: 4px;">
